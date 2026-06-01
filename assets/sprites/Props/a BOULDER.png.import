@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csiv8pb1h7llm"
-path="res://.godot/imported/Player (2).png-e65b3fe2d3eef1290ae0bbbfea8948c4.ctex"
+uid="uid://c765yhtrbvujc"
+path="res://.godot/imported/a BOULDER.png-c34aa8da3aa766af2c81760e37dfdcff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Player/Player (2).png"
-dest_files=["res://.godot/imported/Player (2).png-e65b3fe2d3eef1290ae0bbbfea8948c4.ctex"]
+source_file="res://assets/sprites/Props/a BOULDER.png"
+dest_files=["res://.godot/imported/a BOULDER.png-c34aa8da3aa766af2c81760e37dfdcff.ctex"]
 
 [params]
 

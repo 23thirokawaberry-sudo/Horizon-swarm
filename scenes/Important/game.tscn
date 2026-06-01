@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cnd8bhnn8bhtv"]
+
+[ext_resource type="PackedScene" uid="uid://c38avxk5rth5d" path="res://scenes/Important/player.tscn" id="1_vjidx"]
+[ext_resource type="PackedScene" uid="uid://cclvw66ffr8qy" path="res://scenes/Props/boulder.tscn" id="2_djnwq"]
+[ext_resource type="PackedScene" uid="uid://80ci7lrbxovt" path="res://scenes/Enemy/green_slime.tscn" id="3_riv6b"]
+
+[node name="Game" type="Node2D" unique_id=301615070]
+y_sort_enabled = true
+
+[node name="Player" parent="." unique_id=1315755359 instance=ExtResource("1_vjidx")]
+position = Vector2(191, 102)
+
+[node name="StaticBody2D" parent="." unique_id=104860157 instance=ExtResource("2_djnwq")]
+position = Vector2(554, 536)
+
+[node name="StaticBody2D2" parent="." unique_id=521083658 instance=ExtResource("2_djnwq")]
+position = Vector2(857, 395)
+
+[node name="StaticBody2D3" parent="." unique_id=2109561062 instance=ExtResource("2_djnwq")]
+position = Vector2(232, 451)
+
+[node name="StaticBody2D4" parent="." unique_id=331273064 instance=ExtResource("2_djnwq")]
+position = Vector2(932, 208)
+
+[node name="StaticBody2D5" parent="." unique_id=797280852 instance=ExtResource("2_djnwq")]
+position = Vector2(400, 264)
+
+[node name="Green Slime" parent="." unique_id=457920698 instance=ExtResource("3_riv6b")]
+position = Vector2(-20, 54)
+
+[node name="Green Slime2" parent="." unique_id=909079978 instance=ExtResource("3_riv6b")]
+position = Vector2(-19, 56)
+
+[node name="Green Slime3" parent="." unique_id=148246873 instance=ExtResource("3_riv6b")]
+position = Vector2(-24, 54)
+
+[node name="Green Slime4" parent="." unique_id=475669634 instance=ExtResource("3_riv6b")]
+position = Vector2(-13, 55)
+
+[node name="Green Slime5" parent="." unique_id=20790186 instance=ExtResource("3_riv6b")]
+position = Vector2(-13, 56)
+
+[node name="Green Slime6" parent="." unique_id=1830126124 instance=ExtResource("3_riv6b")]
+position = Vector2(-13, 56)
+
+[node name="Green Slime7" parent="." unique_id=360624118 instance=ExtResource("3_riv6b")]
+position = Vector2(-20, 55)
+
+[node name="Green Slime8" parent="." unique_id=878817790 instance=ExtResource("3_riv6b")]
+position = Vector2(-20, 57)
+
+[node name="Green Slime9" parent="." unique_id=200970086 instance=ExtResource("3_riv6b")]
+position = Vector2(-8, 242)
+
+[node name="Green Slime10" parent="." unique_id=829350589 instance=ExtResource("3_riv6b")]
+position = Vector2(98, 300)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1815944649]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=992156037]
+offset_right = 1154.0
+offset_bottom = 649.0
