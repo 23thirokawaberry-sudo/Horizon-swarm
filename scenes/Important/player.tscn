@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b2leaxs8ci3jw" path="res://scripts/Important/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://csiv8pb1h7llm" path="res://assets/sprites/Player/Player (2).png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://dqvthrmc4snee" path="res://scenes/gun.tscn" id="3_cc8a3"]
+[ext_resource type="PackedScene" uid="uid://bihjpj053j1eu" path="res://scenes/sword.tscn" id="4_pse83"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -63,3 +65,9 @@ shape = SubResource("CircleShape2D_dqkch")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=355102375]
 zoom = Vector2(4, 4)
+
+[node name="Gun" parent="." unique_id=1210663662 instance=ExtResource("3_cc8a3")]
+position = Vector2(0, -7)
+
+[node name="Sword" parent="." unique_id=671657782 instance=ExtResource("4_pse83")]
+position = Vector2(0, -8)

@@ -10,50 +10,234 @@ y_sort_enabled = true
 [node name="Player" parent="." unique_id=1315755359 instance=ExtResource("1_vjidx")]
 position = Vector2(191, 102)
 
-[node name="StaticBody2D" parent="." unique_id=104860157 instance=ExtResource("2_djnwq")]
-position = Vector2(554, 536)
+[node name="Enemies" type="Node" parent="." unique_id=1209920745]
 
-[node name="StaticBody2D2" parent="." unique_id=521083658 instance=ExtResource("2_djnwq")]
-position = Vector2(857, 395)
-
-[node name="StaticBody2D3" parent="." unique_id=2109561062 instance=ExtResource("2_djnwq")]
-position = Vector2(232, 451)
-
-[node name="StaticBody2D4" parent="." unique_id=331273064 instance=ExtResource("2_djnwq")]
-position = Vector2(932, 208)
-
-[node name="StaticBody2D5" parent="." unique_id=797280852 instance=ExtResource("2_djnwq")]
-position = Vector2(400, 264)
-
-[node name="Green Slime" parent="." unique_id=457920698 instance=ExtResource("3_riv6b")]
+[node name="Green Slime" parent="Enemies" unique_id=457920698 instance=ExtResource("3_riv6b")]
 position = Vector2(-20, 54)
 
-[node name="Green Slime2" parent="." unique_id=909079978 instance=ExtResource("3_riv6b")]
-position = Vector2(-19, 56)
+[node name="Green Slime2" parent="Enemies" unique_id=909079978 instance=ExtResource("3_riv6b")]
+position = Vector2(-11, 16)
 
-[node name="Green Slime3" parent="." unique_id=148246873 instance=ExtResource("3_riv6b")]
-position = Vector2(-24, 54)
+[node name="Green Slime3" parent="Enemies" unique_id=148246873 instance=ExtResource("3_riv6b")]
+position = Vector2(-66, 29)
 
-[node name="Green Slime4" parent="." unique_id=475669634 instance=ExtResource("3_riv6b")]
-position = Vector2(-13, 55)
+[node name="Green Slime4" parent="Enemies" unique_id=475669634 instance=ExtResource("3_riv6b")]
+position = Vector2(-54, 73)
 
-[node name="Green Slime5" parent="." unique_id=20790186 instance=ExtResource("3_riv6b")]
-position = Vector2(-13, 56)
+[node name="Green Slime5" parent="Enemies" unique_id=20790186 instance=ExtResource("3_riv6b")]
+position = Vector2(-22, 102)
 
-[node name="Green Slime6" parent="." unique_id=1830126124 instance=ExtResource("3_riv6b")]
-position = Vector2(-13, 56)
+[node name="Green Slime6" parent="Enemies" unique_id=1830126124 instance=ExtResource("3_riv6b")]
+position = Vector2(30, 84)
 
-[node name="Green Slime7" parent="." unique_id=360624118 instance=ExtResource("3_riv6b")]
-position = Vector2(-20, 55)
+[node name="Green Slime7" parent="Enemies" unique_id=360624118 instance=ExtResource("3_riv6b")]
+position = Vector2(30, 33)
 
-[node name="Green Slime8" parent="." unique_id=878817790 instance=ExtResource("3_riv6b")]
-position = Vector2(-20, 57)
+[node name="Green Slime8" parent="Enemies" unique_id=878817790 instance=ExtResource("3_riv6b")]
+position = Vector2(16, 114)
 
-[node name="Green Slime9" parent="." unique_id=200970086 instance=ExtResource("3_riv6b")]
+[node name="Green Slime9" parent="Enemies" unique_id=200970086 instance=ExtResource("3_riv6b")]
 position = Vector2(-8, 242)
 
-[node name="Green Slime10" parent="." unique_id=829350589 instance=ExtResource("3_riv6b")]
+[node name="Green Slime10" parent="Enemies" unique_id=829350589 instance=ExtResource("3_riv6b")]
 position = Vector2(98, 300)
+
+[node name="Green Slime11" parent="Enemies" unique_id=1999951706 instance=ExtResource("3_riv6b")]
+position = Vector2(613, 215)
+
+[node name="Green Slime12" parent="Enemies" unique_id=402963633 instance=ExtResource("3_riv6b")]
+position = Vector2(362, 449)
+
+[node name="Green Slime13" parent="Enemies" unique_id=6499616 instance=ExtResource("3_riv6b")]
+position = Vector2(1030, 145)
+
+[node name="Green Slime14" parent="Enemies" unique_id=82364200 instance=ExtResource("3_riv6b")]
+position = Vector2(709, 70)
+
+[node name="Green Slime15" parent="Enemies" unique_id=193632311 instance=ExtResource("3_riv6b")]
+position = Vector2(1064, 278)
+
+[node name="Green Slime16" parent="Enemies" unique_id=175484454 instance=ExtResource("3_riv6b")]
+position = Vector2(596, 410)
+
+[node name="Green Slime17" parent="Enemies" unique_id=1406391487 instance=ExtResource("3_riv6b")]
+position = Vector2(791, 287)
+
+[node name="Green Slime18" parent="Enemies" unique_id=673359064 instance=ExtResource("3_riv6b")]
+position = Vector2(850, 287)
+
+[node name="Green Slime19" parent="Enemies" unique_id=1259853117 instance=ExtResource("3_riv6b")]
+position = Vector2(470, 358)
+
+[node name="Green Slime20" parent="Enemies" unique_id=1251549364 instance=ExtResource("3_riv6b")]
+position = Vector2(576, 416)
+
+[node name="Green Slime21" parent="Enemies" unique_id=1190665700 instance=ExtResource("3_riv6b")]
+position = Vector2(-7, 76)
+
+[node name="Green Slime22" parent="Enemies" unique_id=1739429456 instance=ExtResource("3_riv6b")]
+position = Vector2(2, 38)
+
+[node name="Green Slime23" parent="Enemies" unique_id=1852627539 instance=ExtResource("3_riv6b")]
+position = Vector2(-53, 51)
+
+[node name="Green Slime24" parent="Enemies" unique_id=127415440 instance=ExtResource("3_riv6b")]
+position = Vector2(-41, 95)
+
+[node name="Green Slime25" parent="Enemies" unique_id=866518223 instance=ExtResource("3_riv6b")]
+position = Vector2(-9, 124)
+
+[node name="Green Slime26" parent="Enemies" unique_id=700299693 instance=ExtResource("3_riv6b")]
+position = Vector2(43, 106)
+
+[node name="Green Slime27" parent="Enemies" unique_id=1509152919 instance=ExtResource("3_riv6b")]
+position = Vector2(43, 55)
+
+[node name="Green Slime28" parent="Enemies" unique_id=500653079 instance=ExtResource("3_riv6b")]
+position = Vector2(29, 136)
+
+[node name="Green Slime29" parent="Enemies" unique_id=713878396 instance=ExtResource("3_riv6b")]
+position = Vector2(5, 264)
+
+[node name="Green Slime30" parent="Enemies" unique_id=528694256 instance=ExtResource("3_riv6b")]
+position = Vector2(111, 322)
+
+[node name="Green Slime31" parent="Enemies" unique_id=4460724 instance=ExtResource("3_riv6b")]
+position = Vector2(626, 237)
+
+[node name="Green Slime32" parent="Enemies" unique_id=1535142044 instance=ExtResource("3_riv6b")]
+position = Vector2(375, 471)
+
+[node name="Green Slime33" parent="Enemies" unique_id=1509086848 instance=ExtResource("3_riv6b")]
+position = Vector2(1043, 167)
+
+[node name="Green Slime34" parent="Enemies" unique_id=1705214612 instance=ExtResource("3_riv6b")]
+position = Vector2(722, 92)
+
+[node name="Green Slime35" parent="Enemies" unique_id=1666115755 instance=ExtResource("3_riv6b")]
+position = Vector2(1077, 300)
+
+[node name="Green Slime36" parent="Enemies" unique_id=719456902 instance=ExtResource("3_riv6b")]
+position = Vector2(609, 432)
+
+[node name="Green Slime37" parent="Enemies" unique_id=1792895283 instance=ExtResource("3_riv6b")]
+position = Vector2(804, 309)
+
+[node name="Green Slime38" parent="Enemies" unique_id=1234293636 instance=ExtResource("3_riv6b")]
+position = Vector2(863, 309)
+
+[node name="Green Slime39" parent="Enemies" unique_id=466658635 instance=ExtResource("3_riv6b")]
+position = Vector2(483, 380)
+
+[node name="Green Slime40" parent="Enemies" unique_id=867991734 instance=ExtResource("3_riv6b")]
+position = Vector2(589, 438)
+
+[node name="Green Slime41" parent="Enemies" unique_id=514239752 instance=ExtResource("3_riv6b")]
+position = Vector2(-49, 78)
+
+[node name="Green Slime42" parent="Enemies" unique_id=1940713617 instance=ExtResource("3_riv6b")]
+position = Vector2(-40, 40)
+
+[node name="Green Slime43" parent="Enemies" unique_id=458033468 instance=ExtResource("3_riv6b")]
+position = Vector2(-95, 53)
+
+[node name="Green Slime44" parent="Enemies" unique_id=305358807 instance=ExtResource("3_riv6b")]
+position = Vector2(-83, 97)
+
+[node name="Green Slime45" parent="Enemies" unique_id=1784976274 instance=ExtResource("3_riv6b")]
+position = Vector2(-51, 126)
+
+[node name="Green Slime46" parent="Enemies" unique_id=2098683266 instance=ExtResource("3_riv6b")]
+position = Vector2(1, 108)
+
+[node name="Green Slime47" parent="Enemies" unique_id=1239910732 instance=ExtResource("3_riv6b")]
+position = Vector2(1, 57)
+
+[node name="Green Slime48" parent="Enemies" unique_id=141958209 instance=ExtResource("3_riv6b")]
+position = Vector2(-13, 138)
+
+[node name="Green Slime49" parent="Enemies" unique_id=1853799734 instance=ExtResource("3_riv6b")]
+position = Vector2(-37, 266)
+
+[node name="Green Slime50" parent="Enemies" unique_id=1274487750 instance=ExtResource("3_riv6b")]
+position = Vector2(69, 324)
+
+[node name="Green Slime51" parent="Enemies" unique_id=697258892 instance=ExtResource("3_riv6b")]
+position = Vector2(584, 239)
+
+[node name="Green Slime52" parent="Enemies" unique_id=361424531 instance=ExtResource("3_riv6b")]
+position = Vector2(333, 473)
+
+[node name="Green Slime53" parent="Enemies" unique_id=416493770 instance=ExtResource("3_riv6b")]
+position = Vector2(1001, 169)
+
+[node name="Green Slime54" parent="Enemies" unique_id=1676301009 instance=ExtResource("3_riv6b")]
+position = Vector2(680, 94)
+
+[node name="Green Slime55" parent="Enemies" unique_id=1909311174 instance=ExtResource("3_riv6b")]
+position = Vector2(1035, 302)
+
+[node name="Green Slime56" parent="Enemies" unique_id=1880983798 instance=ExtResource("3_riv6b")]
+position = Vector2(567, 434)
+
+[node name="Green Slime57" parent="Enemies" unique_id=252783690 instance=ExtResource("3_riv6b")]
+position = Vector2(762, 311)
+
+[node name="Green Slime58" parent="Enemies" unique_id=1671922977 instance=ExtResource("3_riv6b")]
+position = Vector2(821, 311)
+
+[node name="Green Slime59" parent="Enemies" unique_id=1427331606 instance=ExtResource("3_riv6b")]
+position = Vector2(441, 382)
+
+[node name="Green Slime60" parent="Enemies" unique_id=260159192 instance=ExtResource("3_riv6b")]
+position = Vector2(547, 440)
+
+[node name="Props" type="Node" parent="." unique_id=97036504]
+
+[node name="Boulder" parent="Props" unique_id=104860157 instance=ExtResource("2_djnwq")]
+position = Vector2(554, 536)
+
+[node name="Boulder2" parent="Props" unique_id=521083658 instance=ExtResource("2_djnwq")]
+position = Vector2(857, 395)
+
+[node name="Boulder3" parent="Props" unique_id=2109561062 instance=ExtResource("2_djnwq")]
+position = Vector2(232, 451)
+
+[node name="Boulder4" parent="Props" unique_id=331273064 instance=ExtResource("2_djnwq")]
+position = Vector2(932, 208)
+
+[node name="Boulder5" parent="Props" unique_id=797280852 instance=ExtResource("2_djnwq")]
+position = Vector2(400, 264)
+
+[node name="Boulder6" parent="Props" unique_id=1928396626 instance=ExtResource("2_djnwq")]
+position = Vector2(113, 374)
+
+[node name="Boulder7" parent="Props" unique_id=1826094565 instance=ExtResource("2_djnwq")]
+position = Vector2(613, 112)
+
+[node name="Boulder8" parent="Props" unique_id=826290138 instance=ExtResource("2_djnwq")]
+position = Vector2(644, 356)
+
+[node name="Boulder9" parent="Props" unique_id=342195621 instance=ExtResource("2_djnwq")]
+position = Vector2(314, 83)
+
+[node name="Boulder10" parent="Props" unique_id=1336704234 instance=ExtResource("2_djnwq")]
+position = Vector2(81, 170)
+
+[node name="Boulder11" parent="Props" unique_id=1309584190 instance=ExtResource("2_djnwq")]
+position = Vector2(316, 377)
+
+[node name="Boulder12" parent="Props" unique_id=1187082348 instance=ExtResource("2_djnwq")]
+position = Vector2(88, 498)
+
+[node name="Boulder13" parent="Props" unique_id=244234020 instance=ExtResource("2_djnwq")]
+position = Vector2(396, 523)
+
+[node name="Boulder14" parent="Props" unique_id=605108965 instance=ExtResource("2_djnwq")]
+position = Vector2(810, 581)
+
+[node name="Boulder15" parent="Props" unique_id=1906096150 instance=ExtResource("2_djnwq")]
+position = Vector2(828, 131)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1815944649]
 layer = -1

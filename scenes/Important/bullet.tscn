@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bvcadlfp2or0k"]
+
+[ext_resource type="Script" uid="uid://oko7i22tjoiu" path="res://scenes/Important/moving_projectile.gd" id="1_h8a26"]
+[ext_resource type="Texture2D" uid="uid://dvbv8iq1fs50r" path="res://assets/sprites/misc/Gun bullet.png" id="1_u5170"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tah1u"]
+radius = 3.0
+
+[node name="Bullet" type="Area2D" unique_id=892918341]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_h8a26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365067268]
+shape = SubResource("CircleShape2D_tah1u")
+
+[node name="GunBullet" type="Sprite2D" parent="." unique_id=1367069972]
+texture = ExtResource("1_u5170")
