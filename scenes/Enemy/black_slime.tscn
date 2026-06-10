@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://gu6xobeoeg46"]
+
+[ext_resource type="Script" uid="uid://658kv4361gdh" path="res://scripts/Enemy/black_slime.gd" id="1_3u1xl"]
+[ext_resource type="Texture2D" uid="uid://cc48uddkv3l6i" path="res://assets/sprites/enemy/Slime sprites.png" id="2_51acn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u1xl"]
+atlas = ExtResource("2_51acn")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51acn"]
+atlas = ExtResource("2_51acn")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pvn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u1xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51acn")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="Black Slime" type="CharacterBody2D" unique_id=457920698]
+scale = Vector2(1.75, 1.75)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_3u1xl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_4q1e0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_0pvn7")
+animation = &"Walk"
+autoplay = "Walk"

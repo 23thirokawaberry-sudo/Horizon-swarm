@@ -1,5 +1,7 @@
 extends Area2D
 
+const DAMAGE = 2
+
 var travel_distance = 0
 
 func _physics_process(delta):
@@ -12,5 +14,7 @@ func _physics_process(delta):
 		queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+func _on_body_entered(body:):
+	queue_free()
+	if body.has_method("take_damage"):
+		body.take_damage(DAMAGE)

@@ -1,37 +1,44 @@
 [gd_scene format=3 uid="uid://80ci7lrbxovt"]
 
-[ext_resource type="Texture2D" uid="uid://bac7w6wexfxh4" path="res://assets/sprites/enemy/Slime (1).png" id="1_bln8p"]
 [ext_resource type="Script" uid="uid://c0e5fkt4vabib" path="res://scripts/Enemy/green_slime.gd" id="1_tuic5"]
+[ext_resource type="Texture2D" uid="uid://cc48uddkv3l6i" path="res://assets/sprites/enemy/Slime sprites.png" id="2_4d8dn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuic5"]
-atlas = ExtResource("1_bln8p")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b1pw"]
+atlas = ExtResource("2_4d8dn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqo6t"]
+atlas = ExtResource("2_4d8dn")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pvn7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuic5")
+"texture": SubResource("AtlasTexture_1b1pw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqo6t")
 }],
 "loop": true,
 "name": &"Walk",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
-radius = 7.071068
-
 [node name="Green Slime" type="CharacterBody2D" unique_id=457920698]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_tuic5")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_4q1e0")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
-position = Vector2(1, -9)
-scale = Vector2(0.28125, 0.28125)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_0pvn7")
 animation = &"Walk"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
-position = Vector2(1, -7)
-shape = SubResource("CircleShape2D_4q1e0")
+autoplay = "Walk"

@@ -1,67 +1,92 @@
 [gd_scene format=3 uid="uid://c38avxk5rth5d"]
 
 [ext_resource type="Script" uid="uid://b2leaxs8ci3jw" path="res://scripts/Important/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://csiv8pb1h7llm" path="res://assets/sprites/Player/Player (2).png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://clburn1r0p5cj" path="res://assets/sprites/Player/Player (3).png" id="2_c7irj"]
 [ext_resource type="PackedScene" uid="uid://dqvthrmc4snee" path="res://scenes/gun.tscn" id="3_cc8a3"]
-[ext_resource type="PackedScene" uid="uid://bihjpj053j1eu" path="res://scenes/sword.tscn" id="4_pse83"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
-atlas = ExtResource("2_g2els")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc8a3"]
+atlas = ExtResource("2_c7irj")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
-atlas = ExtResource("2_g2els")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pse83"]
+atlas = ExtResource("2_c7irj")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
-atlas = ExtResource("2_g2els")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8vts"]
+atlas = ExtResource("2_c7irj")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("2_g2els")
-region = Rect2(16, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovrr2"]
+atlas = ExtResource("2_c7irj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoq1x"]
+atlas = ExtResource("2_c7irj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxsfo"]
+atlas = ExtResource("2_c7irj")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qhqgy")
+"texture": SubResource("AtlasTexture_cc8a3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dqkch")
+"texture": SubResource("AtlasTexture_pse83")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qlg0r")
+"texture": SubResource("AtlasTexture_d8vts")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
+"texture": SubResource("AtlasTexture_ovrr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoq1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxsfo")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 2.0
+"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
-radius = 3.1622777
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7irj"]
+radius = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7irj"]
+bg_color = Color(18.892157, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cc8a3"]
+bg_color = Color(0, 18.892157, 0, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1315755359]
+collision_layer = 13
+collision_mask = 13
 script = ExtResource("1_g2els")
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=1248235850]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.6044552
+frame_progress = 0.97007734
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=388553798]
-position = Vector2(0, -8)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_dqkch")
+debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=355102375]
 zoom = Vector2(4, 4)
@@ -69,5 +94,31 @@ zoom = Vector2(4, 4)
 [node name="Gun" parent="." unique_id=1210663662 instance=ExtResource("3_cc8a3")]
 position = Vector2(0, -7)
 
-[node name="Sword" parent="." unique_id=671657782 instance=ExtResource("4_pse83")]
-position = Vector2(0, -8)
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1937484056]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1012418735]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_c7irj")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2143117154]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+offset_left = -142.0
+offset_top = -79.0
+offset_right = -56.0
+offset_bottom = -69.0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_c7irj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cc8a3")
+max_value = 50.0
+value = 50.0
+show_percentage = false
+
+[node name="Regen" type="Timer" parent="." unique_id=19253345]
+autostart = true
+
+[connection signal="timeout" from="Regen" to="." method="_on_regen_timeout"]
