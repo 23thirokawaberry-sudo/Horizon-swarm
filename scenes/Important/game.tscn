@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cnd8bhnn8bhtv"]
 
-[ext_resource type="Script" uid="uid://cqom7aqbtytcf" path="res://scenes/Important/game.gd" id="1_3c70g"]
+[ext_resource type="Script" uid="uid://cqom7aqbtytcf" path="res://scripts/Important/game.gd" id="1_3c70g"]
 [ext_resource type="PackedScene" uid="uid://c38avxk5rth5d" path="res://scenes/Important/player.tscn" id="1_vjidx"]
 [ext_resource type="PackedScene" uid="uid://cclvw66ffr8qy" path="res://scenes/Props/boulder.tscn" id="2_djnwq"]
 [ext_resource type="PackedScene" uid="uid://c83g1hbyrgftt" path="res://scenes/Props/brick.tscn" id="4_3c70g"]
@@ -94,6 +94,7 @@ y_sort_enabled = true
 script = ExtResource("1_3c70g")
 
 [node name="Player" parent="." unique_id=1315755359 instance=ExtResource("1_vjidx")]
+unique_name_in_owner = true
 position = Vector2(191, 102)
 
 [node name="Path2D" type="Path2D" parent="Player" unique_id=1803957421]
@@ -240,15 +241,108 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -78.75
+offset_left = -104.5
 offset_top = -25.75
-offset_right = 78.75
+offset_right = 104.5
 offset_bottom = 25.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 34
 text = "You're a lose"
 
+[node name="Button" type="Button" parent="GameOver/ColorRect" unique_id=238876007]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = 18.0
+offset_right = 84.5
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to title"
+
+[node name="LevelUp" type="CanvasLayer" parent="." unique_id=121577788]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="LevelUp" unique_id=1850379781]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.8)
+
+[node name="Label" type="Label" parent="LevelUp/ColorRect" unique_id=52246340]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.5
+offset_top = 64.0
+offset_right = 104.5
+offset_bottom = 115.5
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 34
+text = "Level up"
+horizontal_alignment = 1
+
+[node name="Choice1" type="Button" parent="LevelUp/ColorRect" unique_id=1860511799]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -465.0
+offset_top = -122.0
+offset_right = -204.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "get more health
+"
+
+[node name="Choice2" type="Button" parent="LevelUp/ColorRect" unique_id=295672521]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -122.0
+offset_right = 130.5
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "get more damage"
+
+[node name="Choice3" type="Button" parent="LevelUp/ColorRect" unique_id=808055187]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 211.0
+offset_top = -122.0
+offset_right = 472.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "heal and improve regeneration"
+
 [connection signal="death" from="Player" to="." method="_on_player_death"]
+[connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="timeout" from="DifficultyRise" to="." method="_on_difficulty_rise_timeout"]
+[connection signal="pressed" from="GameOver/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="LevelUp/ColorRect/Choice1" to="." method="_on_choice_1_pressed"]
+[connection signal="pressed" from="LevelUp/ColorRect/Choice2" to="." method="_on_choice_2_pressed"]
+[connection signal="pressed" from="LevelUp/ColorRect/Choice3" to="." method="_on_choice_3_pressed"]

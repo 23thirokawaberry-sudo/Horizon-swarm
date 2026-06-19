@@ -104,7 +104,7 @@ animations = [{
 }]
 
 [node name="Death" type="Area2D" unique_id=3467916]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_grsj1")
 

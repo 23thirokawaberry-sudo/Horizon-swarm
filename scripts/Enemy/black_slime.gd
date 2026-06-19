@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var health = 34.0
-const DAMAGE = 17.0
+var health = 41.0
+const DAMAGE = 11.0
 const SPEED = 25.0
 
 @onready var player  = get_node("/root/Game/Player")

@@ -71,6 +71,12 @@ bg_color = Color(18.892157, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cc8a3"]
 bg_color = Color(0, 18.892157, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pse83"]
+bg_color = Color(0.36078432, 0.36078432, 0.36078432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8vts"]
+bg_color = Color(0.37143427, 0.5854644, 1, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=1315755359]
 collision_layer = 13
 collision_mask = 13
@@ -94,16 +100,16 @@ zoom = Vector2(4, 4)
 [node name="Gun" parent="." unique_id=1210663662 instance=ExtResource("3_cc8a3")]
 position = Vector2(0, -7)
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1937484056]
+[node name="CollectArea" type="Area2D" parent="." unique_id=1937484056]
 unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1012418735]
-position = Vector2(0, -7)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea" unique_id=1012418735]
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_c7irj")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2143117154]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=2143117154]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(0, 10)
@@ -118,7 +124,22 @@ max_value = 50.0
 value = 50.0
 show_percentage = false
 
+[node name="XpBar" type="ProgressBar" parent="." unique_id=1629554974]
+unique_name_in_owner = true
+z_index = 1
+offset_left = -142.0
+offset_top = -66.0
+offset_right = -56.0
+offset_bottom = -56.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pse83")
+theme_override_styles/fill = SubResource("StyleBoxFlat_d8vts")
+show_percentage = false
+
 [node name="Regen" type="Timer" parent="." unique_id=19253345]
 autostart = true
 
+[node name="IFrame" type="Timer" parent="." unique_id=859203614]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="CollectArea" to="." method="_on_collect_area_body_entered"]
 [connection signal="timeout" from="Regen" to="." method="_on_regen_timeout"]
