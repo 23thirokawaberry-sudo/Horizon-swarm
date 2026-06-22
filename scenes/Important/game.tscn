@@ -224,6 +224,7 @@ tile_set = SubResource("TileSet_17aap")
 
 [node name="GameOver" type="CanvasLayer" parent="." unique_id=1423954767]
 unique_name_in_owner = true
+process_mode = 2
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="GameOver" unique_id=465005597]

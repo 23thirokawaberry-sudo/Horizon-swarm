@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-var health = 41.0
-const DAMAGE = 11.0
-const SPEED = 25.0
+var health = 95.0
+const DAMAGE = 20.0
+const SPEED = 20.0
+var touching = null
 
 @onready var player  = get_node("/root/Game/Player")
 
@@ -11,10 +12,32 @@ func _physics_process(delta):
 	velocity = direction * SPEED
 	move_and_slide()
 	
+func _on_cooldown_timeout():
+	if touching != null:
+		deal_damage()
+
+func _on_hitbox_body_entered(body: Node2D):
+	touching = body
+	deal_damage()
+	%Cooldown.start()
+	
+func _on_hitbox_body_exited(body: Node2D):
+	if body == touching:
+		if is_instance_valid(%Cooldown):
+			%Cooldown.stop()
+		touching = null
+
+func deal_damage():
+	if touching and touching.has_method("recieve_damage"):
+		touching.recieve_damage(DAMAGE)
+
 func take_damage(damage):
 	health -= damage
 	
 	if health <= 0:
+		if is_instance_valid(%Cooldown):
+			%Cooldown.stop()
+		touching = null
 		queue_free()
 		const DEATH_ANIM = preload("res://scenes/Enemy_Death.tscn")
 		var death_anim = DEATH_ANIM.instantiate()

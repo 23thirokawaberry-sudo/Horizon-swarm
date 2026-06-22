@@ -1,6 +1,6 @@
 extends Area2D
 
-const DAMAGE = 2
+var projectile_damage = 1.0
 
 var travel_distance = 0
 
@@ -17,4 +17,5 @@ func _physics_process(delta):
 func _on_body_entered(body:):
 	queue_free()
 	if body.has_method("take_damage"):
-		body.take_damage(DAMAGE)
+		body.take_damage(projectile_damage)
+		print(projectile_damage)

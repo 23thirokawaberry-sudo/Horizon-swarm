@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://658kv4361gdh" path="res://scripts/Enemy/black_slime.gd" id="1_3u1xl"]
 [ext_resource type="Texture2D" uid="uid://cc48uddkv3l6i" path="res://assets/sprites/enemy/Slime sprites.png" id="2_51acn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3u1xl"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
+radius = 6.2873373
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3u1xl"]
 atlas = ExtResource("2_51acn")
@@ -32,7 +35,20 @@ animations = [{
 scale = Vector2(1.75, 1.75)
 collision_layer = 2
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_3u1xl")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1045953215]
+unique_name_in_owner = true
+position = Vector2(0, -4.9999995)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1511714375]
+shape = SubResource("CircleShape2D_3u1xl")
+
+[node name="Cooldown" type="Timer" parent="Hitbox" unique_id=61206381]
+unique_name_in_owner = true
+wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
 position = Vector2(0, -5)
@@ -43,3 +59,7 @@ position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_0pvn7")
 animation = &"Walk"
 autoplay = "Walk"
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]

@@ -40,8 +40,8 @@ func stat_upgraded():
 	%HealthBar.max_value = max_health
 	%HealthBar.value = health
 
-func recieve_damage(damage):
-	health -= damage
+func recieve_damage(incoming_damage):
+	health -= incoming_damage
 	%HealthBar.value = health
 	if health <= 0.0:
 		death.emit()

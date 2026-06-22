@@ -32,27 +32,32 @@ func _on_player_death():
 	
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/Important/title.tscn")
+	get_tree().paused = false
 
 
 func _on_player_level_up():
 	%LevelUp.visible = true
 	get_tree().paused = true
 	level_menu = true
+	
+func upgrade_selected():
+	%LevelUp.visible = false
+	get_tree().paused = false
+	level_menu = false
 
 func _on_choice_1_pressed():
 	%Player.max_health += 10.0
+	%Player.health += 8.0
 	%Player.stat_upgraded()
 	print(%Player.max_health)
-	%LevelUp.visible = false
-	get_tree().paused = false
-	level_menu = false
+	upgrade_selected()
 
 func _on_choice_2_pressed():
-	%LevelUp.visible = false
-	get_tree().paused = false
-	level_menu = false
+	%Player.damage += 1.0
+	upgrade_selected()
 
 func _on_choice_3_pressed():
-	%LevelUp.visible = false
-	get_tree().paused = false
-	level_menu = false
+	%Player.regen += 1.0
+	%Player.health += 20.0
+	%Player.stat_upgraded()
+	upgrade_selected()
