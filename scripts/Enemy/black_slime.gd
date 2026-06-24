@@ -4,6 +4,7 @@ var health = 95.0
 const DAMAGE = 20.0
 const SPEED = 20.0
 var touching = null
+var is_dead = false
 
 @onready var player  = get_node("/root/Game/Player")
 
@@ -35,11 +36,13 @@ func take_damage(damage):
 	health -= damage
 	
 	if health <= 0:
-		if is_instance_valid(%Cooldown):
-			%Cooldown.stop()
-		touching = null
-		queue_free()
-		const DEATH_ANIM = preload("res://scenes/Enemy_Death.tscn")
-		var death_anim = DEATH_ANIM.instantiate()
-		get_parent().add_child(death_anim)
-		death_anim.global_position = global_position
+		if is_dead == false:
+			is_dead = true
+			if is_instance_valid(%Cooldown):
+				%Cooldown.stop()
+			touching = null
+			queue_free()
+			const DEATH_ANIM = preload("res://scenes/Enemy_Death.tscn")
+			var death_anim = DEATH_ANIM.instantiate()
+			get_parent().add_child(death_anim)
+			death_anim.global_position = global_position

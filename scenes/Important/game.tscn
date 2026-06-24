@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bw0voa26if4du" path="res://scenes/Props/tree.tscn" id="5_6ulj2"]
 [ext_resource type="PackedScene" uid="uid://8kjj4sqex0aq" path="res://scenes/Props/crate.tscn" id="6_883ts"]
 [ext_resource type="Texture2D" uid="uid://esh1ky8sy1w7" path="res://assets/sprites/misc/Tilemap (1).png" id="7_6ulj2"]
+[ext_resource type="PackedScene" uid="uid://c6noa6216a0mi" path="res://scenes/Important/level_up.tscn" id="8_883ts"]
 
 [sub_resource type="Curve2D" id="Curve2D_6ulj2"]
 _data = {
@@ -95,7 +96,7 @@ script = ExtResource("1_3c70g")
 
 [node name="Player" parent="." unique_id=1315755359 instance=ExtResource("1_vjidx")]
 unique_name_in_owner = true
-position = Vector2(191, 102)
+position = Vector2(239, 99)
 
 [node name="Path2D" type="Path2D" parent="Player" unique_id=1803957421]
 position = Vector2(-191, -102)
@@ -266,84 +267,14 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Return to title"
 
-[node name="LevelUp" type="CanvasLayer" parent="." unique_id=121577788]
+[node name="LevelUp" parent="." unique_id=1901936953 instance=ExtResource("8_883ts")]
 unique_name_in_owner = true
 process_mode = 2
 visible = false
-
-[node name="ColorRect" type="ColorRect" parent="LevelUp" unique_id=1850379781]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.011764706, 0.011764706, 0.011764706, 0.8)
-
-[node name="Label" type="Label" parent="LevelUp/ColorRect" unique_id=52246340]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -104.5
-offset_top = 64.0
-offset_right = 104.5
-offset_bottom = 115.5
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 34
-text = "Level up"
-horizontal_alignment = 1
-
-[node name="Choice1" type="Button" parent="LevelUp/ColorRect" unique_id=1860511799]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -465.0
-offset_top = -122.0
-offset_right = -204.0
-offset_bottom = 238.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "get more health
-"
-
-[node name="Choice2" type="Button" parent="LevelUp/ColorRect" unique_id=295672521]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.5
-offset_top = -122.0
-offset_right = 130.5
-offset_bottom = 238.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "get more damage"
-
-[node name="Choice3" type="Button" parent="LevelUp/ColorRect" unique_id=808055187]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 211.0
-offset_top = -122.0
-offset_right = 472.0
-offset_bottom = 238.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "heal and improve regeneration"
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="timeout" from="DifficultyRise" to="." method="_on_difficulty_rise_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="LevelUp/ColorRect/Choice1" to="." method="_on_choice_1_pressed"]
-[connection signal="pressed" from="LevelUp/ColorRect/Choice2" to="." method="_on_choice_2_pressed"]
-[connection signal="pressed" from="LevelUp/ColorRect/Choice3" to="." method="_on_choice_3_pressed"]
+[connection signal="level_up_selected" from="LevelUp" to="." method="_on_level_up_level_up_selected"]

@@ -33,13 +33,15 @@ animations = [{
 
 [node name="Red Slime" type="CharacterBody2D" unique_id=457920698]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_kqxeb")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
 unique_name_in_owner = true
 position = Vector2(0, -5)
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
 shape = SubResource("CircleShape2D_4d8dn")

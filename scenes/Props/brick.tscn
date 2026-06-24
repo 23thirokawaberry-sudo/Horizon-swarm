@@ -6,6 +6,8 @@
 size = Vector2(16, 16)
 
 [node name="brick" type="StaticBody2D" unique_id=104860157]
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=80333068]
 position = Vector2(0, -8)

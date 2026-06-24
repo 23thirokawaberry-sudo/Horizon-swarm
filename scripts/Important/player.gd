@@ -33,6 +33,7 @@ func get_xp():
 		level_xp += 2
 		xp = 0
 		level_up.emit()
+	print(xp)
 	%XpBar.value = xp
 	%XpBar.max_value = level_xp
 

@@ -39,25 +39,26 @@ func _on_player_level_up():
 	%LevelUp.visible = true
 	get_tree().paused = true
 	level_menu = true
+
+func _on_level_up_level_up_selected():
+	var info = %LevelUp.upgrade_option
+	print(info)
+	if info == 1:
+		%Player.damage += 1.0
+	elif info == 2:
+		%Player.regen += 1.0
+		%Player.health += 8.0
+	elif info == 3:
+		%Player.max_health += 8.0
+	elif info == 4:
+		print("Shotgun")
+	elif info == 5:
+		print("Pistol")
+	else:
+		print("Hi")
+	%Player.stat_upgraded()
 	
-func upgrade_selected():
+	
 	%LevelUp.visible = false
 	get_tree().paused = false
 	level_menu = false
-
-func _on_choice_1_pressed():
-	%Player.max_health += 10.0
-	%Player.health += 8.0
-	%Player.stat_upgraded()
-	print(%Player.max_health)
-	upgrade_selected()
-
-func _on_choice_2_pressed():
-	%Player.damage += 1.0
-	upgrade_selected()
-
-func _on_choice_3_pressed():
-	%Player.regen += 1.0
-	%Player.health += 20.0
-	%Player.stat_upgraded()
-	upgrade_selected()

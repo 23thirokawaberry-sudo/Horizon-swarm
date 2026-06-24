@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqvthrmc4snee"]
 
 [ext_resource type="Script" uid="uid://bcpgr35enwj55" path="res://scripts/Auto.gd" id="1_og67c"]
-[ext_resource type="Texture2D" uid="uid://c6l0fovmmm137" path="res://assets/sprites/Weapon/Gun.png" id="1_x77fm"]
+[ext_resource type="Texture2D" uid="uid://bmvngigw5ui8g" path="res://assets/sprites/misc/movement pointer1.png" id="2_og67c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_og67c"]
 radius = 298.8277
@@ -16,17 +16,22 @@ shape = SubResource("CircleShape2D_og67c")
 
 [node name="WeaponPivot" type="Marker2D" parent="." unique_id=36927619]
 
-[node name="pistol" type="Sprite2D" parent="WeaponPivot" unique_id=2085616421]
-position = Vector2(7.000001, -2)
-scale = Vector2(0.3125, 0.3125)
-texture = ExtResource("1_x77fm")
+[node name="MovementPointer1" type="Sprite2D" parent="WeaponPivot" unique_id=1314970965]
+position = Vector2(11, 0)
+texture = ExtResource("2_og67c")
 
-[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/pistol" unique_id=1009705274]
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/MovementPointer1" unique_id=1009705274]
 unique_name_in_owner = true
-position = Vector2(6, -2)
+position = Vector2(-10, 3.5527137e-15)
+scale = Vector2(0.3125, 0.3125)
 
-[node name="Timer" type="Timer" parent="." unique_id=1017687662]
+[node name="pistol" type="Timer" parent="." unique_id=1017687662]
 wait_time = 0.25
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="shotgun" type="Timer" parent="." unique_id=892075249]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="pistol" to="." method="_on_pistol_timeout"]
+[connection signal="timeout" from="shotgun" to="." method="_on_shotgun_timeout"]
