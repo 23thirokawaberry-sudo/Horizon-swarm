@@ -28,14 +28,17 @@ func _physics_process(delta):
 		$Animations.play("idle")
 
 func get_xp():
-	if level_xp == xp:
-		level += 1
-		level_xp += 2
-		xp = 0
-		level_up.emit()
+	if xp >= level_xp:
+		leveled_up()
 	print(xp)
 	%XpBar.value = xp
 	%XpBar.max_value = level_xp
+
+func leveled_up():
+	level += 1
+	xp -= 5 + (level * 2)
+	level_xp += 2
+	level_up.emit()
 
 func stat_upgraded():
 	%HealthBar.max_value = max_health

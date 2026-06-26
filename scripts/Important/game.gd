@@ -32,8 +32,6 @@ func _on_player_death():
 	
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/Important/title.tscn")
-	get_tree().paused = false
-
 
 func _on_player_level_up():
 	%LevelUp.visible = true
@@ -42,7 +40,6 @@ func _on_player_level_up():
 
 func _on_level_up_level_up_selected():
 	var info = %LevelUp.upgrade_option
-	print(info)
 	if info == 1:
 		%Player.damage += 1.0
 	elif info == 2:
@@ -50,10 +47,8 @@ func _on_level_up_level_up_selected():
 		%Player.health += 8.0
 	elif info == 3:
 		%Player.max_health += 8.0
-	elif info == 4:
-		print("Shotgun")
-	elif info == 5:
-		print("Pistol")
+	elif info < 6:
+		%Player.get_node("Gun").weapon_levels[info - 4] += 1
 	else:
 		print("Hi")
 	%Player.stat_upgraded()

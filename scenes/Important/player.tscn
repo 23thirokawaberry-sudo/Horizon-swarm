@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2leaxs8ci3jw" path="res://scripts/Important/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://clburn1r0p5cj" path="res://assets/sprites/Player/Player (3).png" id="2_c7irj"]
-[ext_resource type="PackedScene" uid="uid://dqvthrmc4snee" path="res://scenes/gun.tscn" id="3_cc8a3"]
+[ext_resource type="PackedScene" uid="uid://dqvthrmc4snee" path="res://scenes/Important/gun.tscn" id="3_cc8a3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc8a3"]
 atlas = ExtResource("2_c7irj")
