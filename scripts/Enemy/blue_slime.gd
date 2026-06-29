@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var health = 12.0
-const DAMAGE = 3.0
+var health = 85.0
+const DAMAGE = 17.0
 const SPEED = 45.0
 var touching = null
 var is_dead = false
@@ -42,7 +42,7 @@ func take_damage(damage):
 				%Cooldown.stop()
 			touching = null
 			queue_free()
-			const DEATH_ANIM = preload("res://scenes/Enemy_Death.tscn")
+			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
 			get_parent().add_child(death_anim)
 			death_anim.global_position = global_position

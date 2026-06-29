@@ -96,7 +96,7 @@ shape = SubResource("CircleShape2D_dqkch")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=355102375]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 
 [node name="Gun" parent="." unique_id=1210663662 instance=ExtResource("3_cc8a3")]
 position = Vector2(0, -7)
@@ -114,10 +114,10 @@ shape = SubResource("CircleShape2D_c7irj")
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(0, 10)
-offset_left = -142.0
-offset_top = -79.0
-offset_right = -56.0
-offset_bottom = -69.0
+offset_left = -190.0
+offset_top = -106.0
+offset_right = -78.200005
+offset_bottom = -93.0
 theme_override_font_sizes/font_size = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_c7irj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cc8a3")
@@ -128,10 +128,10 @@ show_percentage = false
 [node name="XpBar" type="ProgressBar" parent="." unique_id=1629554974]
 unique_name_in_owner = true
 z_index = 1
-offset_left = -142.0
-offset_top = -66.0
-offset_right = -56.0
-offset_bottom = -56.0
+offset_left = -190.0
+offset_top = -91.0
+offset_right = -78.200005
+offset_bottom = -78.0
 theme_override_styles/background = SubResource("StyleBoxFlat_pse83")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d8vts")
 show_percentage = false

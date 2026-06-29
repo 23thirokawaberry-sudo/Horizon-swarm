@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cqom7aqbtytcf" path="res://scripts/Important/game.gd" id="1_3c70g"]
 [ext_resource type="PackedScene" uid="uid://c38avxk5rth5d" path="res://scenes/Important/player.tscn" id="1_vjidx"]
 [ext_resource type="PackedScene" uid="uid://cclvw66ffr8qy" path="res://scenes/Props/boulder.tscn" id="2_djnwq"]
+[ext_resource type="PackedScene" uid="uid://dqln1fnb4ul4p" path="res://scenes/Important/enemy_spawn_handler.tscn" id="3_17aap"]
 [ext_resource type="PackedScene" uid="uid://c83g1hbyrgftt" path="res://scenes/Props/brick.tscn" id="4_3c70g"]
 [ext_resource type="PackedScene" uid="uid://bw0voa26if4du" path="res://scenes/Props/tree.tscn" id="5_6ulj2"]
 [ext_resource type="PackedScene" uid="uid://8kjj4sqex0aq" path="res://scenes/Props/crate.tscn" id="6_883ts"]
@@ -99,13 +100,16 @@ unique_name_in_owner = true
 position = Vector2(239, 99)
 
 [node name="Path2D" type="Path2D" parent="Player" unique_id=1803957421]
-position = Vector2(-191, -102)
+position = Vector2(-252, -134.00002)
+scale = Vector2(1.3048129, 1.3048129)
 curve = SubResource("Curve2D_6ulj2")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D" unique_id=951470911]
 unique_name_in_owner = true
 position = Vector2(37, 9)
 rotation = -0.0032154229
+
+[node name="Enemies" parent="." unique_id=265994804 instance=ExtResource("3_17aap")]
 
 [node name="Props" type="Node" parent="." unique_id=97036504]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqvthrmc4snee"]
 
-[ext_resource type="Script" uid="uid://bcpgr35enwj55" path="res://scripts/Auto.gd" id="1_og67c"]
-[ext_resource type="Texture2D" uid="uid://bmvngigw5ui8g" path="res://assets/sprites/misc/movement pointer1.png" id="2_og67c"]
+[ext_resource type="Script" uid="uid://bcpgr35enwj55" path="res://scripts/Auto.gd" id="1_lra3y"]
+[ext_resource type="Texture2D" uid="uid://bmvngigw5ui8g" path="res://assets/sprites/misc/movement pointer1.png" id="2_3gksm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_og67c"]
 radius = 298.8277
@@ -9,7 +9,7 @@ radius = 298.8277
 [node name="CursorPointer" type="Area2D" unique_id=1210663662]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_og67c")
+script = ExtResource("1_lra3y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2130599168]
 shape = SubResource("CircleShape2D_og67c")
@@ -18,7 +18,7 @@ shape = SubResource("CircleShape2D_og67c")
 
 [node name="MovementPointer1" type="Sprite2D" parent="WeaponPivot" unique_id=1314970965]
 position = Vector2(11, 0)
-texture = ExtResource("2_og67c")
+texture = ExtResource("2_3gksm")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/MovementPointer1" unique_id=1009705274]
 unique_name_in_owner = true

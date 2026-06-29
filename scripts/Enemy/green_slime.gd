@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 5.0
-const DAMAGE = 1.0
+var health = 50.0
+const DAMAGE = 8.0
 const SPEED = 32.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
@@ -49,7 +49,7 @@ func take_damage(damage):
 				%Cooldown.stop()
 			touching = null
 			queue_free()
-			const DEATH_ANIM = preload("res://scenes/Enemy_Death.tscn")
+			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
 			get_parent().add_child(death_anim)
 			death_anim.global_position = global_position

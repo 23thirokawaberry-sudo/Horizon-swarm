@@ -6,5 +6,5 @@ func _ready():
 
 func _on_body_entered(body: Node2D):
 	queue_free()
-	body.xp += 5.0
+	body.xp += 1.0
 	body.get_xp()
