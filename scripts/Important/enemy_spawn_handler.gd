@@ -43,6 +43,9 @@ func _wave_system_spacing():
 			enemy.append(["Blue slime", 0.5])
 		selected = randi_range(0, 1)	
 	else:
+		if enemy.is_empty():
+			enemy.append(["Black slime", 1]) #end enemy(ies). They have unfair stats designed to end the game. Black slime is currently temporary.
+		selected = 0
 		print("your'e winer")
 	spawn(enemies.get(enemy[selected][0]))
 	$SpawnInterval.start(enemy[selected][1])	

@@ -1,20 +1,20 @@
 extends Area2D
 
 var projectile_damage = 1.0
-
+var attack_duration = 0.0
+@onready var shooting_point = get_parent()
 var travel_distance = 0
 
 func _physics_process(delta):
-	const SPEED = 180.0
-	const RANGE = 240.0
-	var direction = Vector2.RIGHT.rotated(rotation)
-	position += direction * SPEED * delta
-	travel_distance += SPEED * delta
-	if travel_distance > RANGE:
+	print(shooting_point)
+	global_rotation = shooting_point.global_rotation
+	global_position = shooting_point.global_position
+	print(shooting_point)
+	attack_duration += delta
+	if attack_duration >= 0.5:
 		queue_free()
 
 
 func _on_body_entered(body:):
-	queue_free()
 	if body.has_method("take_damage"):
 		body.take_damage(projectile_damage)

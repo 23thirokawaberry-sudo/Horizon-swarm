@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ky48wlq5l00e"]
+
+[ext_resource type="Script" uid="uid://oko7i22tjoiu" path="res://scripts/moving_projectile.gd" id="1_yi5h2"]
+[ext_resource type="Texture2D" uid="uid://cnmlndeow67b1" path="res://assets/sprites/misc/Sword_slash.png" id="2_yi5h2"]
+
+[node name="Bullet" type="Area2D" unique_id=892918341]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_yi5h2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212043490]
+polygon = PackedVector2Array(0, 0, 7, 17, 12, 16, 16, 14, 20, 11, 23, 6, 24, 0, 23, -6, 20, -11, 16, -14, 12, -16, 12, -16, 7, -17)
+
+[node name="SwordSlash" type="Sprite2D" parent="." unique_id=2002676523]
+position = Vector2(15.5, 4.7683716e-07)
+scale = Vector2(4.375, 3.5)
+texture = ExtResource("2_yi5h2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

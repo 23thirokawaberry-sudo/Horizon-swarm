@@ -35,5 +35,11 @@ unique_name_in_owner = true
 wait_time = 1.5
 autostart = true
 
+[node name="sword" type="Timer" parent="." unique_id=1711638772]
+unique_name_in_owner = true
+wait_time = 2.0
+autostart = true
+
 [connection signal="timeout" from="pistol" to="." method="_on_pistol_timeout"]
 [connection signal="timeout" from="shotgun" to="." method="_on_shotgun_timeout"]
+[connection signal="timeout" from="sword" to="." method="_on_sword_timeout"]

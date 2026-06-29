@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-var health = 432.0
-const DAMAGE = 76.0
-const SPEED = 20.0
+var health = 1000.0
+const DAMAGE = 100.0
+const SPEED = 15.0
 var touching = null
 var is_dead = false
 
