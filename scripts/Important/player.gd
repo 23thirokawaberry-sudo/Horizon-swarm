@@ -29,8 +29,11 @@ var level = 0
 
 signal death
 signal level_up
+var time_elapsed = 0
 
-func _ready():
+func _process(delta):
+	time_elapsed += delta
+	$Time.text = str(snapped(time_elapsed, 0.1))
 	%XpBar.max_value = level_xp
 	%HealthBar.max_value = max_health
 	%HealthBar.value = health
@@ -76,3 +79,5 @@ func _on_regen_timeout():
 		if health > max_health:
 			health = max_health
 		%HealthBar.value = health
+		
+		

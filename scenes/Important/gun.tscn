@@ -40,6 +40,12 @@ unique_name_in_owner = true
 wait_time = 2.0
 autostart = true
 
+[node name="beam" type="Timer" parent="." unique_id=1807667755]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
 [connection signal="timeout" from="pistol" to="." method="_on_pistol_timeout"]
 [connection signal="timeout" from="shotgun" to="." method="_on_shotgun_timeout"]
 [connection signal="timeout" from="sword" to="." method="_on_sword_timeout"]
+[connection signal="timeout" from="beam" to="." method="_on_beam_timeout"]

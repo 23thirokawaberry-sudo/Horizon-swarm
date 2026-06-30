@@ -41,6 +41,7 @@ func deal_damage():
 
 func take_damage(damage):
 	health -= damage
+	damage_effect()
 	
 	if health <= 0:
 		if is_dead == false:
@@ -53,3 +54,9 @@ func take_damage(damage):
 			var death_anim = DEATH_ANIM.instantiate()
 			get_parent().add_child(death_anim)
 			death_anim.global_position = global_position
+
+func damage_effect():
+	modulate = Color(6.0,0.1,0.1)
+	$HitTick.start(0.05)
+	await $HitTick.timeout
+	modulate = Color(1,1,1,1)

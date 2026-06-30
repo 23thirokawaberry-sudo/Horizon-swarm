@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvbv8iq1fs50r" path="res://assets/sprites/misc/Gun bullet.png" id="2_kftki"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tah1u"]
+radius = 5.0
 
 [node name="Bullet" type="Area2D" unique_id=892918341]
 top_level = true

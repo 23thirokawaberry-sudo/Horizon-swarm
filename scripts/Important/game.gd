@@ -1,6 +1,9 @@
 extends Node2D
 var level_menu = false
 
+func time():
+	return $Enemies.time_elapsed
+
 func _on_player_death():
 	%GameOver.visible = true
 	get_tree().paused = true
@@ -19,11 +22,11 @@ func _on_level_up_level_up_selected():
 	if info == 1:
 		%Player.damage_multi += 0.2
 	elif info == 2:
-		%Player.regen_multi += 0.2
+		%Player.regen_multi += 0.25
 		%Player.health += 60.0
 	elif info == 3:
 		%Player.max_health += 0.1
-	elif info < 7:
+	elif info < 8:
 		%Player.get_node("Gun").weapon_levels[info - 4] += 1
 	else:
 		print("Hi")

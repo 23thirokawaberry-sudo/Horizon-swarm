@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dhxfkkcjas1p4"]
 
-[ext_resource type="Script" uid="uid://c0e5fkt4vabib" path="res://scripts/Enemy/green_slime.gd" id="1_kqxeb"]
+[ext_resource type="Script" uid="uid://cqi2qdame38id" path="res://scripts/Enemy/red_slime.gd" id="1_kqxeb"]
 [ext_resource type="Texture2D" uid="uid://cqr1eiyl0ncuo" path="res://assets/sprites/enemy/Slime sprites (1).png" id="2_kqxeb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
@@ -61,6 +61,9 @@ sprite_frames = SubResource("SpriteFrames_0pvn7")
 animation = &"Walk"
 autoplay = "Walk"
 frame_progress = 0.6837012
+
+[node name="HitTick" type="Timer" parent="." unique_id=1168191408]
+wait_time = 0.15
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

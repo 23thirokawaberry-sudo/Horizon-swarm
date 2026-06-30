@@ -136,6 +136,18 @@ theme_override_styles/background = SubResource("StyleBoxFlat_pse83")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d8vts")
 show_percentage = false
 
+[node name="Time" type="Label" parent="." unique_id=2000069568]
+offset_left = -22.0
+offset_top = -83.0
+offset_right = 18.0
+offset_bottom = -60.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "hi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Regen" type="Timer" parent="." unique_id=19253345]
 autostart = true
 
