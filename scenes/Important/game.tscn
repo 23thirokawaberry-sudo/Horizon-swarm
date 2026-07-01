@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://8kjj4sqex0aq" path="res://scenes/Props/crate.tscn" id="6_883ts"]
 [ext_resource type="Texture2D" uid="uid://esh1ky8sy1w7" path="res://assets/sprites/misc/Tilemap (1).png" id="7_6ulj2"]
 [ext_resource type="PackedScene" uid="uid://c6noa6216a0mi" path="res://scenes/Important/level_up.tscn" id="8_883ts"]
+[ext_resource type="PackedScene" uid="uid://cp7g0xhdfqdmq" path="res://scenes/Important/pause.tscn" id="10_ju15i"]
 
 [sub_resource type="Curve2D" id="Curve2D_6ulj2"]
 _data = {
@@ -276,9 +277,17 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 
+[node name="Pause" parent="." unique_id=1968261540 instance=ExtResource("10_ju15i")]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
+[connection signal="pause" from="Player" to="." method="_on_pause"]
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="timeout" from="DifficultyRise" to="." method="_on_difficulty_rise_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="level_up_selected" from="LevelUp" to="." method="_on_level_up_level_up_selected"]
+[connection signal="level_up_selected" from="LevelUp" to="Pause" method="_on_level_up_level_up_selected"]
+[connection signal="pause" from="Pause" to="." method="_on_pause"]

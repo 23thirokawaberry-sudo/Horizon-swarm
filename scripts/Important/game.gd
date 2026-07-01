@@ -1,8 +1,19 @@
 extends Node2D
 var level_menu = false
+var paused = false
 
 func time():
 	return $Enemies.time_elapsed
+
+func _on_pause():
+	if paused == false:
+		%Pause.visible = true
+		paused = true
+		get_tree().paused = true
+	else:	
+		%Pause.visible = false
+		paused = false
+		get_tree().paused = false
 
 func _on_player_death():
 	%GameOver.visible = true
@@ -31,6 +42,7 @@ func _on_level_up_level_up_selected():
 	else:
 		print("Hi")
 	%Player.stat_upgraded()
+	level_menu = false
 	
 	
 	%LevelUp.visible = false

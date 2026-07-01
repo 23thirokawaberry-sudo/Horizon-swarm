@@ -71,8 +71,8 @@ func _wave_system_spacing():
 			enemy.clear()
 			wave = 4
 		if enemy.is_empty():
-			enemy.append(["Green slime", 0.2])
-			enemy.append(["Blue slime", 0.35])
+			enemy.append(["Green slime", 0.15])
+			enemy.append(["Blue slime", 0.3])
 			enemy.append(["Red slime", 0.6])
 		selected = randi_range(0, 2)	
 	else:

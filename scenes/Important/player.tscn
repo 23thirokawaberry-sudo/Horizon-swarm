@@ -136,6 +136,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_pse83")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d8vts")
 show_percentage = false
 
+[node name="Pause" type="Button" parent="." unique_id=1348012021]
+offset_left = 162.0
+offset_top = -106.0
+offset_right = 190.0
+offset_bottom = -78.0
+theme_override_font_sizes/font_size = 6
+text = "PAUSE"
+
 [node name="Time" type="Label" parent="." unique_id=2000069568]
 offset_left = -22.0
 offset_top = -83.0
@@ -154,4 +162,5 @@ autostart = true
 [node name="IFrame" type="Timer" parent="." unique_id=859203614]
 unique_name_in_owner = true
 
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
 [connection signal="timeout" from="Regen" to="." method="_on_regen_timeout"]

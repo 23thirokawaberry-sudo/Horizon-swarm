@@ -29,6 +29,7 @@ var level = 0
 
 signal death
 signal level_up
+signal pause
 var time_elapsed = 0
 
 func _process(delta):
@@ -80,4 +81,5 @@ func _on_regen_timeout():
 			health = max_health
 		%HealthBar.value = health
 		
-		
+func _on_pause_pressed():
+	pause.emit()
