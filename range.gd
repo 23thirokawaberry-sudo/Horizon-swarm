@@ -1,6 +1,10 @@
 extends Area2D
+#This script/scene is called by all enemies that has a projectile.
 
 @onready var damage = get_parent().DAMAGE
+@onready var bullet = get_parent().BULLET
+func _ready():
+	$AttackCooldown.wait_time = get_parent().FIRERATE
 
 func _physics_process(delta):
 	var player_in_range = get_overlapping_bodies()
@@ -9,8 +13,7 @@ func _physics_process(delta):
 		look_at(target.global_position)
 
 func _on_attack_cooldown_timeout():
-	const BULLET = preload("res://scenes/Enemy/mage_cast.tscn")
-	var new_bullet = BULLET.instantiate()
+	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
 	new_bullet.projectile_damage = damage

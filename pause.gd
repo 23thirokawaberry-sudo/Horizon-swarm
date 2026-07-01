@@ -26,7 +26,6 @@ func new_entry():
 		if weapon_details[i] != -1:
 			if position_given[i] == false:
 				position_given[i] = true
-				print(weapon_details[i], i)
 				var icon_xy = icon_positions[i][0]
 				var new_textbox = Label.new()
 				var new_icon = TextureRect.new()

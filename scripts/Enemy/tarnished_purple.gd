@@ -1,16 +1,14 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 120.0
+var health = 150.0
+const MAX = 150.0
 const DAMAGE = 20.0
-const SPEED = 9.0
-const FIRERATE = 5.0
+const SPEED = 10.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
-var in_range = null
 
-const BULLET = preload("res://scenes/Enemy/mage_cast.tscn")
 @onready var player  = get_node("/root/Game/Player")
 
 func _physics_process(delta):
@@ -53,7 +51,7 @@ func take_damage(damage):
 				%Cooldown.stop()
 			touching = null
 			queue_free()
-			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
+			const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
 			get_parent().add_child(death_anim)
 			death_anim.global_position = global_position
@@ -63,3 +61,14 @@ func damage_effect():
 	$HitTick.start(0.05)
 	await $HitTick.timeout
 	modulate = Color(1,1,1,1)
+
+func _on_regen_timeout():
+	if health < MAX:
+		health += 15.0
+		if health > MAX:
+			health = MAX
+		modulate = Color(0.1,6.0,0.1)
+		$RegenTick.start(0.05)
+		await $RegenTick.timeout
+		modulate = Color(1,1,1,1)
+		

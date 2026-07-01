@@ -6,10 +6,8 @@ var attack_duration = 0.0
 var travel_distance = 0
 
 func _physics_process(delta):
-	print(shooting_point)
 	global_rotation = shooting_point.global_rotation
 	global_position = shooting_point.global_position
-	print(shooting_point)
 	attack_duration += delta
 	if attack_duration >= 0.5:
 		queue_free()

@@ -53,7 +53,6 @@ func _physics_process(delta):
 func get_xp():
 	if xp >= level_xp:
 		leveled_up()
-	print(xp)
 	%XpBar.value = xp
 	%XpBar.max_value = level_xp
 

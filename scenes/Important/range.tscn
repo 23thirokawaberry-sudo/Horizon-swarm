@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dsl2cm1ind4h"]
+
+[ext_resource type="Script" uid="uid://d3bntg7ek0ig7" path="res://range.gd" id="1_gag7t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w625m"]
+radius = 350.0
+
+[node name="Range" type="Area2D" unique_id=875168748]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_gag7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1579677093]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_w625m")
+debug_color = Color(0, 0.92941177, 0.07450981, 0.41960785)
+
+[node name="WeaponPivot" type="Marker2D" parent="." unique_id=1702051704]
+unique_name_in_owner = true
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot" unique_id=1022454776]
+unique_name_in_owner = true
+position = Vector2(1, 3.5527137e-15)
+scale = Vector2(0.3125, 0.3125)
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1468156687]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
