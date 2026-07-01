@@ -36,7 +36,7 @@ func _on_level_up_level_up_selected():
 		%Player.regen_multi += 0.25
 		%Player.health += 60.0
 	elif info == 3:
-		%Player.max_health += 0.1
+		%Player.max_health_multi += 0.1
 	elif info < 8:
 		%Player.get_node("Gun").weapon_levels[info - 4] += 1
 	else:

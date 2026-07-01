@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 1000.0
+var health = 1200.0
 var self_damage = 100.0
 var speed = 15.0
 var touching = null
@@ -61,7 +61,7 @@ func enrage():
 		modulate = Color(3.0,0,0,1)
 
 func damage_effect():
-	if health > 325:
+	if health > 550:
 		modulate = Color(6.0,0.1,0.1)
 		$HitTick.start(0.05)
 		await $HitTick.timeout

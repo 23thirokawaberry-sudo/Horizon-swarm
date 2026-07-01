@@ -78,8 +78,8 @@ bg_color = Color(0.36078432, 0.36078432, 0.36078432, 1)
 bg_color = Color(0.37143427, 0.5854644, 1, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1315755359]
-collision_layer = 28
-collision_mask = 28
+collision_layer = 60
+collision_mask = 60
 motion_mode = 1
 script = ExtResource("1_g2els")
 
