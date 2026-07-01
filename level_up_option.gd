@@ -35,27 +35,30 @@ func randomize_button(button):
 	var RTP = random_upgrade[selected_type][selected_pos] #optimization
 	if RTP[2] in already_picked:
 		randomize_button(button)
-	button.get_node("TextureRect").texture.region = Rect2(RTP[0][0], RTP[0][1], 32, 32)
-	button.get_node("Label").text = RTP[1]
-	already_picked.append(RTP[2])
+	else:
+		button.get_node("TextureRect").texture.region = Rect2(RTP[0][0], RTP[0][1], 32, 32)
+		button.get_node("Label").text = RTP[1]
+		already_picked.append(RTP[2])
 
 func limited_upgrades(button):
 	print("later")
 
 func _on_button_pressed():
 	upgrade_option = already_picked[0]
-	print(upgrade_option)
 	level_up_selected.emit()
+	already_picked = []
 	randomize_buttons()
 
 func _on_button_2_pressed():
 	upgrade_option = already_picked[1]
 	level_up_selected.emit()
+	already_picked = []
 	randomize_buttons()
 	
 func _on_button_3_pressed():
 	upgrade_option = already_picked[2]
 	level_up_selected.emit()
+	already_picked = []
 	randomize_buttons()
 
 func _ready():

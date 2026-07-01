@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #these are base values. different classes and upgrades in menu will increase these.
 var base_max_health = 500.0
-var base_damage = 15.0
+var base_damage = 22.0
 var base_regen = 8.0
 
 #upgrades change these values
