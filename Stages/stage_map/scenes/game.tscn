@@ -1,24 +1,18 @@
 [gd_scene format=4 uid="uid://cnd8bhnn8bhtv"]
 
-[ext_resource type="Script" uid="uid://cqom7aqbtytcf" path="res://scripts/Important/game.gd" id="1_3c70g"]
-[ext_resource type="PackedScene" uid="uid://c38avxk5rth5d" path="res://scenes/Important/player.tscn" id="1_vjidx"]
-[ext_resource type="PackedScene" uid="uid://cclvw66ffr8qy" path="res://scenes/Props/boulder.tscn" id="2_djnwq"]
-[ext_resource type="PackedScene" uid="uid://dqln1fnb4ul4p" path="res://scenes/Important/enemy_spawn_handler.tscn" id="3_17aap"]
-[ext_resource type="PackedScene" uid="uid://c83g1hbyrgftt" path="res://scenes/Props/brick.tscn" id="4_3c70g"]
-[ext_resource type="PackedScene" uid="uid://bw0voa26if4du" path="res://scenes/Props/tree.tscn" id="5_6ulj2"]
-[ext_resource type="PackedScene" uid="uid://8kjj4sqex0aq" path="res://scenes/Props/crate.tscn" id="6_883ts"]
-[ext_resource type="Texture2D" uid="uid://esh1ky8sy1w7" path="res://assets/sprites/misc/Tilemap (1).png" id="7_6ulj2"]
-[ext_resource type="PackedScene" uid="uid://c6noa6216a0mi" path="res://scenes/Important/level_up.tscn" id="8_883ts"]
-[ext_resource type="PackedScene" uid="uid://cp7g0xhdfqdmq" path="res://scenes/Important/pause.tscn" id="10_ju15i"]
-
-[sub_resource type="Curve2D" id="Curve2D_6ulj2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 37, 9, 0, 0, 0, 0, 348, 8, 0, 0, 0, 0, 348, 195, 0, 0, 0, 0, 37, 195, 0, 0, 0, 0, 37, 9)
-}
-point_count = 5
+[ext_resource type="Script" uid="uid://cqom7aqbtytcf" path="res://Stages/stage_map/scripts/game.gd" id="1_8ifnd"]
+[ext_resource type="PackedScene" uid="uid://c38avxk5rth5d" path="res://scenes/Important/player.tscn" id="2_d1gyb"]
+[ext_resource type="PackedScene" uid="uid://c6b1yc1yrxrxv" path="res://scenes/Important/level_control.tscn" id="3_d1gyb"]
+[ext_resource type="PackedScene" uid="uid://cclvw66ffr8qy" path="res://scenes/Props/boulder.tscn" id="4_knydu"]
+[ext_resource type="PackedScene" uid="uid://c83g1hbyrgftt" path="res://scenes/Props/brick.tscn" id="5_q5rsc"]
+[ext_resource type="PackedScene" uid="uid://bw0voa26if4du" path="res://scenes/Props/tree.tscn" id="6_i3sk7"]
+[ext_resource type="PackedScene" uid="uid://8kjj4sqex0aq" path="res://scenes/Props/crate.tscn" id="7_imoc6"]
+[ext_resource type="Texture2D" uid="uid://esh1ky8sy1w7" path="res://assets/sprites/misc/Tilemap (1).png" id="8_sfwee"]
+[ext_resource type="PackedScene" uid="uid://c6noa6216a0mi" path="res://scenes/Important/level_up.tscn" id="9_adkh5"]
+[ext_resource type="PackedScene" uid="uid://cp7g0xhdfqdmq" path="res://scenes/Important/pause.tscn" id="10_56vhb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_883ts"]
-texture = ExtResource("7_6ulj2")
+texture = ExtResource("8_sfwee")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -94,117 +88,107 @@ sources/0 = SubResource("TileSetAtlasSource_883ts")
 
 [node name="Game" type="Node2D" unique_id=301615070]
 y_sort_enabled = true
-script = ExtResource("1_3c70g")
+script = ExtResource("1_8ifnd")
 
-[node name="Player" parent="." unique_id=1315755359 instance=ExtResource("1_vjidx")]
+[node name="Player" parent="." unique_id=1315755359 instance=ExtResource("2_d1gyb")]
 unique_name_in_owner = true
 position = Vector2(239, 99)
 
-[node name="Path2D" type="Path2D" parent="Player" unique_id=1803957421]
-position = Vector2(-252, -134.00002)
-scale = Vector2(1.3048129, 1.3048129)
-curve = SubResource("Curve2D_6ulj2")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D" unique_id=951470911]
-unique_name_in_owner = true
-position = Vector2(37, 9)
-rotation = -0.0032154229
-
-[node name="Enemies" parent="." unique_id=265994804 instance=ExtResource("3_17aap")]
+[node name="Level" parent="." unique_id=64455432 instance=ExtResource("3_d1gyb")]
 
 [node name="Props" type="Node" parent="." unique_id=97036504]
 
-[node name="Boulder" parent="Props" unique_id=104860157 instance=ExtResource("2_djnwq")]
+[node name="Boulder" parent="Props" unique_id=104860157 instance=ExtResource("4_knydu")]
 position = Vector2(554, 536)
 
-[node name="Boulder2" parent="Props" unique_id=521083658 instance=ExtResource("2_djnwq")]
+[node name="Boulder2" parent="Props" unique_id=521083658 instance=ExtResource("4_knydu")]
 position = Vector2(857, 395)
 
-[node name="Boulder3" parent="Props" unique_id=2109561062 instance=ExtResource("2_djnwq")]
+[node name="Boulder3" parent="Props" unique_id=2109561062 instance=ExtResource("4_knydu")]
 position = Vector2(232, 451)
 
-[node name="Boulder4" parent="Props" unique_id=331273064 instance=ExtResource("2_djnwq")]
+[node name="Boulder4" parent="Props" unique_id=331273064 instance=ExtResource("4_knydu")]
 position = Vector2(932, 208)
 
-[node name="Boulder5" parent="Props" unique_id=797280852 instance=ExtResource("2_djnwq")]
+[node name="Boulder5" parent="Props" unique_id=797280852 instance=ExtResource("4_knydu")]
 position = Vector2(400, 264)
 
-[node name="Boulder6" parent="Props" unique_id=1928396626 instance=ExtResource("2_djnwq")]
+[node name="Boulder6" parent="Props" unique_id=1928396626 instance=ExtResource("4_knydu")]
 position = Vector2(113, 374)
 
-[node name="Boulder7" parent="Props" unique_id=1826094565 instance=ExtResource("2_djnwq")]
+[node name="Boulder7" parent="Props" unique_id=1826094565 instance=ExtResource("4_knydu")]
 position = Vector2(613, 112)
 
-[node name="Boulder8" parent="Props" unique_id=826290138 instance=ExtResource("2_djnwq")]
+[node name="Boulder8" parent="Props" unique_id=826290138 instance=ExtResource("4_knydu")]
 position = Vector2(644, 356)
 
-[node name="Boulder9" parent="Props" unique_id=342195621 instance=ExtResource("2_djnwq")]
+[node name="Boulder9" parent="Props" unique_id=342195621 instance=ExtResource("4_knydu")]
 position = Vector2(314, 83)
 
-[node name="Boulder10" parent="Props" unique_id=1336704234 instance=ExtResource("2_djnwq")]
+[node name="Boulder10" parent="Props" unique_id=1336704234 instance=ExtResource("4_knydu")]
 position = Vector2(81, 170)
 
-[node name="Boulder11" parent="Props" unique_id=1309584190 instance=ExtResource("2_djnwq")]
+[node name="Boulder11" parent="Props" unique_id=1309584190 instance=ExtResource("4_knydu")]
 position = Vector2(316, 377)
 
-[node name="Boulder12" parent="Props" unique_id=1187082348 instance=ExtResource("2_djnwq")]
+[node name="Boulder12" parent="Props" unique_id=1187082348 instance=ExtResource("4_knydu")]
 position = Vector2(88, 498)
 
-[node name="Boulder13" parent="Props" unique_id=244234020 instance=ExtResource("2_djnwq")]
+[node name="Boulder13" parent="Props" unique_id=244234020 instance=ExtResource("4_knydu")]
 position = Vector2(396, 523)
 
-[node name="Boulder14" parent="Props" unique_id=605108965 instance=ExtResource("2_djnwq")]
+[node name="Boulder14" parent="Props" unique_id=605108965 instance=ExtResource("4_knydu")]
 position = Vector2(810, 581)
 
-[node name="Boulder15" parent="Props" unique_id=1906096150 instance=ExtResource("2_djnwq")]
+[node name="Boulder15" parent="Props" unique_id=1906096150 instance=ExtResource("4_knydu")]
 position = Vector2(828, 131)
 
-[node name="brick" parent="Props" unique_id=1432753494 instance=ExtResource("4_3c70g")]
+[node name="brick" parent="Props" unique_id=1432753494 instance=ExtResource("5_q5rsc")]
 position = Vector2(647, 233)
 
-[node name="brick6" parent="Props" unique_id=123033941 instance=ExtResource("4_3c70g")]
+[node name="brick6" parent="Props" unique_id=123033941 instance=ExtResource("5_q5rsc")]
 position = Vector2(679, 233)
 
-[node name="brick7" parent="Props" unique_id=644083181 instance=ExtResource("4_3c70g")]
+[node name="brick7" parent="Props" unique_id=644083181 instance=ExtResource("5_q5rsc")]
 position = Vector2(695, 233)
 
-[node name="brick8" parent="Props" unique_id=1666597244 instance=ExtResource("4_3c70g")]
+[node name="brick8" parent="Props" unique_id=1666597244 instance=ExtResource("5_q5rsc")]
 position = Vector2(711, 233)
 
-[node name="brick9" parent="Props" unique_id=1878348790 instance=ExtResource("4_3c70g")]
+[node name="brick9" parent="Props" unique_id=1878348790 instance=ExtResource("5_q5rsc")]
 position = Vector2(727, 233)
 
-[node name="brick5" parent="Props" unique_id=1684686333 instance=ExtResource("4_3c70g")]
+[node name="brick5" parent="Props" unique_id=1684686333 instance=ExtResource("5_q5rsc")]
 position = Vector2(663, 233)
 
-[node name="tree" parent="Props" unique_id=421838098 instance=ExtResource("5_6ulj2")]
+[node name="tree" parent="Props" unique_id=421838098 instance=ExtResource("6_i3sk7")]
 position = Vector2(501, 276)
 
-[node name="crate" parent="Props" unique_id=1807698401 instance=ExtResource("6_883ts")]
+[node name="crate" parent="Props" unique_id=1807698401 instance=ExtResource("7_imoc6")]
 position = Vector2(411, 144)
 
-[node name="crate2" parent="Props" unique_id=726022650 instance=ExtResource("6_883ts")]
+[node name="crate2" parent="Props" unique_id=726022650 instance=ExtResource("7_imoc6")]
 position = Vector2(960, 91)
 
-[node name="crate3" parent="Props" unique_id=1273137570 instance=ExtResource("6_883ts")]
+[node name="crate3" parent="Props" unique_id=1273137570 instance=ExtResource("7_imoc6")]
 position = Vector2(962, 355)
 
-[node name="crate4" parent="Props" unique_id=605111225 instance=ExtResource("6_883ts")]
+[node name="crate4" parent="Props" unique_id=605111225 instance=ExtResource("7_imoc6")]
 position = Vector2(257, 600)
 
-[node name="crate5" parent="Props" unique_id=1283380408 instance=ExtResource("6_883ts")]
+[node name="crate5" parent="Props" unique_id=1283380408 instance=ExtResource("7_imoc6")]
 position = Vector2(299, 591)
 
-[node name="crate6" parent="Props" unique_id=529089926 instance=ExtResource("6_883ts")]
+[node name="crate6" parent="Props" unique_id=529089926 instance=ExtResource("7_imoc6")]
 position = Vector2(267, 558)
 
-[node name="crate7" parent="Props" unique_id=492418049 instance=ExtResource("6_883ts")]
+[node name="crate7" parent="Props" unique_id=492418049 instance=ExtResource("7_imoc6")]
 position = Vector2(171, 544)
 
-[node name="crate8" parent="Props" unique_id=1464902267 instance=ExtResource("6_883ts")]
+[node name="crate8" parent="Props" unique_id=1464902267 instance=ExtResource("7_imoc6")]
 position = Vector2(721, 500)
 
-[node name="tree2" parent="Props" unique_id=1195221059 instance=ExtResource("5_6ulj2")]
+[node name="tree2" parent="Props" unique_id=1195221059 instance=ExtResource("6_i3sk7")]
 position = Vector2(785, 402)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1815944649]
@@ -272,22 +256,21 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Return to title"
 
-[node name="LevelUp" parent="." unique_id=1901936953 instance=ExtResource("8_883ts")]
+[node name="LevelUp" parent="." unique_id=1901936953 instance=ExtResource("9_adkh5")]
 unique_name_in_owner = true
 process_mode = 2
 visible = false
 
-[node name="Pause" parent="." unique_id=1968261540 instance=ExtResource("10_ju15i")]
+[node name="Pause" parent="." unique_id=1968261540 instance=ExtResource("10_56vhb")]
 unique_name_in_owner = true
 process_mode = 3
 visible = false
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
-[connection signal="level_up" from="Player" to="." method="_on_player_level_up"]
+[connection signal="level_up" from="Player" to="Level" method="_on_player_level_up"]
 [connection signal="pause" from="Player" to="." method="_on_pause"]
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="timeout" from="DifficultyRise" to="." method="_on_difficulty_rise_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/Button" to="." method="_on_button_pressed"]
-[connection signal="level_up_selected" from="LevelUp" to="." method="_on_level_up_level_up_selected"]
-[connection signal="level_up_selected" from="LevelUp" to="Pause" method="_on_level_up_level_up_selected"]
+[connection signal="level_up_selected" from="LevelUp" to="Level" method="_on_level_up_level_up_selected"]
 [connection signal="pause" from="Pause" to="." method="_on_pause"]

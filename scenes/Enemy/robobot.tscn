@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bxbjmh81vdik4"]
+
+[ext_resource type="Script" uid="uid://yogt55375mgu" path="res://scripts/Enemy/robobot.gd" id="1_k6sbu"]
+[ext_resource type="Texture2D" uid="uid://boed7daojnryh" path="res://assets/sprites/enemy/Robobot.png" id="2_6mbed"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eoffg"]
+radius = 8.181818
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pslor"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxp0q"]
+atlas = ExtResource("2_6mbed")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyirt"]
+atlas = ExtResource("2_6mbed")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aoiwd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxp0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyirt")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="Robobot" type="CharacterBody2D" unique_id=457920698]
+collision_layer = 2
+collision_mask = 18
+motion_mode = 1
+script = ExtResource("1_k6sbu")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
+unique_name_in_owner = true
+position = Vector2(0, -13)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
+position = Vector2(0, 3.9999995)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_eoffg")
+
+[node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
+unique_name_in_owner = true
+wait_time = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_pslor")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_aoiwd")
+animation = &"Walk"
+autoplay = "Walk"
+
+[node name="HitTick" type="Timer" parent="." unique_id=1168191408]
+wait_time = 0.15
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]

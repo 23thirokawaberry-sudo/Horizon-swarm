@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 150.0
-const MAX = 150.0
+var health = 325.0
+const MAX = 325.0
 const DAMAGE = 20.0
 const SPEED = 10.0
 
@@ -64,7 +64,7 @@ func damage_effect():
 
 func _on_regen_timeout():
 	if health < MAX:
-		health += 15.0
+		health += 28.0
 		if health > MAX:
 			health = MAX
 		modulate = Color(0.1,6.0,0.1)

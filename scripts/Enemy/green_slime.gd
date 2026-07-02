@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #basic enemy stats.
 var health = 35.0
-const DAMAGE = 7.0
+var DAMAGE = 7.0
 const SPEED = 30.0
 
 var touching = null #global variable for whether the enemy is touching player or not.

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var health = 1200.0
-var self_damage = 100.0
+var damage = 100.0
 var speed = 15.0
 var touching = null
 var is_dead = false
@@ -32,7 +32,7 @@ func _on_hitbox_body_exited(body: Node2D):
 
 func deal_damage():
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(self_damage)
+		touching.recieve_damage(damage)
 
 func take_damage(damage):
 	health -= damage
@@ -56,7 +56,7 @@ func take_damage(damage):
 func enrage():
 	if is_enraged == false:
 		speed = 25.0
-		self_damage = 125.0
+		damage = 125.0
 		is_enraged = true
 		modulate = Color(3.0,0,0,1)
 

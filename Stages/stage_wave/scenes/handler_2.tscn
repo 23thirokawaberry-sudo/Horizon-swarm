@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cbndro57x83f0"]
+
+[ext_resource type="Script" uid="uid://djd57p3m7vuqp" path="res://Stages/stage_wave/scripts/handler_2.gd" id="1_xwp2d"]
+
+[node name="Node2D" type="Node2D" unique_id=265994804]
+script = ExtResource("1_xwp2d")
+
+[node name="SpawnInterval" type="Timer" parent="." unique_id=416795265]
+
+[connection signal="timeout" from="SpawnInterval" to="." method="_wave_system_spacing"]

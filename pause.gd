@@ -4,8 +4,8 @@ signal pause
 
 @onready var weapon_details = get_parent().find_child("Player").find_child("Gun").weapon_levels
 @onready var icon_positions = get_parent().find_child("LevelUp").weapon_upgrade
-var position_given = [false, false, false, false]
-const ICONS = preload("res://assets/sprites/misc/Upgrade Spritesheet.png")
+var position_given = [false, false, false, false, false, false]
+const ICONS = preload("res://assets/sprites/misc/icon.png")
 var entries = []
 
 

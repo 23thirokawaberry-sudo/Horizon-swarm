@@ -15,6 +15,10 @@ run/main_scene="uid://c58v2bral2n0b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DataTransfer="*uid://c02cx8xd2uc77"
+
 [input]
 
 ui_left={

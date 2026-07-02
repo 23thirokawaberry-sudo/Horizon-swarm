@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://cp7g0xhdfqdmq"]
 
 [ext_resource type="Script" uid="uid://bnpaj06o68els" path="res://pause.gd" id="1_ka0au"]
-[ext_resource type="Texture2D" uid="uid://bqec4gx7y2yrr" path="res://assets/sprites/misc/Upgrade Spritesheet.png" id="2_1xrp0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ka0au"]
-atlas = ExtResource("2_1xrp0")
-region = Rect2(0, 0, 32, 32)
 
 [node name="Pause" type="CanvasLayer" unique_id=1968261540]
 script = ExtResource("1_ka0au")
@@ -58,23 +53,5 @@ offset_bottom = 90.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Resume"
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1553759867]
-visible = false
-offset_left = 20.0
-offset_top = 100.0
-offset_right = 95.0
-offset_bottom = 175.0
-texture = SubResource("AtlasTexture_ka0au")
-
-[node name="Label" type="Label" parent="." unique_id=1478002903]
-visible = false
-offset_left = 96.0
-offset_top = 100.0
-offset_right = 246.0
-offset_bottom = 175.0
-text = "LELELLELEL"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

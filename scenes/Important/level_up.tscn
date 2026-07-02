@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://c6noa6216a0mi"]
 
 [ext_resource type="Script" uid="uid://dafxc5s0ulcys" path="res://level_up_option.gd" id="1_mk3jo"]
-[ext_resource type="Texture2D" uid="uid://bqec4gx7y2yrr" path="res://assets/sprites/misc/Upgrade Spritesheet.png" id="2_3cdko"]
+[ext_resource type="Texture2D" uid="uid://bsr58u42jdghr" path="res://assets/sprites/misc/icon.png" id="2_mk3jo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfx7n"]
-atlas = ExtResource("2_3cdko")
+atlas = ExtResource("2_mk3jo")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk3jo"]
-atlas = ExtResource("2_3cdko")
+atlas = ExtResource("2_mk3jo")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cdko"]
-atlas = ExtResource("2_3cdko")
+atlas = ExtResource("2_mk3jo")
 region = Rect2(192, 32, 32, 32)
 
 [node name="Level up" type="CanvasLayer" unique_id=1901936953]

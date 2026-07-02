@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 120.0
-const DAMAGE = 20.0
-const SPEED = 9.0
-const FIRERATE = 5.0
+var health = 180.0
+const DAMAGE = 24.0
+const SPEED = 8.0
+const FIRERATE = 4.5
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.

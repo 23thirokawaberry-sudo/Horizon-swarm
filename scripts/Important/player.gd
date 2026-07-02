@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
 #these are base values. different classes and upgrades in menu will increase these.
-var base_max_health = 500.0
-var base_damage = 22.0
-var base_regen = 8.0
+@onready var base = get_parent().base_stats
 
 #upgrades change these values
 var damage_multi = 1.0
@@ -11,16 +9,16 @@ var max_health_multi = 1.0
 var regen_multi = 1.0
 
 #full calculation for each indivisual stats
-var max_health = 500.0
-var damage = 15.0
-var regen = 8.0
+@onready var max_health = base[0]
+@onready var damage = base[1]
+@onready var regen = base[4]
 func set_effective_stats():
 	#said calculations
-	max_health = base_max_health * max_health_multi
-	damage = base_damage * damage_multi
-	regen = base_regen * regen_multi
+	max_health = base[0] * max_health_multi
+	damage = base[1] * damage_multi
+	regen = base[4] * regen_multi
 
-var health = max_health #sets health to max health when starting for the first time
+@onready var health = max_health #sets health to max health when starting for the first time
 
 #xp management
 var xp = 0
@@ -58,8 +56,8 @@ func get_xp():
 
 func leveled_up():
 	level += 1
-	xp -= 5 + (level * 2)
-	level_xp += (level + 1)
+	xp -= level_xp
+	level_xp += 2
 	level_up.emit()
 
 func stat_upgraded():

@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 172.0
-var damage = 33.0
-const SPEED = 48.0
+var health = 95.0
+const DAMAGE = 20.0
+const SPEED = 10.0
+const DEFENSE = 15.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -37,10 +38,14 @@ func _on_hitbox_body_exited(body: Node2D):
 func deal_damage():
 	#damages player
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(damage)
+		touching.recieve_damage(DAMAGE)
 
 func take_damage(damage):
-	health -= damage
+	var true_damage = (damage - DEFENSE)
+	if true_damage > 1:
+		health -= true_damage
+	else:
+		health -= 1
 	damage_effect()
 	
 	if health <= 0:
@@ -50,7 +55,7 @@ func take_damage(damage):
 				%Cooldown.stop()
 			touching = null
 			queue_free()
-			const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
+			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
 			get_parent().add_child(death_anim)
 			death_anim.global_position = global_position
@@ -60,3 +65,4 @@ func damage_effect():
 	$HitTick.start(0.05)
 	await $HitTick.timeout
 	modulate = Color(1,1,1,1)
+	

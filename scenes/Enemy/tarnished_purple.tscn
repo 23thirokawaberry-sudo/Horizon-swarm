@@ -70,6 +70,7 @@ frame_progress = 0.7067192
 wait_time = 0.15
 
 [node name="Regen" type="Timer" parent="." unique_id=643987138]
+wait_time = 1.25
 autostart = true
 
 [node name="RegenTick" type="Timer" parent="." unique_id=67339182]

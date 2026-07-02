@@ -45,7 +45,19 @@ unique_name_in_owner = true
 wait_time = 3.0
 autostart = true
 
+[node name="sniper" type="Timer" parent="." unique_id=512083742]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
+
+[node name="gatling" type="Timer" parent="." unique_id=122884702]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
 [connection signal="timeout" from="pistol" to="." method="_on_pistol_timeout"]
 [connection signal="timeout" from="shotgun" to="." method="_on_shotgun_timeout"]
 [connection signal="timeout" from="sword" to="." method="_on_sword_timeout"]
 [connection signal="timeout" from="beam" to="." method="_on_beam_timeout"]
+[connection signal="timeout" from="sniper" to="." method="_on_sniper_timeout"]
+[connection signal="timeout" from="gatling" to="." method="_on_gatling_timeout"]
