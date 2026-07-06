@@ -36,8 +36,8 @@ func deal_damage():
 	if touching and touching.has_method("recieve_damage"):
 		touching.recieve_damage(damage)
 
-func take_damage(damage):
-	health -= damage
+func take_damage(incoming_damage):
+	health -= incoming_damage
 	damage_effect()
 	
 	if health <= max_health / 2:

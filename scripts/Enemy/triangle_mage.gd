@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 180.0
-const DAMAGE = 24.0
-const SPEED = 8.0
+var max_health = 40.0
+var health = 40.0
+const DAMAGE = 5.0
+const SPEED = 5.0
 const FIRERATE = 4.5
 var cash_drop = 15.0
 
@@ -43,8 +44,8 @@ func deal_damage():
 	if touching and touching.has_method("recieve_damage"):
 		touching.recieve_damage(DAMAGE)
 
-func take_damage(damage):
-	health -= damage
+func take_damage(incoming_damage):
+	health -= incoming_damage
 	damage_effect()
 	
 	if health <= 0:

@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 325.0
-const MAX = 325.0
-const DAMAGE = 20.0
-const SPEED = 10.0
+var max_health = 120.0
+var health = 120.0
+var damage = 6.0
+const SPEED = 14.0
 const cash_drop = 18.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
@@ -39,10 +39,10 @@ func _on_hitbox_body_exited(body: Node2D):
 func deal_damage():
 	#damages player
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(DAMAGE)
+		touching.recieve_damage(damage)
 
-func take_damage(damage):
-	health -= damage
+func take_damage(incoming_damage):
+	health -= incoming_damage
 	damage_effect()
 	
 	if health <= 0:
@@ -68,10 +68,10 @@ func damage_effect():
 	modulate = Color(1,1,1,1)
 
 func _on_regen_timeout():
-	if health < MAX:
-		health += 28.0
-		if health > MAX:
-			health = MAX
+	if health < max_health:
+		health += max_health / 12
+		if health > max_health:
+			health = max_health
 		modulate = Color(0.1,6.0,0.1)
 		$RegenTick.start(0.05)
 		await $RegenTick.timeout

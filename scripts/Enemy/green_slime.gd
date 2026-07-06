@@ -40,7 +40,6 @@ func deal_damage():
 	if touching and touching.has_method("recieve_damage"):
 		touching.recieve_damage(DAMAGE)
 
-func take_damage(damage):
 	health -= damage
 	damage_effect()
 	

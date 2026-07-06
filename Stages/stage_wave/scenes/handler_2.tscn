@@ -7,4 +7,8 @@ script = ExtResource("1_xwp2d")
 
 [node name="SpawnInterval" type="Timer" parent="." unique_id=416795265]
 
+[node name="Boss" type="Node2D" parent="." unique_id=1409784490]
+
+[node name="Xp" type="Node2D" parent="." unique_id=1556898121]
+
 [connection signal="timeout" from="SpawnInterval" to="." method="_wave_system_spacing"]
