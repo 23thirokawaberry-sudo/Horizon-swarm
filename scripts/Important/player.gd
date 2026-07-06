@@ -29,6 +29,7 @@ signal death
 signal level_up
 signal pause
 var time_elapsed = 0
+var boss = null
 
 func _process(delta):
 	time_elapsed += delta
@@ -36,6 +37,15 @@ func _process(delta):
 	%XpBar.max_value = level_xp
 	%HealthBar.max_value = max_health
 	%HealthBar.value = health
+	if get_parent().get_child(8).find_child("Boss").get_child_count() != 0:
+		boss = get_parent().get_child(8).find_child("Boss").get_child(0)
+		if is_instance_valid(boss):
+			$BossBar.visible = true
+			$BossBar.max_value = boss.max_health
+			$BossBar.value = boss.health
+	else:
+		boss = null
+		$BossBar.visible = false
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):

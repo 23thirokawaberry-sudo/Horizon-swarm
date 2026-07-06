@@ -15,10 +15,12 @@ func _ready():
 	print(enemies, stage)
 	enemies.name = "Enemies"
 	add_child(enemies)
+	$StageLayout.get_child(stage).visible = true
+	$StageLayout.get_child(stage).collision_enabled = true
 
 func _process(delta):
 	timer += delta
-	if timer > 360 and get_child(10).find_child("Boss").get_child_count() == 0:
+	if timer > 25 and get_child(8).find_child("Boss").get_child_count() == 0:
 		print("Win")
 
 func time():

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var max_health = 1200.0
 var health = 1200.0
 var damage = 100.0
 var speed = 15.0
@@ -38,7 +39,7 @@ func take_damage(damage):
 	health -= damage
 	damage_effect()
 	
-	if health <= 325:
+	if health <= max_health / 2:
 		enrage()
 	
 	if health <= 0:
@@ -50,8 +51,12 @@ func take_damage(damage):
 			queue_free()
 			const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
-			get_parent().add_child(death_anim)
+			if get_parent().name == "Boss":
+				get_parent().get_parent().add_child(death_anim)
+			else:
+				get_parent().add_child(death_anim)
 			death_anim.global_position = global_position
+			DataTransfer.cash += 85
 
 func enrage():
 	if is_enraged == false:
@@ -61,7 +66,7 @@ func enrage():
 		modulate = Color(3.0,0,0,1)
 
 func damage_effect():
-	if health > 550:
+	if health > max_health / 2:
 		modulate = Color(6.0,0.1,0.1)
 		$HitTick.start(0.05)
 		await $HitTick.timeout

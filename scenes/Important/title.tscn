@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://c58v2bral2n0b"]
 
 [ext_resource type="Script" uid="uid://cqx7j60wnoloq" path="res://scripts/Important/title.gd" id="1_ar41x"]
+[ext_resource type="Texture2D" uid="uid://cqr1eiyl0ncuo" path="res://assets/sprites/enemy/Slime sprites (1).png" id="2_n853x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wadwv"]
+atlas = ExtResource("2_n853x")
+region = Rect2(0, 0, 16, 16)
 
 [node name="Title" type="Control" unique_id=2056877872]
 process_mode = 3
@@ -163,9 +168,135 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "               stage 4               "
 
+[node name="Shop" type="Control" parent="." unique_id=1234853980]
+visible = false
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Back" type="Button" parent="Shop" unique_id=317261597]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 502.0
+offset_right = 301.0
+offset_bottom = 624.0
+text = "Return"
+
+[node name="Database" type="Control" parent="." unique_id=1182982386]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Back" type="Button" parent="Database" unique_id=1052119636]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 502.0
+offset_right = 301.0
+offset_bottom = 624.0
+text = "Return"
+
+[node name="EntryPanel" type="Control" parent="Database" unique_id=2058820418]
+anchors_preset = 0
+offset_left = 542.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="Database/EntryPanel" unique_id=44210684]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -268.0
+offset_right = 200.0
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_wadwv")
+
+[node name="Label" type="Label" parent="Database/EntryPanel" unique_id=620990299]
+layout_mode = 0
+offset_right = 491.0
+offset_bottom = 342.0
+text = "Okay so here is all the enemies but since I'm lazy I still haven't done this yet and like a
+
+
+
+
+
+
+
+
+
+
+
+If you are reading this then this page is not finished yet, but here is relevant
+info for the enemies.
+Slimes - they move towards you. Black slime will speed up and increase damage
+at half health.
+Tarnishes - they move towards you. they will constantly regenerate lost health.
+Robobots - they move towards you. They have defense which reduces incoming 
+damage by a flat amount, down to 1 damage if the incoming damage is too low.
+Mage - fires projectiles towards you. Projectiles deal same damage as their
+contact damage.
+
+
+
+also the return  button works so you can leave you aren't stuck here btw i just wanted to let you know and if you are reading this then wowowowow"
+
+[node name="Enemy" type="ScrollContainer" parent="Database" unique_id=92072157]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 429.0
+offset_bottom = 487.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Database/Enemy" unique_id=515364066]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Entry001" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=297096735]
+layout_mode = 2
+text = "Green slime"
+
+[node name="Entry002" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=837163780]
+layout_mode = 2
+text = "Blue slime"
+
+[node name="Entry003" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=55498707]
+layout_mode = 2
+text = "Red slime"
+
+[node name="Entry004" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=169958812]
+layout_mode = 2
+text = "Black slime"
+
+[node name="Entry005" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=834347293]
+layout_mode = 2
+text = "Tin robobot
+"
+
+[node name="Entry006" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=439478322]
+layout_mode = 2
+text = "Purple tarnished
+"
+
+[node name="Entry007" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1665649104]
+layout_mode = 2
+text = "Triangle mage
+
+"
+
 [connection signal="pressed" from="Label/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="Menu/Database" to="." method="_on_database_pressed"]
 [connection signal="pressed" from="Menu/Stages" to="." method="_on_stages_pressed"]
 [connection signal="pressed" from="Stages/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Stages/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage1" to="." method="_on_stage_1_pressed"]
 [connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage2" to="." method="_on_stage_2_pressed"]
+[connection signal="pressed" from="Shop/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Database/Back" to="." method="_on_back_pressed"]

@@ -6,5 +6,6 @@ var weapons = [-1, 0, -1, -1, -1, -1]
 #Weapons
 
 #var resources = [] #will use later. Purpouse is to move clear money from the game to title.
+var cash = 0
 
 var selected_stage = -1

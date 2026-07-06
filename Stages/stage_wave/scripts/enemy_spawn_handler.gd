@@ -20,7 +20,8 @@ func spawn(mob):
 func boss_spawn(mob):
 	var new_mob = mob.instantiate()
 	new_mob.health *= 3
-	new_mob.damage *= 3
+	new_mob.max_health *= 3
+	new_mob.damage *= 1.5
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position
 	$Boss.add_child(new_mob)
@@ -30,7 +31,7 @@ func _process(delta: float):
 	time_elapsed += delta
 	var snapped_time = snapped(time_elapsed, 0.1)
 	
-	if snapped_time == 90:
+	if snapped_time == 10:
 		if timed_spawns == 0:
 			boss_spawn(enemies.get("Red slime"))
 			timed_spawns = 1

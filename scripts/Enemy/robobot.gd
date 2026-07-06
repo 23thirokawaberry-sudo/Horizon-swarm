@@ -59,6 +59,7 @@ func take_damage(damage):
 			var death_anim = DEATH_ANIM.instantiate()
 			get_parent().add_child(death_anim)
 			death_anim.global_position = global_position
+			DataTransfer.cash += 13
 
 func damage_effect():
 	modulate = Color(6.0,0.1,0.1)

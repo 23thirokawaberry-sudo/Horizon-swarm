@@ -8,7 +8,7 @@ func get_player_damage():
 	return player_damage
 
 #if level is -1, then weapon is not yet unlocked.
-var weapon_levels = [-1, 0, -1, -1, -1, -1]
+var weapon_levels = DataTransfer.weapons
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):

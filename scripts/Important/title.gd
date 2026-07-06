@@ -24,10 +24,20 @@ func _on_stage_1_pressed():
 	DataTransfer.selected_stage = 0
 	%Start.visible = true
 
-func _on_stage_2_pressed() -> void:
+func _on_stage_2_pressed():
 	DataTransfer.selected_stage = 1
 	%Start.visible = true
 
 func _on_start_pressed():
 	if DataTransfer.selected_stage != -1:
 		get_tree().change_scene_to_file("res://Stages/stage_map/scenes/game.tscn")
+
+func _on_shop_pressed():
+	$Menu.visible = false
+	$Shop.visible = true
+	current_page = $Shop
+
+func _on_database_pressed():
+	$Menu.visible = false
+	$Database.visible = true
+	current_page = $Database

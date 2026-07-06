@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 #basic enemy stats.
+var max_health = 172.0
 var health = 172.0
 var damage = 33.0
 const SPEED = 48.0
@@ -52,8 +53,12 @@ func take_damage(damage):
 			queue_free()
 			const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
-			get_parent().add_child(death_anim)
+			if get_parent().name == "Boss":
+				get_parent().get_parent().add_child(death_anim)
+			else:
+				get_parent().add_child(death_anim)
 			death_anim.global_position = global_position
+			DataTransfer.cash += 17
 
 func damage_effect():
 	modulate = Color(6.0,0.1,0.1)
