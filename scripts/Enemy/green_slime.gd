@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var health = 35.0
-var DAMAGE = 7.0
-const SPEED = 30.0
+var health = 18.0
+var DAMAGE = 2.0
+const SPEED = 24.0
+var cash_drop = 1.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -52,9 +53,11 @@ func take_damage(damage):
 			queue_free()
 			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
-			get_parent().add_child(death_anim)
+				get_parent().get_parent().find_child("Xp").add_child(death_anim)
+			else:
+				get_parent().find_child("Xp").add_child(death_anim)
 			death_anim.global_position = global_position
-			DataTransfer.cash += 5
+			get_node("/root/Game").credits_gain += cash_drop
 
 func damage_effect():
 	modulate = Color(6.0,0.1,0.1)

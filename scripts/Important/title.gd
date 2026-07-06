@@ -36,6 +36,7 @@ func _on_shop_pressed():
 	$Menu.visible = false
 	$Shop.visible = true
 	current_page = $Shop
+	$Shop/cash.text = "%.0f Credits" % [DataTransfer.credits]
 
 func _on_database_pressed():
 	$Menu.visible = false

@@ -1,12 +1,10 @@
 extends CharacterBody2D
 
 #these are base values. different classes and upgrades in menu will increase these.
-@onready var base = get_parent().base_stats
+@onready var base = DataTransfer.base_player_stats
 
 #upgrades change these values
 var damage_multi = 1.0
-var max_health_multi = 1.0
-var regen_multi = 1.0
 
 #full calculation for each indivisual stats
 @onready var max_health = base[0]
@@ -14,15 +12,13 @@ var regen_multi = 1.0
 @onready var regen = base[4]
 func set_effective_stats():
 	#said calculations
-	max_health = base[0] * max_health_multi
 	damage = base[1] * damage_multi
-	regen = base[4] * regen_multi
 
 @onready var health = max_health #sets health to max health when starting for the first time
 
 #xp management
 var xp = 0
-var level_xp = 5
+var level_xp = 4
 var level = 0
 
 signal death
@@ -37,8 +33,8 @@ func _process(delta):
 	%XpBar.max_value = level_xp
 	%HealthBar.max_value = max_health
 	%HealthBar.value = health
-	if get_parent().get_child(8).find_child("Boss").get_child_count() != 0:
-		boss = get_parent().get_child(8).find_child("Boss").get_child(0)
+	if get_parent().get_child(9).find_child("Boss").get_child_count() != 0:
+		boss = get_parent().get_child(9).find_child("Boss").get_child(0)
 		if is_instance_valid(boss):
 			$BossBar.visible = true
 			$BossBar.max_value = boss.max_health

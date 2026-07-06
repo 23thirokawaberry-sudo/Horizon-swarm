@@ -19,11 +19,11 @@ func shoot_pistol():
 	if weapon_levels[1] != -1:
 		var weapon_damage = get_player_damage()
 		if weapon_levels[1] == 0:
-			weapon_damage = (weapon_damage * 1.5)
+			weapon_damage = (weapon_damage * 1)
 		elif weapon_levels[1] < 3:
-			weapon_damage = (weapon_damage * 1.5) * 1.33
+			weapon_damage = (weapon_damage * 1) * 1.25
 		elif weapon_levels[1] >= 3:
-			weapon_damage = (weapon_damage * 1.5) * 1.67
+			weapon_damage = (weapon_damage * 1) * 1.5
 		const BULLET = preload("res://scenes/Attacks/pistol_bullet.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
@@ -33,35 +33,35 @@ func shoot_pistol():
 		if weapon_levels[1] < 2:
 			%pistol.wait_time = 0.5
 		elif weapon_levels[1] >= 2:
-			%pistol.wait_time = (0.5 * 0.9)
+			%pistol.wait_time = (0.5 * 0.8)
 	
 func shoot_shotgun():
 	if weapon_levels[0] != -1:
 		var weapon_damage = get_player_damage()
 		if weapon_levels[0] == 0:
-			weapon_damage = (weapon_damage * 0.75)
+			weapon_damage = (weapon_damage * 0.6)
 		elif weapon_levels[0] >= 1:
-			weapon_damage = (weapon_damage * 0.75) * 1.33
+			weapon_damage = (weapon_damage * 0.6) * 1.25
 		const BULLET = preload("res://scenes/Attacks/shotgun_bullet.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
-		new_bullet.global_rotation = %ShootingPoint.global_rotation + randf_range(-0.45, 0.45)
+		new_bullet.global_rotation = %ShootingPoint.global_rotation + randf_range(-0.6, 0.6)
 		%ShootingPoint.add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
 		if weapon_levels[0] < 2:
 			%shotgun.wait_time = 1.5
 		elif weapon_levels[0] >= 2:
-			%shotgun.wait_time = (1.5 * 0.9)
+			%shotgun.wait_time = (1.5 * 0.8)
 	
 func swing_sword():
 	if weapon_levels[2] != -1:
 		var weapon_damage = get_player_damage()
 		if weapon_levels[2] == 0:
-			weapon_damage = (weapon_damage * 1.25)
+			weapon_damage = (weapon_damage * 1.2)
 		elif weapon_levels[2] < 3:
-			weapon_damage = (weapon_damage * 1.25) * 1.25
+			weapon_damage = (weapon_damage * 1.2) * 1.25
 		elif weapon_levels[2] >= 3:
-			weapon_damage = (weapon_damage * 1.25) * 1.5
+			weapon_damage = (weapon_damage * 1.2) * 1.5
 		const BULLET = preload("res://scenes/Attacks/sword_slash.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
@@ -71,15 +71,15 @@ func swing_sword():
 		if weapon_levels[2] < 2:
 			%sword.wait_time = 2.0
 		elif weapon_levels[2] >= 2:
-			%sword.wait_time = (2.0 * 0.85)
+			%sword.wait_time = (2.0 * 0.75)
 
 func fire_beam():
 	if weapon_levels[3] != -1:
 		var weapon_damage = get_player_damage()
 		if weapon_levels[3] == 0:
-			weapon_damage = (weapon_damage * 0.625)
+			weapon_damage = (weapon_damage * 0.6)
 		elif weapon_levels[3] >= 1:
-			weapon_damage = (weapon_damage * 0.625) * 1.33
+			weapon_damage = (weapon_damage * 0.6) * 1.25
 		var weapon_size = 1.0
 		if weapon_levels[3] >= 3:
 			weapon_size = 2.0
@@ -93,15 +93,15 @@ func fire_beam():
 		if weapon_levels[3] < 2:
 			%beam.wait_time = 3.0
 		elif weapon_levels[3] >= 2:
-			%beam.wait_time = (3.0 * 0.9)
+			%beam.wait_time = (3.0 * 0.8)
 
 func shoot_sniper():
 	if weapon_levels[4] != -1:
 		var weapon_damage = get_player_damage()
 		if weapon_levels[4] == 0:
-			weapon_damage = (weapon_damage * 2.5)
+			weapon_damage = (weapon_damage * 1.8)
 		elif weapon_levels[4] >= 1:
-			weapon_damage = (weapon_damage * 2.5) * 1.2
+			weapon_damage = (weapon_damage * 1.8) * 1.2
 		var weapon_pierce = 5.0
 		if weapon_levels[4] <= 2:
 			weapon_pierce = 5.0
@@ -115,27 +115,27 @@ func shoot_sniper():
 		new_bullet.projectile_damage = weapon_damage
 		new_bullet.pierce = weapon_pierce
 		if weapon_levels[4] < 2:
-			%sniper.wait_time = 5
+			%sniper.wait_time = 4
 		elif weapon_levels[4] >= 2:
-			%sniper.wait_time = (5 * 0.9)
+			%sniper.wait_time = (4 * 0.8)
 
 func shoot_gatlng():
 	if weapon_levels[5] != -1:
 		var weapon_damage = get_player_damage()
 		if weapon_levels[5] == 0:
-			weapon_damage = (weapon_damage * 0.75)
+			weapon_damage = (weapon_damage * 0.3)
 		elif weapon_levels[5] >= 1:
-			weapon_damage = (weapon_damage * 0.75) * 1.33
+			weapon_damage = (weapon_damage * 0.3) * 1.25
 		const BULLET = preload("res://scenes/Attacks/shotgun_bullet.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
-		new_bullet.global_rotation = %ShootingPoint.global_rotation + randf_range(-0.05, 0.05)
+		new_bullet.global_rotation = %ShootingPoint.global_rotation + randf_range(-0.125, 0.125)
 		%ShootingPoint.add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
 		if weapon_levels[5] < 2:
-			%gatling.wait_time = 0.1
+			%gatling.wait_time = 0.15
 		elif weapon_levels[5] >= 2:
-			%gatling.wait_time = (0.1 * 0.8)
+			%gatling.wait_time = (0.15 * 0.75)
 
 #Weapon calling ============================================================================
 
@@ -144,10 +144,10 @@ func _on_pistol_timeout():
 	shoot_pistol()
 func _on_shotgun_timeout():
 	if weapon_levels[0] < 3:
-		for i in range(6):
+		for i in range(5):
 			shoot_shotgun()
 	elif weapon_levels[0] >= 3:
-		for i in range(8):
+		for i in range(7):
 			shoot_shotgun()
 func _on_sword_timeout():
 	swing_sword()

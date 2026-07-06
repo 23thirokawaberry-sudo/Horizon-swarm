@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-var max_health = 1200.0
-var health = 1200.0
-var damage = 100.0
-var speed = 15.0
+var max_health = 600.0
+var health = 600.0
+var damage = 20.0
+var speed = 16.0
 var touching = null
 var is_dead = false
+var cash_drop = 20.0
 
 var is_enraged = false
 
@@ -44,24 +45,24 @@ func take_damage(damage):
 	
 	if health <= 0:
 		if is_dead == false:
-			is_dead = true
-			if is_instance_valid(%Cooldown):
-				%Cooldown.stop()
-			touching = null
-			queue_free()
-			const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
-			var death_anim = DEATH_ANIM.instantiate()
-			if get_parent().name == "Boss":
-				get_parent().get_parent().add_child(death_anim)
-			else:
-				get_parent().add_child(death_anim)
-			death_anim.global_position = global_position
-			DataTransfer.cash += 85
+				is_dead = true
+				if is_instance_valid(%Cooldown):
+					%Cooldown.stop()
+				touching = null
+				queue_free()
+				const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
+				var death_anim = DEATH_ANIM.instantiate()
+				if get_parent().name == "Boss":
+					get_parent().get_parent().find_child("Xp").add_child(death_anim)
+				else:
+					get_parent().find_child("Xp").add_child(death_anim)
+				death_anim.global_position = global_position
+				get_node("/root/Game").credits_gain += cash_drop
 
 func enrage():
 	if is_enraged == false:
-		speed = 25.0
-		damage = 125.0
+		speed = 24.0
+		damage = 25.0
 		is_enraged = true
 		modulate = Color(3.0,0,0,1)
 

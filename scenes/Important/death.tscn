@@ -105,7 +105,7 @@ animations = [{
 
 [node name="Death" type="Area2D" unique_id=3467916]
 scale = Vector2(1.1, 1.1)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_4io7p")
 
@@ -118,4 +118,4 @@ sprite_frames = SubResource("SpriteFrames_2dpww")
 animation = &"Xp"
 autoplay = "Death"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

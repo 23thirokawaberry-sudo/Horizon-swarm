@@ -1,5 +1,7 @@
 extends Node
 
+var win_time = 201
+
 var timed_spawns = 0
 @onready var path = get_parent().find_child("Player").find_child("Path2D").find_child("PathFollow2D")
 

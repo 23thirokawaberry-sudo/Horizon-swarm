@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-var health = 78.0
-const DAMAGE = 16.0
-const SPEED = 42.0
+var health = 32.0
+const DAMAGE = 4.0
+const SPEED = 28.0
 var touching = null
 var is_dead = false
+var cash_drop = 2.0
 
 @onready var player  = get_node("/root/Game/Player")
 
@@ -45,9 +46,12 @@ func take_damage(damage):
 			queue_free()
 			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
-			get_parent().add_child(death_anim)
+			if get_parent().name == "Boss":
+				get_parent().get_parent().find_child("Xp").add_child(death_anim)
+			else:
+				get_parent().find_child("Xp").add_child(death_anim)
 			death_anim.global_position = global_position
-			DataTransfer.cash += 12
+			get_node("/root/Game").credits_gain += cash_drop
 
 func damage_effect():
 	modulate = Color(6.0,0.1,0.1)

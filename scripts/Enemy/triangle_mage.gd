@@ -5,6 +5,7 @@ var health = 180.0
 const DAMAGE = 24.0
 const SPEED = 8.0
 const FIRERATE = 4.5
+var cash_drop = 15.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -48,16 +49,19 @@ func take_damage(damage):
 	
 	if health <= 0:
 		if is_dead == false:
-			is_dead = true
-			if is_instance_valid(%Cooldown):
-				%Cooldown.stop()
-			touching = null
-			queue_free()
-			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
-			var death_anim = DEATH_ANIM.instantiate()
-			get_parent().add_child(death_anim)
-			death_anim.global_position = global_position
-			DataTransfer.cash += 15
+				is_dead = true
+				if is_instance_valid(%Cooldown):
+					%Cooldown.stop()
+				touching = null
+				queue_free()
+				const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
+				var death_anim = DEATH_ANIM.instantiate()
+				if get_parent().name == "Boss":
+					get_parent().get_parent().find_child("Xp").add_child(death_anim)
+				else:
+					get_parent().find_child("Xp").add_child(death_anim)
+				death_anim.global_position = global_position
+				get_node("/root/Game").credits_gain += cash_drop
 
 func damage_effect():
 	modulate = Color(6.0,0.1,0.1)

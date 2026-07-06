@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djd57p3m7vuqp" path="res://Stages/stage_wave/scripts/handler_2.gd" id="1_xwp2d"]
 
-[node name="Node2D" type="Node2D" unique_id=265994804]
+[node name="enemies" type="Node2D" unique_id=265994804]
 script = ExtResource("1_xwp2d")
 
 [node name="SpawnInterval" type="Timer" parent="." unique_id=416795265]

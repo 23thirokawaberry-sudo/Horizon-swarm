@@ -4,7 +4,7 @@ extends CanvasLayer
 var upgrade_option = 0
 
 signal level_up_selected
-@onready var defense_check = get_parent().base_stats[3]
+@onready var defense_check = DataTransfer.base_player_stats[3]
 
 #this will need a lot of explaining
 var stat_upgrade = [[[0, 0], "Damage up", 1], [[32, 0], "Regen up", 2], [[0, 32], "Max health up", 3], 

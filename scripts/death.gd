@@ -3,8 +3,9 @@ func _ready():
 	$AnimatedSprite2D.play("Death")
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("Xp")
-
-func _on_body_entered(body: Node2D):
+	
+func _on_area_entered(area: Area2D):
 	queue_free()
-	body.xp += 3.0
-	body.get_xp()
+	var player = area.get_parent()
+	player.xp += 3.0
+	player.get_xp()

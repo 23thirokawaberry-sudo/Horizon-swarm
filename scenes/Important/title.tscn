@@ -182,6 +182,16 @@ offset_right = 301.0
 offset_bottom = 624.0
 text = "Return"
 
+[node name="cash" type="Label" parent="Shop" unique_id=2013893008]
+layout_mode = 0
+offset_left = 829.0
+offset_top = 13.0
+offset_right = 1136.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 32
+text = "Mr crabs' money 😮"
+horizontal_alignment = 2
+
 [node name="Database" type="Control" parent="." unique_id=1182982386]
 visible = false
 anchors_preset = 0

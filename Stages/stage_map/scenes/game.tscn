@@ -13,7 +13,6 @@ script = ExtResource("1_8ifnd")
 
 [node name="Player" parent="." unique_id=1315755359 instance=ExtResource("2_d1gyb")]
 unique_name_in_owner = true
-position = Vector2(239, 99)
 
 [node name="Level" parent="." unique_id=64455432 instance=ExtResource("3_d1gyb")]
 
@@ -75,6 +74,68 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Return to title"
 
+[node name="Win" type="CanvasLayer" parent="." unique_id=1213072403]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Win" unique_id=1106933718]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.8)
+
+[node name="Label" type="Label" parent="Win/ColorRect" unique_id=1395487968]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -198.0
+offset_right = 139.5
+offset_bottom = -146.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "You're a WINNER"
+
+[node name="Button" type="Button" parent="Win/ColorRect" unique_id=1692405781]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = 18.0
+offset_right = 84.5
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to title"
+
+[node name="GainedMoney" type="Label" parent="Win/ColorRect" unique_id=1392582024]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.0
+offset_top = -128.0
+offset_right = 182.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I AM TEXT MAN AW YEAH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LevelUp" parent="." unique_id=1901936953 instance=ExtResource("9_adkh5")]
 unique_name_in_owner = true
 process_mode = 2
@@ -90,5 +151,6 @@ visible = false
 [connection signal="pause" from="Player" to="." method="_on_pause"]
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="pressed" from="GameOver/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Win/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="level_up_selected" from="LevelUp" to="Level" method="_on_level_up_level_up_selected"]
 [connection signal="pause" from="Pause" to="." method="_on_pause"]

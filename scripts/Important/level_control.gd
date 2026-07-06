@@ -11,10 +11,10 @@ func _on_level_up_level_up_selected():
 	if info == 1:
 		%Player.damage_multi += 0.2
 	elif info == 2:
-		%Player.regen_multi += 0.25
+		%Player.regen += 0.5
 		%Player.health += 60.0
 	elif info == 3:
-		%Player.max_health_multi += 0.1
+		%Player.max_health += 10
 	elif info == 4:
 		print("speed")
 	elif info == 5:
