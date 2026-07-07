@@ -3,10 +3,10 @@ extends CharacterBody2D
 #basic enemy stats.
 var max_health = 40.0
 var health = 40.0
-const DAMAGE = 5.0
+var damage = 5.0
 const SPEED = 5.0
 const FIRERATE = 4.5
-var cash_drop = 15.0
+var cash_drop = 6.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -42,7 +42,7 @@ func _on_hitbox_body_exited(body: Node2D):
 func deal_damage():
 	#damages player
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(DAMAGE)
+		touching.recieve_damage(damage)
 
 func take_damage(incoming_damage):
 	health -= incoming_damage

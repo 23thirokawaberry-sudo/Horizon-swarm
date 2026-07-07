@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #these are base values. different classes and upgrades in menu will increase these.
-@onready var base = DataTransfer.base_player_stats
+@onready var base = DataTransfer.base_player_stats.duplicate()
 
 #upgrades change these values
 var damage_multi = 1.0

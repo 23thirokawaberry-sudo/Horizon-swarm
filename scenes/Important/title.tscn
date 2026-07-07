@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://cqx7j60wnoloq" path="res://scripts/Important/title.gd" id="1_ar41x"]
 [ext_resource type="Texture2D" uid="uid://cqr1eiyl0ncuo" path="res://assets/sprites/enemy/Slime sprites (1).png" id="2_n853x"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n853x"]
+load_path = "res://.godot/imported/icon.png-c52eeea23df6c0097c8e3bf4c4229674.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p10tj"]
+atlas = SubResource("CompressedTexture2D_n853x")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wadwv"]
 atlas = ExtResource("2_n853x")
 region = Rect2(0, 0, 16, 16)
@@ -184,13 +191,102 @@ text = "Return"
 
 [node name="cash" type="Label" parent="Shop" unique_id=2013893008]
 layout_mode = 0
-offset_left = 829.0
-offset_top = 13.0
-offset_right = 1136.0
-offset_bottom = 49.0
+offset_left = 34.0
+offset_top = 24.0
+offset_right = 343.0
+offset_bottom = 69.0
 theme_override_font_sizes/font_size = 32
 text = "Mr crabs' money 😮"
-horizontal_alignment = 2
+
+[node name="Stats" type="Button" parent="Shop" unique_id=355757613]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 85.0
+offset_right = 277.0
+offset_bottom = 209.0
+
+[node name="Weapons" type="Button" parent="Shop" unique_id=499244194]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 222.0
+offset_right = 276.0
+offset_bottom = 346.0
+
+[node name="Classes" type="Button" parent="Shop" unique_id=1277022613]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 363.0
+offset_right = 277.0
+offset_bottom = 487.0
+
+[node name="Panel" type="Control" parent="Shop" unique_id=1724664374]
+anchors_preset = 0
+offset_left = 353.0
+offset_top = 18.0
+offset_right = 1141.0
+offset_bottom = 636.0
+
+[node name="Stats" type="Control" parent="Shop/Panel" unique_id=1333224756]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Weapons" type="Control" parent="Shop/Panel" unique_id=636496146]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Shop/Panel/Weapons" unique_id=313489862]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 70.0
+offset_right = 321.0
+offset_bottom = 266.0
+
+[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Weapons/Button" unique_id=235263099]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 151.0
+texture = SubResource("AtlasTexture_p10tj")
+
+[node name="Label" type="Label" parent="Shop/Panel/Weapons/Button" unique_id=876040582]
+layout_mode = 0
+offset_top = 151.0
+offset_right = 143.0
+offset_bottom = 196.0
+text = "Strength"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Classes" type="Control" parent="Shop/Panel" unique_id=1509128257]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Shop/Panel/Classes" unique_id=23857382]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 70.0
+offset_right = 321.0
+offset_bottom = 266.0
+
+[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Classes/Button" unique_id=710352039]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 151.0
+texture = SubResource("AtlasTexture_p10tj")
+
+[node name="Label" type="Label" parent="Shop/Panel/Classes/Button" unique_id=1273421472]
+layout_mode = 0
+offset_top = 151.0
+offset_right = 143.0
+offset_bottom = 196.0
+text = "Strength"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Database" type="Control" parent="." unique_id=1182982386]
 visible = false
@@ -308,5 +404,6 @@ text = "Triangle mage
 [connection signal="pressed" from="Stages/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage1" to="." method="_on_stage_1_pressed"]
 [connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage2" to="." method="_on_stage_2_pressed"]
+[connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage3" to="." method="_on_stage_3_pressed"]
 [connection signal="pressed" from="Shop/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Database/Back" to="." method="_on_back_pressed"]

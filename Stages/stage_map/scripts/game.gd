@@ -11,7 +11,8 @@ var enemies = null
 
 const STAGE_DATA = [
 	preload("res://Stages/stage_wave/scenes/enemy_spawn_handler.tscn"),
-	preload("res://Stages/stage_wave/scenes/handler_2.tscn")]
+	preload("res://Stages/stage_wave/scenes/handler_2.tscn"),
+	preload("res://Stages/stage_wave/scenes/handler_3.tscn")]
 
 func _ready():
 	enemies = STAGE_DATA[stage].instantiate()
@@ -47,5 +48,5 @@ func _on_player_death():
 	
 func _on_button_pressed():
 	get_tree().paused = false
-	DataTransfer.credits = credits_gain
+	DataTransfer.credits += credits_gain
 	get_tree().change_scene_to_file("res://scenes/Important/title.tscn")

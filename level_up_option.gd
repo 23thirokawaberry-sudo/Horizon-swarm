@@ -18,7 +18,7 @@ var random_upgrade = [stat_upgrade, weapon_upgrade] #puts the above lists into a
 var selected_type = 0 #variable that selects random option from random_upgrade
 var selected_pos = 0 #variable for selecting random spot in list
 var available_limit = [4, 5] #each position in this list relates to the highest possible value in their indivisual lists.
-var selected_randomizer_range = 1 #value to select stat upgrade or weapon upgrade. 
+var selected_randomizer_range = 1 #value to select stat upgrade or weapon upgrade. Currently doesn't do much as weapons don't go unavailable.
 
 func randomize_buttons():
 	already_picked = []
@@ -27,6 +27,7 @@ func randomize_buttons():
 	randomize_button(buttons[0])
 	randomize_button(buttons[1])
 	randomize_button(buttons[2])
+
 func randomize_button(button):
 	if selected_randomizer_range > 0:
 		selected_type = randi_range(0, selected_randomizer_range)

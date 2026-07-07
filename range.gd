@@ -1,7 +1,7 @@
 extends Area2D
 #This script/scene is called by all enemies that has a projectile.
 
-@onready var damage = get_parent().DAMAGE
+@onready var damage = get_parent().damage
 @onready var bullet = get_parent().BULLET
 func _ready():
 	$AttackCooldown.wait_time = get_parent().FIRERATE
@@ -16,5 +16,6 @@ func _on_attack_cooldown_timeout():
 	var new_bullet = bullet.instantiate()
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation
+	new_bullet.scale = get_parent().scale
 	new_bullet.projectile_damage = damage
 	self.get_parent().add_child(new_bullet)

@@ -40,7 +40,8 @@ func deal_damage():
 	if touching and touching.has_method("recieve_damage"):
 		touching.recieve_damage(DAMAGE)
 
-	health -= damage
+func take_damage(incoming_damage):
+	health -= incoming_damage
 	damage_effect()
 	
 	if health <= 0:
@@ -52,6 +53,7 @@ func deal_damage():
 			queue_free()
 			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
+			if get_parent().name == "Boss":
 				get_parent().get_parent().find_child("Xp").add_child(death_anim)
 			else:
 				get_parent().find_child("Xp").add_child(death_anim)

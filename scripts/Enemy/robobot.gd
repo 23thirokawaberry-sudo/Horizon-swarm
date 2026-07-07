@@ -6,7 +6,7 @@ var health = 35.0
 const DAMAGE = 3.0
 const SPEED = 22.0
 const DEFENSE = 12.0
-var cash_drop = 13.0
+var cash_drop = 3.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -48,7 +48,6 @@ func take_damage(incoming_damage):
 		health -= true_damage
 	else:
 		health -= 1
-		print(health)
 	damage_effect()
 	
 	if health <= 0:

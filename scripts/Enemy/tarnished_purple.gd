@@ -5,7 +5,7 @@ var max_health = 120.0
 var health = 120.0
 var damage = 6.0
 const SPEED = 14.0
-const cash_drop = 18.0
+const cash_drop = 7.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.

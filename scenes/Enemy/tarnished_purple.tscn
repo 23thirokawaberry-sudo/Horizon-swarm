@@ -3,13 +3,11 @@
 [ext_resource type="Script" uid="uid://dwm5iag5rb5s2" path="res://scripts/Enemy/tarnished_purple.gd" id="1_g65f1"]
 [ext_resource type="Texture2D" uid="uid://bw7j2tpc4c71o" path="res://assets/sprites/enemy/Tarnished.png" id="2_3cgxb"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nchxh"]
-radius = 6.0
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_g65f1"]
+radius = 7.272727
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5fr1"]
-radius = 6.0
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cgxb"]
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oudeb"]
 atlas = ExtResource("2_3cgxb")
@@ -46,17 +44,17 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
-position = Vector2(0, -3)
-scale = Vector2(1.1, 1.05)
-shape = SubResource("CapsuleShape2D_nchxh")
+position = Vector2(0, 5)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_g65f1")
 
 [node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
 unique_name_in_owner = true
 wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
-position = Vector2(0, -16)
-shape = SubResource("CapsuleShape2D_f5fr1")
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_3cgxb")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
