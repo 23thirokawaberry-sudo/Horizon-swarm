@@ -2,17 +2,22 @@
 extends Area2D
 
 @onready var player = get_parent()
-	
+
 func get_player_damage():
 	var player_damage = player.damage
 	return player_damage
 
 #if level is -1, then weapon is not yet unlocked.
 var weapon_levels = DataTransfer.weapons.duplicate()
-
+var lantern = -1 #required
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
+	if lantern != weapon_levels[6]:
+		lantern = weapon_levels[6]
+		if %lantern.get_child(0):
+			%lantern.get_child(0).queue_free()
+		lantern_spawn()
 
 #Weapon functions ==========================================================================
 func shoot_pistol():
@@ -124,8 +129,10 @@ func shoot_gatlng():
 		var weapon_damage = get_player_damage()
 		if weapon_levels[5] == 0:
 			weapon_damage = (weapon_damage * 0.3)
-		elif weapon_levels[5] >= 1:
+		elif weapon_levels[5] < 3:
 			weapon_damage = (weapon_damage * 0.3) * 1.25
+		elif weapon_levels[5] >= 3:
+			weapon_damage = (weapon_damage * 0.3) * 1.5
 		const BULLET = preload("res://scenes/Attacks/shotgun_bullet.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
@@ -137,8 +144,31 @@ func shoot_gatlng():
 		elif weapon_levels[5] >= 2:
 			%gatling.wait_time = (0.15 * 0.75)
 
-#Weapon calling ============================================================================
+func lantern_spawn():
+	if weapon_levels[6] != -1:
+		var weapon_damage = get_player_damage()
+		if weapon_levels[6] == 0:
+			weapon_damage = (weapon_damage * 0.75)
+		elif weapon_levels[6] >= 1:
+			weapon_damage = (weapon_damage * 0.75) * 1.25
+		const BULLET = preload("res://lantern.tscn")
+		var new_bullet = BULLET.instantiate()
+		if weapon_levels[6] < 3:
+			new_bullet.get_child(2).queue_free()
+			new_bullet.get_child(3).queue_free()
+			new_bullet.get_child(4).queue_free()
+		elif weapon_levels[6] >= 3:
+			new_bullet.get_child(0).queue_free()
+			new_bullet.get_child(1).queue_free()
+		new_bullet.global_position = %ShootingPoint.global_position
+		%lantern.add_child(new_bullet)
+		new_bullet.projectile_damage = weapon_damage
+		if weapon_levels[6] < 2:
+			new_bullet.spin = 1.5
+		elif weapon_levels[6] >= 2:
+			new_bullet.spin = (1.5 * 1.2)
 
+#Weapon calling ============================================================================
 
 func _on_pistol_timeout():
 	shoot_pistol()

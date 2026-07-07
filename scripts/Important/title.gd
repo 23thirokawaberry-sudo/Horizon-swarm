@@ -75,7 +75,7 @@ func _on_button_pressed(button_name):
 			if DataTransfer.credits >= stat[3]:
 				DataTransfer.base_player_stats[0] += 10
 				DataTransfer.credits -= stat[3]
-				stat[3] += stat[3] - 100
+				stat[3] += (stat[2] + 1) * 25
 				stat[2] += 1
 				%Stats.get_child(2).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[1], stat[2], stat[3]]
 		"Damage":
@@ -83,7 +83,7 @@ func _on_button_pressed(button_name):
 			if DataTransfer.credits >= stat[3]:
 				DataTransfer.base_player_stats[1] += 1
 				DataTransfer.credits -= stat[3]
-				stat[3] += stat[3] - 100
+				stat[3] += (stat[2] + 1) * 25
 				stat[2] += 1
 				%Stats.get_child(0).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[1], stat[2], stat[3]]
 		"Speed":
@@ -91,7 +91,13 @@ func _on_button_pressed(button_name):
 		"Defense":
 			DataTransfer.base_player_stats[3] += 1
 		"Regen":
-			DataTransfer.base_player_stats[4] += 1
+			var stat = stat_upgrade[1]
+			if DataTransfer.credits >= stat[3]:
+				DataTransfer.base_player_stats[4] += 1
+				DataTransfer.credits -= stat[3]
+				stat[3] += (stat[2] + 1) * 25
+				stat[2] += 1
+				%Stats.get_child(1).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[1], stat[2], stat[3]]
 	$Shop/cash.text = "Credits: %.0f" % [DataTransfer.credits]
 	
 
@@ -99,3 +105,7 @@ func _on_database_pressed():
 	$Menu.visible = false
 	$Database.visible = true
 	current_page = $Database
+
+
+func _on_difficulty_pressed():
+	pass # Replace with function body.

@@ -48,6 +48,13 @@ offset_top = -599.0
 offset_right = 787.0
 offset_bottom = 50.0
 
+[node name="Difficulty" type="Button" parent="Label" unique_id=608011002]
+layout_mode = 0
+offset_left = 774.0
+offset_top = 35.0
+offset_right = 788.0
+offset_bottom = 49.0
+
 [node name="Menu" type="Control" parent="." unique_id=571864809]
 visible = false
 anchors_preset = 0
@@ -396,7 +403,14 @@ text = "Triangle mage
 
 "
 
+[node name="Secret" type="Control" parent="." unique_id=1445367454]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="Label/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Label/Difficulty" to="." method="_on_difficulty_pressed"]
 [connection signal="pressed" from="Menu/Shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="Menu/Database" to="." method="_on_database_pressed"]
 [connection signal="pressed" from="Menu/Stages" to="." method="_on_stages_pressed"]

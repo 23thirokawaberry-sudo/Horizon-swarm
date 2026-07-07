@@ -4,7 +4,7 @@ signal pause
 
 @onready var weapon_details = get_parent().find_child("Player").find_child("Gun").weapon_levels
 @onready var icon_positions = get_parent().find_child("LevelUp").weapon_upgrade
-var position_given = [false, false, false, false, false, false]
+var position_given = [false, false, false, false, false, false, false, false]
 const ICONS = preload("res://assets/sprites/misc/icon.png")
 var entries = []
 
@@ -27,21 +27,23 @@ func new_entry():
 			if position_given[i] == false:
 				position_given[i] = true
 				var icon_xy = icon_positions[i][0]
+				var new_group = Control.new()
+				new_group.custom_minimum_size = Vector2(250.0, 75.0)
+				$ColorRect/ScrollContainer/VSplitContainer.add_child(new_group)
 				var new_textbox = Label.new()
 				var new_icon = TextureRect.new()
 				var new_atlas = AtlasTexture.new()
 				new_atlas.atlas = ICONS
 				new_atlas.region = Rect2(icon_xy[0], icon_xy[1], 32, 32)
 				new_icon.texture = new_atlas
-				var spacing = entries.size() * 80.0
-				new_icon.global_position = Vector2(20.0, 100.0 + spacing)
-				new_textbox.global_position = Vector2(95.0, 100.0 + spacing)
+				new_icon.global_position = Vector2(0.0, 0.0)
+				new_textbox.global_position = Vector2(75.0, 0.0)
 				new_icon.size = Vector2(75.0, 75.0)
-				new_textbox.size = Vector2(150.0, 75.0)
+				new_textbox.size = Vector2(175.0, 75.0)
 				entries.append([new_textbox, i]) #the textbox, the position of the nessesary details of the weapon
 				new_textbox.text = "weapon name : level %d" % [weapon_details[i]]
-				$ColorRect.add_child(new_icon)
-				$ColorRect.add_child(new_textbox)
+				new_group.add_child(new_icon)
+				new_group.add_child(new_textbox)
 			for entry in entries:
 				if entry[1] == i:
 					entry[0].text = "weapon name : level %d" % [weapon_details[i]]

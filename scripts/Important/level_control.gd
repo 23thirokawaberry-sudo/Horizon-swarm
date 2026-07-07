@@ -19,8 +19,9 @@ func _on_level_up_level_up_selected():
 		print("speed")
 	elif info == 5:
 		print("Defense")
-	elif info <= 11:
+	elif info <= 13:
 		%Player.get_node("Gun").weapon_levels[info - 6] += 1
+		print(info)
 	else:
 		print("Hi")
 	%Player.stat_upgraded()

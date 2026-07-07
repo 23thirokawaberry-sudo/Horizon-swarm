@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dwj5id88415d6"]
+
+[ext_resource type="Script" uid="uid://wb4pispmcbku" path="res://scripts/lantern.gd" id="1_kxgpu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aeluj"]
+radius = 5.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s57vn"]
+load_path = "res://.godot/imported/Gun bullet.png-8b66ba86d2514752fc6ba060edb7ba8b.ctex"
+
+[node name="Lantern" type="Area2D" unique_id=892918341]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_kxgpu")
+
+[node name="pattern1a" type="CollisionShape2D" parent="." unique_id=365067268]
+position = Vector2(60, 0)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_aeluj")
+
+[node name="GunBullet" type="Sprite2D" parent="pattern1a" unique_id=1367069972]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("CompressedTexture2D_s57vn")
+
+[node name="pattern1b" type="CollisionShape2D" parent="." unique_id=195215818]
+position = Vector2(-60, 0)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_aeluj")
+
+[node name="GunBullet" type="Sprite2D" parent="pattern1b" unique_id=388301197]
+rotation = -3.1415925
+scale = Vector2(1.5, 1.5)
+texture = SubResource("CompressedTexture2D_s57vn")
+
+[node name="pattern2a" type="CollisionShape2D" parent="." unique_id=105617282]
+position = Vector2(60, 0)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_aeluj")
+
+[node name="GunBullet" type="Sprite2D" parent="pattern2a" unique_id=379201773]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("CompressedTexture2D_s57vn")
+
+[node name="pattern2b" type="CollisionShape2D" parent="." unique_id=1429985153]
+position = Vector2(-30, -51.96153)
+rotation = 1.0471976
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_aeluj")
+
+[node name="GunBullet" type="Sprite2D" parent="pattern2b" unique_id=1661687950]
+scale = Vector2(1.5000001, 1.5000001)
+texture = SubResource("CompressedTexture2D_s57vn")
+
+[node name="pattern2c" type="CollisionShape2D" parent="." unique_id=838505889]
+position = Vector2(-30.000004, 51.961525)
+rotation = 2.0943952
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_aeluj")
+
+[node name="GunBullet" type="Sprite2D" parent="pattern2c" unique_id=473685331]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("CompressedTexture2D_s57vn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
