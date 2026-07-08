@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d4j21vssgu1ih"]
+
+[ext_resource type="Script" uid="uid://f8fgalq8sydt" path="res://sapper.gd" id="1_0cf6i"]
+
+[node name="Line2D" type="Line2D" unique_id=432031738]
+width = 1.0
+default_color = Color(0.0016076633, 0, 0.5334797, 1)
+script = ExtResource("1_0cf6i")

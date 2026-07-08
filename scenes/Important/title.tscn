@@ -419,5 +419,6 @@ offset_bottom = 40.0
 [connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage1" to="." method="_on_stage_1_pressed"]
 [connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage2" to="." method="_on_stage_2_pressed"]
 [connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage3" to="." method="_on_stage_3_pressed"]
+[connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage4" to="." method="_on_stage_4_pressed"]
 [connection signal="pressed" from="Shop/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Database/Back" to="." method="_on_back_pressed"]

@@ -168,6 +168,38 @@ func lantern_spawn():
 		elif weapon_levels[6] >= 2:
 			new_bullet.spin = (1.5 * 1.2)
 
+func sapper_sap():
+	if weapon_levels[7] != -1:
+		var overlapping_nodes = get_overlapping_bodies()
+		if overlapping_nodes.is_empty():
+			return null
+		var target = null
+		var lowest_num = INF
+		var weapon_damage = get_player_damage()
+		if weapon_levels[7] == 0:
+			weapon_damage = (weapon_damage * 0.1)
+		elif weapon_levels[7] >= 1:
+			weapon_damage = (weapon_damage * 0.1) * 1.25
+		const BULLET = preload("res://scenes/Attacks/sapper.tscn")
+		var new_bullet = BULLET.instantiate()
+		for enemies in overlapping_nodes:
+			if enemies.health < lowest_num:
+				lowest_num = enemies.health
+				target = enemies
+		if target and get_parent():
+			new_bullet.points = [Vector2(0, 0), get_parent().to_local(target.global_position)]
+			print(new_bullet.points)
+			print(target.global_position)
+			print(to_local(target.global_position))
+		get_parent().add_child(new_bullet)
+		target.take_damage(weapon_damage)
+		if weapon_levels[7] < 2:
+			%gatling.wait_time = 0.1
+			new_bullet.firerate = 0.1
+		elif weapon_levels[7] >= 2:
+			%gatling.wait_time = (0.1 * 0.8)
+			new_bullet.firerate = (0.1 * 0.8)
+
 #Weapon calling ============================================================================
 
 func _on_pistol_timeout():
@@ -187,3 +219,5 @@ func _on_sniper_timeout():
 	shoot_sniper()
 func _on_gatling_timeout():
 	shoot_gatlng()
+func _on_sapper_timeout():
+	sapper_sap()

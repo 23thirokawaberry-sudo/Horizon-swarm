@@ -7,9 +7,13 @@ var timed_spawns = 0
 
 var enemies = {
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
-	"Red slime": preload("res://scenes/Enemy/red_slime.tscn"),
+	"Blue slime": preload("res://scenes/Enemy/blue_slime.tscn"),
+	"Red slime": preload("res://scenes/Enemy/blue_slime.tscn"),
+	"Yellow slime": preload("res://scenes/Enemy/yellow_slime.tscn"),
 	"Black slime": preload("res://scenes/Enemy/black_slime.tscn"),
 	"Tarnished purple": preload("res://scenes/Enemy/tarnished_purple.tscn"),
+	"Tarnished turquoize": preload("res://scenes/Enemy/tarnished_turquoize.tscn"),
+	"Robobot": preload("res://scenes/Enemy/robobot.tscn"),
 	"Triangle mage": preload("res://scenes/Enemy/triangle_mage.tscn")
 	}
 
@@ -65,15 +69,15 @@ func _wave_system_spacing():
 			enemy.clear()
 			wave = 1
 		if enemy.is_empty():
-			enemy.append(["Green slime", 0.45])
+			enemy.append(["Tarnished turquoize", 2])
 		selected = 0
 	elif time_elapsed < 60: #wave 2
 		if wave == 1:
 			enemy.clear()
 			wave = 2
 		if enemy.is_empty():
-			enemy.append(["Green slime", 0.4])
-			enemy.append(["Red slime", 0.8])
+			enemy.append(["Tarnished turquoize", 2])
+			enemy.append(["Yellow slime", 0.8])
 		selected = randi_range(0, 1)
 	elif time_elapsed < 90: #wave 3
 		if wave == 2:

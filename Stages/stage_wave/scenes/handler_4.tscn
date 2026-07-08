@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://rcpslq70nh73"]
+
+[ext_resource type="Script" uid="uid://454fydc87mg6" path="res://Stages/stage_wave/scripts/handler_4.gd" id="1_ulck1"]
+
+[node name="enemies" type="Node2D" unique_id=265994804]
+script = ExtResource("1_ulck1")
+
+[node name="SpawnInterval" type="Timer" parent="." unique_id=416795265]
+
+[node name="Boss" type="Node2D" parent="." unique_id=1409784490]
+
+[node name="Xp" type="Node2D" parent="." unique_id=1556898121]
+
+[connection signal="timeout" from="SpawnInterval" to="." method="_wave_system_spacing"]

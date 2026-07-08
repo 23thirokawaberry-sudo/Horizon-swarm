@@ -55,6 +55,11 @@ unique_name_in_owner = true
 wait_time = 0.1
 autostart = true
 
+[node name="sapper" type="Timer" parent="." unique_id=73770851]
+unique_name_in_owner = true
+wait_time = 0.1
+autostart = true
+
 [node name="lantern" type="Node2D" parent="." unique_id=783760876]
 unique_name_in_owner = true
 
@@ -64,3 +69,4 @@ unique_name_in_owner = true
 [connection signal="timeout" from="beam" to="." method="_on_beam_timeout"]
 [connection signal="timeout" from="sniper" to="." method="_on_sniper_timeout"]
 [connection signal="timeout" from="gatling" to="." method="_on_gatling_timeout"]
+[connection signal="timeout" from="sapper" to="." method="_on_sapper_timeout"]

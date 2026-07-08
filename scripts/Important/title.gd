@@ -56,6 +56,9 @@ func _on_stage_2_pressed():
 func _on_stage_3_pressed():
 	DataTransfer.selected_stage = 2
 	%Start.visible = true
+func _on_stage_4_pressed():
+	DataTransfer.selected_stage = 3
+	%Start.visible = true
 func _on_start_pressed():
 	if DataTransfer.selected_stage != -1:
 		get_tree().change_scene_to_file("res://Stages/stage_map/scenes/game.tscn")

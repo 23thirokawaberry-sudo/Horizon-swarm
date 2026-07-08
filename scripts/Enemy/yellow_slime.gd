@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 120.0
-var health = 120.0
-var damage = 6.0
-const SPEED = 14.0
-const cash_drop = 5.0
+var max_health = 111.0
+var health = 111.0
+var damage = 11.0
+const SPEED = 36.0
+var cash_drop = 4.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -66,14 +66,3 @@ func damage_effect():
 	$HitTick.start(0.05)
 	await $HitTick.timeout
 	modulate = Color(1,1,1,1)
-
-func _on_regen_timeout():
-	if health < max_health:
-		health += max_health / 12
-		if health > max_health:
-			health = max_health
-		modulate = Color(0.1,6.0,0.1)
-		$RegenTick.start(0.05)
-		await $RegenTick.timeout
-		modulate = Color(1,1,1,1)
-		

@@ -12,7 +12,8 @@ var enemies = null
 const STAGE_DATA = [
 	preload("res://Stages/stage_wave/scenes/enemy_spawn_handler.tscn"),
 	preload("res://Stages/stage_wave/scenes/handler_2.tscn"),
-	preload("res://Stages/stage_wave/scenes/handler_3.tscn")]
+	preload("res://Stages/stage_wave/scenes/handler_3.tscn"),
+	preload("res://Stages/stage_wave/scenes/handler_4.tscn")]
 
 func _ready():
 	enemies = STAGE_DATA[stage].instantiate()
