@@ -116,8 +116,8 @@ func _wave_system_spacing():
 				enemy.append(["Tarnished purple", 0.65])
 				enemy.append(["Red slime", 0.6])
 				enemy.append(["Green slime", 0.3])
-			enemy.append(["Mage", 0.8])
-		selected = randi_range(0, 2)
+			enemy.append(["Triangle mage", 0.8])
+		selected = randi_range(0, 6)
 	elif time_elapsed < 265:
 		if wave == 5:
 			enemy.clear()
@@ -125,7 +125,7 @@ func _wave_system_spacing():
 		if enemy.is_empty():
 			enemy.append(["Tarnished purple", 0.6])
 			enemy.append(["Green slime", 0.2])
-		selected = 0
+		selected = randi_range(0, 1)
 	elif time_elapsed < 300:
 		if wave == 6:
 			enemy.clear()
@@ -134,7 +134,7 @@ func _wave_system_spacing():
 			enemy.append(["Red slime", 0.5])
 			enemy.append(["Tarnished purple", 0.6])
 			enemy.append(["Triangle mage", 0.8])
-		selected = randi_range(0, 1)
+		selected = randi_range(0, 2)
 	elif time_elapsed < 320:
 		if wave == 7:
 			enemy.clear()
