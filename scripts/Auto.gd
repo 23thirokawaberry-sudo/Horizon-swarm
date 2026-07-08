@@ -133,7 +133,7 @@ func shoot_gatlng():
 			weapon_damage = (weapon_damage * 0.3) * 1.25
 		elif weapon_levels[5] >= 3:
 			weapon_damage = (weapon_damage * 0.3) * 1.5
-		const BULLET = preload("res://scenes/Attacks/shotgun_bullet.tscn")
+		const BULLET = preload("res://scenes/Attacks/gatling.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
 		new_bullet.global_rotation = %ShootingPoint.global_rotation + randf_range(-0.125, 0.125)

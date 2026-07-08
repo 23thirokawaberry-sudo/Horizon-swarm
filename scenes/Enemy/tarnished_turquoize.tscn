@@ -62,7 +62,7 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_b1yw6")
 animation = &"Walk"
 autoplay = "Walk"
-frame_progress = 0.014712218
+frame_progress = 0.7802303
 
 [node name="HitTick" type="Timer" parent="." unique_id=1168191408]
 wait_time = 0.15

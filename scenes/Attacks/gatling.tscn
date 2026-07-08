@@ -12,7 +12,7 @@ load_path = "res://.godot/imported/Gun bullet.png-8b66ba86d2514752fc6ba060edb7ba
 top_level = true
 scale = Vector2(0.25, 0.25)
 collision_layer = 0
-collision_mask = 3
+collision_mask = 259
 script = ExtResource("1_b340n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365067268]

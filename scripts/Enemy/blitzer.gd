@@ -3,24 +3,27 @@ extends CharacterBody2D
 #basic enemy stats.
 var max_health = 40.0
 var health = 40.0
-var damage = 5.0
-const SPEED = 5.0
-const FIRERATE = [4.5, 4.5]
-const BURST = 1
+var damage = 4.0
+const SPEED = 1.5
 var cash_drop = 6.0
+const FIRERATE = [1, 5]
+const BURST = 3
+
+var radius = 100
+var angle = 0.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
-var in_range = null
 
 const BULLET = preload("res://scenes/Enemy/mage_cast.tscn")
 @onready var player  = get_node("/root/Game/Player")
 
 func _physics_process(delta):
 	#enemy movement
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * SPEED
-	move_and_slide()
+	angle += SPEED * delta
+	var offset = Vector2(-cos(angle), -sin(angle)) * radius
+	global_position = player.global_position + offset
+	$AnimatedSprite2D.rotation = angle
 	
 func _on_cooldown_timeout():
 	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.
@@ -56,7 +59,7 @@ func take_damage(incoming_damage):
 					%Cooldown.stop()
 				touching = null
 				queue_free()
-				const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
+				const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
 				var death_anim = DEATH_ANIM.instantiate()
 				if get_parent().name == "Boss":
 					get_parent().get_parent().find_child("Xp").add_child(death_anim)

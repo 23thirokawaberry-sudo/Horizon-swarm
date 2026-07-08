@@ -9,6 +9,7 @@ var enemies = {
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
 	"Blue slime": preload("res://scenes/Enemy/blue_slime.tscn"),
 	"Red slime": preload("res://scenes/Enemy/red_slime.tscn"),
+	"Yellow slime": preload("res://scenes/Enemy/yellow_slime.tscn"),
 	"Black slime": preload("res://scenes/Enemy/black_slime.tscn")
 	}
 
@@ -40,12 +41,11 @@ func _process(delta: float):
 			timed_spawns = 1
 	elif snapped_time == 120:
 		if timed_spawns == 1:
-			boss_spawn(enemies.get("Black slime"))
+			boss_spawn(enemies.get("Yellow slime"))
 			timed_spawns = 2
 	elif snapped_time >= 200:
 		if timed_spawns == 2:
-			for i in range(3):
-				boss_spawn(enemies.get("Black slime"))
+			boss_spawn(enemies.get("Black slime"))
 			timed_spawns = 3
 
 func _wave_system_spacing():

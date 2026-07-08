@@ -14,7 +14,8 @@ var enemies = {
 	"Tarnished purple": preload("res://scenes/Enemy/tarnished_purple.tscn"),
 	"Tarnished turquoize": preload("res://scenes/Enemy/tarnished_turquoize.tscn"),
 	"Robobot": preload("res://scenes/Enemy/robobot.tscn"),
-	"Triangle mage": preload("res://scenes/Enemy/triangle_mage.tscn")
+	"Triangle mage": preload("res://scenes/Enemy/triangle_mage.tscn"),
+	"Blitzer": preload("res://scenes/Enemy/blitzer.tscn")
 	}
 
 func spawn(mob):
@@ -70,7 +71,8 @@ func _wave_system_spacing():
 			wave = 1
 		if enemy.is_empty():
 			enemy.append(["Tarnished turquoize", 2])
-		selected = 0
+			enemy.append(["Blitzer", 2])
+		selected = randi_range(0, 1)
 	elif time_elapsed < 60: #wave 2
 		if wave == 1:
 			enemy.clear()

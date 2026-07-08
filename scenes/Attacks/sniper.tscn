@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ca1po4nuaugb2"]
 
-[ext_resource type="Script" uid="uid://cf14wyjr7bw7k" path="res://scripts/minigun_bullet.gd" id="1_cg622"]
+[ext_resource type="Script" uid="uid://c8k7akh21q8l0" path="res://scripts/sniper.gd" id="1_cg622"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ppu6k"]
 radius = 5.0
@@ -12,7 +12,7 @@ load_path = "res://.godot/imported/Gun bullet.png-8b66ba86d2514752fc6ba060edb7ba
 top_level = true
 scale = Vector2(0.75, 0.25)
 collision_layer = 0
-collision_mask = 3
+collision_mask = 259
 script = ExtResource("1_cg622")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365067268]

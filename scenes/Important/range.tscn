@@ -25,6 +25,10 @@ scale = Vector2(0.3125, 0.3125)
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=1468156687]
 wait_time = 5.0
-autostart = true
+one_shot = true
+
+[node name="BurstSpacing" type="Timer" parent="." unique_id=432438333]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
