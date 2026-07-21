@@ -7,19 +7,11 @@ signal level_up_selected
 @onready var defense_check = DataTransfer.base_player_stats[3]
 
 #this will need a lot of explaining
-var stat_upgrade = [[[0, 0], "Damage up", 1], [[32, 0], "Regen up", 2], [[0, 32], "Max health up", 3], 
-					[[32, 32], "Speed up", 4], [[64, 0], "Defense up", 5]] #Stat upgrades - they can be upgraded indefinetally.
-var weapon_upgrade = [[[192, 0], "Shotgun unlock", 6], [[224, 32], "Pistol unlock", 7], [[224, 0], "Sword unlock", 8], 
-					[[192, 32], "Beam unlock", 9], [[192, 64], "Sniper unlock", 10], [[224, 64], "Gatling unlock", 11],
-					[[192, 96], "Lantern unlock", 12], [[224, 96], "Sapper unlock", 13]] #Weapon upgrades - each weapon has a certain max level, after which they no longer can be upgraded.
+var upgrades = DataTransfer.icons.duplicate() #Weapon upgrades - each weapon has a certain max level, after which they no longer can be upgraded.
 # @onready var weapon_info = get_parent().find_child("Player").find_child("Gun").weapon_levels
 var already_picked = []
 
-var random_upgrade = [stat_upgrade, weapon_upgrade] #puts the above lists into a single list so that random selection can select either branches.
-var selected_type = 0 #variable that selects random option from random_upgrade
 var selected_pos = 0 #variable for selecting random spot in list
-var available_limit = [4, 7] #each position in this list relates to the highest possible value in their indivisual lists.
-var selected_randomizer_range = 1 #value to select stat upgrade or weapon upgrade. Currently doesn't do much as weapons don't go unavailable.
 
 func randomize_buttons():
 	already_picked = []
@@ -30,41 +22,42 @@ func randomize_buttons():
 	randomize_button(buttons[2])
 
 func randomize_button(button):
-	if selected_randomizer_range > 0:
-		selected_type = randi_range(0, selected_randomizer_range)
-	else:
-		selected_type = 0
-	#randomly selects available upgrade option
-	selected_pos = randi_range(0, available_limit[selected_type])
-	#changes the texture and text for the button to the values relating to the list.
-	var RTP = random_upgrade[selected_type][selected_pos] #optimization
-	if RTP[2] in already_picked: #Checks whether option has already been chosen
+	var upgrade_type = randi_range(0, 1)
+	var selected = 0
+	if upgrade_type == 0:
+		selected = randi_range(0, 2) #stats
+	elif upgrade_type == 1:
+		selected = randi_range(8, 15)#weapons
+	if upgrades[selected][0] in already_picked: #Checks whether option has already been chosen
+		randomize_button(button)
+	elif upgrades[selected][1] >= 3 and upgrade_type == 1: #checks whether weapon is level 3, if so then loops
 		randomize_button(button)
 	else:
-		if RTP[2] == 5 and defense_check <= 0: #Checks whether player has defense
-			randomize_button(button)
-		else:
-			button.get_node("TextureRect").texture.region = Rect2(RTP[0][0], RTP[0][1], 32, 32)
-			button.get_node("Label").text = RTP[1]
-			already_picked.append(RTP[2])
+		var icon_x = selected * 32
+		var icon_y = 0
+		while icon_x >= 256:
+			icon_x -= 256
+			icon_y += 1
+		button.get_node("TextureRect").texture.region = Rect2(icon_x, icon_y * 32, 32, 32)
+		button.get_node("Label").text = upgrades[selected][0]
+		already_picked.append(upgrades[selected][0])
 
 func limited_upgrades(button):
 	print("later")
 
 func _on_button_pressed():
-	upgrade_option = already_picked[0]
-	level_up_selected.emit()
-	already_picked = []
-	randomize_buttons()
-
+	button_pressed(0)
+	
 func _on_button_2_pressed():
-	upgrade_option = already_picked[1]
-	level_up_selected.emit()
-	already_picked = []
-	randomize_buttons()
+	button_pressed(1)
 	
 func _on_button_3_pressed():
-	upgrade_option = already_picked[2]
+	button_pressed(2)
+
+func button_pressed(button_number):
+	for item in upgrades:
+		if already_picked[button_number] in item:
+			upgrade_option = upgrades.find(item)
 	level_up_selected.emit()
 	already_picked = []
 	randomize_buttons()

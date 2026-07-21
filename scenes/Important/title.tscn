@@ -211,6 +211,10 @@ offset_left = 32.0
 offset_top = 85.0
 offset_right = 277.0
 offset_bottom = 209.0
+text = "Stats (the menu isn't working 
+yet. this is the default, and 
+upgrades will be seperated 
+into each groups later.)"
 
 [node name="Weapons" type="Button" parent="Shop" unique_id=499244194]
 layout_mode = 0
@@ -218,6 +222,8 @@ offset_left = 31.0
 offset_top = 222.0
 offset_right = 276.0
 offset_bottom = 346.0
+text = "NOT WORKING
+but it will be for weapons"
 
 [node name="Classes" type="Button" parent="Shop" unique_id=1277022613]
 layout_mode = 0
@@ -225,6 +231,7 @@ offset_left = 32.0
 offset_top = 363.0
 offset_right = 277.0
 offset_bottom = 487.0
+text = "🐟"
 
 [node name="Panel" type="Control" parent="Shop" unique_id=1724664374]
 anchors_preset = 0
@@ -241,6 +248,7 @@ offset_bottom = 40.0
 
 [node name="Weapons" type="Control" parent="Shop/Panel" unique_id=636496146]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -269,6 +277,7 @@ vertical_alignment = 1
 
 [node name="Classes" type="Control" parent="Shop/Panel" unique_id=1509128257]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

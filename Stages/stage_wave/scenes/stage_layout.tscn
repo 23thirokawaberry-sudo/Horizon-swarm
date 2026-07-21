@@ -109,7 +109,7 @@ tile_map_data = PackedByteArray("AAAyAAkAAAAOAAEAAAAzAAkAAAAOAAEAAAAzAAoAAAAOAAE
 tile_set = SubResource("TileSet_0qhl6")
 collision_enabled = false
 
-[node name="FacilityHalls2" type="TileMapLayer" parent="." unique_id=1214072351]
+[node name="Corridoor" type="TileMapLayer" parent="." unique_id=1214072351]
 visible = false
 z_index = -1
 position = Vector2(-768, 752)

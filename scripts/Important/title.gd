@@ -1,22 +1,28 @@
 extends Control
 var current_page = null
-var stat_upgrade = DataTransfer.stats
-const ICONS = preload("res://assets/sprites/misc/icon.png")
+var stat_upgrade = DataTransfer.icons
+const ICONS = preload("res://assets/sprites/misc/icons_ORDERED.png")
 var stat_buttons = []
 
 func _ready():
+	var added = 0
+	var row = 0
 	for stat in stat_upgrade:
 		var new_button = Button.new()
-		new_button.name = stat[1]
-		var spacing = %Stats.get_child_count() * 110.0
-		new_button.global_position = Vector2(20.0 + spacing, 100.0)
+		new_button.name = stat[0]
+		new_button.global_position = Vector2(added * 110.0, row * 145.0)
 		new_button.size = Vector2(100.0, 135.0)
 		%Stats.add_child(new_button)
 		var new_label = Label.new()
 		var new_icon = TextureRect.new()
 		var new_atlas = AtlasTexture.new()
 		new_atlas.atlas = ICONS
-		new_atlas.region = Rect2(stat[0][0], stat[0][1], 32, 32)
+		var icon_x = stat_upgrade.find(stat) * 32
+		var icon_y = 0
+		while icon_x >= 256:
+			icon_x -= 256
+			icon_y += 1
+		new_atlas.region = Rect2(icon_x, (icon_y * 32), 32, 32)
 		new_icon.texture = new_atlas
 		new_icon.global_position = Vector2(0.0, 0.0)
 		new_label.global_position = Vector2(0.0, 100.0)
@@ -25,10 +31,14 @@ func _ready():
 		new_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		new_label.add_theme_font_size_override("font_size", 10)
 		new_label.size = Vector2(100.0, 35.0)
-		new_label.text = "%s: level %.0f \n $%.0f" % [stat[1], stat[2], stat[3]]
+		new_label.text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
 		new_button.add_child(new_icon)
 		new_button.add_child(new_label)
 		new_button.pressed.connect(_on_button_pressed.bind(new_button.name))
+		added += 1
+		if added == 6:
+			added = 0
+			row += 1
 
 func _on_play_pressed():
 	$Label.visible = false
@@ -74,33 +84,35 @@ func _on_shop_pressed():
 func _on_button_pressed(button_name):
 	match button_name:
 		"Max health":
-			var stat = stat_upgrade[2]
-			if DataTransfer.credits >= stat[3]:
+			var stat = stat_upgrade[1]
+			if DataTransfer.credits >= stat[2]:
 				DataTransfer.base_player_stats[0] += 10
-				DataTransfer.credits -= stat[3]
-				stat[3] += (stat[2] + 1) * 25
-				stat[2] += 1
-				%Stats.get_child(2).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[1], stat[2], stat[3]]
+				DataTransfer.credits -= stat[2]
+				stat[2] += (stat[1] + 1) * 25
+				stat[1] += 1
+				%Stats.get_child(1).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
 		"Damage":
 			var stat = stat_upgrade[0]
-			if DataTransfer.credits >= stat[3]:
+			if DataTransfer.credits >= stat[2]:
 				DataTransfer.base_player_stats[1] += 1
-				DataTransfer.credits -= stat[3]
-				stat[3] += (stat[2] + 1) * 25
-				stat[2] += 1
-				%Stats.get_child(0).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[1], stat[2], stat[3]]
+				DataTransfer.credits -= stat[2]
+				stat[2] += (stat[1] + 1) * 25
+				stat[1] += 1
+				%Stats.get_child(0).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
 		"Speed":
 			DataTransfer.base_player_stats[2] += 3
 		"Defense":
 			DataTransfer.base_player_stats[3] += 1
 		"Regen":
-			var stat = stat_upgrade[1]
-			if DataTransfer.credits >= stat[3]:
+			var stat = stat_upgrade[2]
+			if DataTransfer.credits >= stat[2]:
 				DataTransfer.base_player_stats[4] += 1
-				DataTransfer.credits -= stat[3]
-				stat[3] += (stat[2] + 1) * 25
-				stat[2] += 1
-				%Stats.get_child(1).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[1], stat[2], stat[3]]
+				DataTransfer.credits -= stat[2]
+				stat[2] += (stat[1] + 1) * 25
+				stat[1] += 1
+				%Stats.get_child(2).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
+		"Pistol":
+			var stat = stat_upgrade[8]
 	$Shop/cash.text = "Credits: %.0f" % [DataTransfer.credits]
 	
 
