@@ -4,7 +4,7 @@ extends CharacterBody2D
 var max_health = 120.0
 var health = 120.0
 var damage = 6.0
-const SPEED = 14.0
+const SPEED = 12.0
 const cash_drop = 5.0
 
 var touching = null #global variable for whether the enemy is touching player or not.

@@ -200,3 +200,4 @@ rotation = -0.0032154229
 
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
 [connection signal="timeout" from="Regen" to="." method="_on_regen_timeout"]
+[connection signal="timeout" from="IFrame" to="." method="_on_i_frame_timeout"]

@@ -1,25 +1,28 @@
 [gd_scene format=3 uid="uid://ca1po4nuaugb2"]
 
 [ext_resource type="Script" uid="uid://c8k7akh21q8l0" path="res://scripts/sniper.gd" id="1_cg622"]
+[ext_resource type="Texture2D" uid="uid://cdqoi67mavi4o" path="res://assets/sprites/misc/weapon_sprites.png" id="2_ppu6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ppu6k"]
 radius = 5.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s6n0v"]
-load_path = "res://.godot/imported/Gun bullet.png-8b66ba86d2514752fc6ba060edb7ba8b.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6n0v"]
+atlas = ExtResource("2_ppu6k")
+region = Rect2(53, 5, 7, 7)
 
 [node name="Bullet" type="Area2D" unique_id=892918341]
 top_level = true
-scale = Vector2(0.75, 0.25)
 collision_layer = 0
 collision_mask = 259
 script = ExtResource("1_cg622")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365067268]
+scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_ppu6k")
 
 [node name="GunBullet" type="Sprite2D" parent="." unique_id=1367069972]
-scale = Vector2(2, 2)
-texture = SubResource("CompressedTexture2D_s6n0v")
+rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_s6n0v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

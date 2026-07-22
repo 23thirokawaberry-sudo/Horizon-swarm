@@ -3,8 +3,10 @@ var current_page = null
 var stat_upgrade = DataTransfer.icons
 const ICONS = preload("res://assets/sprites/misc/icons_ORDERED.png")
 var stat_buttons = []
+@onready var transition = $Transition.get_child(0).get_child(2)
 
 func _ready():
+	transition.play("open")
 	var added = 0
 	var row = 0
 	for stat in stat_upgrade:
@@ -31,7 +33,12 @@ func _ready():
 		new_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		new_label.add_theme_font_size_override("font_size", 10)
 		new_label.size = Vector2(100.0, 35.0)
-		new_label.text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
+		if stat[1] != -1:
+			new_label.text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
+		elif stat[1] >= 3 and stat_upgrade.find(stat) >= 8:
+			new_label.text = "%s: level 3 \n MAXXED" % [stat[0]]
+		else:
+			new_label.text = "Unlock %s \n $%.0f" % [stat[0], stat[2]]
 		new_button.add_child(new_icon)
 		new_button.add_child(new_label)
 		new_button.pressed.connect(_on_button_pressed.bind(new_button.name))
@@ -71,6 +78,8 @@ func _on_stage_4_pressed():
 	%Start.visible = true
 func _on_start_pressed():
 	if DataTransfer.selected_stage != -1:
+		transition.play("close")
+		await get_tree().create_timer(0.45).timeout
 		get_tree().change_scene_to_file("res://Stages/stage_map/scenes/game.tscn")
 
 func _on_shop_pressed():
@@ -83,14 +92,6 @@ func _on_shop_pressed():
 	%Classes.visible = false
 func _on_button_pressed(button_name):
 	match button_name:
-		"Max health":
-			var stat = stat_upgrade[1]
-			if DataTransfer.credits >= stat[2]:
-				DataTransfer.base_player_stats[0] += 10
-				DataTransfer.credits -= stat[2]
-				stat[2] += (stat[1] + 1) * 25
-				stat[1] += 1
-				%Stats.get_child(1).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
 		"Damage":
 			var stat = stat_upgrade[0]
 			if DataTransfer.credits >= stat[2]:
@@ -99,10 +100,14 @@ func _on_button_pressed(button_name):
 				stat[2] += (stat[1] + 1) * 25
 				stat[1] += 1
 				%Stats.get_child(0).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
-		"Speed":
-			DataTransfer.base_player_stats[2] += 3
-		"Defense":
-			DataTransfer.base_player_stats[3] += 1
+		"Max health":
+			var stat = stat_upgrade[1]
+			if DataTransfer.credits >= stat[2]:
+				DataTransfer.base_player_stats[0] += 10
+				DataTransfer.credits -= stat[2]
+				stat[2] += (stat[1] + 1) * 25
+				stat[1] += 1
+				%Stats.get_child(1).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
 		"Regen":
 			var stat = stat_upgrade[2]
 			if DataTransfer.credits >= stat[2]:
@@ -111,8 +116,38 @@ func _on_button_pressed(button_name):
 				stat[2] += (stat[1] + 1) * 25
 				stat[1] += 1
 				%Stats.get_child(2).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
+		"Defense":
+			var stat = stat_upgrade[3]
+			if DataTransfer.credits >= stat[2]:
+				DataTransfer.base_player_stats[3] += 1
+				DataTransfer.credits -= stat[2]
+				stat[2] += (stat[1] + 1) * 25
+				stat[1] += 1
+				%Stats.get_child(3).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
+		"Speed":
+			var stat = stat_upgrade[4]
+			if DataTransfer.credits >= stat[2]:
+				DataTransfer.base_player_stats[2] += 3
+				DataTransfer.credits -= stat[2]
+				stat[2] += (stat[1] + 1) * 25
+				stat[1] += 1
+				%Stats.get_child(4).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
 		"Pistol":
-			var stat = stat_upgrade[8]
+			cash_check_weapons(8)
+		"Shotgun":
+			cash_check_weapons(9)
+		"Sword":
+			cash_check_weapons(10)
+		"Beam":
+			cash_check_weapons(11)
+		"Sniper":
+			cash_check_weapons(12)
+		"Gatling":
+			cash_check_weapons(13)
+		"Lantern":
+			cash_check_weapons(14)
+		"Sapper":
+			cash_check_weapons(15)
 	$Shop/cash.text = "Credits: %.0f" % [DataTransfer.credits]
 	
 
@@ -121,6 +156,17 @@ func _on_database_pressed():
 	$Database.visible = true
 	current_page = $Database
 
+func cash_check_weapons(value):
+	var stat = stat_upgrade[value]
+	if stat[1] < 3:
+		if DataTransfer.credits >= stat[2]:
+			DataTransfer.credits -= stat[2]
+			stat[2] += (stat[1] + 1) * 150
+			stat[1] += 1
+			if stat[1] < 3:
+				%Stats.get_child(value).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
+			elif stat[1] == 3:
+				%Stats.get_child(value).get_child(1).text = "%s: level 3 \n MAXXED" % [stat[0]]
 
 func _on_difficulty_pressed():
 	pass # Replace with function body.

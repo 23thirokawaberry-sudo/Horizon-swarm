@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://dwj5id88415d6"]
 
 [ext_resource type="Script" uid="uid://wb4pispmcbku" path="res://scripts/lantern.gd" id="1_kxgpu"]
+[ext_resource type="Texture2D" uid="uid://cdqoi67mavi4o" path="res://assets/sprites/misc/weapon_sprites.png" id="2_aeluj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aeluj"]
 radius = 5.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s57vn"]
-load_path = "res://.godot/imported/Gun bullet.png-8b66ba86d2514752fc6ba060edb7ba8b.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_s57vn"]
+atlas = ExtResource("2_aeluj")
+region = Rect2(0, 0, 16, 16)
 
 [node name="Lantern" type="Area2D" unique_id=892918341]
 top_level = true
@@ -20,8 +22,8 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_aeluj")
 
 [node name="GunBullet" type="Sprite2D" parent="pattern1a" unique_id=1367069972]
-scale = Vector2(1.5, 1.5)
-texture = SubResource("CompressedTexture2D_s57vn")
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_s57vn")
 
 [node name="pattern1b" type="CollisionShape2D" parent="." unique_id=195215818]
 position = Vector2(-60, 0)
@@ -30,8 +32,8 @@ shape = SubResource("CircleShape2D_aeluj")
 
 [node name="GunBullet" type="Sprite2D" parent="pattern1b" unique_id=388301197]
 rotation = -3.1415925
-scale = Vector2(1.5, 1.5)
-texture = SubResource("CompressedTexture2D_s57vn")
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_s57vn")
 
 [node name="pattern2a" type="CollisionShape2D" parent="." unique_id=105617282]
 position = Vector2(60, 0)
@@ -39,8 +41,8 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_aeluj")
 
 [node name="GunBullet" type="Sprite2D" parent="pattern2a" unique_id=379201773]
-scale = Vector2(1.5, 1.5)
-texture = SubResource("CompressedTexture2D_s57vn")
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_s57vn")
 
 [node name="pattern2b" type="CollisionShape2D" parent="." unique_id=1429985153]
 position = Vector2(-30, -51.96153)
@@ -49,8 +51,8 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_aeluj")
 
 [node name="GunBullet" type="Sprite2D" parent="pattern2b" unique_id=1661687950]
-scale = Vector2(1.5000001, 1.5000001)
-texture = SubResource("CompressedTexture2D_s57vn")
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_s57vn")
 
 [node name="pattern2c" type="CollisionShape2D" parent="." unique_id=838505889]
 position = Vector2(-30.000004, 51.961525)
@@ -59,7 +61,7 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_aeluj")
 
 [node name="GunBullet" type="Sprite2D" parent="pattern2c" unique_id=473685331]
-scale = Vector2(1.5, 1.5)
-texture = SubResource("CompressedTexture2D_s57vn")
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_s57vn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

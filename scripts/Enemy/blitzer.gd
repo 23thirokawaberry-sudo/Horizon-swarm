@@ -4,7 +4,7 @@ extends CharacterBody2D
 var max_health = 40.0
 var health = 40.0
 var damage = 4.0
-const SPEED = 1.5
+const SPEED = 1.25
 var cash_drop = 6.0
 const FIRERATE = [1, 5]
 const BURST = 3

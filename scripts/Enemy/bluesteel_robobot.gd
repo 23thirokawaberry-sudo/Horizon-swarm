@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 35.0
-var health = 30.0
+var max_health = 90.0
+var health = 90.0
 const DAMAGE = 3.0
-const SPEED = 24.0
-const DEFENSE = 9.0
+const SPEED = 30.0
+var defense = 24.0
 var cash_drop = 3.0
+
+var is_enraged = false
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -43,12 +45,15 @@ func deal_damage():
 		touching.recieve_damage(DAMAGE)
 
 func take_damage(incoming_damage):
-	var true_damage = (incoming_damage - DEFENSE)
+	var true_damage = (incoming_damage - defense)
 	if true_damage > 1:
 		health -= true_damage
 	else:
 		health -= 1
 	damage_effect()
+	
+	if health <= max_health / 5:
+		enrage()
 	
 	if health <= 0:
 		if is_dead == false:
@@ -66,9 +71,20 @@ func take_damage(incoming_damage):
 				death_anim.global_position = global_position
 				get_node("/root/Game").credits_gain += cash_drop
 
+func enrage():
+	if is_enraged == false:
+		defense = 50.0
+		is_enraged = true
+		modulate = Color(0.25,0.5,0.8,1)
+
 func damage_effect():
-	modulate = Color(6.0,0.1,0.1)
-	$HitTick.start(0.05)
-	await $HitTick.timeout
-	modulate = Color(1,1,1,1)
-	
+	if health > max_health / 5:
+		modulate = Color(6.0,0.1,0.1)
+		$HitTick.start(0.05)
+		await $HitTick.timeout
+		modulate = Color(1,1,1,1)
+	else:
+		modulate = Color(6.0,0.1,0.1)
+		$HitTick.start(0.05)
+		await $HitTick.timeout
+		modulate = Color(0.25,0.5,0.8,1)

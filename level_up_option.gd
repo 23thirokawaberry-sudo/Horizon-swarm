@@ -4,8 +4,6 @@ extends CanvasLayer
 var upgrade_option = 0
 
 signal level_up_selected
-@onready var defense_check = DataTransfer.base_player_stats[3]
-
 #this will need a lot of explaining
 var upgrades = DataTransfer.icons.duplicate() #Weapon upgrades - each weapon has a certain max level, after which they no longer can be upgraded.
 # @onready var weapon_info = get_parent().find_child("Player").find_child("Gun").weapon_levels
@@ -22,15 +20,15 @@ func randomize_buttons():
 	randomize_button(buttons[2])
 
 func randomize_button(button):
-	var upgrade_type = randi_range(0, 1)
+	var upgrade_type = randi_range(0, 4) #Weapons are less likely to appear
 	var selected = 0
-	if upgrade_type == 0:
-		selected = randi_range(0, 2) #stats
-	elif upgrade_type == 1:
+	if upgrade_type <= 2:
+		selected = randi_range(0, 4) #stats
+	elif upgrade_type <= 4:
 		selected = randi_range(8, 15)#weapons
 	if upgrades[selected][0] in already_picked: #Checks whether option has already been chosen
 		randomize_button(button)
-	elif upgrades[selected][1] >= 3 and upgrade_type == 1: #checks whether weapon is level 3, if so then loops
+	elif upgrades[selected][1] >= 3 and upgrade_type >= 3: #checks whether weapon is level 3, if so then loops
 		randomize_button(button)
 	else:
 		var icon_x = selected * 32

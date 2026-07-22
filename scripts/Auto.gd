@@ -8,13 +8,11 @@ func get_player_damage():
 	return player_damage
 
 #if level is -1, then weapon is not yet unlocked.
-var weapon_levels = null
+var weapon_levels = DataTransfer.icons.duplicate(true)
 var lantern = -1 #required
 
 func _ready():
-	weapon_levels = DataTransfer.icons.duplicate()
 	weapon_levels = weapon_levels.slice(8, 16)
-	print(weapon_levels)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
@@ -80,9 +78,9 @@ func swing_sword():
 		%ShootingPoint.add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
 		if weapon_levels[2][1] < 2:
-			%sword.wait_time = 2.0
+			%sword.wait_time = 1.0
 		elif weapon_levels[2][1] >= 2:
-			%sword.wait_time = (2.0 * 0.75)
+			%sword.wait_time = (1.0 * 0.75)
 
 func fire_beam():
 	if weapon_levels[3][1] != -1:
@@ -126,9 +124,9 @@ func shoot_sniper():
 		new_bullet.projectile_damage = weapon_damage
 		new_bullet.pierce = weapon_pierce
 		if weapon_levels[4][1] < 2:
-			%sniper.wait_time = 4
+			%sniper.wait_time = 3.25
 		elif weapon_levels[4][1] >= 2:
-			%sniper.wait_time = (4 * 0.8)
+			%sniper.wait_time = (3.25 * 0.8)
 
 func shoot_gatlng():
 	if weapon_levels[5][1] != -1:

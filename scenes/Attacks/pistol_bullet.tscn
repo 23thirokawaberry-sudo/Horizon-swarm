@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bvcadlfp2or0k"]
 
 [ext_resource type="Script" uid="uid://c5pyprdeva4ei" path="res://scripts/pistol_bullet.gd" id="1_m3uqi"]
-[ext_resource type="Texture2D" uid="uid://dvbv8iq1fs50r" path="res://assets/sprites/misc/Gun bullet.png" id="2_kftki"]
+[ext_resource type="Texture2D" uid="uid://cdqoi67mavi4o" path="res://assets/sprites/misc/weapon_sprites.png" id="2_m3uqi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tah1u"]
 radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kftki"]
+atlas = ExtResource("2_m3uqi")
+region = Rect2(20, 4, 8, 8)
 
 [node name="Bullet" type="Area2D" unique_id=892918341]
 top_level = true
@@ -16,6 +20,7 @@ script = ExtResource("1_m3uqi")
 shape = SubResource("CircleShape2D_tah1u")
 
 [node name="GunBullet" type="Sprite2D" parent="." unique_id=1367069972]
-texture = ExtResource("2_kftki")
+rotation = 2.3561945
+texture = SubResource("AtlasTexture_kftki")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

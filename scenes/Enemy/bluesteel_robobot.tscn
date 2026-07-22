@@ -1,30 +1,30 @@
-[gd_scene format=3 uid="uid://bxbjmh81vdik4"]
+[gd_scene format=3 uid="uid://56mnj3i652lf"]
 
-[ext_resource type="Script" uid="uid://yogt55375mgu" path="res://scripts/Enemy/robobot.gd" id="1_k6sbu"]
-[ext_resource type="Texture2D" uid="uid://dvyyifo8pp77t" path="res://assets/sprites/enemy/Robobot (1).png" id="2_k6sbu"]
+[ext_resource type="Script" uid="uid://casfyv366oc5a" path="res://scripts/Enemy/bluesteel_robobot.gd" id="1_bhhxr"]
+[ext_resource type="Texture2D" uid="uid://dvyyifo8pp77t" path="res://assets/sprites/enemy/Robobot (1).png" id="2_6hj2f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eoffg"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5d34"]
 radius = 8.181818
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pslor"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfrv2"]
 radius = 8.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6mbed"]
-atlas = ExtResource("2_k6sbu")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fejd"]
+atlas = ExtResource("2_6hj2f")
+region = Rect2(0, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoffg"]
-atlas = ExtResource("2_k6sbu")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj2wl"]
+atlas = ExtResource("2_6hj2f")
+region = Rect2(16, 48, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_aoiwd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k44dq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6mbed")
+"texture": SubResource("AtlasTexture_3fejd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eoffg")
+"texture": SubResource("AtlasTexture_dj2wl")
 }],
 "loop": true,
 "name": &"Walk",
@@ -35,7 +35,7 @@ animations = [{
 collision_layer = 2
 collision_mask = 18
 motion_mode = 1
-script = ExtResource("1_k6sbu")
+script = ExtResource("1_bhhxr")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
 unique_name_in_owner = true
@@ -46,7 +46,7 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
 position = Vector2(0, 3.9999995)
 scale = Vector2(1.1, 1.1)
-shape = SubResource("CircleShape2D_eoffg")
+shape = SubResource("CircleShape2D_k5d34")
 
 [node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
 unique_name_in_owner = true
@@ -54,12 +54,12 @@ wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
 position = Vector2(0, -9)
-shape = SubResource("CircleShape2D_pslor")
+shape = SubResource("CircleShape2D_wfrv2")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_aoiwd")
+sprite_frames = SubResource("SpriteFrames_k44dq")
 animation = &"Walk"
 autoplay = "Walk"
 

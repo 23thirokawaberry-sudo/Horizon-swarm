@@ -3,8 +3,8 @@ extends CharacterBody2D
 #basic enemy stats.
 var max_health = 40.0
 var health = 40.0
-var damage = 5.0
-const SPEED = 5.0
+var damage = 4.0
+const SPEED = 3.0
 const FIRERATE = [4.5, 4.5]
 const BURST = 1
 var cash_drop = 6.0

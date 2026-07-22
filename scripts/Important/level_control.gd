@@ -15,11 +15,14 @@ func _on_level_up_level_up_selected():
 	elif info == 2:
 		%Player.regen += 0.5
 		%Player.health += 60.0
+	elif info == 3:
+		%Player.defense += 1.0
+	elif info == 4:
+		%Player.speed += 3.0
 	elif info <= 7:
 		print("temp")
 	elif info <= 15:
 		%Player.get_node("Gun").weapon_levels[info - 8][1] += 1
-		print(info)
 	else:
 		print("Hi")
 	%Player.stat_upgraded()

@@ -3,7 +3,7 @@ extends CharacterBody2D
 #basic enemy stats.
 var health = 18.0
 var DAMAGE = 2.0
-const SPEED = 24.0
+const SPEED = 20.0
 var cash_drop = 1.0
 
 var touching = null #global variable for whether the enemy is touching player or not.

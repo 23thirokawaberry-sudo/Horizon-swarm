@@ -1,7 +1,50 @@
 [gd_scene format=3 uid="uid://ky48wlq5l00e"]
 
 [ext_resource type="Script" uid="uid://oko7i22tjoiu" path="res://scripts/moving_projectile.gd" id="1_yi5h2"]
-[ext_resource type="Texture2D" uid="uid://cnmlndeow67b1" path="res://assets/sprites/misc/Sword_slash.png" id="2_yi5h2"]
+[ext_resource type="Texture2D" uid="uid://cdqoi67mavi4o" path="res://assets/sprites/misc/weapon_sprites.png" id="2_yi5h2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xldjp"]
+atlas = ExtResource("2_yi5h2")
+region = Rect2(0, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvn63"]
+atlas = ExtResource("2_yi5h2")
+region = Rect2(8, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b78ue"]
+atlas = ExtResource("2_yi5h2")
+region = Rect2(16, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuvty"]
+atlas = ExtResource("2_yi5h2")
+region = Rect2(24, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6o5a"]
+atlas = ExtResource("2_yi5h2")
+region = Rect2(32, 32, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vah3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xldjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvn63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b78ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuvty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6o5a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="Bullet" type="Area2D" unique_id=892918341]
 top_level = true
@@ -12,9 +55,12 @@ script = ExtResource("1_yi5h2")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212043490]
 polygon = PackedVector2Array(0, 0, 7, 17, 12, 16, 16, 14, 20, 11, 23, 6, 24, 0, 23, -6, 20, -11, 16, -14, 12, -16, 12, -16, 7, -17)
 
-[node name="SwordSlash" type="Sprite2D" parent="." unique_id=2002676523]
-position = Vector2(15.5, 4.7683716e-07)
-scale = Vector2(4.375, 3.5)
-texture = ExtResource("2_yi5h2")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=283423216]
+position = Vector2(23.999998, 0)
+scale = Vector2(6, 2.125)
+sprite_frames = SubResource("SpriteFrames_vah3a")
+frame = 4
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

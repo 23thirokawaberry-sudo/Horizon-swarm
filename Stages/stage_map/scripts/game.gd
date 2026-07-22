@@ -2,6 +2,8 @@ extends Node2D
 var level_menu = false
 var paused = false
 var timer = 0
+@onready var transition = $Transition.get_child(0).get_child(2)
+
 
 var credits_gain = 0
 
@@ -16,6 +18,7 @@ const STAGE_DATA = [
 	preload("res://Stages/stage_wave/scenes/handler_4.tscn")]
 
 func _ready():
+	transition.play("open")
 	enemies = STAGE_DATA[stage].instantiate()
 	print(enemies, stage)
 	enemies.name = "Enemies"
@@ -48,6 +51,8 @@ func _on_player_death():
 	get_tree().paused = true
 	
 func _on_button_pressed():
-	get_tree().paused = false
 	DataTransfer.credits += credits_gain
+	transition.play("close")
+	await get_tree().create_timer(0.45).timeout
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/Important/title.tscn")

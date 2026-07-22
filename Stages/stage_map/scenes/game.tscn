@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c38avxk5rth5d" path="res://scenes/Important/player.tscn" id="2_d1gyb"]
 [ext_resource type="PackedScene" uid="uid://c6b1yc1yrxrxv" path="res://scenes/Important/level_control.tscn" id="3_d1gyb"]
 [ext_resource type="PackedScene" uid="uid://4ku63ex7pyaa" path="res://Stages/stage_wave/scenes/stage_layout.tscn" id="4_aougo"]
+[ext_resource type="PackedScene" uid="uid://buihhmdvumyua" path="res://scenes/Important/transition.tscn" id="7_yssq7"]
 [ext_resource type="PackedScene" uid="uid://c6noa6216a0mi" path="res://scenes/Important/level_up.tscn" id="9_adkh5"]
 [ext_resource type="PackedScene" uid="uid://cp7g0xhdfqdmq" path="res://scenes/Important/pause.tscn" id="10_56vhb"]
 
@@ -145,6 +146,9 @@ visible = false
 unique_name_in_owner = true
 process_mode = 3
 visible = false
+
+[node name="Transition" parent="." unique_id=147129976 instance=ExtResource("7_yssq7")]
+process_mode = 3
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="level_up" from="Player" to="Level" method="_on_player_level_up"]

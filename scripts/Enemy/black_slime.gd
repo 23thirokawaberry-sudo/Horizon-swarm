@@ -3,7 +3,7 @@ extends CharacterBody2D
 var max_health = 600.0
 var health = 600.0
 var damage = 20.0
-var speed = 16.0
+var speed = 12.0
 var touching = null
 var is_dead = false
 var cash_drop = 20.0

@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://bcna4ehgd0v40"]
 
 [ext_resource type="Script" uid="uid://cf14wyjr7bw7k" path="res://scripts/minigun_bullet.gd" id="1_b340n"]
+[ext_resource type="Texture2D" uid="uid://cdqoi67mavi4o" path="res://assets/sprites/misc/weapon_sprites.png" id="2_oh5ji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oh5ji"]
 radius = 5.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fkucu"]
-load_path = "res://.godot/imported/Gun bullet.png-8b66ba86d2514752fc6ba060edb7ba8b.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkucu"]
+atlas = ExtResource("2_oh5ji")
+region = Rect2(36, 4, 8, 8)
 
 [node name="Bullet" type="Area2D" unique_id=892918341]
 top_level = true
@@ -20,6 +22,6 @@ shape = SubResource("CircleShape2D_oh5ji")
 
 [node name="GunBullet" type="Sprite2D" parent="." unique_id=1367069972]
 scale = Vector2(2, 2)
-texture = SubResource("CompressedTexture2D_fkucu")
+texture = SubResource("AtlasTexture_fkucu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

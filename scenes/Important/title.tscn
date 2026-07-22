@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqx7j60wnoloq" path="res://scripts/Important/title.gd" id="1_ar41x"]
 [ext_resource type="Texture2D" uid="uid://cqr1eiyl0ncuo" path="res://assets/sprites/enemy/Slime sprites (1).png" id="2_n853x"]
+[ext_resource type="PackedScene" uid="uid://buihhmdvumyua" path="res://scenes/Important/transition.tscn" id="3_wadwv"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n853x"]
 load_path = "res://.godot/imported/icon.png-c52eeea23df6c0097c8e3bf4c4229674.ctex"
@@ -417,6 +418,9 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Transition" parent="." unique_id=147129976 instance=ExtResource("3_wadwv")]
+visible = false
 
 [connection signal="pressed" from="Label/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Label/Difficulty" to="." method="_on_difficulty_pressed"]

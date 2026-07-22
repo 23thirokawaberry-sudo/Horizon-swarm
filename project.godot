@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 DataTransfer="*uid://c02cx8xd2uc77"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 ui_left={
