@@ -3,7 +3,7 @@ extends CharacterBody2D
 #basic enemy stats.
 var max_health = 64.0
 var health = 60.0
-const DAMAGE = 10.0
+var damage = 10.0
 const SPEED = 28.0
 const DEFENSE = 21.0
 var cash_drop = 6.0
@@ -40,7 +40,7 @@ func _on_hitbox_body_exited(body: Node2D):
 func deal_damage():
 	#damages player
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(DAMAGE)
+		touching.recieve_damage(damage)
 
 func take_damage(incoming_damage):
 	var true_damage = (incoming_damage - DEFENSE)

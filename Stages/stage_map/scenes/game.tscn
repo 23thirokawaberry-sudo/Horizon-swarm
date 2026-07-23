@@ -149,6 +149,7 @@ visible = false
 
 [node name="Transition" parent="." unique_id=147129976 instance=ExtResource("7_yssq7")]
 process_mode = 3
+z_index = 100
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="level_up" from="Player" to="Level" method="_on_player_level_up"]

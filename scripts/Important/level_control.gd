@@ -25,6 +25,7 @@ func _on_level_up_level_up_selected():
 		%Player.get_node("Gun").weapon_levels[info - 8][1] += 1
 	else:
 		print("Hi")
+	%LevelUp.upgrades[info][1] += 1
 	%Player.stat_upgraded()
 	%LevelUp.visible = false
 	get_tree().paused = false

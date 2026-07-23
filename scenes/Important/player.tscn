@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b2leaxs8ci3jw" path="res://scripts/Important/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://clburn1r0p5cj" path="res://assets/sprites/Player/Player (3).png" id="2_c7irj"]
 [ext_resource type="PackedScene" uid="uid://dqvthrmc4snee" path="res://scenes/Important/gun.tscn" id="3_cc8a3"]
+[ext_resource type="Texture2D" uid="uid://c20ukscucacxg" path="res://assets/sprites/Player/ClassPortrait.png" id="4_cc8a3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc8a3"]
 atlas = ExtResource("2_c7irj")
@@ -77,6 +78,10 @@ bg_color = Color(0.36078432, 0.36078432, 0.36078432, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8vts"]
 bg_color = Color(0.37143427, 0.5854644, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_olm6w"]
+atlas = ExtResource("4_cc8a3")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovrr2"]
 bg_color = Color(1, 0, 0.4, 1)
 
@@ -123,14 +128,21 @@ collision_mask = 4
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_c7irj")
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=2143117154]
+[node name="PlayerDetails" type="ColorRect" parent="." unique_id=823774223]
+offset_left = -191.0
+offset_top = -107.0
+offset_right = -43.0
+offset_bottom = -73.0
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerDetails" unique_id=332399576]
 unique_name_in_owner = true
 z_index = 2
 custom_minimum_size = Vector2(0, 10)
-offset_left = -190.0
-offset_top = -106.0
-offset_right = -78.200005
-offset_bottom = -93.0
+layout_mode = 0
+offset_left = 35.0
+offset_top = 1.0
+offset_right = 146.79999
+offset_bottom = 16.0
 theme_override_font_sizes/font_size = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_c7irj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cc8a3")
@@ -138,16 +150,34 @@ max_value = 50.0
 value = 50.0
 show_percentage = false
 
-[node name="XpBar" type="ProgressBar" parent="." unique_id=1629554974]
+[node name="XpBar" type="ProgressBar" parent="PlayerDetails" unique_id=2066232537]
 unique_name_in_owner = true
 z_index = 2
-offset_left = -190.0
-offset_top = -91.0
-offset_right = -78.200005
-offset_bottom = -78.0
+layout_mode = 0
+offset_left = 35.0
+offset_top = 18.0
+offset_right = 146.79999
+offset_bottom = 33.0
 theme_override_styles/background = SubResource("StyleBoxFlat_pse83")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d8vts")
 show_percentage = false
+
+[node name="Credits" type="Label" parent="PlayerDetails" unique_id=106343956]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = 35.0
+offset_right = 41.0
+offset_bottom = 58.0
+text = "CRED"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerDetails" unique_id=968172491]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 33.0
+offset_bottom = 33.0
+texture = SubResource("AtlasTexture_olm6w")
 
 [node name="BossBar" type="ProgressBar" parent="." unique_id=639803728]
 visible = false

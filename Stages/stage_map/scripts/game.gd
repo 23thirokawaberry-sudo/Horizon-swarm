@@ -1,6 +1,7 @@
 extends Node2D
 var level_menu = false
 var paused = false
+var win_triggered = false
 var timer = 0
 @onready var transition = $Transition.get_child(0).get_child(2)
 
@@ -28,9 +29,11 @@ func _ready():
 
 func _process(delta):
 	timer += delta
-	if timer > enemies.win_time and enemies.find_child("Boss").get_child_count() == 0:
+	if timer > enemies.win_time and enemies.find_child("Boss").get_child_count() == 0 and win_triggered == false:
+		win_triggered = true
 		%Win.visible = true
 		get_tree().paused = true
+		credits_gain *= 1.5
 		%GainedMoney.text = "%.0f Credits gained" % [credits_gain]
 
 func time():

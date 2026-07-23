@@ -5,8 +5,9 @@ var upgrade_option = 0
 
 signal level_up_selected
 #this will need a lot of explaining
-var upgrades = DataTransfer.icons.duplicate() #Weapon upgrades - each weapon has a certain max level, after which they no longer can be upgraded.
+var upgrades = DataTransfer.icons.duplicate(true) #Weapon upgrades - each weapon has a certain max level, after which they no longer can be upgraded.
 # @onready var weapon_info = get_parent().find_child("Player").find_child("Gun").weapon_levels
+var description = DataTransfer.descriptions
 var already_picked = []
 
 var selected_pos = 0 #variable for selecting random spot in list
@@ -20,15 +21,15 @@ func randomize_buttons():
 	randomize_button(buttons[2])
 
 func randomize_button(button):
-	var upgrade_type = randi_range(0, 4) #Weapons are less likely to appear
+	var upgrade_type = randi_range(0, 1) #Weapons are less likely to appear
 	var selected = 0
-	if upgrade_type <= 2:
+	if upgrade_type == 0:
 		selected = randi_range(0, 4) #stats
-	elif upgrade_type <= 4:
+	elif upgrade_type == 1:
 		selected = randi_range(8, 15)#weapons
 	if upgrades[selected][0] in already_picked: #Checks whether option has already been chosen
 		randomize_button(button)
-	elif upgrades[selected][1] >= 3 and upgrade_type >= 3: #checks whether weapon is level 3, if so then loops
+	elif upgrades[selected][1] >= 3 and upgrade_type == 1: #checks whether weapon is level 3, if so then loops
 		randomize_button(button)
 	else:
 		var icon_x = selected * 32
@@ -36,8 +37,12 @@ func randomize_button(button):
 		while icon_x >= 256:
 			icon_x -= 256
 			icon_y += 1
-		button.get_node("TextureRect").texture.region = Rect2(icon_x, icon_y * 32, 32, 32)
-		button.get_node("Label").text = upgrades[selected][0]
+		button.find_child("TextureRect").texture.region = Rect2(icon_x, icon_y * 32, 32, 32)
+		button.find_child("Name").text = upgrades[selected][0]
+		if selected < 8:
+			button.find_child("Description").text = description[selected]
+		else:
+			button.find_child("Description").text = description[selected][upgrades[selected][1] + 1]
 		already_picked.append(upgrades[selected][0])
 
 func limited_upgrades(button):

@@ -24,6 +24,10 @@ DataTransfer="*uid://c02cx8xd2uc77"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 ui_left={

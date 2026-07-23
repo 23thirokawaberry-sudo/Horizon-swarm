@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfx7n"]
 atlas = ExtResource("2_mk3jo")
-region = Rect2(224, 96, 32, 32)
+region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mk3jo"]
 atlas = ExtResource("2_mk3jo")
@@ -18,84 +18,192 @@ region = Rect2(192, 32, 32, 32)
 [node name="Level up" type="CanvasLayer" unique_id=1901936953]
 script = ExtResource("1_mk3jo")
 
-[node name="Button" type="Button" parent="." unique_id=1031917245]
-offset_left = 320.0
-offset_top = 240.0
-offset_right = 360.0
-offset_bottom = 303.0
-scale = Vector2(3.2518234, 3.2518234)
-size_flags_horizontal = 4
+[node name="Button" type="ColorRect" parent="." unique_id=1410072858]
+offset_left = 205.4453
+offset_top = 156.54933
+offset_right = 265.4453
+offset_bottom = 276.54932
+scale = Vector2(3.252, 3.252)
+color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="Button" unique_id=1538193783]
+[node name="ColorRect" type="ColorRect" parent="Button" unique_id=81084087]
 layout_mode = 0
-offset_top = 40.0
-offset_right = 40.0
-offset_bottom = 63.0
+offset_left = 2.0
+offset_top = 60.0
+offset_right = 58.0
+offset_bottom = 75.0
+color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
+[node name="Name" type="Label" parent="Button" unique_id=2082664993]
+layout_mode = 0
+offset_top = 60.00001
+offset_right = 60.0
+offset_bottom = 75.00001
 theme_override_constants/line_spacing = -2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 10
 text = "TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
+
+[node name="Description" type="Label" parent="Button" unique_id=2138421818]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 77.0
+offset_right = 58.0
+offset_bottom = 117.999985
+theme_override_font_sizes/font_size = 6
+text = "LOngTExtYoLOL"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Button" unique_id=711662502]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 60.0
+offset_bottom = 60.0
 texture = SubResource("AtlasTexture_vfx7n")
 
-[node name="Button2" type="Button" parent="." unique_id=1590368621]
-offset_left = 512.0
-offset_top = 240.0
-offset_right = 552.0
-offset_bottom = 303.0
-scale = Vector2(3.2518234, 3.2518234)
+[node name="Button" type="Button" parent="Button" unique_id=1031917245]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.000008
+offset_top = -59.999992
+offset_right = 29.999992
+offset_bottom = 60.000023
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 41.5)
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Button2" unique_id=631728969]
+[node name="Button2" type="ColorRect" parent="." unique_id=1689630803]
+offset_left = 478.4453
+offset_top = 156.54933
+offset_right = 538.4453
+offset_bottom = 276.54932
+scale = Vector2(3.252, 3.252)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Button2" unique_id=1819544112]
 layout_mode = 0
-offset_top = 40.0
-offset_right = 40.0
-offset_bottom = 63.0
+offset_left = 2.0
+offset_top = 60.0
+offset_right = 58.0
+offset_bottom = 75.0
+color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
+[node name="Name" type="Label" parent="Button2" unique_id=1974263412]
+layout_mode = 0
+offset_top = 60.000004
+offset_right = 60.0
+offset_bottom = 75.0
 theme_override_constants/line_spacing = -2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 10
 text = "TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
+
+[node name="Description" type="Label" parent="Button2" unique_id=1572383644]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 77.0
+offset_right = 58.0
+offset_bottom = 117.999985
+theme_override_font_sizes/font_size = 6
+text = "LOngTExtYoLOL"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Button2" unique_id=150531405]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 60.0
+offset_bottom = 60.0
 texture = SubResource("AtlasTexture_mk3jo")
 
-[node name="Button3" type="Button" parent="." unique_id=1421695153]
-offset_left = 704.0
-offset_top = 239.99997
-offset_right = 744.0
-offset_bottom = 302.99997
-scale = Vector2(3.2518234, 3.2518234)
+[node name="Button2" type="Button" parent="Button2" unique_id=1590368621]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -59.999992
+offset_right = 30.0
+offset_bottom = 60.000023
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 41.5)
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Button3" unique_id=1667822299]
+[node name="Button3" type="ColorRect" parent="." unique_id=118589288]
+offset_left = 751.4453
+offset_top = 156.54933
+offset_right = 811.4453
+offset_bottom = 276.54932
+scale = Vector2(3.252, 3.252)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Button3" unique_id=168598984]
 layout_mode = 0
-offset_top = 40.0
-offset_right = 40.0
-offset_bottom = 63.0
+offset_left = 2.0
+offset_top = 60.0
+offset_right = 58.0
+offset_bottom = 75.0
+color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
+[node name="Name" type="Label" parent="Button3" unique_id=1667822299]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 75.0
 theme_override_constants/line_spacing = -2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 10
 text = "TEXT"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
+[node name="Description" type="Label" parent="Button3" unique_id=2060439677]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 77.0
+offset_right = 58.0
+offset_bottom = 118.000015
+theme_override_font_sizes/font_size = 6
+text = "LOngTExtYoLOL"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="TextureRect" type="TextureRect" parent="Button3" unique_id=1913086076]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 60.0
+offset_bottom = 60.0
 texture = SubResource("AtlasTexture_3cdko")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[node name="Button3" type="Button" parent="Button3" unique_id=1421695153]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -59.999992
+offset_right = 30.0
+offset_bottom = 60.000023
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 41.5)
+size_flags_horizontal = 4
+
+[connection signal="pressed" from="Button/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3/Button3" to="." method="_on_button_3_pressed"]

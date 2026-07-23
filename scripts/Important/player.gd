@@ -46,6 +46,8 @@ func _process(delta):
 	else:
 		boss = null
 		$BossBar.visible = false
+	
+	%Credits.text = "Credits: %0.0f" % [get_parent().credits_gain]
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
