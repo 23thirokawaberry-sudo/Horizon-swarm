@@ -13,6 +13,7 @@ var stage = DataTransfer.selected_stage
 var enemies = null
 
 const STAGE_DATA = [
+	preload("res://Stages/stage_wave/scenes/tutorial_stage.tscn"),
 	preload("res://Stages/stage_wave/scenes/enemy_spawn_handler.tscn"),
 	preload("res://Stages/stage_wave/scenes/handler_2.tscn"),
 	preload("res://Stages/stage_wave/scenes/handler_3.tscn"),

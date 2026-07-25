@@ -10,14 +10,14 @@ var icons = [["Damage", 0, 125], ["Max health", 0, 125], ["Regen", 0, 125], ["De
 
 var descriptions = ["Increase damage by 10%", "Increase max health by 10", "Improve regeneration by 1/s", "Reduce incoming damage by 1",
 					"Increase speed by 3", "will increase collection area but rn does nothing lol :son:", "will increase critical chance :krgzani_alternative_entity:", "will do something :grimace:", 
-					["Unlock pistol", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"], 
-					["Unlock shotgun", "Increase damage by 25%", "Reduce firerate by 20%", "Increase bullets per burst by 2"], 
-					["Unlock sword", "Increase damage by 25%", "Reduce firerate by 25%", "Increase damage by another 25%"], 
-					["Unlock beam", "Increase damage by 25%", "Reduce firerate by 20%", "Increase beam width by 2x"], 
-					["Unlock sniper", "Increase damage by 25%", "Reduce firerate by 20%", "Increase piercing limit by 2"], 
-					["Unlock gatling", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"], 
-					["Unlock lantern", "Increase damage by 25%", "Increase orbit speed by 20%", "Increase orbiting lanterns by 1"], 
-					["Unlock sapper", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"]]
+					["Unlock pistol \n Fires bullets towards your cursor", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"], 
+					["Unlock shotgun \n Fires 5 bullets in a cone. Each projectile indivisually deals less damage than the pistol.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase bullets per burst by 2"], 
+					["Unlock sword \n Deal high damage to all enemies in an area directly in front of yourself", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"], 
+					["Unlock beam \n Fires a beam that damages all enemies in it's path. Deals low damage and has a slow firerate.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase beam width by 2x"], 
+					["Unlock sniper \n Pierces through up to 5 enemies, dealing high damage to each of them. Has a very slow firerate.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase piercing limit by 3"], 
+					["Unlock gatling \n Fires small inaccurate bullets at a rapid pace. Deals very low damage, but fires quickly.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"], 
+					["Unlock lantern \n Orbits around you, damaging enemies it collides with", "Increase damage by 25%", "Increase orbit speed by 20%", "Increase orbiting lanterns by 1"], 
+					["Unlock sapper \n Targets the weakest enemy on the field, rapidly draining their health. Deals very low damage, but hits very fast.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"]]
 
 
 #var resources = [] #will use later. Purpouse is to move clear money from the game to title.

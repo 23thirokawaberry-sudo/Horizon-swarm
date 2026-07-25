@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dc782ira5jk7j"]
+
+[ext_resource type="Script" uid="uid://0mboafmdt2x2" path="res://Stages/stage_wave/scripts/tutorial_stage.gd" id="1_1pwvg"]
+
+[node name="enemies" type="Node2D" unique_id=265994804]
+script = ExtResource("1_1pwvg")
+
+[node name="SpawnInterval" type="Timer" parent="." unique_id=416795265]
+
+[node name="Boss" type="Node2D" parent="." unique_id=1409784490]
+
+[node name="Xp" type="Node2D" parent="." unique_id=1556898121]
+
+[node name="Dialog" type="CanvasLayer" parent="." unique_id=1974761368]
+
+[node name="ColorRect" type="ColorRect" parent="Dialog" unique_id=841383323]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -172.0
+offset_right = 260.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Dialog/ColorRect" unique_id=1189685838]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -53.5
+offset_right = 257.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dialoging man
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DialogTimer" type="Timer" parent="Dialog" unique_id=1815623087]
+unique_name_in_owner = true
+wait_time = 8.0
+one_shot = true
+
+[connection signal="timeout" from="SpawnInterval" to="." method="_wave_system_spacing"]
+[connection signal="timeout" from="Dialog/DialogTimer" to="." method="_on_dialog_timer_timeout"]

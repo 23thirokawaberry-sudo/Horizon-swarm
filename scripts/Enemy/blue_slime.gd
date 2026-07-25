@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
+var max_health = 32.0
 var health = 32.0
-const DAMAGE = 4.0
+var damage = 4.0
 const SPEED = 24.0
 var touching = null
 var is_dead = false
@@ -31,7 +32,7 @@ func _on_hitbox_body_exited(body: Node2D):
 
 func deal_damage():
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(DAMAGE)
+		touching.recieve_damage(damage)
 
 func take_damage(incoming_damage):
 	health -= incoming_damage

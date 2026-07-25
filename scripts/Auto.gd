@@ -66,11 +66,11 @@ func swing_sword():
 	if weapon_levels[2][1] != -1:
 		var weapon_damage = get_player_damage()
 		if weapon_levels[2][1] == 0:
-			weapon_damage = (weapon_damage * 1.2)
+			weapon_damage = (weapon_damage * 1.5)
 		elif weapon_levels[2][1] < 3:
-			weapon_damage = (weapon_damage * 1.2) * 1.25
+			weapon_damage = (weapon_damage * 1.5) * 1.25
 		elif weapon_levels[2][1] >= 3:
-			weapon_damage = (weapon_damage * 1.2) * 1.5
+			weapon_damage = (weapon_damage * 1.5) * 1.5
 		const BULLET = preload("res://scenes/Attacks/sword_slash.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
@@ -78,9 +78,9 @@ func swing_sword():
 		%ShootingPoint.add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
 		if weapon_levels[2][1] < 2:
-			%sword.wait_time = 1.0
+			%sword.wait_time = 1.1
 		elif weapon_levels[2][1] >= 2:
-			%sword.wait_time = (1.0 * 0.75)
+			%sword.wait_time = (1.1 * 0.8)
 
 func fire_beam():
 	if weapon_levels[3][1] != -1:

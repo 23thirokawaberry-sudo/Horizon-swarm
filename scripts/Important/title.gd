@@ -64,17 +64,21 @@ func _on_stages_pressed():
 	$Menu.visible = false
 	$Stages.visible = true
 	current_page = $Stages
-func _on_stage_1_pressed():
+
+func _on_tutorial_pressed():
 	DataTransfer.selected_stage = 0
 	%Start.visible = true
-func _on_stage_2_pressed():
+func _on_stage_1_pressed():
 	DataTransfer.selected_stage = 1
 	%Start.visible = true
-func _on_stage_3_pressed():
+func _on_stage_2_pressed():
 	DataTransfer.selected_stage = 2
 	%Start.visible = true
-func _on_stage_4_pressed():
+func _on_stage_3_pressed():
 	DataTransfer.selected_stage = 3
+	%Start.visible = true
+func _on_stage_4_pressed():
+	DataTransfer.selected_stage = 4
 	%Start.visible = true
 func _on_start_pressed():
 	if DataTransfer.selected_stage != -1:
