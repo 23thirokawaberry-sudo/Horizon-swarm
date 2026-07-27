@@ -93,6 +93,7 @@ _data = {
 [node name="Transition" type="Node2D" unique_id=147129976]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=906615169]
+visible = false
 
 [node name="Top" type="ColorRect" parent="CanvasLayer" unique_id=1987261368]
 offset_left = -576.0

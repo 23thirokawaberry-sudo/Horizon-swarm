@@ -12,17 +12,11 @@ var stage = DataTransfer.selected_stage
 
 var enemies = null
 
-const STAGE_DATA = [
-	preload("res://Stages/stage_wave/scenes/tutorial_stage.tscn"),
-	preload("res://Stages/stage_wave/scenes/enemy_spawn_handler.tscn"),
-	preload("res://Stages/stage_wave/scenes/handler_2.tscn"),
-	preload("res://Stages/stage_wave/scenes/handler_3.tscn"),
-	preload("res://Stages/stage_wave/scenes/handler_4.tscn")]
+var stage_data = DataTransfer.stage_data
 
 func _ready():
 	transition.play("open")
-	enemies = STAGE_DATA[stage].instantiate()
-	print(enemies, stage)
+	enemies = stage_data[stage][0].instantiate()
 	enemies.name = "Enemies"
 	add_child(enemies)
 	$StageLayout.get_child(stage).visible = true
@@ -34,8 +28,10 @@ func _process(delta):
 		win_triggered = true
 		%Win.visible = true
 		get_tree().paused = true
+		%GainedMoney.text = "%.0f + %.0f Credits gained" % [credits_gain, credits_gain * 0.5]
 		credits_gain *= 1.5
-		%GainedMoney.text = "%.0f Credits gained" % [credits_gain]
+		if stage_data[stage][2] == false:
+			stage_data[stage][2] = true
 
 func time():
 	return $Enemies.time_elapsed

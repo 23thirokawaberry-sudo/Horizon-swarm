@@ -8,19 +8,8 @@ func _on_player_level_up():
 
 func _on_level_up_level_up_selected():
 	var info = %LevelUp.upgrade_option
-	if info == 0:
-		%Player.damage_multi += 0.2
-	elif info == 1:
-		%Player.max_health += 10
-	elif info == 2:
-		%Player.regen += 0.5
-		%Player.health += 60.0
-	elif info == 3:
-		%Player.defense += 1.0
-	elif info == 4:
-		%Player.speed += 3.0
-	elif info <= 7:
-		print("temp")
+	if info < 8:
+		%Player.temp_levels[info] += 1
 	elif info <= 15:
 		%Player.get_node("Gun").weapon_levels[info - 8][1] += 1
 	else:

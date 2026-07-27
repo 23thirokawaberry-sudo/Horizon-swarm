@@ -157,36 +157,11 @@ offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Stages/ScrollContainer" unique_id=496566475]
+[node name="Stages" type="HBoxContainer" parent="Stages/ScrollContainer" unique_id=496566475]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Tutorial" type="Button" parent="Stages/ScrollContainer/HBoxContainer" unique_id=316779658]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "               Tutorial               "
-
-[node name="Stage1" type="Button" parent="Stages/ScrollContainer/HBoxContainer" unique_id=1143662521]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "               stage 1               "
-
-[node name="Stage2" type="Button" parent="Stages/ScrollContainer/HBoxContainer" unique_id=541239945]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "               stage 2               "
-
-[node name="Stage3" type="Button" parent="Stages/ScrollContainer/HBoxContainer" unique_id=1050257784]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "               stage 3               "
-
-[node name="Stage4" type="Button" parent="Stages/ScrollContainer/HBoxContainer" unique_id=1878309511]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "               stage 4               "
 
 [node name="Shop" type="Control" parent="." unique_id=1234853980]
 visible = false
@@ -217,10 +192,7 @@ offset_left = 32.0
 offset_top = 85.0
 offset_right = 277.0
 offset_bottom = 209.0
-text = "Stats (the menu isn't working 
-yet. this is the default, and 
-upgrades will be seperated 
-into each groups later.)"
+text = "Stats"
 
 [node name="Weapons" type="Button" parent="Shop" unique_id=499244194]
 layout_mode = 0
@@ -228,8 +200,7 @@ offset_left = 31.0
 offset_top = 222.0
 offset_right = 276.0
 offset_bottom = 346.0
-text = "NOT WORKING
-but it will be for weapons"
+text = "Weapons"
 
 [node name="Classes" type="Button" parent="Shop" unique_id=1277022613]
 layout_mode = 0
@@ -237,7 +208,7 @@ offset_left = 32.0
 offset_top = 363.0
 offset_right = 277.0
 offset_bottom = 487.0
-text = "🐟"
+text = "Classes"
 
 [node name="Panel" type="Control" parent="Shop" unique_id=1724664374]
 anchors_preset = 0
@@ -248,6 +219,7 @@ offset_bottom = 636.0
 
 [node name="Stats" type="Control" parent="Shop/Panel" unique_id=1333224756]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -259,54 +231,98 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="Shop/Panel/Weapons" unique_id=313489862]
-layout_mode = 0
-offset_left = 178.0
-offset_top = 70.0
-offset_right = 321.0
-offset_bottom = 266.0
-
-[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Weapons/Button" unique_id=235263099]
-layout_mode = 0
-offset_right = 143.0
-offset_bottom = 151.0
-texture = SubResource("AtlasTexture_p10tj")
-
-[node name="Label" type="Label" parent="Shop/Panel/Weapons/Button" unique_id=876040582]
-layout_mode = 0
-offset_top = 151.0
-offset_right = 143.0
-offset_bottom = 196.0
-text = "Strength"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Classes" type="Control" parent="Shop/Panel" unique_id=1509128257]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="Shop/Panel/Classes" unique_id=23857382]
+[node name="Default" type="Button" parent="Shop/Panel/Classes" unique_id=23857382]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 247.0
+offset_right = 142.0
+offset_bottom = 443.0
+
+[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Classes/Default" unique_id=710352039]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 151.0
+texture = SubResource("AtlasTexture_p10tj")
+
+[node name="Label" type="Label" parent="Shop/Panel/Classes/Default" unique_id=1273421472]
+layout_mode = 0
+offset_top = 151.0
+offset_right = 143.0
+offset_bottom = 196.0
+text = "Default"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Attacker" type="Button" parent="Shop/Panel/Classes" unique_id=1556294506]
 layout_mode = 0
 offset_left = 178.0
 offset_top = 70.0
 offset_right = 321.0
 offset_bottom = 266.0
 
-[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Classes/Button" unique_id=710352039]
+[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Classes/Attacker" unique_id=1751600062]
 layout_mode = 0
 offset_right = 143.0
 offset_bottom = 151.0
 texture = SubResource("AtlasTexture_p10tj")
 
-[node name="Label" type="Label" parent="Shop/Panel/Classes/Button" unique_id=1273421472]
+[node name="Label" type="Label" parent="Shop/Panel/Classes/Attacker" unique_id=1942472720]
 layout_mode = 0
 offset_top = 151.0
 offset_right = 143.0
 offset_bottom = 196.0
-text = "Strength"
+text = "Attacker
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tank" type="Button" parent="Shop/Panel/Classes" unique_id=1556531056]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 234.0
+offset_right = 493.0
+offset_bottom = 430.0
+
+[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Classes/Tank" unique_id=1360798944]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 151.0
+texture = SubResource("AtlasTexture_p10tj")
+
+[node name="Label" type="Label" parent="Shop/Panel/Classes/Tank" unique_id=949443161]
+layout_mode = 0
+offset_top = 151.0
+offset_right = 143.0
+offset_bottom = 196.0
+text = "Tank"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="The test" type="Button" parent="Shop/Panel/Classes" unique_id=1593414077]
+layout_mode = 0
+offset_left = 545.0
+offset_top = 181.0
+offset_right = 688.0
+offset_bottom = 377.0
+
+[node name="TextureRect" type="TextureRect" parent="Shop/Panel/Classes/The test" unique_id=1418324258]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 151.0
+texture = SubResource("AtlasTexture_p10tj")
+
+[node name="Label" type="Label" parent="Shop/Panel/Classes/The test" unique_id=1369842355]
+layout_mode = 0
+offset_top = 151.0
+offset_right = 143.0
+offset_bottom = 196.0
+text = "The test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -349,6 +365,7 @@ texture = SubResource("AtlasTexture_wadwv")
 layout_mode = 0
 offset_right = 491.0
 offset_bottom = 342.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Okay so here is all the enemies but since I'm lazy I still haven't done this yet and like a
 
 
@@ -363,60 +380,133 @@ text = "Okay so here is all the enemies but since I'm lazy I still haven't done 
 
 If you are reading this then this page is not finished yet, but here is relevant
 info for the enemies.
-Slimes - they move towards you. Black slime will speed up and increase damage
+Slimes - they Yap. Black slime will speed up and increase damage
 at half health.
-Tarnishes - they move towards you. they will constantly regenerate lost health.
-Robobots - they move towards you. They have defense which reduces incoming 
+Tarnishes - they YAP you. they will constantly regenerate lost health.
+Robobots - they Yap u. They have defense which reduces incoming 
 damage by a flat amount, down to 1 damage if the incoming damage is too low.
 Mage - fires projectiles towards you. Projectiles deal same damage as their
 contact damage.
 
-
+you don't need to read this since it's all written down up on that right there now
+sorry if it looks cluttered I don't think I will have this finished.
 
 also the return  button works so you can leave you aren't stuck here btw i just wanted to let you know and if you are reading this then wowowowow"
 
 [node name="Enemy" type="ScrollContainer" parent="Database" unique_id=92072157]
 layout_mode = 0
-offset_left = 16.0
-offset_right = 429.0
-offset_bottom = 487.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 710.0
+offset_bottom = 490.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Database/Enemy" unique_id=515364066]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Entry001" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=297096735]
+[node name="Entry000" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=297096735]
 layout_mode = 2
-text = "Green slime"
+text = "Green slime - Moves towards you
+"
 
-[node name="Entry002" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=837163780]
+[node name="Entry001" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=837163780]
 layout_mode = 2
 text = "Blue slime"
 
-[node name="Entry003" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=55498707]
+[node name="Entry002" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=55498707]
 layout_mode = 2
 text = "Red slime"
 
+[node name="Entry003" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1285090210]
+layout_mode = 2
+text = "Yellow slime
+
+"
+
 [node name="Entry004" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=169958812]
 layout_mode = 2
-text = "Black slime"
+text = "Black slime - Enrages at half health, increasing damage and speed
+"
 
 [node name="Entry005" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=834347293]
 layout_mode = 2
-text = "Tin robobot
-"
+text = "Tin robobot - Has defense that reduces damage by a flat amount (9)"
 
-[node name="Entry006" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=439478322]
+[node name="Entry006" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=25503019]
 layout_mode = 2
-text = "Purple tarnished
-"
+text = "Copper robobot - Has defense (15)"
 
-[node name="Entry007" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1665649104]
+[node name="Entry007" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1192988585]
 layout_mode = 2
-text = "Triangle mage
+text = "Steel robobot - Has defense (21)"
+
+[node name="Entry008" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=59269019]
+layout_mode = 2
+text = "Bluesteel robobot - Has defense (24). enrages at 1/5 health, increasing his defense a lot (50)"
+
+[node name="Entry009" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=439478322]
+layout_mode = 2
+text = "Purple tarnished - Regenerates 1/12 of max hp
+"
+
+[node name="Entry010" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=51214509]
+layout_mode = 2
+text = "Turquoize tarnished - Regenerates 1/10 of max hp
+"
+
+[node name="Entry011" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1665649104]
+layout_mode = 2
+text = "Triangle mage - Fires a projectile at you
 
 "
+
+[node name="Entry012" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=709506081]
+layout_mode = 2
+text = "Blitzer - Orbits around you from a distance, firing bullets in bursts of 3 in random intervals
+
+"
+
+[node name="UNRELEASED" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=884995442]
+layout_mode = 2
+text = "Every entry from below this is unreleased content
+
+"
+
+[node name="Entry013" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=755275391]
+layout_mode = 2
+text = "Pillar - Acts as a solid wall, hops around every now and then. Damages on landing.
+
+"
+
+[node name="Entry014" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1841032342]
+layout_mode = 2
+text = "Puppet - Survives a lethal strike, explodes on death
+"
+
+[node name="Entry015" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1744509611]
+layout_mode = 2
+text = "Cacti - Stays stationary, teleporting around occasionally. Enrages if damaged, moving quickly.
+"
+
+[node name="Entry016" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1187702635]
+layout_mode = 2
+text = "Projector - Creates a shield that protects allies from projectiles. Can recover shield after a moment.
+"
+
+[node name="Entry017" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=377407687]
+layout_mode = 2
+text = "Contained - Big boss - Moves in 'jumps', has high defense and health.
+At certain health thresholds, will move faster, and eventually breaks out.
+"
+
+[node name="Entry018" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1847940696]
+layout_mode = 2
+text = "Sentry - Stationary enemy that fires projectiles in 1 of 5 directions. Loses health constantly until it self destructs."
+
+[node name="Entry019" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1047284534]
+layout_mode = 2
+text = "Mecha - Deploys sentries while firing volleys of projectiles at you."
 
 [node name="Secret" type="Control" parent="." unique_id=1445367454]
 visible = false
@@ -425,7 +515,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Transition" parent="." unique_id=147129976 instance=ExtResource("3_wadwv")]
-visible = false
+z_index = -1
 
 [connection signal="pressed" from="Label/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Label/Difficulty" to="." method="_on_difficulty_pressed"]
@@ -434,10 +524,12 @@ visible = false
 [connection signal="pressed" from="Menu/Stages" to="." method="_on_stages_pressed"]
 [connection signal="pressed" from="Stages/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Stages/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage1" to="." method="_on_stage_1_pressed"]
-[connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage2" to="." method="_on_stage_2_pressed"]
-[connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage3" to="." method="_on_stage_3_pressed"]
-[connection signal="pressed" from="Stages/ScrollContainer/HBoxContainer/Stage4" to="." method="_on_stage_4_pressed"]
 [connection signal="pressed" from="Shop/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Shop/Stats" to="." method="_on_stats_pressed"]
+[connection signal="pressed" from="Shop/Weapons" to="." method="_on_weapons_pressed"]
+[connection signal="pressed" from="Shop/Classes" to="." method="_on_classes_pressed"]
+[connection signal="pressed" from="Shop/Panel/Classes/Default" to="." method="_on_default_pressed"]
+[connection signal="pressed" from="Shop/Panel/Classes/Attacker" to="." method="_on_attacker_pressed"]
+[connection signal="pressed" from="Shop/Panel/Classes/Tank" to="." method="_on_tank_pressed"]
+[connection signal="pressed" from="Shop/Panel/Classes/The test" to="." method="_on_the_test_pressed"]
 [connection signal="pressed" from="Database/Back" to="." method="_on_back_pressed"]
