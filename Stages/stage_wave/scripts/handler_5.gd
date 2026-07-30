@@ -1,0 +1,142 @@
+extends Node
+
+var win_time = 161
+
+var timed_spawns = 0
+@onready var path = get_parent().find_child("Player").find_child("Path2D").find_child("PathFollow2D")
+
+var enemies = {
+	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
+	"Blue slime": preload("res://scenes/Enemy/blue_slime.tscn"),
+	"Red slime": preload("res://scenes/Enemy/red_slime.tscn"),
+	"Tarnished purple": preload("res://scenes/Enemy/tarnished_purple.tscn")
+	}
+
+func spawn(mob):
+	if get_child_count() <= 153:
+		var new_mob = mob.instantiate()
+		path.progress_ratio = randf()
+		new_mob.global_position = path.global_position
+		add_child(new_mob)
+
+func boss_spawn(mob):
+	var new_mob = mob.instantiate()
+	new_mob.health *= 5
+	new_mob.max_health *= 5
+	new_mob.damage *= 2.25
+	new_mob.scale *= 1.5
+	path.progress_ratio = randf()
+	new_mob.global_position = path.global_position
+	$Boss.add_child(new_mob)
+
+var time_elapsed = 0.0
+func _process(delta: float):
+	time_elapsed += delta
+	var snapped_time = snapped(time_elapsed, 0.1)
+	
+	if snapped_time == 160:
+		if timed_spawns == 0:
+			boss_spawn(enemies.get("Tarnished purple"))
+			timed_spawns = 1
+
+func _wave_system_spacing():
+	var enemy = []
+	var wave = 0
+	var selected = 0
+	if time_elapsed < 30: #wave 1
+		if wave == 0:
+			enemy.clear()
+			wave = 1
+		if enemy.is_empty():
+			enemy.append(["Green slime", 0.75])
+		selected = 0
+	elif time_elapsed < 60: #wave 2
+		if wave == 1:
+			enemy.clear()
+			wave = 2
+		if enemy.is_empty():
+			enemy.append(["Green slime", 0.7])
+			enemy.append(["Blue slime", 1.15])
+		selected = randi_range(0, 1)
+	elif time_elapsed < 90: #wave 3
+		if wave == 2:
+			enemy.clear()
+			wave = 3
+		if enemy.is_empty():
+			enemy.append(["Tarnished purple", 0.75])
+		selected = 0
+	elif time_elapsed < 150:
+		if wave == 3:
+			enemy.clear()
+			wave = 4
+		if enemy.is_empty():
+			enemy.append(["Green slime", 0.35])
+			enemy.append(["Red slime", 0.5])
+		selected = randi_range(0, 1)	
+	elif time_elapsed < 175:
+		if wave == 4:
+			enemy.clear()
+			wave = 5
+		if enemy.is_empty():
+			for i in range(3):
+				enemy.append(["Green slime", 0.4])
+				enemy.append(["Red slime", 0.7])
+			enemy.append(["Triangle mage", 1.0])
+		selected = randi_range(0, 6)	
+	elif time_elapsed < 180:
+		if wave == 3:
+			enemy.clear()
+			wave = 4
+		if enemy.is_empty():
+			enemy.append(["Triangle mage", 0.4])
+		selected = 0
+	elif time_elapsed < 220:
+		if wave == 4:
+			enemy.clear()
+			wave = 5
+		if enemy.is_empty():
+			for i in range(2):
+				enemy.append(["Tarnished purple", 0.65])
+				enemy.append(["Red slime", 0.6])
+				enemy.append(["Green slime", 0.3])
+			enemy.append(["Triangle mage", 0.8])
+		selected = randi_range(0, 6)
+	elif time_elapsed < 265:
+		if wave == 5:
+			enemy.clear()
+			wave = 6
+		if enemy.is_empty():
+			enemy.append(["Tarnished purple", 0.6])
+			enemy.append(["Green slime", 0.2])
+		selected = randi_range(0, 1)
+	elif time_elapsed < 300:
+		if wave == 6:
+			enemy.clear()
+			wave = 7
+		if enemy.is_empty():
+			enemy.append(["Red slime", 0.5])
+			enemy.append(["Tarnished purple", 0.6])
+			enemy.append(["Triangle mage", 0.8])
+		selected = randi_range(0, 2)
+	elif time_elapsed < 320:
+		if wave == 7:
+			enemy.clear()
+			wave = 8
+		if enemy.is_empty():
+			enemy.append(["Triangle mage", 0.75])
+			enemy.append(["Red slime", 0.45])
+			enemy.append(["Green slime", 0.15])
+			enemy.append(["Tarnished purple", 0.55])
+		selected = randi_range(0, 3)
+	else:
+		if enemy.is_empty():
+			for i in range(3):
+				enemy.append(["Triangle mage", 0.7])
+			enemy.append(["Black slime", 1.2])
+		selected = randi_range(0, 3)
+	spawn(enemies.get(enemy[selected][0]))
+	$SpawnInterval.start(enemy[selected][1])	
+	await $SpawnInterval.is_stopped()
+
+func _ready():
+	$SpawnInterval.start()

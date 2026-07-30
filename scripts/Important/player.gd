@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
+const ANIMATIONS = [["idle0", "walk0"], ["idle1", "walk1"], ["idle2", "walk2"], ["idle3", "walk3"]]
+
 #these are base values. different classes and upgrades in menu will increase these.
 @onready var base = DataTransfer.classes[DataTransfer.selected_class].duplicate(true)
 @onready var levels = DataTransfer.icons.duplicate(true)
+@onready var myclass = DataTransfer.selected_class
 #upgrades change these values
 
 var temp_levels = [0, 0, 0, 0, 0]
@@ -60,9 +63,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
-		$Animations.play("walk")
+		$Animations.play(ANIMATIONS[myclass][1])
 	else:
-		$Animations.play("idle")
+		$Animations.play(ANIMATIONS[myclass][0])
 
 func get_xp():
 	if xp >= level_xp:

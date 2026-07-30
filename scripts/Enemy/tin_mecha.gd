@@ -1,27 +1,26 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 65.0
-var health = 65.0
-var damage = 7.0
-const SPEED = 30.0
-var cash_drop = 3.0
+var max_health = 925.0
+var health = 925.0
+var damage = 8.0
+var speed = 16.0
+const FIRERATE = [8.0, 8.0]
+const BURST = 4
+var cash_drop = 6.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
+var in_range = null
 
+const BULLET = preload("res://scenes/Enemy/mage_cast.tscn")
 @onready var player  = get_node("/root/Game/Player")
 
 func _physics_process(delta):
 	#enemy movement
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * SPEED
+	velocity = direction * speed
 	move_and_slide()
-	
-	if direction.x < 0:
-		$AnimatedSprite2D.flip_h = true
-	else:
-		$AnimatedSprite2D.flip_h = false
 	
 func _on_cooldown_timeout():
 	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.
@@ -57,7 +56,7 @@ func take_damage(incoming_damage):
 					%Cooldown.stop()
 				touching = null
 				queue_free()
-				const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
+				const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 				var death_anim = DEATH_ANIM.instantiate()
 				if get_parent().name == "Boss":
 					get_parent().get_parent().find_child("Xp").add_child(death_anim)
@@ -71,3 +70,11 @@ func damage_effect():
 	$HitTick.start(0.05)
 	await $HitTick.timeout
 	modulate = Color(1,1,1,1)
+
+func _on_spawn_cooldown_timeout():
+	const TURRET = preload("res://scenes/Enemy/tin_turret.tscn")
+	var new_turret = TURRET.instantiate()
+	new_turret.global_position = global_position
+	get_parent().add_child(new_turret)
+	take_damage(125)
+	

@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 65.0
-var health = 65.0
-var damage = 7.0
-const SPEED = 30.0
+var max_health = 25.0
+var health = 25.0
+const SHIELD_BASE = 500.0
+var shield = 500.0
+var damage = 15.0
+const SPEED = 8.0
 var cash_drop = 3.0
+
+var shielded = true
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -17,11 +21,6 @@ func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * SPEED
 	move_and_slide()
-	
-	if direction.x < 0:
-		$AnimatedSprite2D.flip_h = true
-	else:
-		$AnimatedSprite2D.flip_h = false
 	
 func _on_cooldown_timeout():
 	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.
@@ -47,8 +46,19 @@ func deal_damage():
 		touching.recieve_damage(damage)
 
 func take_damage(incoming_damage):
-	health -= incoming_damage
-	damage_effect()
+	if shielded == true:
+		shield -= incoming_damage
+	else:
+		health -= incoming_damage
+		damage_effect()
+	
+	if shield <= 0 and shielded == true:
+		%ShieldRecovery.start()
+		$Shield.visible = false
+		$Shield.set_deferred("monitorable", false)
+		$Shield.set_deferred("monitoring", false)
+		await get_tree().process_frame
+		shielded = false
 	
 	if health <= 0:
 		if is_dead == false:
@@ -57,7 +67,7 @@ func take_damage(incoming_damage):
 					%Cooldown.stop()
 				touching = null
 				queue_free()
-				const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
+				const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
 				var death_anim = DEATH_ANIM.instantiate()
 				if get_parent().name == "Boss":
 					get_parent().get_parent().find_child("Xp").add_child(death_anim)
@@ -66,8 +76,25 @@ func take_damage(incoming_damage):
 				death_anim.global_position = global_position
 				get_node("/root/Game").credits_gain += cash_drop
 
+
 func damage_effect():
 	modulate = Color(6.0,0.1,0.1)
 	$HitTick.start(0.05)
 	await $HitTick.timeout
 	modulate = Color(1,1,1,1)
+
+
+func _on_shield_recovery_timeout():
+	
+	$Shield.visible = true
+	$Shield.set_deferred("monitorable", true)
+	$Shield.set_deferred("monitoring", true)
+	$Shield.scale = Vector2(5, 5)
+	shield = SHIELD_BASE
+	shielded = true
+	
+
+
+func _on_shield_area_entered(area: Area2D):
+	take_damage(area.projectile_damage)
+	area.queue_free()

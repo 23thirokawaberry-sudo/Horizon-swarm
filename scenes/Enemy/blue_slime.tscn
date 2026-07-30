@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://q0f7p4cmgtoq"]
 
 [ext_resource type="Script" uid="uid://mwcji4khueo2" path="res://scripts/Enemy/blue_slime.gd" id="1_d1i8g"]
-[ext_resource type="Texture2D" uid="uid://cc48uddkv3l6i" path="res://assets/sprites/enemy/Slime sprites.png" id="2_x20b5"]
+[ext_resource type="Texture2D" uid="uid://by1xa0l31v5pg" path="res://assets/sprites/enemy/Slime sprites (1) (2).png" id="2_d1i8g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d1i8g"]
 radius = 7.0
@@ -9,22 +9,22 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
 radius = 5.8925567
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d1i8g"]
-atlas = ExtResource("2_x20b5")
-region = Rect2(0, 16, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_x20b5"]
-atlas = ExtResource("2_x20b5")
-region = Rect2(16, 16, 16, 16)
+atlas = ExtResource("2_d1i8g")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cb7s"]
+atlas = ExtResource("2_d1i8g")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pvn7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d1i8g")
+"texture": SubResource("AtlasTexture_x20b5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x20b5")
+"texture": SubResource("AtlasTexture_2cb7s")
 }],
 "loop": true,
 "name": &"Walk",
@@ -56,7 +56,8 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_4q1e0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
-position = Vector2(0, -7)
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_0pvn7")
 animation = &"Walk"
 autoplay = "Walk"

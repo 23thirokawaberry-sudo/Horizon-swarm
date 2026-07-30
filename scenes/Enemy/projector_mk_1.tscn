@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bh2vrp3hpai1a"]
+
+[ext_resource type="Script" uid="uid://bhvphypgli54n" path="res://scripts/Enemy/projector_mk1.gd" id="1_2j5xt"]
+[ext_resource type="Texture2D" uid="uid://yt5y817upjdn" path="res://assets/sprites/enemy/Projector.png" id="2_o0htf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8dheh"]
+radius = 6.363636
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oh62q"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxol4"]
+atlas = ExtResource("2_o0htf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byid3"]
+atlas = ExtResource("2_o0htf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdpmi"]
+atlas = ExtResource("2_o0htf")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81ser"]
+atlas = ExtResource("2_o0htf")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aocad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byid3")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdpmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81ser")
+}],
+"loop": true,
+"name": &"Walk2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n6p3"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5pi1"]
+atlas = ExtResource("2_o0htf")
+region = Rect2(32, 0, 32, 32)
+
+[node name="ProjectorMk1" type="CharacterBody2D" unique_id=457920698]
+collision_layer = 2
+collision_mask = 18
+motion_mode = 1
+script = ExtResource("1_2j5xt")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
+unique_name_in_owner = true
+position = Vector2(0, -13)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
+position = Vector2(0, 3.9999995)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_8dheh")
+
+[node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
+unique_name_in_owner = true
+wait_time = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_oh62q")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_aocad")
+animation = &"Walk2"
+autoplay = "Walk"
+
+[node name="HitTick" type="Timer" parent="." unique_id=1168191408]
+wait_time = 0.15
+
+[node name="Shield" type="Area2D" parent="." unique_id=852789803]
+position = Vector2(0, -13)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield" unique_id=108148069]
+position = Vector2(0, -9.536743e-07)
+shape = SubResource("CircleShape2D_3n6p3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield" unique_id=132889932]
+position = Vector2(0, -9.536743e-07)
+texture = SubResource("AtlasTexture_d5pi1")
+
+[node name="ShieldRecovery" type="Timer" parent="Shield" unique_id=680745420]
+unique_name_in_owner = true
+process_mode = 3
+wait_time = 15.0
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]
+[connection signal="timeout" from="Shield/ShieldRecovery" to="." method="_on_shield_recovery_timeout"]

@@ -15,6 +15,11 @@ func _physics_process(delta):
 	#enemy movement
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * SPEED
+	if direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
+		
 	move_and_slide()
 	
 func _on_cooldown_timeout():

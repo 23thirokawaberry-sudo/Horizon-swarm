@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dir3q5h2ixvfg"]
+
+[ext_resource type="Script" uid="uid://bxek7k0gvgi3t" path="res://scripts/Enemy/tin_mecha.gd" id="1_hdu0w"]
+[ext_resource type="Texture2D" uid="uid://ba36kmofredpp" path="res://assets/sprites/enemy/Mecha.png" id="2_gta78"]
+[ext_resource type="PackedScene" uid="uid://dsl2cm1ind4h" path="res://scenes/Important/range.tscn" id="3_043yw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
+radius = 15.481259
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
+radius = 16.124516
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn0m2"]
+atlas = ExtResource("2_gta78")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0bxy"]
+atlas = ExtResource("2_gta78")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qo5lx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn0m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0bxy")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 2.0
+}]
+
+[node name="TriangleMage" type="CharacterBody2D" unique_id=457920698]
+collision_layer = 2
+collision_mask = 18
+motion_mode = 1
+script = ExtResource("1_hdu0w")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
+position = Vector2(0, -10)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_4d8dn")
+
+[node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
+unique_name_in_owner = true
+wait_time = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_4q1e0")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_qo5lx")
+animation = &"Walk"
+autoplay = "Walk"
+
+[node name="HitTick" type="Timer" parent="." unique_id=1168191408]
+wait_time = 0.15
+
+[node name="Range" parent="." unique_id=875168748 instance=ExtResource("3_043yw")]
+position = Vector2(14, -8)
+
+[node name="Range2" parent="." unique_id=644399298 instance=ExtResource("3_043yw")]
+position = Vector2(-14, -8)
+
+[node name="SpawnCooldown" type="Timer" parent="." unique_id=1508030053]
+wait_time = 15.0
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]

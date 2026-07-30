@@ -1,42 +1,42 @@
-[gd_scene format=3 uid="uid://c1k031ur5t5l8"]
+[gd_scene format=3 uid="uid://cea7nc0iaph5n"]
 
-[ext_resource type="Script" uid="uid://cjd7krjmcub6s" path="res://scripts/Enemy/triangle_mage.gd" id="1_t08gr"]
-[ext_resource type="Texture2D" uid="uid://cvnokectos50p" path="res://assets/sprites/enemy/Mage.png" id="2_ibo33"]
-[ext_resource type="PackedScene" uid="uid://dsl2cm1ind4h" path="res://scenes/Important/range.tscn" id="3_ibo33"]
+[ext_resource type="Script" uid="uid://s74vunbydiso" path="res://scripts/Enemy/tin_turret.gd" id="1_ewcho"]
+[ext_resource type="Texture2D" uid="uid://cstkwys2sx3yt" path="res://assets/sprites/enemy/Turret.png" id="2_vxqnp"]
+[ext_resource type="PackedScene" uid="uid://dsl2cm1ind4h" path="res://scenes/Important/range.tscn" id="3_jo01j"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ibo33"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewcho"]
 radius = 6.363636
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w625m"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxqnp"]
 radius = 6.0827627
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w625m"]
-atlas = ExtResource("2_ibo33")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uknt2"]
+atlas = ExtResource("2_vxqnp")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_58ytc"]
-atlas = ExtResource("2_ibo33")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_keb3j"]
+atlas = ExtResource("2_vxqnp")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_05ybn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsk1g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w625m")
+"texture": SubResource("AtlasTexture_uknt2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_58ytc")
+"texture": SubResource("AtlasTexture_keb3j")
 }],
 "loop": true,
 "name": &"Walk",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="TriangleMage" type="CharacterBody2D" unique_id=457920698]
 collision_layer = 2
 collision_mask = 18
 motion_mode = 1
-script = ExtResource("1_t08gr")
+script = ExtResource("1_ewcho")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
 unique_name_in_owner = true
@@ -46,7 +46,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
 scale = Vector2(1.1, 1.1)
-shape = SubResource("CircleShape2D_ibo33")
+shape = SubResource("CircleShape2D_ewcho")
 
 [node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
 unique_name_in_owner = true
@@ -54,23 +54,28 @@ wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
 position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_w625m")
+shape = SubResource("CircleShape2D_vxqnp")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
 position = Vector2(0, -7)
-sprite_frames = SubResource("SpriteFrames_05ybn")
+sprite_frames = SubResource("SpriteFrames_bsk1g")
 animation = &"Walk"
 autoplay = "Walk"
 frame = 1
-frame_progress = 0.58258736
+frame_progress = 0.9218181
 
 [node name="HitTick" type="Timer" parent="." unique_id=1168191408]
 wait_time = 0.15
 
-[node name="Range" parent="." unique_id=875168748 instance=ExtResource("3_ibo33")]
+[node name="Range" parent="." unique_id=875168748 instance=ExtResource("3_jo01j")]
 position = Vector2(0, -6)
+
+[node name="SelfDamage" type="Timer" parent="." unique_id=2033154706]
+wait_time = 0.5
+autostart = true
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="SelfDamage" to="." method="_on_self_damage_timeout"]

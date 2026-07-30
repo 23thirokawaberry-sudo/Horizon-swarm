@@ -9,8 +9,8 @@ var icons = [["Damage", 0, 125], ["Max health", 0, 125], ["Regen", 0, 125], ["De
 #Nessesary data for getting the icons among other things for these upgrades. Order: Name, Current level, Upgrade cost. Upgrade cost is stored here to save across scenes.
 
 var descriptions = [
-	"Increase damage by 10%", "Increase max health by 10", "Improve regeneration by 1/s", "Reduce incoming damage by 1",
-	"Increase speed by 3", "will increase collection area but rn does nothing lol :son:", "will increase critical chance :krgzani_alternative_entity:", "will do something :grimace:", 
+	"Increase damage by 10%", "Increase max health by 10%", "Improve regeneration by 1/s", "Reduce incoming damage by 1",
+	"Increase speed by 10%", "will increase collection area but rn does nothing lol :son:", "will increase critical chance :krgzani_alternative_entity:", "will do something :grimace:", 
 	["Unlock pistol \n Fires bullets towards your cursor", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"], 
 	["Unlock shotgun \n Fires 5 bullets in a cone. Each projectile indivisually deals less damage than the pistol.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase bullets per burst by 2"], 
 	["Unlock sword \n Deal high damage to all enemies in an area directly in front of yourself", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%"], 

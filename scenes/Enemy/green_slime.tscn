@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://80ci7lrbxovt"]
 
 [ext_resource type="Script" uid="uid://c0e5fkt4vabib" path="res://scripts/Enemy/green_slime.gd" id="1_tuic5"]
-[ext_resource type="Texture2D" uid="uid://cc48uddkv3l6i" path="res://assets/sprites/enemy/Slime sprites.png" id="2_4d8dn"]
+[ext_resource type="Texture2D" uid="uid://by1xa0l31v5pg" path="res://assets/sprites/enemy/Slime sprites (1) (2).png" id="2_4d8dn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
 radius = 7.0
@@ -11,11 +11,11 @@ radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1b1pw"]
 atlas = ExtResource("2_4d8dn")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqo6t"]
 atlas = ExtResource("2_4d8dn")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pvn7"]
 animations = [{
@@ -56,10 +56,13 @@ shape = SubResource("CircleShape2D_4q1e0")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
-position = Vector2(0, -7)
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_0pvn7")
 animation = &"Walk"
 autoplay = "Walk"
+frame = 1
+frame_progress = 0.13711764
 
 [node name="HitTick" type="Timer" parent="." unique_id=729277458]
 wait_time = 0.15
