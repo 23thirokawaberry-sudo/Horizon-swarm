@@ -48,16 +48,17 @@ animations = [{
 
 [node name="Bullet" type="Area2D" unique_id=892918341]
 top_level = true
+scale = Vector2(1.5, 1.5)
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_yi5h2")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212043490]
-polygon = PackedVector2Array(0, 0, 7, 17, 12, 16, 16, 14, 20, 11, 23, 6, 24, 0, 23, -6, 20, -11, 16, -14, 12, -16, 12, -16, 7, -17)
+polygon = PackedVector2Array(0, 0, 12, 16, 16, 14, 20, 11, 23, 6, 24, 0, 23, -6, 20, -11, 16, -14, 12, -16, 12, -16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=283423216]
-position = Vector2(23.999998, 0)
-scale = Vector2(6, 2.125)
+position = Vector2(24, 9.536743e-07)
+scale = Vector2(6, 2)
 sprite_frames = SubResource("SpriteFrames_vah3a")
 frame = 4
 frame_progress = 1.0

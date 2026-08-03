@@ -12,7 +12,7 @@ var weapon_levels = DataTransfer.icons.duplicate(true)
 var lantern = -1 #required
 
 func _ready():
-	weapon_levels = weapon_levels.slice(8, 16)
+	weapon_levels = weapon_levels.slice(8, 17)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
@@ -192,17 +192,62 @@ func sapper_sap():
 				target = enemies
 		if target and get_parent():
 			new_bullet.points = [Vector2(0, 0), get_parent().to_local(target.global_position)]
-			print(new_bullet.points)
-			print(target.global_position)
-			print(to_local(target.global_position))
 		get_parent().add_child(new_bullet)
 		target.take_damage(weapon_damage)
 		if weapon_levels[7][1] < 2:
-			%gatling.wait_time = 0.1
+			%sapper.wait_time = 0.1
 			new_bullet.firerate = 0.1
 		elif weapon_levels[7][1] >= 2:
-			%gatling.wait_time = (0.1 * 0.8)
+			%sapper.wait_time = (0.1 * 0.8)
 			new_bullet.firerate = (0.1 * 0.8)
+
+func volt_bolt():
+	if weapon_levels[8][1] != -1:
+		var overlapping_nodes = get_overlapping_bodies()
+		if overlapping_nodes.is_empty():
+			return null
+		var target = self
+		var new_bullet = null
+		var previous_target = []
+		var weapon_damage = get_player_damage()
+		var chain_length = 5
+		
+		
+		if weapon_levels[8][1] == 0:
+			weapon_damage = (weapon_damage * 0.5)
+		elif weapon_levels[8][1] >= 1:
+			weapon_damage = (weapon_damage * 0.5) * 1.25
+		const BULLET = preload("res://scenes/Attacks/volt.tscn")
+		
+		if weapon_levels[8][1] <= 2:
+			chain_length = 4
+		elif weapon_levels[8][1] >= 3:
+			chain_length = 7
+		
+		for i in range(5):
+			previous_target.append(target)
+			target = null
+			var nearest = INF
+			for enemies in overlapping_nodes:
+				if not enemies in previous_target:
+					var distance = previous_target[i].global_position.distance_to(enemies.global_position)
+					if distance < nearest:
+						nearest = distance
+						target = enemies
+			if target and get_parent():
+				new_bullet = BULLET.instantiate()
+				new_bullet.points = [get_parent().to_local(previous_target[i].global_position), get_parent().to_local(target.global_position)]
+				get_parent().add_child(new_bullet)
+				target.take_damage(weapon_damage)
+				weapon_damage *= 0.85
+		
+		if weapon_levels[8][1] < 2:
+			%volt.wait_time = 1.0
+			new_bullet.firerate = 0.1
+		elif weapon_levels[8][1] >= 2:
+			%volt.wait_time = (1.0 * 0.8)
+			new_bullet.firerate = (0.1 * 0.8)
+
 
 #Weapon calling ============================================================================
 
@@ -225,3 +270,5 @@ func _on_gatling_timeout():
 	shoot_gatlng()
 func _on_sapper_timeout():
 	sapper_sap()
+func _on_volt_timeout():
+	volt_bolt()

@@ -3,7 +3,7 @@ extends Control
 var current_page = null
 var stat_upgrade = DataTransfer.icons
 var stages = DataTransfer.stage_data
-const ICONS = preload("res://assets/sprites/misc/icons_ORDERED.png")
+const ICONS = preload("res://assets/sprites/misc/icons.png")
 @onready var transition = $Transition.get_child(0).get_child(2)
 
 func _ready():
@@ -49,7 +49,7 @@ func _ready():
 			if added == 6:
 				added = 0
 				row += 1
-		elif stat_upgrade.find(stat) < 16:
+		elif stat_upgrade.find(stat) < 22:
 			if stat_upgrade.find(stat) == 8:
 				added = 0
 				row = 0
@@ -96,11 +96,8 @@ func _ready():
 		new_button.text = stage[1]
 		new_button.custom_minimum_size = Vector2(200, 0)
 		if stage[2] == false:
-			if stages.find(stage) != 0:
-				if stages[stages.find(stage) - 1][2] == false:
-					new_button.modulate = Color(0.75, 0.75, 0.75, 1)
-				else:
-					new_button.modulate = Color(0, 0, 0, 1)
+			if stage[3] == false:
+				new_button.modulate = Color(0.75, 0.75, 0.75, 1)
 			else:
 				new_button.modulate = Color(0, 0, 0, 1)
 		else:
@@ -202,9 +199,8 @@ func _on_stage_button_pressed(button_name):
 			DataTransfer.selected_stage = 0
 			%Start.visible = true
 		"Stage 1":
-			if DataTransfer.stage_data[0][2] == true:
-				DataTransfer.selected_stage = 1
-				%Start.visible = true
+			DataTransfer.selected_stage = 1
+			%Start.visible = true
 		"Stage 2":
 			if DataTransfer.stage_data[1][2] == true:
 				DataTransfer.selected_stage = 2

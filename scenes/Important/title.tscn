@@ -188,26 +188,26 @@ text = "Mr crabs' money 😮"
 
 [node name="Stats" type="Button" parent="Shop" unique_id=355757613]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 31.0
 offset_top = 85.0
-offset_right = 277.0
-offset_bottom = 209.0
+offset_right = 301.0
+offset_bottom = 207.0
 text = "Stats"
 
 [node name="Weapons" type="Button" parent="Shop" unique_id=499244194]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 222.0
-offset_right = 276.0
-offset_bottom = 346.0
+offset_right = 301.0
+offset_bottom = 344.0
 text = "Weapons"
 
 [node name="Classes" type="Button" parent="Shop" unique_id=1277022613]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 31.0
 offset_top = 363.0
-offset_right = 277.0
-offset_bottom = 487.0
+offset_right = 301.0
+offset_bottom = 485.0
 text = "Classes"
 
 [node name="Panel" type="Control" parent="Shop" unique_id=1724664374]
@@ -342,7 +342,7 @@ text = "Return"
 
 [node name="EntryPanel" type="Control" parent="Database" unique_id=2058820418]
 anchors_preset = 0
-offset_left = 542.0
+offset_left = 877.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
@@ -353,18 +353,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -268.0
-offset_right = 200.0
-offset_bottom = -203.0
+offset_left = -386.5
+offset_top = 200.0
+offset_right = 847.0
+offset_bottom = 313.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_wadwv")
 
 [node name="Label" type="Label" parent="Database/EntryPanel" unique_id=620990299]
 layout_mode = 0
-offset_right = 491.0
-offset_bottom = 342.0
+offset_left = -300.0
+offset_top = -4.0
+offset_right = 841.0
+offset_bottom = 651.6666
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Okay so here is all the enemies but since I'm lazy I still haven't done this yet and like a
 
@@ -393,120 +395,43 @@ sorry if it looks cluttered I don't think I will have this finished.
 
 also the return  button works so you can leave you aren't stuck here btw i just wanted to let you know and if you are reading this then wowowowow"
 
-[node name="Enemy" type="ScrollContainer" parent="Database" unique_id=92072157]
+[node name="ScrollPanel" type="ScrollContainer" parent="Database" unique_id=92072157]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 3.0
+offset_left = 338.0
+offset_top = 85.0
 offset_right = 710.0
-offset_bottom = 490.0
+offset_bottom = 623.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Database/Enemy" unique_id=515364066]
+[node name="VBoxContainer" type="VBoxContainer" parent="Database/ScrollPanel" unique_id=515364066]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Entry000" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=297096735]
-layout_mode = 2
-text = "Green slime - Moves towards you
+[node name="Enemies" type="Button" parent="Database" unique_id=90139095]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 85.0
+offset_right = 301.0
+offset_bottom = 207.0
+text = "Enemies
 "
 
-[node name="Entry001" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=837163780]
-layout_mode = 2
-text = "Blue slime"
-
-[node name="Entry002" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=55498707]
-layout_mode = 2
-text = "Red slime"
-
-[node name="Entry003" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1285090210]
-layout_mode = 2
-text = "Yellow slime
-
+[node name="WeaponInfo" type="Button" parent="Database" unique_id=212217456]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 222.0
+offset_right = 301.0
+offset_bottom = 344.0
+text = "Weapons
 "
 
-[node name="Entry004" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=169958812]
-layout_mode = 2
-text = "Black slime - Enrages at half health, increasing damage and speed
-"
-
-[node name="Entry005" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=834347293]
-layout_mode = 2
-text = "Tin robobot - Has defense that reduces damage by a flat amount (9)"
-
-[node name="Entry006" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=25503019]
-layout_mode = 2
-text = "Copper robobot - Has defense (15)"
-
-[node name="Entry007" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1192988585]
-layout_mode = 2
-text = "Steel robobot - Has defense (21)"
-
-[node name="Entry008" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=59269019]
-layout_mode = 2
-text = "Bluesteel robobot - Has defense (24). enrages at 1/5 health, increasing his defense a lot (50)"
-
-[node name="Entry009" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=439478322]
-layout_mode = 2
-text = "Purple tarnished - Regenerates 1/12 of max hp
-"
-
-[node name="Entry010" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=51214509]
-layout_mode = 2
-text = "Turquoize tarnished - Regenerates 1/10 of max hp
-"
-
-[node name="Entry011" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1665649104]
-layout_mode = 2
-text = "Triangle mage - Fires a projectile at you
-
-"
-
-[node name="Entry012" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=709506081]
-layout_mode = 2
-text = "Blitzer - Orbits around you from a distance, firing bullets in bursts of 3 in random intervals
-
-"
-
-[node name="UNRELEASED" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=884995442]
-layout_mode = 2
-text = "Every entry from below this is unreleased content
-
-"
-
-[node name="Entry013" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=755275391]
-layout_mode = 2
-text = "Pillar - Acts as a solid wall, hops around every now and then. Damages on landing.
-
-"
-
-[node name="Entry014" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1841032342]
-layout_mode = 2
-text = "Puppet - Survives a lethal strike, explodes on death
-"
-
-[node name="Entry015" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1744509611]
-layout_mode = 2
-text = "Cacti - Stays stationary, teleporting around occasionally. Enrages if damaged, moving quickly.
-"
-
-[node name="Entry016" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1187702635]
-layout_mode = 2
-text = "Projector - Creates a shield that protects allies from projectiles. Can recover shield after a moment.
-"
-
-[node name="Entry017" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=377407687]
-layout_mode = 2
-text = "Contained - Big boss - Moves in 'jumps', has high defense and health.
-At certain health thresholds, will move faster, and eventually breaks out.
-"
-
-[node name="Entry018" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1847940696]
-layout_mode = 2
-text = "Sentry - Stationary enemy that fires projectiles in 1 of 5 directions. Loses health constantly until it self destructs."
-
-[node name="Entry019" type="Button" parent="Database/Enemy/VBoxContainer" unique_id=1047284534]
-layout_mode = 2
-text = "Mecha - Deploys sentries while firing volleys of projectiles at you."
+[node name="Achievements" type="Button" parent="Database" unique_id=1032745436]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 363.0
+offset_right = 301.0
+offset_bottom = 485.0
+text = "Achievements"
 
 [node name="Secret" type="Control" parent="." unique_id=1445367454]
 visible = false
