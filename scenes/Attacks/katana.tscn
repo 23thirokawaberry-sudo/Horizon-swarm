@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dxeph0a6txkfy"]
+
+[ext_resource type="Script" uid="uid://ctgx53s17lntm" path="res://scripts/katana.gd" id="1_lvad5"]
+[ext_resource type="Texture2D" uid="uid://cdqoi67mavi4o" path="res://assets/sprites/misc/weapon_sprites.png" id="2_jonao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xldjp"]
+atlas = ExtResource("2_jonao")
+region = Rect2(0, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvn63"]
+atlas = ExtResource("2_jonao")
+region = Rect2(8, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b78ue"]
+atlas = ExtResource("2_jonao")
+region = Rect2(16, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuvty"]
+atlas = ExtResource("2_jonao")
+region = Rect2(24, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6o5a"]
+atlas = ExtResource("2_jonao")
+region = Rect2(32, 32, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wde2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xldjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvn63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b78ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuvty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6o5a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Bullet" type="Area2D" unique_id=892918341]
+top_level = true
+scale = Vector2(2.5, 2)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_lvad5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212043490]
+polygon = PackedVector2Array(0, 0, 6.4, 18.5, 12.400001, 16.5, 17.2, 13.5, 20.800001, 9.5, 23.2, 5, 24, 0, 23.2, -5, 20.800001, -9.5, 17.2, -13.5, 12.4, -16.5, 6.4, -18.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=283423216]
+position = Vector2(24, 9.536743e-07)
+scale = Vector2(6, 2)
+sprite_frames = SubResource("SpriteFrames_wde2r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

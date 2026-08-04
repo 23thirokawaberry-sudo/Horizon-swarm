@@ -91,7 +91,6 @@ func stat_upgraded():
 
 func recieve_damage(incoming_damage):
 	if defense >= incoming_damage - 1:
-		print("Negated")
 		health -= 1
 	else:
 		health -= incoming_damage - defense

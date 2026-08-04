@@ -5,7 +5,7 @@ var max_health = 64.0
 var health = 60.0
 var damage = 10.0
 const SPEED = 28.0
-const DEFENSE = 21.0
+var defense = 21.0
 var cash_drop = 6.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
@@ -43,7 +43,7 @@ func deal_damage():
 		touching.recieve_damage(damage)
 
 func take_damage(incoming_damage):
-	var true_damage = (incoming_damage - DEFENSE)
+	var true_damage = (incoming_damage - defense)
 	if true_damage > 1:
 		health -= true_damage
 	else:

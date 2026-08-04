@@ -4,9 +4,9 @@ var base_player_stats = [50.0, 10.0, 42.0, 0.0, 2.0]
 
 var icons = [["Damage", 0, 125], ["Max health", 0, 125], ["Regen", 0, 125], ["Defense", 0, 125],
 			["Speed", 0, 125], ["Same", 0, 125], ["Pls money", 0, 125], ["Hello.", 0, 125],
-			["Pistol", 0, 200], ["Shotgun", -1, 250], ["Sword", -1, 250], ["Beam", -1, 250], 
+			["Pistol", -1, 200], ["Shotgun", -1, 250], ["Sword", -1, 250], ["Beam", -1, 250], 
 			["Sniper", -1, 325], ["Gatling", -1, 325], ["Lantern", -1, 400], ["Sapper", -1, 400],
-			["Volt", 0, 500], ["Mortar", -1, 500], ["Dagger", -1, 500], ["Katana", -1, 650],
+			["Volt", -1, 500], ["Mortar", 0, 500], ["Dagger", 0, 500], ["Katana", 0, 650],
 			["Mine", -1, 650], ["Aura", -1, 1000]]
 #Nessesary data for getting the icons among other things for these upgrades. Order: Name, Current level, Upgrade cost. Upgrade cost is stored here to save across scenes.
 

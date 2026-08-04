@@ -191,6 +191,14 @@ func _on_button_pressed(button_name):
 			cash_check_weapons(6)
 		"Sapper":
 			cash_check_weapons(7)
+		"Volt":
+			cash_check_weapons(8)
+		"Mortar":
+			cash_check_weapons(9)
+		"Dagger":
+			cash_check_weapons(10)
+		"Katana":
+			cash_check_weapons(11)
 	$Shop/cash.text = "Credits: %.0f" % [DataTransfer.credits]
 
 func _on_stage_button_pressed(button_name):
@@ -231,7 +239,7 @@ func cash_check_weapons(value):
 				%Weapons.get_child(value).get_child(1).text = "%s: level 3 \n MAXXED" % [stat[0]]
 
 func _on_difficulty_pressed():
-	pass # Replace with function body.
+	pass # Currently unused
 
 
 func _on_stats_pressed():

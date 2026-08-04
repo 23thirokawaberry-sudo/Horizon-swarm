@@ -5,7 +5,7 @@ var win_time = 361
 var time_elapsed = 0.0
 var overflowed_enemies = 0
 var timed_spawns = 0
-@onready var path = get_parent().find_child("Player").find_child("Path2D").find_child("PathFollow2D")
+@onready var path = %PathFollow2D
 
 var enemies = {
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
@@ -26,7 +26,7 @@ func spawn(mob):
 		new_mob.global_position = path.global_position
 		add_child(new_mob)
 	else:
-		get_child(3).queue_free()
+		get_child(4).queue_free()
 		overflowed_enemies += 1
 
 func boss_spawn(mob):

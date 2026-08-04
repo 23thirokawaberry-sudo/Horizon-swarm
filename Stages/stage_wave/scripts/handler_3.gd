@@ -3,7 +3,7 @@ extends Node
 var win_time = 321
 
 var timed_spawns = 0
-@onready var path = get_parent().find_child("Player").find_child("Path2D").find_child("PathFollow2D")
+@onready var paths = [%PathFollow2D, %PathFollow2D2]
 
 var enemies = {
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
@@ -16,6 +16,7 @@ var enemies = {
 func spawn(mob):
 	if get_child_count() <= 153:
 		var new_mob = mob.instantiate()
+		var path = paths.pick_random()
 		path.progress_ratio = randf()
 		new_mob.global_position = path.global_position
 		add_child(new_mob)
@@ -26,6 +27,7 @@ func boss_spawn(mob):
 	new_mob.max_health *= 5
 	new_mob.damage *= 2.25
 	new_mob.scale *= 1.5
+	var path = paths.pick_random()
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position
 	$Boss.add_child(new_mob)

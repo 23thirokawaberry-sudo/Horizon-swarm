@@ -67,6 +67,21 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 autostart = true
 
+[node name="mortar" type="Timer" parent="." unique_id=57976779]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true
+
+[node name="dagger" type="Timer" parent="." unique_id=1657607199]
+unique_name_in_owner = true
+wait_time = 0.35
+autostart = true
+
+[node name="katana" type="Timer" parent="." unique_id=873804091]
+unique_name_in_owner = true
+wait_time = 2.5
+autostart = true
+
 [connection signal="timeout" from="pistol" to="." method="_on_pistol_timeout"]
 [connection signal="timeout" from="shotgun" to="." method="_on_shotgun_timeout"]
 [connection signal="timeout" from="sword" to="." method="_on_sword_timeout"]
@@ -75,3 +90,6 @@ autostart = true
 [connection signal="timeout" from="gatling" to="." method="_on_gatling_timeout"]
 [connection signal="timeout" from="sapper" to="." method="_on_sapper_timeout"]
 [connection signal="timeout" from="volt" to="." method="_on_volt_timeout"]
+[connection signal="timeout" from="mortar" to="." method="_on_mortar_timeout"]
+[connection signal="timeout" from="dagger" to="." method="_on_dagger_timeout"]
+[connection signal="timeout" from="katana" to="." method="_on_katana_timeout"]

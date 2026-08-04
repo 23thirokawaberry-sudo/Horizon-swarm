@@ -19,8 +19,6 @@ func _ready():
 	enemies = stage_data[stage][0].instantiate()
 	enemies.name = "Enemies"
 	add_child(enemies)
-	$StageLayout.get_child(stage).visible = true
-	$StageLayout.get_child(stage).collision_enabled = true
 
 func _process(delta):
 	timer += delta

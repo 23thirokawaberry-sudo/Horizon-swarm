@@ -3,7 +3,7 @@ extends Node
 var win_time = 301
 
 var timed_spawns = 0
-@onready var path = get_parent().find_child("Player").find_child("Path2D").find_child("PathFollow2D")
+@onready var path = %PathFollow2D
 
 var enemies = {
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),

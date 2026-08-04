@@ -26,7 +26,7 @@ func randomize_button(button):
 	if upgrade_type == 0:
 		selected = randi_range(0, 4) #stats
 	elif upgrade_type == 1:
-		selected = randi_range(8, 16)#weapons
+		selected = randi_range(8, 19)#weapons
 	if upgrades[selected][0] in already_picked: #Checks whether option has already been chosen
 		randomize_button(button)
 	elif upgrades[selected][1] >= 3 and upgrade_type == 1: #checks whether weapon is level 3, if so then loops
