@@ -12,7 +12,7 @@ var weapon_levels = DataTransfer.icons.duplicate(true)
 var lantern = -1 #required
 
 func _ready():
-	weapon_levels = weapon_levels.slice(8, 20)
+	weapon_levels = weapon_levels.slice(8, 21)
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
@@ -334,13 +334,13 @@ func slash_dagger():
 			%dagger.wait_time = (0.35 * 0.8)
 
 func slash_katana():
-	if weapon_levels[10][1] != -1:
+	if weapon_levels[11][1] != -1:
 		var weapon_damage = get_player_damage()
-		if weapon_levels[10][1] == 0:
+		if weapon_levels[11][1] == 0:
 			weapon_damage = (weapon_damage * 1.25)
-		elif weapon_levels[10][1] < 3:
+		elif weapon_levels[11][1] < 3:
 			weapon_damage = (weapon_damage * 1.25) * 1.25
-		elif weapon_levels[10][1] >= 3:
+		elif weapon_levels[11][1] >= 3:
 			weapon_damage = (weapon_damage * 1.25) * 1.5
 			
 		const BULLET = preload("res://scenes/Attacks/katana.tscn")
@@ -350,10 +350,36 @@ func slash_katana():
 		%ShootingPoint.add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
 		
-		if weapon_levels[10][1] < 2:
+		if weapon_levels[11][1] < 2:
 			%katana.wait_time = 2.5
-		elif weapon_levels[10][1] >= 2:
+		elif weapon_levels[11][1] >= 2:
 			%katana.wait_time = (2.5 * 0.8)
+
+func plant_mine():
+	#check if weapon is unlocked, otherwise ignores the whole script.
+	if weapon_levels[12][1] != -1:
+		#get the player's damage stat
+		var weapon_damage = get_player_damage()
+		var level = weapon_levels[12][1]
+		#Sets the weapon's damage. Checks the weapon's level to increase the damage.
+		if level == 0:
+			weapon_damage = (weapon_damage * 1)
+		elif level >= 1:
+			weapon_damage = (weapon_damage * 1) * 1.25
+		
+		#Loading and spawning bullet/attack
+		const BULLET = preload("res://scenes/Attacks/mine.tscn")
+		var new_bullet = BULLET.instantiate()
+		new_bullet.global_position = %ShootingPoint.global_position
+		new_bullet.global_rotation = %ShootingPoint.global_rotation + randf_range(3.6, -3.6)
+		%ShootingPoint.add_child(new_bullet)
+		new_bullet.projectile_damage = weapon_damage
+		
+		#Weapon cooldown. It exists because weapons can have their firerates reduced.
+		if level < 2:
+			%mine.wait_time = 1.8
+		elif level >= 2:
+			%mine.wait_time = (1.8 * 0.8)
 
 #Weapon calling ============================================================================
 
@@ -384,3 +410,9 @@ func _on_dagger_timeout():
 	slash_dagger()
 func _on_katana_timeout():
 	slash_katana()
+func _on_mine_timeout():
+	if weapon_levels[12][1] < 3:
+		plant_mine()
+	elif weapon_levels[12][1] >= 3:
+		for i in range(2):
+			plant_mine()

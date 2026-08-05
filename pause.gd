@@ -4,7 +4,7 @@ signal pause
 
 @onready var weapon_details = get_parent().find_child("Player").find_child("Gun").weapon_levels
 @onready var icon_positions = DataTransfer.icons.duplicate(true)
-var position_given = [false, false, false, false, false, false, false, false, false, false, false, false]
+var position_given = [false, false, false, false, false, false, false, false, false, false, false, false, false]
 const ICONS = preload("res://assets/sprites/misc/icons.png")
 var entries = []
 

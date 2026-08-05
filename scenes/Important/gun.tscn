@@ -8,7 +8,7 @@ radius = 298.8277
 
 [node name="CursorPointer" type="Area2D" unique_id=1210663662]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 258
 script = ExtResource("1_lra3y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2130599168]
@@ -82,6 +82,11 @@ unique_name_in_owner = true
 wait_time = 2.5
 autostart = true
 
+[node name="mine" type="Timer" parent="." unique_id=1753570743]
+unique_name_in_owner = true
+wait_time = 1.7999999999999998
+autostart = true
+
 [connection signal="timeout" from="pistol" to="." method="_on_pistol_timeout"]
 [connection signal="timeout" from="shotgun" to="." method="_on_shotgun_timeout"]
 [connection signal="timeout" from="sword" to="." method="_on_sword_timeout"]
@@ -93,3 +98,4 @@ autostart = true
 [connection signal="timeout" from="mortar" to="." method="_on_mortar_timeout"]
 [connection signal="timeout" from="dagger" to="." method="_on_dagger_timeout"]
 [connection signal="timeout" from="katana" to="." method="_on_katana_timeout"]
+[connection signal="timeout" from="mine" to="." method="_on_mine_timeout"]

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cslmgxv77sbuh"]
+
+[ext_resource type="Script" uid="uid://ets2uk08d8ak" path="res://scripts/mine.gd" id="1_tubsf"]
+[ext_resource type="Texture2D" uid="uid://cdqoi67mavi4o" path="res://assets/sprites/misc/weapon_sprites.png" id="2_ppqy5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jb0qu"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li3q8"]
+atlas = ExtResource("2_ppqy5")
+region = Rect2(20, 4, 8, 8)
+
+[node name="Bullet" type="Area2D" unique_id=892918341]
+top_level = true
+collision_layer = 2
+collision_mask = 259
+script = ExtResource("1_tubsf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365067268]
+shape = SubResource("CircleShape2D_jb0qu")
+
+[node name="GunBullet" type="Sprite2D" parent="." unique_id=1367069972]
+rotation = 2.3561945
+texture = SubResource("AtlasTexture_li3q8")
+
+[node name="Timer" type="Timer" parent="." unique_id=751742822]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

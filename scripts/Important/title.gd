@@ -199,6 +199,8 @@ func _on_button_pressed(button_name):
 			cash_check_weapons(10)
 		"Katana":
 			cash_check_weapons(11)
+		"Mine":
+			cash_check_weapons(12)
 	$Shop/cash.text = "Credits: %.0f" % [DataTransfer.credits]
 
 func _on_stage_button_pressed(button_name):
@@ -209,17 +211,21 @@ func _on_stage_button_pressed(button_name):
 		"Stage 1":
 			DataTransfer.selected_stage = 1
 			%Start.visible = true
-		"Stage 2":
+		"Stage 2A":
 			if DataTransfer.stage_data[1][2] == true:
 				DataTransfer.selected_stage = 2
 				%Start.visible = true
-		"Stage 3":
-			if DataTransfer.stage_data[2][2] == true:
+		"Stage 2B":
+			if DataTransfer.stage_data[1][2] == true:
 				DataTransfer.selected_stage = 3
 				%Start.visible = true
-		"Stage 4":
-			if DataTransfer.stage_data[3][2] == true:
+		"Stage 3":
+			if DataTransfer.stage_data[2][2] == true and DataTransfer.stage_data[3][2] == true:
 				DataTransfer.selected_stage = 4
+				%Start.visible = true
+		"Stage 4":
+			if DataTransfer.stage_data[4][2] == true:
+				DataTransfer.selected_stage = 5
 				%Start.visible = true
 func _on_database_pressed():
 	$Menu.visible = false
