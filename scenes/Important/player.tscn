@@ -242,9 +242,9 @@ motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=1248235850]
-position = Vector2(0, -8)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"walk3"
+animation = &"idle0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=388553798]
 position = Vector2(0, -6)

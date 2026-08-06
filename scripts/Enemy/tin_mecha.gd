@@ -76,5 +76,5 @@ func _on_spawn_cooldown_timeout():
 	var new_turret = TURRET.instantiate()
 	new_turret.global_position = global_position
 	get_parent().add_child(new_turret)
-	take_damage(125)
+	take_damage(25)
 	
