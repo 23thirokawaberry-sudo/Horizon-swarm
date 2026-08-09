@@ -44,10 +44,18 @@ func deal_damage():
 
 func take_damage(incoming_damage):
 	var true_damage = (incoming_damage - defense)
-	if true_damage > 1:
-		health -= true_damage
+	if true_damage < 1:
+		true_damage = 1
+	health -= true_damage
+	const DAMAGE_NUMBER = preload("res://scenes/Enemy/damage_indicator.tscn")
+	var new_number = DAMAGE_NUMBER.instantiate()
+	new_number.scale = Vector2(0.25, 0.25)
+	if get_parent().name == "Boss":
+		get_parent().get_parent().find_child("DamageNumber").add_child(new_number)
 	else:
-		health -= 1
+		get_parent().find_child("DamageNumber").add_child(new_number)
+	new_number.global_position = global_position
+	new_number.display_number(true_damage)
 	damage_effect()
 	
 	if health <= 0:
@@ -57,7 +65,7 @@ func take_damage(incoming_damage):
 					%Cooldown.stop()
 				touching = null
 				queue_free()
-				const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
+				const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
 				var death_anim = DEATH_ANIM.instantiate()
 				if get_parent().name == "Boss":
 					get_parent().get_parent().find_child("Xp").add_child(death_anim)

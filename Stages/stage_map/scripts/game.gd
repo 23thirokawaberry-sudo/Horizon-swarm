@@ -2,6 +2,7 @@ extends Node2D
 var level_menu = false
 var paused = false
 var win_triggered = false
+var gameover = false
 var timer = 0
 @onready var transition = $Transition.get_child(0).get_child(2)
 
@@ -26,7 +27,7 @@ func _process(delta):
 		win_triggered = true
 		%Win.visible = true
 		get_tree().paused = true
-		%GainedMoney.text = "%.0f + %.0f Credits gained" % [credits_gain, credits_gain * 0.5]
+		%GainedMoney.text = "Credits earned: %.0f + %.0f (clear bonus 50%)" % [credits_gain, credits_gain * 0.5]
 		credits_gain *= 1.5
 		if stage_data[stage][2] == false:
 			stage_data[stage][2] = true
@@ -35,16 +36,17 @@ func time():
 	return $Enemies.time_elapsed
 
 func _on_pause():
-	if paused == false:
+	if paused == false and gameover == false:
 		%Pause.visible = true
 		paused = true
 		get_tree().paused = true
-	else:	
+	elif paused == true and gameover == false:	
 		%Pause.visible = false
 		paused = false
 		get_tree().paused = false
 
 func _on_player_death():
+	gameover = true
 	%GameOver.visible = true
 	get_tree().paused = true
 	

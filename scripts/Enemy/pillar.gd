@@ -1,7 +1,7 @@
 extends StaticBody2D
 
-var health = 250.0
-var DAMAGE = 25.0
+var health = 1520.0
+var DAMAGE = 28.0
 var cash_drop = 4.0
 
 var target_pos = null
@@ -50,6 +50,15 @@ func deal_damage():
 
 func take_damage(incoming_damage):
 	health -= incoming_damage
+	const DAMAGE_NUMBER = preload("res://scenes/Enemy/damage_indicator.tscn")
+	var new_number = DAMAGE_NUMBER.instantiate()
+	new_number.scale = Vector2(0.25, 0.25)
+	if get_parent().name == "Boss":
+		get_parent().get_parent().find_child("DamageNumber").add_child(new_number)
+	else:
+		get_parent().find_child("DamageNumber").add_child(new_number)
+	new_number.global_position = global_position
+	new_number.display_number(incoming_damage)
 	damage_effect()
 	
 	if health <= 0:

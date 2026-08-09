@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bmdxei08f5lhy"]
+
+[ext_resource type="Script" uid="uid://cbohuvgam3s5j" path="res://number.gd" id="1_xhrfm"]
+
+[node name="Control" type="Control" unique_id=608035343]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhrfm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2076304564]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -125.0
+offset_top = -5.0
+offset_right = 125.0
+offset_bottom = 5.0
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=960169635]
+wait_time = 0.05
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

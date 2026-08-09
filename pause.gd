@@ -10,12 +10,12 @@ var entries = []
 
 
 func _on_button_pressed():
-	if get_parent().level_menu == false:
+	if get_parent().level_menu == false or get_parent().gameover == false:
 		pause.emit()
 		new_entry()
 
 func _process(delta):
-	if get_parent().level_menu == false:
+	if get_parent().level_menu == false or get_parent().gameover == false:
 		if Input.is_action_just_pressed("pause"):
 			pause.emit()
 			new_entry()

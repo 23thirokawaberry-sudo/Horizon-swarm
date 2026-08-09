@@ -98,7 +98,17 @@ script = ExtResource("1_ulck1")
 
 [node name="Boss" type="Node2D" parent="." unique_id=1409784490]
 
-[node name="Xp" type="Node2D" parent="." unique_id=1556898121]
+[node name="Misc" type="Node2D" parent="." unique_id=1198668226]
+position = Vector2(-176, -80)
+scale = Vector2(2, 2)
+
+[node name="Xp" type="Node2D" parent="Misc" unique_id=2129993812]
+position = Vector2(88, 40)
+scale = Vector2(0.5, 0.5)
+
+[node name="Projectiles" type="Node2D" parent="Misc" unique_id=1448431116]
+
+[node name="DamageNumber" type="Node2D" parent="Misc" unique_id=1184478713]
 
 [node name="Layout" type="Node2D" parent="." unique_id=2040078093]
 

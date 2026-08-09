@@ -245,7 +245,10 @@ func cash_check_weapons(value):
 				%Weapons.get_child(value).get_child(1).text = "%s: level 3 \n MAXXED" % [stat[0]]
 
 func _on_difficulty_pressed():
-	pass # Currently unused
+	for stage in DataTransfer.stage_data:
+		stage[2] = true
+		stage[3] = true
+	get_tree().reload_current_scene()
 
 
 func _on_stats_pressed():

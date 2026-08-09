@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://c4ebhvt7rging"]
+
+[ext_resource type="Script" uid="uid://bv4a2dqmpdqib" path="res://scripts/death3.gd" id="1_stv8p"]
+[ext_resource type="Texture2D" uid="uid://b4yheju8306pu" path="res://assets/sprites/misc/Enemy death (2) (2).png" id="2_vnrrl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ee8hr"]
+radius = 5.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3872y"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmr7h"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srgvi"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efpbl"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns63q"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de0wr"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moxpi"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vrtc"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlelj"]
+atlas = ExtResource("2_vnrrl")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5weyp"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_3872y")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_jmr7h")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_srgvi")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_efpbl")
+}, {
+"duration": 1.75,
+"texture": SubResource("AtlasTexture_ns63q")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_de0wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moxpi")
+}, {
+"duration": 0.75,
+"texture": SubResource("AtlasTexture_1vrtc")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlelj")
+}],
+"loop": true,
+"name": &"Xp",
+"speed": 10.0
+}]
+
+[node name="Death" type="Area2D" unique_id=3467916]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_stv8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=592972484]
+shape = SubResource("CircleShape2D_ee8hr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1823436442]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_5weyp")
+animation = &"Xp"
+autoplay = "Death"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

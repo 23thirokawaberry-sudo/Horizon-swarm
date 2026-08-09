@@ -1,22 +1,21 @@
 [gd_scene format=3 uid="uid://cmea4pwxm4yiv"]
 
 [ext_resource type="Script" uid="uid://d3gyj4t6qt0jn" path="res://scripts/Enemy/pillar.gd" id="1_hxnse"]
+[ext_resource type="Texture2D" uid="uid://cf25vnh7mshb4" path="res://assets/sprites/enemy/Pillar (1).png" id="2_a5ixv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5ixv"]
-size = Vector2(12, 12)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qs3k7"]
-load_path = "res://.godot/imported/Pillar.png-af6c0a9999e55ad478d63c8d5bbaa865.ctex"
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxnse"]
-atlas = SubResource("CompressedTexture2D_qs3k7")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("2_a5ixv")
+region = Rect2(16, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fe7vs"]
-atlas = SubResource("CompressedTexture2D_qs3k7")
-region = Rect2(0, 0, 16, 16)
+atlas = ExtResource("2_a5ixv")
+region = Rect2(91, 0, 37, 37)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_en604"]
+radius = 15.033297
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1861295188]
 collision_layer = 9
@@ -24,29 +23,29 @@ collision_mask = 9
 script = ExtResource("1_hxnse")
 
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=1786023736]
-position = Vector2(0, -6)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_a5ixv")
 
 [node name="Pillar" type="Sprite2D" parent="." unique_id=103638928]
-position = Vector2(0, -8)
+position = Vector2(0, -16)
 texture = SubResource("AtlasTexture_hxnse")
 
 [node name="marker" type="Sprite2D" parent="." unique_id=589391018]
-visible = false
 modulate = Color(2.0039215, 0, 0, 1)
-position = Vector2(4.7683716e-07, -6)
-scale = Vector2(1.625, 1.25)
+position = Vector2(0, -8)
+scale = Vector2(0.8108108, 0.8108108)
 texture = SubResource("AtlasTexture_fe7vs")
 
 [node name="Movement" type="Timer" parent="." unique_id=922783508]
-wait_time = 12.0
+wait_time = 18.0
 one_shot = true
 
 [node name="Airborne" type="Timer" parent="." unique_id=1017697782]
-wait_time = 2.0
+wait_time = 2.5
 one_shot = true
 
 [node name="LandingZone" type="Area2D" parent="." unique_id=1713033169]
+position = Vector2(0, -2)
 collision_layer = 16
 collision_mask = 16
 

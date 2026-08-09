@@ -47,23 +47,32 @@ func deal_damage():
 
 func take_damage(incoming_damage):
 	health -= incoming_damage
+	const DAMAGE_NUMBER = preload("res://scenes/Enemy/damage_indicator.tscn")
+	var new_number = DAMAGE_NUMBER.instantiate()
+	new_number.scale = Vector2(0.25, 0.25)
+	if get_parent().name == "Boss":
+		get_parent().get_parent().find_child("DamageNumber").add_child(new_number)
+	else:
+		get_parent().find_child("DamageNumber").add_child(new_number)
+	new_number.global_position = global_position
+	new_number.display_number(incoming_damage)
 	damage_effect()
 	
 	if health <= 0:
 		if is_dead == false:
-				is_dead = true
-				if is_instance_valid(%Cooldown):
-					%Cooldown.stop()
-				touching = null
-				queue_free()
-				const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
-				var death_anim = DEATH_ANIM.instantiate()
-				if get_parent().name == "Boss":
-					get_parent().get_parent().find_child("Xp").add_child(death_anim)
-				else:
-					get_parent().find_child("Xp").add_child(death_anim)
-				death_anim.global_position = global_position
-				get_node("/root/Game").credits_gain += cash_drop
+			is_dead = true
+			if is_instance_valid(%Cooldown):
+				%Cooldown.stop()
+			touching = null
+			queue_free()
+			const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
+			var death_anim = DEATH_ANIM.instantiate()
+			if get_parent().name == "Boss":
+				get_parent().get_parent().find_child("Xp").add_child(death_anim)
+			else:
+				get_parent().find_child("Xp").add_child(death_anim)
+			death_anim.global_position = global_position
+			get_node("/root/Game").credits_gain += cash_drop
 
 func damage_effect():
 	modulate = Color(6.0,0.1,0.1)

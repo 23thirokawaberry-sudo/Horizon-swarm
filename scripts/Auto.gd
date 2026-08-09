@@ -238,6 +238,7 @@ func sapper_sap():
 func volt_bolt():
 	if weapon_levels[8][1] != -1:
 		var overlapping_nodes = get_overlapping_bodies()
+		var level = weapon_levels[8][1]
 		if overlapping_nodes.is_empty():
 			return null
 		
@@ -247,17 +248,17 @@ func volt_bolt():
 		var previous_target = []
 		
 		var weapon_damage = get_player_damage()
-		if weapon_levels[8][1] == 0:
+		if level == 0:
 			weapon_damage = (weapon_damage * 0.5)
-		elif weapon_levels[8][1] >= 1:
+		elif level >= 1:
 			weapon_damage = (weapon_damage * 0.5) * 1.25
 		
 		
 		#This is for the chaining length. It is effected by levels.
 		var chain_length = 5
-		if weapon_levels[8][1] <= 2:
+		if level <= 2:
 			chain_length = 4
-		elif weapon_levels[8][1] >= 3:
+		elif level >= 3:
 			chain_length = 7
 		
 		const BULLET = preload("res://scenes/Attacks/volt.tscn")
@@ -285,40 +286,43 @@ func volt_bolt():
 				target.take_damage(weapon_damage)
 				weapon_damage *= 0.85
 		
-		if weapon_levels[8][1] < 2:
+		if level < 2:
 			%volt.wait_time = 1.0
 			new_bullet.firerate = 0.1
-		elif weapon_levels[8][1] >= 2:
+		elif level >= 2:
 			%volt.wait_time = (1.0 * 0.8)
 			new_bullet.firerate = (0.1 * 0.8)
 
 func fire_mortar():
 	if weapon_levels[9][1] != -1:
 		var weapon_damage = get_player_damage()
-		if weapon_levels[9][1] == 0:
+		var level = weapon_levels[9][1]
+		if level == 0:
 			weapon_damage = (weapon_damage * 2)
-		elif weapon_levels[9][1] < 3:
+		elif level < 3:
 			weapon_damage = (weapon_damage * 2) * 1.25
-		elif weapon_levels[9][1] >= 3:
+		elif level >= 3:
 			weapon_damage = (weapon_damage * 2) * 1.5
 		const BULLET = preload("res://scenes/Attacks/mortar.tscn")
 		var new_bullet = BULLET.instantiate()
 		new_bullet.global_position = get_global_mouse_position()
 		find_parent("Game").add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
-		if weapon_levels[9][1] < 2:
+		
+		if level < 2:
 			%mortar.wait_time = 5.0
-		elif weapon_levels[9][1] >= 2:
+		elif level >= 2:
 			%mortar.wait_time = (5.0 * 0.85)
 
 func slash_dagger():
 	if weapon_levels[10][1] != -1:
 		var weapon_damage = get_player_damage()
-		if weapon_levels[10][1] == 0:
+		var level = weapon_levels[10][1]
+		if level == 0:
 			weapon_damage = (weapon_damage * 0.8)
-		elif weapon_levels[10][1] < 3:
+		elif level < 3:
 			weapon_damage = (weapon_damage * 0.8) * 1.25
-		elif weapon_levels[10][1] >= 3:
+		elif level >= 3:
 			weapon_damage = (weapon_damage * 0.8) * 1.5
 			
 		const BULLET = preload("res://scenes/Attacks/dagger.tscn")
@@ -328,19 +332,20 @@ func slash_dagger():
 		%ShootingPoint.add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
 		
-		if weapon_levels[10][1] < 2:
+		if level < 2:
 			%dagger.wait_time = 0.35
-		elif weapon_levels[10][1] >= 2:
+		elif level >= 2:
 			%dagger.wait_time = (0.35 * 0.8)
 
 func slash_katana():
 	if weapon_levels[11][1] != -1:
 		var weapon_damage = get_player_damage()
-		if weapon_levels[11][1] == 0:
+		var level = weapon_levels[11][1]
+		if level == 0:
 			weapon_damage = (weapon_damage * 1.25)
-		elif weapon_levels[11][1] < 3:
+		elif level < 3:
 			weapon_damage = (weapon_damage * 1.25) * 1.25
-		elif weapon_levels[11][1] >= 3:
+		elif level >= 3:
 			weapon_damage = (weapon_damage * 1.25) * 1.5
 			
 		const BULLET = preload("res://scenes/Attacks/katana.tscn")
@@ -350,9 +355,9 @@ func slash_katana():
 		%ShootingPoint.add_child(new_bullet)
 		new_bullet.projectile_damage = weapon_damage
 		
-		if weapon_levels[11][1] < 2:
+		if level < 2:
 			%katana.wait_time = 2.5
-		elif weapon_levels[11][1] >= 2:
+		elif level >= 2:
 			%katana.wait_time = (2.5 * 0.8)
 
 func plant_mine():
