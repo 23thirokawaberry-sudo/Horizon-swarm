@@ -22,7 +22,7 @@ var dialog_text = ["Welcome to the game \n Before we start, I will explain the c
 					"The boss is here. It is larger than how it would normally be, and it also has more health and damage. There is a health bar for the boss, so you can track how close they are to dying."]
 
 var enemies = {
-	"Pillar": preload("res://scenes/Enemy/pillar.tscn"),
+	"Mage": preload("res://scenes/Enemy/tin_mecha.tscn"),
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
 	"Blue slime": preload("res://scenes/Enemy/blue_slime.tscn")
 	}
@@ -143,7 +143,7 @@ func _wave_system_spacing():
 			enemy.clear()
 			wave = 1
 		if enemy.is_empty():
-			enemy.append(["Pillar", 9])
+			enemy.append(["Mage", 9])
 		selected = 0
 	elif time_elapsed < 80: #wave 2
 		if wave == 1:

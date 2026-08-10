@@ -1,7 +1,8 @@
 extends StaticBody2D
 
+var max_health = 1520.0
 var health = 1520.0
-var DAMAGE = 28.0
+var damage = 28.0
 var cash_drop = 4.0
 
 var target_pos = null
@@ -45,7 +46,7 @@ func _on_landing_zone_body_exited(body: Node2D):
 
 func deal_damage():
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(DAMAGE)
+		touching.recieve_damage(damage)
 		touching = null
 
 func take_damage(incoming_damage):

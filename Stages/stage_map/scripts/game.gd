@@ -27,7 +27,7 @@ func _process(delta):
 		win_triggered = true
 		%Win.visible = true
 		get_tree().paused = true
-		%GainedMoney.text = "Credits earned: %.0f + %.0f (clear bonus 50%)" % [credits_gain, credits_gain * 0.5]
+		%GainedMoney.text = "Credits earned: %.0f + %.0f (clear bonus 50%%)" % [credits_gain, credits_gain * 0.5]
 		credits_gain *= 1.5
 		if stage_data[stage][2] == false:
 			stage_data[stage][2] = true
@@ -36,11 +36,11 @@ func time():
 	return $Enemies.time_elapsed
 
 func _on_pause():
-	if paused == false and gameover == false:
+	if paused == false and gameover == false and level_menu == false:
 		%Pause.visible = true
 		paused = true
 		get_tree().paused = true
-	elif paused == true and gameover == false:	
+	elif paused == true and gameover == false and level_menu == false:	
 		%Pause.visible = false
 		paused = false
 		get_tree().paused = false

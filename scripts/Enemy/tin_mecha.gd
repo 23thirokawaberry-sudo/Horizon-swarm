@@ -1,13 +1,18 @@
 extends CharacterBody2D
 
+signal fire
+
 #basic enemy stats.
-var max_health = 925.0
-var health = 925.0
-var damage = 8.0
+var max_health = 2050.0
+var health = 2050.0
+var damage = 12.0
+var default_speed = 16.0
 var speed = 16.0
-const FIRERATE = [8.0, 8.0]
-const BURST = 4
+var defense = 6.0
+const FIRERATE = [7.5, 7.5]
+const BURST = 5
 var cash_drop = 6.0
+
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -21,6 +26,11 @@ func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * speed
 	move_and_slide()
+	
+	if direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
 	
 func _on_cooldown_timeout():
 	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.
@@ -46,7 +56,7 @@ func deal_damage():
 		touching.recieve_damage(damage)
 
 func take_damage(incoming_damage):
-	var true_damage = incoming_damage #temp while defense isn't added
+	var true_damage = incoming_damage - defense #temp while defense isn't added
 	if true_damage < 1:
 		true_damage = 1
 	health -= true_damage
@@ -88,5 +98,14 @@ func _on_spawn_cooldown_timeout():
 	var new_turret = TURRET.instantiate()
 	new_turret.global_position = global_position
 	get_parent().add_child(new_turret)
-	take_damage(25)
-	
+
+func _on_attack_cooldown_timeout():
+	speed = 1.0
+	$Windup.start()
+	$SlowedDuration.start()
+
+func _on_slowed_duration_timeout():
+	speed = default_speed
+
+func _on_windup_timeout():
+	fire.emit()

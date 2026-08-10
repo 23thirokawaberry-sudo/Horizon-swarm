@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 120.0
-var health = 120.0
+var max_health = 180.0
+var health = 180.0
 var damage = 6.0
 const SPEED = 12.0
 const cash_drop = 5.0
+
+var boss = false
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
@@ -78,7 +80,10 @@ func damage_effect():
 
 func _on_regen_timeout():
 	if health < max_health:
-		health += max_health / 12
+		if boss == false:
+			health += max_health / 12
+		else:
+			health += max_health / 18
 		if health > max_health:
 			health = max_health
 		modulate = Color(0.1,6.0,0.1)

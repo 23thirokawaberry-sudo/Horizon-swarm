@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dir3q5h2ixvfg"]
 
 [ext_resource type="Script" uid="uid://bxek7k0gvgi3t" path="res://scripts/Enemy/tin_mecha.gd" id="1_hdu0w"]
-[ext_resource type="Texture2D" uid="uid://ba36kmofredpp" path="res://assets/sprites/enemy/Mecha.png" id="2_gta78"]
+[ext_resource type="Texture2D" uid="uid://c0eg8ahac0p0a" path="res://assets/sprites/enemy/Mecha (1).png" id="2_hdu0w"]
 [ext_resource type="PackedScene" uid="uid://dsl2cm1ind4h" path="res://scenes/Important/range.tscn" id="3_043yw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
@@ -10,22 +10,22 @@ radius = 15.481259
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
 radius = 16.124516
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dn0m2"]
-atlas = ExtResource("2_gta78")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gta78"]
+atlas = ExtResource("2_hdu0w")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0bxy"]
-atlas = ExtResource("2_gta78")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_043yw"]
+atlas = ExtResource("2_hdu0w")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qo5lx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dn0m2")
+"texture": SubResource("AtlasTexture_gta78")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e0bxy")
+"texture": SubResource("AtlasTexture_043yw")
 }],
 "loop": true,
 "name": &"Walk",
@@ -60,6 +60,7 @@ debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
 position = Vector2(0, -16)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_qo5lx")
 animation = &"Walk"
 autoplay = "Walk"
@@ -77,7 +78,22 @@ position = Vector2(-14, -8)
 wait_time = 15.0
 autostart = true
 
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1572334071]
+wait_time = 5.0
+one_shot = true
+
+[node name="SlowedDuration" type="Timer" parent="." unique_id=1234168521]
+wait_time = 1.5
+
+[node name="Windup" type="Timer" parent="." unique_id=775315713]
+one_shot = true
+
+[connection signal="fire" from="." to="Range" method="_on_fire"]
+[connection signal="fire" from="." to="Range2" method="_on_fire"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="SlowedDuration" to="." method="_on_slowed_duration_timeout"]
+[connection signal="timeout" from="Windup" to="." method="_on_windup_timeout"]

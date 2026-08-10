@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal fire
+
 #basic enemy stats.
 var max_health = 40.0
 var health = 40.0
@@ -79,3 +81,6 @@ func damage_effect():
 	$HitTick.start(0.05)
 	await $HitTick.timeout
 	modulate = Color(1,1,1,1)
+
+func _on_attack_cooldown_timeout():
+	fire.emit()

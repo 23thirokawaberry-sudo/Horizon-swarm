@@ -34,10 +34,11 @@ var descriptions = [
 var stage_data = [
 	[preload("res://Stages/stage_wave/scenes/tutorial_stage.tscn"), "Tutorial", false, true],
 	[preload("res://Stages/stage_wave/scenes/handler_5.tscn"), "Stage 1", false, true],
-	[preload("res://Stages/stage_wave/scenes/enemy_spawn_handler.tscn"), "Stage 2A", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_2.tscn"), "Stage 2B", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_3.tscn"), "Stage 3", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 4", false, false]]
+	[preload("res://Stages/stage_wave/scenes/enemy_spawn_handler.tscn"), "Stage 2", false, false],
+	[preload("res://Stages/stage_wave/scenes/handler_2.tscn"), "Stage 3", false, false],
+	[preload("res://Stages/stage_wave/scenes/handler_3.tscn"), "Stage 4", false, false],
+	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 5", false, false],
+	[preload("res://Stages/stage_wave/scenes/handler_6.tscn"), "Stage 6", false, false]]
 #Stage scene, stage name, check for whether stage is cleared or not.
 
 

@@ -5,9 +5,10 @@ extends Area2D
 @onready var bullet = get_parent().BULLET
 @onready var cooldown = get_parent().FIRERATE
 @onready var burst = get_parent().BURST
+@onready var timer = get_parent().find_child("AttackCooldown")
 func _ready():
-	$AttackCooldown.wait_time = cooldown[0]
-	$AttackCooldown.start()
+	timer.wait_time = cooldown[0]
+	timer.start()
 
 func _physics_process(delta):
 	var player_in_range = get_overlapping_bodies()
@@ -15,7 +16,8 @@ func _physics_process(delta):
 		var target = player_in_range.front()
 		look_at(target.global_position)
 
-func _on_attack_cooldown_timeout():
+
+func _on_fire():
 	for i in range(burst):
 		var new_bullet = bullet.instantiate()
 		new_bullet.global_position = %ShootingPoint.global_position
@@ -25,5 +27,5 @@ func _on_attack_cooldown_timeout():
 		self.get_parent().add_child(new_bullet)
 		$BurstSpacing.start()
 		await $BurstSpacing.timeout
-	$AttackCooldown.wait_time = randf_range(cooldown[0], cooldown[1])
-	$AttackCooldown.start()
+	timer.wait_time = randf_range(cooldown[0], cooldown[1])
+	timer.start()

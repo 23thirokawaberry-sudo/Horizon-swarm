@@ -1,10 +1,11 @@
-extends CharacterBody2D
+extends StaticBody2D
+
+signal fire
 
 #basic enemy stats.
 var max_health = 90.0
 var health = 90.0
 var damage = 3.0
-const SPEED = 0.0
 const FIRERATE = [0.5, 0.5]
 const BURST = 1
 var cash_drop = 6.0
@@ -16,12 +17,6 @@ var in_range = null
 const BULLET = preload("res://scenes/Enemy/mage_cast.tscn")
 @onready var player  = get_node("/root/Game/Player")
 
-func _physics_process(delta):
-	#enemy movement
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * SPEED
-	move_and_slide()
-	
 func _on_cooldown_timeout():
 	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.
 	if touching != null:
@@ -84,5 +79,6 @@ func damage_effect():
 	modulate = Color(1,1,1,1)
 
 
-func _on_self_damage_timeout():
+func _on_attack_cooldown_timeout():
 	take_damage(6)
+	fire.emit()

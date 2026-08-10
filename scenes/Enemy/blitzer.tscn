@@ -64,6 +64,12 @@ wait_time = 0.15
 [node name="Range" parent="." unique_id=875168748 instance=ExtResource("3_pkely")]
 position = Vector2(0, -7)
 
+[node name="AttackCooldown" type="Timer" parent="." unique_id=208312779]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="fire" from="." to="Range" method="_on_fire"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

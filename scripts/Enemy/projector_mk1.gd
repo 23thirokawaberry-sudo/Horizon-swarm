@@ -3,9 +3,9 @@ extends CharacterBody2D
 #basic enemy stats.
 var max_health = 25.0
 var health = 25.0
-const SHIELD_BASE = 500.0
-var shield = 500.0
-var damage = 15.0
+var shield_base = 625.0
+var shield = 625.0
+var damage = 1.0
 const SPEED = 8.0
 var cash_drop = 3.0
 
@@ -99,7 +99,7 @@ func _on_shield_recovery_timeout():
 	$Shield.set_deferred("monitorable", true)
 	$Shield.set_deferred("monitoring", true)
 	$Shield.scale = Vector2(5, 5)
-	shield = SHIELD_BASE
+	shield = shield_base
 	shielded = true
 	
 

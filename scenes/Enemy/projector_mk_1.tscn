@@ -93,6 +93,7 @@ autoplay = "Walk"
 wait_time = 0.15
 
 [node name="Shield" type="Area2D" parent="." unique_id=852789803]
+modulate = Color(1, 1, 1, 0.24705882)
 position = Vector2(0, -13)
 scale = Vector2(5, 5)
 collision_layer = 0
@@ -103,7 +104,6 @@ position = Vector2(0, -9.536743e-07)
 shape = SubResource("CircleShape2D_3n6p3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Shield" unique_id=132889932]
-position = Vector2(0, -9.536743e-07)
 texture = SubResource("AtlasTexture_d5pi1")
 
 [node name="ShieldRecovery" type="Timer" parent="Shield" unique_id=680745420]

@@ -32,32 +32,31 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="TriangleMage" type="CharacterBody2D" unique_id=457920698]
-collision_layer = 2
-collision_mask = 18
-motion_mode = 1
+[node name="Turret" type="StaticBody2D" unique_id=2098722634]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_ewcho")
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
+[node name="Hitbox" type="Area2D" parent="." unique_id=477933997]
 unique_name_in_owner = true
 position = Vector2(0, -6)
-collision_layer = 16
+collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1397689695]
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CircleShape2D_ewcho")
 
-[node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
+[node name="Cooldown" type="Timer" parent="Hitbox" unique_id=1501446336]
 unique_name_in_owner = true
 wait_time = 0.25
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1910546734]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_vxqnp")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1238511023]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_bsk1g")
 animation = &"Walk"
@@ -65,17 +64,15 @@ autoplay = "Walk"
 frame = 1
 frame_progress = 0.9218181
 
-[node name="HitTick" type="Timer" parent="." unique_id=1168191408]
+[node name="HitTick" type="Timer" parent="." unique_id=416934965]
 wait_time = 0.15
 
 [node name="Range" parent="." unique_id=875168748 instance=ExtResource("3_jo01j")]
 position = Vector2(0, -6)
 
-[node name="SelfDamage" type="Timer" parent="." unique_id=2033154706]
-wait_time = 0.5
-autostart = true
+[node name="AttackCooldown" type="Timer" parent="." unique_id=506445682]
+wait_time = 5.0
+one_shot = true
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
-[connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]
-[connection signal="timeout" from="SelfDamage" to="." method="_on_self_damage_timeout"]
+[connection signal="fire" from="." to="Range" method="_on_fire"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

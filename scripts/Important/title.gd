@@ -49,7 +49,7 @@ func _ready():
 			if added == 6:
 				added = 0
 				row += 1
-		elif stat_upgrade.find(stat) < 22:
+		elif stat_upgrade.find(stat) < 21:
 			if stat_upgrade.find(stat) == 8:
 				added = 0
 				row = 0
@@ -211,21 +211,25 @@ func _on_stage_button_pressed(button_name):
 		"Stage 1":
 			DataTransfer.selected_stage = 1
 			%Start.visible = true
-		"Stage 2A":
+		"Stage 2":
 			if DataTransfer.stage_data[1][2] == true:
 				DataTransfer.selected_stage = 2
 				%Start.visible = true
-		"Stage 2B":
+		"Stage 3":
 			if DataTransfer.stage_data[1][2] == true:
 				DataTransfer.selected_stage = 3
 				%Start.visible = true
-		"Stage 3":
+		"Stage 4":
 			if DataTransfer.stage_data[2][2] == true and DataTransfer.stage_data[3][2] == true:
 				DataTransfer.selected_stage = 4
 				%Start.visible = true
-		"Stage 4":
+		"Stage 5":
 			if DataTransfer.stage_data[4][2] == true:
 				DataTransfer.selected_stage = 5
+				%Start.visible = true
+		"Stage 6":
+			if DataTransfer.stage_data[5][2] == true:
+				DataTransfer.selected_stage = 6
 				%Start.visible = true
 func _on_database_pressed():
 	$Menu.visible = false
@@ -248,6 +252,8 @@ func _on_difficulty_pressed():
 	for stage in DataTransfer.stage_data:
 		stage[2] = true
 		stage[3] = true
+	for info in DataTransfer.icons:
+		info[1] += 4
 	get_tree().reload_current_scene()
 
 
