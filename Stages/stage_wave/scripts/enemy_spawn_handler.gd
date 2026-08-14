@@ -5,6 +5,8 @@ var win_time = 201
 var timed_spawns = 0
 @onready var path = %PathFollow2D
 
+const WEAPON_UNLOCK = ["Sniper", "Gatling"]
+
 var enemies = {
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
 	"Blue slime": preload("res://scenes/Enemy/blue_slime.tscn"),

@@ -34,6 +34,8 @@ func boss_spawn(mob):
 	if "shield" in new_mob:
 		new_mob.shield *= 5
 		new_mob.shield_base *= 5
+	if "boss" in new_mob:
+		new_mob.boss = true
 	
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position

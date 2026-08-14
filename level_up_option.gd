@@ -9,6 +9,7 @@ var upgrades = DataTransfer.icons.duplicate(true) #Weapon upgrades - each weapon
 # @onready var weapon_info = get_parent().find_child("Player").find_child("Gun").weapon_levels
 var description = DataTransfer.descriptions
 var already_picked = []
+var unlocked = 7
 
 var selected_pos = 0 #variable for selecting random spot in list
 
@@ -26,10 +27,10 @@ func randomize_button(button):
 	if upgrade_type == 0:
 		selected = randi_range(0, 4) #stats
 	elif upgrade_type == 1:
-		selected = randi_range(8, 20)#weapons
+		selected = randi_range(8, unlocked)#weapons
 	if upgrades[selected][0] in already_picked: #Checks whether option has already been chosen
 		randomize_button(button)
-	elif upgrades[selected][1] >= 3 and upgrade_type == 1: #checks whether weapon is level 3, if so then loops
+	elif upgrades[selected][1] >= 4 and upgrade_type == 1: #checks whether weapon is level 3, if so then loops
 		randomize_button(button)
 	else:
 		var icon_x = selected * 32
@@ -66,4 +67,8 @@ func button_pressed(button_number):
 	randomize_buttons()
 
 func _ready():
+	for i in range(21):
+		if i >= 8:
+			if upgrades[i][3] == true:
+				unlocked += 1
 	randomize_buttons()

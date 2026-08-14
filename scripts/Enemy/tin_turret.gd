@@ -8,7 +8,7 @@ var health = 90.0
 var damage = 3.0
 const FIRERATE = [0.5, 0.5]
 const BURST = 1
-var cash_drop = 6.0
+var cash_drop = 1.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c58v2bral2n0b"]
 
 [ext_resource type="Script" uid="uid://cqx7j60wnoloq" path="res://scripts/Important/title.gd" id="1_ar41x"]
-[ext_resource type="Texture2D" uid="uid://cqr1eiyl0ncuo" path="res://assets/sprites/enemy/Slime sprites (1).png" id="2_n853x"]
 [ext_resource type="PackedScene" uid="uid://buihhmdvumyua" path="res://scenes/Important/transition.tscn" id="3_wadwv"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n853x"]
@@ -10,10 +9,6 @@ load_path = "res://.godot/imported/icon.png-c52eeea23df6c0097c8e3bf4c4229674.cte
 [sub_resource type="AtlasTexture" id="AtlasTexture_p10tj"]
 atlas = SubResource("CompressedTexture2D_n853x")
 region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wadwv"]
-atlas = ExtResource("2_n853x")
-region = Rect2(0, 0, 16, 16)
 
 [node name="Title" type="Control" unique_id=2056877872]
 process_mode = 3
@@ -342,58 +337,18 @@ text = "Return"
 
 [node name="EntryPanel" type="Control" parent="Database" unique_id=2058820418]
 anchors_preset = 0
-offset_left = 877.0
+offset_left = 694.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="TextureRect" type="TextureRect" parent="Database/EntryPanel" unique_id=44210684]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -386.5
-offset_top = 200.0
-offset_right = 847.0
-offset_bottom = 313.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_wadwv")
-
-[node name="Label" type="Label" parent="Database/EntryPanel" unique_id=620990299]
+[node name="EntryText" type="Label" parent="Database/EntryPanel" unique_id=647355079]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = -300.0
-offset_top = -4.0
-offset_right = 841.0
-offset_bottom = 651.6666
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Okay so here is all the enemies but since I'm lazy I still haven't done this yet and like a
-
-
-
-
-
-
-
-
-
-
-
-If you are reading this then this page is not finished yet, but here is relevant
-info for the enemies.
-Slimes - they Yap. Black slime will speed up and increase damage
-at half health.
-Tarnishes - they YAP you. they will constantly regenerate lost health.
-Robobots - they Yap u. They have defense which reduces incoming 
-damage by a flat amount, down to 1 damage if the incoming damage is too low.
-Mage - fires projectiles towards you. Projectiles deal same damage as their
-contact damage.
-
-you don't need to read this since it's all written down up on that right there now
-sorry if it looks cluttered I don't think I will have this finished.
-
-also the return  button works so you can leave you aren't stuck here btw i just wanted to let you know and if you are reading this then wowowowow"
+offset_right = 458.0
+offset_bottom = 648.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ScrollPanel" type="ScrollContainer" parent="Database" unique_id=92072157]
 layout_mode = 0
@@ -402,7 +357,8 @@ offset_top = 85.0
 offset_right = 710.0
 offset_bottom = 623.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Database/ScrollPanel" unique_id=515364066]
+[node name="DatabaseEntries" type="VBoxContainer" parent="Database/ScrollPanel" unique_id=515364066]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -412,7 +368,16 @@ layout_mode = 0
 offset_left = 31.0
 offset_top = 85.0
 offset_right = 301.0
-offset_bottom = 207.0
+offset_bottom = 142.0
+text = "Enemies
+"
+
+[node name="Locations" type="Button" parent="Database" unique_id=708138264]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 151.0
+offset_right = 301.0
+offset_bottom = 208.0
 text = "Enemies
 "
 
@@ -421,7 +386,16 @@ layout_mode = 0
 offset_left = 31.0
 offset_top = 222.0
 offset_right = 301.0
-offset_bottom = 344.0
+offset_bottom = 285.0
+text = "Weapons
+"
+
+[node name="Classes" type="Button" parent="Database" unique_id=805934944]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 294.0
+offset_right = 301.0
+offset_bottom = 357.0
 text = "Weapons
 "
 
@@ -458,3 +432,8 @@ z_index = -1
 [connection signal="pressed" from="Shop/Panel/Classes/Tank" to="." method="_on_tank_pressed"]
 [connection signal="pressed" from="Shop/Panel/Classes/The test" to="." method="_on_the_test_pressed"]
 [connection signal="pressed" from="Database/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Database/Enemies" to="." method="_on_enemies_pressed"]
+[connection signal="pressed" from="Database/Locations" to="." method="_on_enemies_pressed"]
+[connection signal="pressed" from="Database/WeaponInfo" to="." method="_on_weapon_info_pressed"]
+[connection signal="pressed" from="Database/Classes" to="." method="_on_weapon_info_pressed"]
+[connection signal="pressed" from="Database/Achievements" to="." method="_on_achievements_pressed"]

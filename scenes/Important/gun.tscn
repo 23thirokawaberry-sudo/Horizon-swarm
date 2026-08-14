@@ -37,7 +37,7 @@ autostart = true
 
 [node name="sword" type="Timer" parent="." unique_id=1711638772]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 1.2
 autostart = true
 
 [node name="beam" type="Timer" parent="." unique_id=1807667755]
@@ -47,12 +47,12 @@ autostart = true
 
 [node name="sniper" type="Timer" parent="." unique_id=512083742]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 3.25
 autostart = true
 
 [node name="gatling" type="Timer" parent="." unique_id=122884702]
 unique_name_in_owner = true
-wait_time = 0.1
+wait_time = 0.3
 autostart = true
 
 [node name="sapper" type="Timer" parent="." unique_id=73770851]

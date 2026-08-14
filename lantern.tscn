@@ -16,7 +16,7 @@ collision_layer = 0
 collision_mask = 259
 script = ExtResource("1_kxgpu")
 
-[node name="pattern1a" type="CollisionShape2D" parent="." unique_id=365067268]
+[node name="pattern1a" type="CollisionShape2D" parent="." unique_id=365067268 groups=["pattern1"]]
 position = Vector2(60, 0)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_aeluj")
@@ -25,7 +25,7 @@ shape = SubResource("CircleShape2D_aeluj")
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_s57vn")
 
-[node name="pattern1b" type="CollisionShape2D" parent="." unique_id=195215818]
+[node name="pattern1b" type="CollisionShape2D" parent="." unique_id=195215818 groups=["pattern1"]]
 position = Vector2(-60, 0)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_aeluj")
@@ -35,7 +35,7 @@ rotation = -3.1415925
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_s57vn")
 
-[node name="pattern2a" type="CollisionShape2D" parent="." unique_id=105617282]
+[node name="pattern2a" type="CollisionShape2D" parent="." unique_id=105617282 groups=["pattern2"]]
 position = Vector2(60, 0)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_aeluj")
@@ -44,7 +44,7 @@ shape = SubResource("CircleShape2D_aeluj")
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_s57vn")
 
-[node name="pattern2b" type="CollisionShape2D" parent="." unique_id=1429985153]
+[node name="pattern2b" type="CollisionShape2D" parent="." unique_id=1429985153 groups=["pattern2"]]
 position = Vector2(-30, -51.96153)
 rotation = 1.0471976
 scale = Vector2(2, 2)
@@ -54,7 +54,7 @@ shape = SubResource("CircleShape2D_aeluj")
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_s57vn")
 
-[node name="pattern2c" type="CollisionShape2D" parent="." unique_id=838505889]
+[node name="pattern2c" type="CollisionShape2D" parent="." unique_id=838505889 groups=["pattern2"]]
 position = Vector2(-30.000004, 51.961525)
 rotation = 2.0943952
 scale = Vector2(2, 2)

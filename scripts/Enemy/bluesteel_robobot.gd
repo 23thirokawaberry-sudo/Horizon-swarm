@@ -6,7 +6,7 @@ var health = 90.0
 var damage = 15.0
 const SPEED = 30.0
 var defense = 24.0
-var cash_drop = 3.0
+var cash_drop = 12.0
 
 var is_enraged = false
 

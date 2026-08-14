@@ -7,6 +7,8 @@ var overflowed_enemies = 0
 var timed_spawns = 0
 @onready var path = %PathFollow2D
 
+const WEAPON_UNLOCK = ["Mortar", "Dagger", "Katana", "Mine"]
+
 var enemies = {
 	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
 	"Yellow slime": preload("res://scenes/Enemy/yellow_slime.tscn"),

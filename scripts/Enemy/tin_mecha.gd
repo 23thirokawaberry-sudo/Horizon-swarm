@@ -11,7 +11,7 @@ var speed = 16.0
 var defense = 6.0
 const FIRERATE = [7.5, 7.5]
 const BURST = 5
-var cash_drop = 6.0
+var cash_drop = 80.0
 
 
 var touching = null #global variable for whether the enemy is touching player or not.

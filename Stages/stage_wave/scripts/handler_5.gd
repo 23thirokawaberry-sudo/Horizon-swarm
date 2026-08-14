@@ -26,6 +26,8 @@ func boss_spawn(mob):
 	new_mob.max_health *= 5
 	new_mob.damage *= 2.25
 	new_mob.scale *= 1.5
+	if "boss" in new_mob:
+		new_mob.boss = true
 	var path = paths.pick_random()
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position
@@ -50,46 +52,46 @@ func _wave_system_spacing():
 			enemy.clear()
 			wave = 1
 		if enemy.is_empty():
-			enemy.append(["Green slime", 0.85])
+			enemy.append(["Green slime", 1.25])
 		selected = 0
 	elif time_elapsed < 36: #wave 2
 		if wave == 1:
 			enemy.clear()
 			wave = 2
 		if enemy.is_empty():
-			enemy.append(["Green slime", 0.8])
-			enemy.append(["Blue slime", 1.25])
+			enemy.append(["Green slime", 1.2])
+			enemy.append(["Blue slime", 1.5])
 		selected = randi_range(0, 1)
 	elif time_elapsed < 45: #wave 3
 		if wave == 2:
 			enemy.clear()
 			wave = 3
 		if enemy.is_empty():
-			enemy.append(["Blue slime", 1.1])
+			enemy.append(["Blue slime", 1.4])
 		selected = 0
 	elif time_elapsed < 65:
 		if wave == 3:
 			enemy.clear()
 			wave = 4
 		if enemy.is_empty():
-			enemy.append(["Green slime", 0.75])
-			enemy.append(["Blue slime", 1.15])
+			enemy.append(["Green slime", 1.05])
+			enemy.append(["Blue slime", 1.35])
 		selected = randi_range(0, 1)	
 	elif time_elapsed < 80:
 		if wave == 4:
 			enemy.clear()
 			wave = 5
 		if enemy.is_empty():
-			for i in range(3):
-				enemy.append(["Green slime", 0.7])
-			enemy.append(["Red slime", 1.8])
-		selected = randi_range(0, 3)	
+			for i in range(2):
+				enemy.append(["Green slime", 1.0])
+			enemy.append(["Red slime", 3.0])
+		selected = randi_range(0, 2)	
 	elif time_elapsed < 100:
 		if wave == 3:
 			enemy.clear()
 			wave = 4
 		if enemy.is_empty():
-			enemy.append(["Blue slime", 1.0])
+			enemy.append(["Blue slime", 1.25])
 		selected = 0
 	elif time_elapsed < 110:
 		if wave == 4:
@@ -97,8 +99,8 @@ func _wave_system_spacing():
 			wave = 5
 		if enemy.is_empty():
 			for i in range(2):
-				enemy.append(["Blue slime", 1.05])
-				enemy.append(["Green slime", 0.6])
+				enemy.append(["Blue slime", 1.25])
+				enemy.append(["Green slime", 0.95])
 			enemy.append(["Red slime", 1.55])
 		selected = randi_range(0, 4)
 	elif time_elapsed < 135:
@@ -106,30 +108,30 @@ func _wave_system_spacing():
 			enemy.clear()
 			wave = 6
 		if enemy.is_empty():
-			enemy.append(["Red slime", 1.6])
+			enemy.append(["Red slime", 2.0])
 		selected = 0
 	elif time_elapsed < 145:
 		if wave == 6:
 			enemy.clear()
 			wave = 7
 		if enemy.is_empty():
-			enemy.append(["Red slime", 1.5])
-			enemy.append(["Blue slime", 0.9])
+			enemy.append(["Red slime", 1.8])
+			enemy.append(["Blue slime", 1.2])
 		selected = randi_range(0, 1)
 	elif time_elapsed < 160:
 		if wave == 7:
 			enemy.clear()
 			wave = 8
 		if enemy.is_empty():
-			enemy.append(["Red slime", 1.4])
-			enemy.append(["Green slime", 0.5])
-			enemy.append(["Blue slime", 0.9])
+			enemy.append(["Red slime", 1.8])
+			enemy.append(["Green slime", 0.8])
+			enemy.append(["Blue slime", 1.2])
 		selected = randi_range(0, 2)
 	else:
 		if enemy.is_empty():
 			for i in range(2):
-				enemy.append(["Green slime", 0.4])
-			enemy.append(["Blue slime", 0.8])
+				enemy.append(["Green slime", 0.65])
+			enemy.append(["Blue slime", 1.1])
 		selected = randi_range(0, 2)
 	spawn(enemies.get(enemy[selected][0]))
 	$SpawnInterval.start(enemy[selected][1])	

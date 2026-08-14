@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 35.0
+var max_health = 30.0
 var health = 30.0
 const DAMAGE = 3.0
 const SPEED = 24.0

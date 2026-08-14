@@ -8,5 +8,5 @@ func _on_area_entered(area: Area2D):
 	queue_free()
 	var player = area.get_parent()
 	print(player)
-	player.xp += 1.0
+	player.xp += 100.0
 	player.get_xp()

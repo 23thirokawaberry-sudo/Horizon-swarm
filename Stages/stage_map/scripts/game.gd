@@ -29,6 +29,13 @@ func _process(delta):
 		get_tree().paused = true
 		%GainedMoney.text = "Credits earned: %.0f + %.0f (clear bonus 50%%)" % [credits_gain, credits_gain * 0.5]
 		credits_gain *= 1.5
+		for enemy in enemies.enemies:
+			if enemy in DataTransfer.database["Enemies"]:
+				DataTransfer.database["Enemies"][enemy] = true
+		if "WEAPON_UNLOCK" in enemies:
+			for weapon in DataTransfer.icons:
+				if weapon[0] in enemies.WEAPON_UNLOCK:
+					weapon[3] = true
 		if stage_data[stage][2] == false:
 			stage_data[stage][2] = true
 
