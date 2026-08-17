@@ -11,6 +11,7 @@ var cash_drop = 20.0
 var is_enraged = false
 
 @onready var player  = get_node("/root/Game/Player")
+@onready var sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -73,16 +74,16 @@ func enrage():
 		speed = 24.0
 		damage = 25.0
 		is_enraged = true
-		modulate = Color(3.0,0,0,1)
+		sprite.modulate = Color(3.0,0,0,1)
 
 func damage_effect():
 	if health > max_health / 2:
-		modulate = Color(6.0,0.1,0.1)
+		sprite.modulate = Color(6.0,0.1,0.1)
 		$HitTick.start(0.05)
 		await $HitTick.timeout
-		modulate = Color(1,1,1,1)
+		sprite.modulate = Color(1,1,1,1)
 	else:
-		modulate = Color(8.0,0.1,0.1)
+		sprite.modulate = Color(8.0,0.1,0.1)
 		$HitTick.start(0.05)
 		await $HitTick.timeout
-		modulate = Color(3,0,0,1)
+		sprite.modulate = Color(3,0,0,1)

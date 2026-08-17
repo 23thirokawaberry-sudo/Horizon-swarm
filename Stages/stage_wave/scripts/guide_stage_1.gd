@@ -1,9 +1,9 @@
 extends Node
 
 var win_time = 116
+const ENEMY_APPEARENCES = ["Green slime", "Blue slime"]
 
 var time_elapsed = 0.0
-var overflowed_enemies = 0
 var timed_spawns = 0
 @onready var path = get_parent().find_child("Player").find_child("Path2D").find_child("PathFollow2D")
 
@@ -21,23 +21,30 @@ var dialog_text = ["Welcome to the game \n Before we start, I will explain the c
 					"The boss is spawning in 10 seconds. Be careful, as it will move towards you faster. Remember to move away if you are getting cornered.", 
 					"The boss is here. It is larger than how it would normally be, and it also has more health and damage. There is a health bar for the boss, so you can track how close they are to dying."]
 
-var enemies = {
-	"Mage": preload("res://scenes/Enemy/projector_mk_1.tscn"),
-	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
-	"Blue slime": preload("res://scenes/Enemy/blue_slime.tscn")
-	}
+@onready var enemies = get_parent().ENEMIES
 
-func spawn(mob):
-	if get_child_count() <= 228:
-		var new_mob = mob.instantiate()
+func spawn(mobs):
+	if get_child_count() <= 155:
+		print(mobs)		
+		var selected = randi_range(0, mobs[-1][1])
+		var new_mob = null
+		for mob in mobs:
+			print(mob)
+			if mob[1] >= selected:
+				new_mob = mob[0]
+				print(new_mob)
+				$SpawnInterval.wait_time = mob[2]
+				break
+		var spawn_mob = enemies.get(new_mob).instantiate()
 		path.progress_ratio = randf()
-		new_mob.global_position = path.global_position
-		add_child(new_mob)
+		spawn_mob.global_position = path.global_position
+		add_child(spawn_mob)
+		$SpawnInterval.start()
 	else:
-		get_child(4).queue_free()
-		overflowed_enemies += 1
+		get_child(5).queue_free()
 
 func boss_spawn(mob):
+	const BOSSBAR = preload("res://scenes/Important/boss_bar.tscn")
 	var new_mob = mob.instantiate()
 	new_mob.health *= 5
 	new_mob.max_health *= 5
@@ -46,6 +53,8 @@ func boss_spawn(mob):
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position
 	$Boss.add_child(new_mob)
+	var new_bar = BOSSBAR.instantiate()
+	new_mob.add_child(new_bar)
 
 func _process(delta: float):
 	time_elapsed += delta
@@ -135,37 +144,14 @@ func _on_dialog_timer_timeout():
 	$Dialog.visible = false
 
 func _wave_system_spacing():
-	var enemy = []
-	var wave = 0
-	var selected = 0
 	if time_elapsed < 50: #wave 1
-		if wave == 0:
-			enemy.clear()
-			wave = 1
-		if enemy.is_empty():
-			enemy.append(["Mage", 9])
-		selected = 0
+		spawn([["Green slime", 1, 6.5]])
 	elif time_elapsed < 80: #wave 2
-		if wave == 1:
-			enemy.clear()
-			wave = 2
-		if enemy.is_empty():
-			enemy.append(["Green slime", 1])
-		selected = 0
+		spawn([["Green slime", 1, 2.0]])
 	elif time_elapsed < 115: #wave 3
-		if wave == 2:
-			enemy.clear()
-			wave = 3
-		if enemy.is_empty():
-			enemy.append(["Green slime", 0.8])
-		selected = 0
-	else:
-		if enemy.is_empty():
-			enemy.append(["Green slime", 0.5])
-		selected = 0
-	spawn(enemies.get(enemy[selected][0]))
-	$SpawnInterval.start(enemy[selected][1])	
-	await $SpawnInterval.is_stopped()
+		spawn([["Green slime", 1, 1.5]])
+	else: #endless wave until last boss is defeated
+		spawn([["Green slime", 1, 1.2]])
 
 func _ready():
 	$SpawnInterval.start()

@@ -6,6 +6,25 @@ var gameover = false
 var timer = 0
 @onready var transition = $Transition.get_child(0).get_child(2)
 
+const ENEMIES = {
+	"Green slime": preload("res://scenes/Enemy/green_slime.tscn"),
+	"Blue slime": preload("res://scenes/Enemy/blue_slime.tscn"),
+	"Red slime": preload("res://scenes/Enemy/red_slime.tscn"),
+	"Yellow slime": preload("res://scenes/Enemy/yellow_slime.tscn"),
+	"Black slime": preload("res://scenes/Enemy/black_slime.tscn"),
+	"Tarnished purple": preload("res://scenes/Enemy/tarnished_purple.tscn"),
+	"Tarnished turquoize": preload("res://scenes/Enemy/tarnished_turquoize.tscn"),
+	"Tin robobot": preload("res://scenes/Enemy/robobot.tscn"),
+	"Copper robobot": preload("res://scenes/Enemy/copper_robobot.tscn"),
+	"Steel robobot": preload("res://scenes/Enemy/steel_robobot.tscn"),
+	"Bluesteel robobot": preload("res://scenes/Enemy/bluesteel_robobot.tscn"),
+	"Pillar": preload("res://scenes/Enemy/pillar.tscn"),
+	"Blitzer": preload("res://scenes/Enemy/blitzer.tscn"),
+	"Triangle mage": preload("res://scenes/Enemy/triangle_mage.tscn"),
+	"Projector": preload("res://scenes/Enemy/projector_mk_1.tscn"),
+	"Omecha": preload("res://scenes/Enemy/tin_mecha.tscn")
+}
+#Stages will call these to spawn the enemies.
 
 var credits_gain = 0
 
@@ -29,7 +48,7 @@ func _process(delta):
 		get_tree().paused = true
 		%GainedMoney.text = "Credits earned: %.0f + %.0f (clear bonus 50%%)" % [credits_gain, credits_gain * 0.5]
 		credits_gain *= 1.5
-		for enemy in enemies.enemies:
+		for enemy in enemies.ENEMY_APPEARENCES:
 			if enemy in DataTransfer.database["Enemies"]:
 				DataTransfer.database["Enemies"][enemy] = true
 		if "WEAPON_UNLOCK" in enemies:

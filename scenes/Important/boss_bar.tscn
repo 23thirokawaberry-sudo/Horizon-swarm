@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://rqs2m6o6mopi"]
+
+[ext_resource type="Script" uid="uid://dhbtpe6hbq0we" path="res://boss_bar.gd" id="1_j3xk4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovrr2"]
+bg_color = Color(1, 0, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoq1x"]
+bg_color = Color(0, 1, 0.40392157, 1)
+
+[node name="BossBar" type="ProgressBar" unique_id=1213968164]
+z_index = 2
+offset_left = -26.0
+offset_top = 1.0
+offset_right = 26.0
+offset_bottom = 6.0
+pivot_offset = Vector2(26, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_ovrr2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xoq1x")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_j3xk4")

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c38avxk5rth5d"]
+[gd_scene format=4 uid="uid://c38avxk5rth5d"]
 
 [ext_resource type="Script" uid="uid://b2leaxs8ci3jw" path="res://scripts/Important/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b33odkfo53fqb" path="res://assets/sprites/Player/Player_classes_temp.png" id="2_cc8a3"]
@@ -222,17 +222,15 @@ bg_color = Color(0.37143427, 0.5854644, 1, 1)
 atlas = ExtResource("4_cc8a3")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovrr2"]
-bg_color = Color(1, 0, 0.4, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoq1x"]
-bg_color = Color(0, 1, 0.40392157, 1)
-
 [sub_resource type="Curve2D" id="Curve2D_c7irj"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 37, 9, 0, 0, 0, 0, 348, 8, 0, 0, 0, 0, 348, 195, 0, 0, 0, 0, 37, 195, 0, 0, 0, 0, 37, 9)
 }
 point_count = 5
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_cc8a3"]
+data = PackedByteArray("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")
+format = 3
 
 [node name="Player" type="CharacterBody2D" unique_id=1315755359]
 z_index = 2
@@ -319,18 +317,6 @@ offset_right = 33.0
 offset_bottom = 33.0
 texture = SubResource("AtlasTexture_olm6w")
 
-[node name="BossBar" type="ProgressBar" parent="." unique_id=639803728]
-visible = false
-z_index = 2
-offset_left = -58.0
-offset_top = -79.0
-offset_right = 58.0
-offset_bottom = -68.0
-theme_override_styles/background = SubResource("StyleBoxFlat_ovrr2")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xoq1x")
-value = 100.0
-show_percentage = false
-
 [node name="Pause" type="Button" parent="." unique_id=1348012021]
 z_index = 2
 offset_left = 162.0
@@ -371,6 +357,10 @@ curve = SubResource("Curve2D_c7irj")
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1120929168]
 position = Vector2(37, 9)
 rotation = -0.0032154229
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="." unique_id=1482310851]
+stream = SubResource("AudioStreamWAV_cc8a3")
+volume_db = -5.0
 
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
 [connection signal="timeout" from="Regen" to="." method="_on_regen_timeout"]

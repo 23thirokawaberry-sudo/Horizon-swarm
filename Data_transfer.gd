@@ -5,7 +5,7 @@ var base_player_stats = [50.0, 10.0, 42.0, 0.0, 2.0]
 var icons = [["Damage", 0, 125], ["Max health", 0, 125], ["Regen", 0, 125], ["Defense", 0, 125],
 			["Speed", 0, 125], ["Same", 0, 125], ["Pls money", 0, 125], ["Hello.", 0, 125],
 			["Pistol", 0, 200, true], ["Shotgun", -1, 250, true], ["Sword", -1, 250, true], ["Beam", -1, 250, true], 
-			["Sniper", -1, 325, true], ["Gatling", -1, 325, true], ["Lantern", 0, 400, true], ["Sapper", -1, 400, false],
+			["Sniper", -1, 325, false], ["Gatling", -1, 325, false], ["Lantern", -1, 400, false], ["Sapper", -1, 400, false],
 			["Volt", -1, 500, false], ["Mortar", -1, 500, false], ["Dagger", -1, 500, false], ["Katana", -1, 650, false],
 			["Mine", -1, 650, false], ["Aura", -1, 1000, false]]
 #Nessesary data for getting the icons among other things for these upgrades. Order: Name, Current level, Upgrade cost. Upgrade cost is stored here to save across scenes.
@@ -32,12 +32,11 @@ var descriptions = [
 
 
 var stage_data = [
-	[preload("res://Stages/stage_wave/scenes/tutorial_stage.tscn"), "Tutorial", false, true],
-	[preload("res://Stages/stage_wave/scenes/handler_5.tscn"), "Stage 1", false, true],
-	[preload("res://Stages/stage_wave/scenes/enemy_spawn_handler.tscn"), "Stage 2", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_2.tscn"), "Stage 3", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_3.tscn"), "Stage 4", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 5", false, false],
+	[preload("res://Stages/stage_wave/scenes/guide_stage_1.tscn"), "Beginners tutorial", false, true],
+	[preload("res://Stages/stage_wave/scenes/handler_1.tscn"), "Stage 1", false, true],
+	[preload("res://Stages/stage_wave/scenes/handler_2.tscn"), "Stage 2", false, false],
+	[preload("res://Stages/stage_wave/scenes/handler_3.tscn"), "Stage 3", false, false],
+	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 4", false, false],
 	[preload("res://Stages/stage_wave/scenes/handler_6.tscn"), "Stage 6", false, false]]
 #Stage scene, stage name, check for whether stage is cleared or not.
 
@@ -49,7 +48,6 @@ var classes = [
 	["The test", [999.0, 99.0, 99.0, 9.0, 9.0]]
 ]
 # Class name, Base stats
-
 
 var database = {"Enemies": {
 	"Green slime": false, "Blue slime": false, "Red slime": false, "Yellow slime": false, "Black slime": false, 

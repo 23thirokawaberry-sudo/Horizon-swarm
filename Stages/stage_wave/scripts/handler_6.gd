@@ -1,45 +1,46 @@
 extends Node
 
 var win_time = 401
+const ENEMY_APPEARENCES = ["Green slime", "Blue slime", "Red slime", "Yellow slime", "Black slime"]
 
 var timed_spawns = 0
 @onready var path = %PathFollow2D
 
-var enemies = {
-	"Red slime": preload("res://scenes/Enemy/red_slime.tscn"),
-	"Yellow slime": preload("res://scenes/Enemy/yellow_slime.tscn"),
-	"Black slime": preload("res://scenes/Enemy/black_slime.tscn"),
-	"Tarnished purple": preload("res://scenes/Enemy/tarnished_purple.tscn"),
-	"Tarnished turquoize": preload("res://scenes/Enemy/tarnished_turquoize.tscn"),
-	"Pillar": preload("res://scenes/Enemy/pillar.tscn"),
-	"Blitzer": preload("res://scenes/Enemy/blitzer.tscn"),
-	"Triangle mage": preload("res://scenes/Enemy/triangle_mage.tscn"),
-	"Projector": preload("res://scenes/Enemy/projector_mk_1.tscn"),
-	"Mecha": preload("res://scenes/Enemy/tin_mecha.tscn")
-	}
+@onready var enemies = get_parent().ENEMIES
 
-func spawn(mob):
-	if get_child_count() <= 153:
-		var new_mob = mob.instantiate()
+func spawn(mobs):
+	if get_child_count() <= 154:
+		print(mobs)		
+		var selected = randi_range(0, mobs[-1][1])
+		var new_mob = null
+		for mob in mobs:
+			print(mob)
+			if mob[1] >= selected:
+				new_mob = mob[0]
+				print(new_mob)
+				$SpawnInterval.wait_time = mob[2]
+				break
+		var spawn_mob = enemies.get(new_mob).instantiate()
 		path.progress_ratio = randf()
-		new_mob.global_position = path.global_position
-		add_child(new_mob)
+		spawn_mob.global_position = path.global_position
+		add_child(spawn_mob)
+		$SpawnInterval.start()
+	else:
+		get_child(4).queue_free()
 
 func boss_spawn(mob):
+	const BOSSBAR = preload("res://scenes/Important/boss_bar.tscn")
 	var new_mob = mob.instantiate()
 	new_mob.health *= 5
 	new_mob.max_health *= 5
-	new_mob.damage *= 2.5
+	new_mob.damage *= 2.25
 	new_mob.scale *= 1.5
-	if "shield" in new_mob:
-		new_mob.shield *= 5
-		new_mob.shield_base *= 5
-	if "boss" in new_mob:
-		new_mob.boss = true
-	
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position
 	$Boss.add_child(new_mob)
+	var new_bar = BOSSBAR.instantiate()
+	new_mob.add_child(new_bar)
+
 
 var time_elapsed = 0.0
 func _process(delta: float):

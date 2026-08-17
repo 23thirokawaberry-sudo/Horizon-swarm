@@ -31,7 +31,6 @@ signal death
 signal level_up
 signal pause
 var time_elapsed = 0
-var boss = null
 
 func _ready():
 	print(base)
@@ -44,15 +43,6 @@ func _process(delta):
 	%XpBar.max_value = level_xp
 	%HealthBar.max_value = max_health
 	%HealthBar.value = health
-	if get_parent().get_child(10).find_child("Boss").get_child_count() != 0:
-		boss = get_parent().get_child(10).find_child("Boss").get_child(0)
-		if is_instance_valid(boss):
-			$BossBar.visible = true
-			$BossBar.max_value = boss.max_health
-			$BossBar.value = boss.health
-	else:
-		boss = null
-		$BossBar.visible = false
 	
 	%Credits.text = "Credits: %0.0f" % [get_parent().credits_gain]
 
@@ -94,6 +84,7 @@ func recieve_damage(incoming_damage):
 		health -= 1
 	else:
 		health -= incoming_damage - defense
+	$Hurt.play()
 	%HealthBar.value = health
 	$Regen.stop()
 	$RegenWait.start()

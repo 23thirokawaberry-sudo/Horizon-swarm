@@ -9,6 +9,7 @@ var is_dead = false
 var cash_drop = 2.0
 
 @onready var player  = get_node("/root/Game/Player")
+@onready var sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -69,7 +70,7 @@ func take_damage(incoming_damage):
 			get_node("/root/Game").credits_gain += cash_drop
 
 func damage_effect():
-	modulate = Color(6.0,0.1,0.1)
+	sprite.modulate = Color(6.0,0.1,0.1)
 	$HitTick.start(0.05)
 	await $HitTick.timeout
-	modulate = Color(1,1,1,1)
+	sprite.modulate = Color(1,1,1,1)

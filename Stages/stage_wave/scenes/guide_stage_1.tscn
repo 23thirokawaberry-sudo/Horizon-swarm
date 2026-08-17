@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://dc782ira5jk7j"]
 
-[ext_resource type="Script" uid="uid://0mboafmdt2x2" path="res://Stages/stage_wave/scripts/tutorial_stage.gd" id="1_1pwvg"]
-[ext_resource type="Texture2D" uid="uid://c3fbo17ocb64p" path="res://assets/sprites/misc/Tilemap (1) (2).png" id="2_rd0ib"]
+[ext_resource type="Script" uid="uid://0mboafmdt2x2" path="res://Stages/stage_wave/scripts/guide_stage_1.gd" id="1_8tsmo"]
+[ext_resource type="Texture2D" uid="uid://c3fbo17ocb64p" path="res://assets/sprites/misc/Tilemap (1) (2).png" id="2_ucb8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_opj5j"]
-texture = ExtResource("2_rd0ib")
+texture = ExtResource("2_ucb8i")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 1:0/0 = 0
@@ -92,7 +92,7 @@ _data = {
 point_count = 5
 
 [node name="enemies" type="Node2D" unique_id=265994804]
-script = ExtResource("1_1pwvg")
+script = ExtResource("1_8tsmo")
 
 [node name="SpawnInterval" type="Timer" parent="." unique_id=416795265]
 

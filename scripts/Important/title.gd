@@ -218,7 +218,7 @@ func cash_check_weapons(value):
 	if stat[1] < 4:
 		if DataTransfer.credits >= stat[2]:
 			DataTransfer.credits -= stat[2]
-			stat[2] += (stat[1] + 1) * 150
+			stat[2] += (stat[1] + 1) * snapped(stat[2] / 4, 5) + 50
 			stat[1] += 1
 			if stat[1] < 4:
 				%Weapons.get_child(value).get_child(1).text = "%s: level %.0f \n $%.0f" % [stat[0], stat[1], stat[2]]
@@ -227,7 +227,7 @@ func cash_check_weapons(value):
 
 func _on_stage_button_pressed(button_name):
 	match button_name:
-		"Tutorial":
+		"Beginners tutorial":
 			DataTransfer.selected_stage = 0
 			%Start.visible = true
 		"Stage 1":
@@ -250,7 +250,7 @@ func _on_stage_button_pressed(button_name):
 				DataTransfer.selected_stage = 5
 				%Start.visible = true
 		"Stage 6":
-			if DataTransfer.stage_data[5][2] == true:
+			if DataTransfer.stage_data[4][2] == true:
 				DataTransfer.selected_stage = 6
 				%Start.visible = true
 

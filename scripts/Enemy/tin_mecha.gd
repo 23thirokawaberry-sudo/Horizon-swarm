@@ -20,6 +20,7 @@ var in_range = null
 
 const BULLET = preload("res://scenes/Enemy/mage_cast.tscn")
 @onready var player  = get_node("/root/Game/Player")
+@onready var sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	#enemy movement
@@ -88,10 +89,10 @@ func take_damage(incoming_damage):
 				get_node("/root/Game").credits_gain += cash_drop
 
 func damage_effect():
-	modulate = Color(6.0,0.1,0.1)
+	sprite.modulate = Color(6.0,0.1,0.1)
 	$HitTick.start(0.05)
 	await $HitTick.timeout
-	modulate = Color(1,1,1,1)
+	sprite.modulate = Color(1,1,1,1)
 
 func _on_spawn_cooldown_timeout():
 	const TURRET = preload("res://scenes/Enemy/tin_turret.tscn")

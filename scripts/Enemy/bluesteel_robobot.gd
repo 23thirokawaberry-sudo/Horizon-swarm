@@ -14,6 +14,7 @@ var touching = null #global variable for whether the enemy is touching player or
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
 
 @onready var player  = get_node("/root/Game/Player")
+@onready var sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	#enemy movement
@@ -83,16 +84,16 @@ func enrage():
 	if is_enraged == false:
 		defense = 50.0
 		is_enraged = true
-		modulate = Color(0.25,0.5,0.8,1)
+		sprite.modulate = Color(0.25,0.5,0.8,1)
 
 func damage_effect():
 	if health > max_health / 5:
-		modulate = Color(6.0,0.1,0.1)
+		sprite.modulate = Color(6.0,0.1,0.1)
 		$HitTick.start(0.05)
 		await $HitTick.timeout
-		modulate = Color(1,1,1,1)
+		sprite.modulate = Color(1,1,1,1)
 	else:
 		modulate = Color(6.0,0.1,0.1)
 		$HitTick.start(0.05)
 		await $HitTick.timeout
-		modulate = Color(0.25,0.5,0.8,1)
+		sprite.modulate = Color(0.25,0.5,0.8,1)
