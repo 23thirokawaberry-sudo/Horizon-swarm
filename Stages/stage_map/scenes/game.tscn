@@ -26,6 +26,7 @@ layer = -5
 offset_top = -1.0
 offset_right = 1152.0
 offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
 
 [node name="Spawn" type="Timer" parent="." unique_id=1588877741]
 wait_time = 1.7999999999999998
@@ -158,4 +159,5 @@ z_index = 100
 [connection signal="pressed" from="GameOver/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Win/ColorRect/Button" to="." method="_on_button_pressed"]
 [connection signal="level_up_selected" from="LevelUp" to="Level" method="_on_level_up_level_up_selected"]
+[connection signal="menu" from="Pause" to="." method="_on_button_pressed"]
 [connection signal="pause" from="Pause" to="." method="_on_pause"]

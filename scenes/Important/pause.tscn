@@ -66,4 +66,83 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Title" type="Button" parent="." unique_id=1044427527]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = 105.0
+offset_right = 84.5
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to title"
+
+[node name="SecondMenu" type="ColorRect" parent="Title" unique_id=1727768068]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -193.5
+offset_top = -274.0
+offset_right = 193.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0.8)
+
+[node name="Label" type="Label" parent="Title/SecondMenu" unique_id=1874479636]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -101.25
+offset_right = 122.0
+offset_bottom = -52.25
+grow_horizontal = 2
+grow_vertical = 2
+text = "Are you sure you want to return to title?
+You will get your credits earned but your progress won't be saved."
+horizontal_alignment = 1
+
+[node name="Return" type="Button" parent="Title/SecondMenu" unique_id=1709899336]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = 23.75
+offset_right = -51.0
+offset_bottom = 107.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to title
+"
+
+[node name="Back" type="Button" parent="Title/SecondMenu" unique_id=1137583975]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 54.0
+offset_top = 23.75
+offset_right = 208.0
+offset_bottom = 107.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go back"
+
 [connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Title" to="." method="_on_title_pressed"]
+[connection signal="pressed" from="Title/SecondMenu/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Title/SecondMenu/Back" to="." method="_on_back_pressed"]

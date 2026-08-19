@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal pause
+signal menu
 
 @onready var weapon_details = get_parent().find_child("Player").find_child("Gun").weapon_levels
 @onready var icon_positions = DataTransfer.icons.duplicate(true)
@@ -53,4 +54,16 @@ func new_entry():
 				if entry[1] == i:
 					entry[0].text = "weapon name : level %d" % [weapon_details[i][1]]
 
-	
+
+func _on_title_pressed() -> void:
+	%SecondMenu.visible = true
+	$ColorRect/Button.disabled = true
+
+
+func _on_back_pressed() -> void:
+	%SecondMenu.visible = false
+	$ColorRect/Button.disabled = false
+
+
+func _on_return_pressed():
+	menu.emit()
