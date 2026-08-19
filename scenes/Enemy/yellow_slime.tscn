@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vn1whfrghy46"]
 
 [ext_resource type="Script" uid="uid://c560wyl44dwks" path="res://scripts/Enemy/yellow_slime.gd" id="1_4r45j"]
-[ext_resource type="Texture2D" uid="uid://cqr1eiyl0ncuo" path="res://assets/sprites/enemy/Slime sprites (1).png" id="2_c57ny"]
+[ext_resource type="Texture2D" uid="uid://o7yo0j5nuk7k" path="res://assets/sprites/enemy/Slime sprites (1) (2) (1).png" id="2_4r45j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
 radius = 6.363636
@@ -9,22 +9,22 @@ radius = 6.363636
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
 radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oggta"]
-atlas = ExtResource("2_c57ny")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c57ny"]
+atlas = ExtResource("2_4r45j")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ntg6y"]
-atlas = ExtResource("2_c57ny")
-region = Rect2(48, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oggta"]
+atlas = ExtResource("2_4r45j")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t6hkg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oggta")
+"texture": SubResource("AtlasTexture_c57ny")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ntg6y")
+"texture": SubResource("AtlasTexture_oggta")
 }],
 "loop": true,
 "name": &"Walk",
@@ -59,10 +59,12 @@ debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
 position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_t6hkg")
 animation = &"Walk"
 autoplay = "Walk"
-frame_progress = 0.8946339
+frame = 1
+frame_progress = 0.89079547
 
 [node name="HitTick" type="Timer" parent="." unique_id=1168191408]
 wait_time = 0.15

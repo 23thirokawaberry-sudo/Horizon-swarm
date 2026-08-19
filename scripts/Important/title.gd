@@ -263,9 +263,9 @@ func _on_database_pressed():
 func _on_difficulty_pressed():
 	for stage in DataTransfer.stage_data:
 		stage[2] = true
-	for weapon in DataTransfer.icons:
-		if weapon[-1] is bool:
-			weapon[-1] = true
+	#for weapon in DataTransfer.icons:
+	#	if weapon[-1] is bool:
+	#		weapon[-1] = true
 	DataTransfer.credits += 100000
 	get_tree().reload_current_scene()
 

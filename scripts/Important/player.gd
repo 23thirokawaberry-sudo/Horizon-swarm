@@ -73,7 +73,7 @@ func stat_upgraded():
 	damage = base[1][1] * (1 + (levels[0][1] + temp_levels[0]) * 0.1)
 	max_health = base[1][0] * (1 + (levels[1][1] + temp_levels[1]) * 0.1)
 	regen = base[1][4] * (1 + (levels[2][1] + temp_levels[2]) * 0.2)
-	defense = base[1][3] + ((levels[3][1] + temp_levels[3]) * 0.25)
+	defense = base[1][3] + levels[3][1] + temp_levels[3]
 	speed = base[1][2] * (1 + (levels[4][1] + temp_levels[4]) * 0.1)
 	print(damage, max_health, regen, defense, speed)
 	%HealthBar.max_value = max_health

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cgax5n70ddhl7"]
+
+[ext_resource type="AudioStream" uid="uid://b5xokselfs52o" path="res://assets/sounds/effects/XpCollect.wav" id="1_k5ol2"]
+[ext_resource type="Script" uid="uid://ced32enwyoion" path="res://scripts/Important/xp_sound.gd" id="2_jfg2a"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" unique_id=780374329]
+stream = ExtResource("1_k5ol2")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("2_jfg2a")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

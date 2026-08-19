@@ -2,11 +2,11 @@ extends Node
 
 var win_time = 321
 const ENEMY_APPEARENCES = ["Green slime", "Red slime", "Black slime", "Tarnished purple", "Tarnished turquoize", "Triangle mage"]
+const WEAPON_UNLOCK = ["Lantern", "Sapper", "Volt"]
+
 
 var timed_spawns = 0
 @onready var paths = [%PathFollow2D, %PathFollow2D2]
-
-const WEAPON_UNLOCK = ["Lantern", "Sapper", "Volt"]
 
 @onready var enemies = get_parent().ENEMIES
 
@@ -38,6 +38,8 @@ func boss_spawn(mob):
 	new_mob.max_health *= 5
 	new_mob.damage *= 2.25
 	new_mob.scale *= 1.5
+	if "boss" in new_mob:
+		new_mob.boss = true
 	var path = paths.pick_random()
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position
@@ -62,14 +64,14 @@ func _process(delta: float):
 			timed_spawns = 2
 	elif snapped_time == 220:
 		if timed_spawns == 2:
-			for i in range(3):
+			for i in range(2):
 				boss_spawn(enemies.get("Black slime"))
 			timed_spawns = 3
 	elif snapped_time == 320:
 		if timed_spawns == 3:
 			for i in range(5):
-				boss_spawn(enemies.get("Black slime"))
 				boss_spawn(enemies.get("Triangle mage"))
+			boss_spawn(enemies.get("Tarnished turquoize"))
 			timed_spawns = 4
 
 func _wave_system_spacing():
@@ -95,7 +97,6 @@ func _wave_system_spacing():
 		spawn([["Green slime", 2, 0.25], ["Red slime", 5, 0.55], ["Tarnished purple", 8, 0.6], ["Triangle mage", 10, 1.0]])
 	else:
 		spawn([["Red slime", 7, 0.5], ["Triangle mage", 9, 0.8]])
-	await $SpawnInterval.is_stopped()
 
 func _ready():
 	$SpawnInterval.start()

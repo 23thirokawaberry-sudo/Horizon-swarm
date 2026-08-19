@@ -360,7 +360,7 @@ rotation = -0.0032154229
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="." unique_id=1482310851]
 stream = SubResource("AudioStreamWAV_cc8a3")
-volume_db = -5.0
+volume_db = -10.0
 
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
 [connection signal="timeout" from="Regen" to="." method="_on_regen_timeout"]

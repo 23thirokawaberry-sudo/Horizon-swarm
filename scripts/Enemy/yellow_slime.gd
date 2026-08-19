@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 111.0
-var health = 111.0
+var max_health = 112.0
+var health = 112.0
 var damage = 11.0
-const SPEED = 35.0
+const SPEED = 34.0
 var cash_drop = 4.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
@@ -18,6 +18,11 @@ func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * SPEED
 	move_and_slide()
+	
+	if direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
 	
 func _on_cooldown_timeout():
 	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.

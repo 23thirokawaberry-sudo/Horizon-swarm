@@ -1,11 +1,10 @@
 extends Node
 
-var win_time = 261
-const ENEMY_APPEARENCES = ["Green slime", "Blue slime", "Black slime", "Tarnished purple", "Tin robobot"]
+var win_time = 281
+const ENEMY_APPEARENCES = ["Blue slime", "Red slime", "Yellow slime", "Tarnished turquoize", "Tin robobot", "Copper robobot", "Triangle mage", "Blitzer"]
 
 var timed_spawns = 0
 @onready var path = %PathFollow2D
-
 @onready var enemies = get_parent().ENEMIES
 
 func spawn(mobs):
@@ -43,6 +42,7 @@ func boss_spawn(mob):
 	var new_bar = BOSSBAR.instantiate()
 	new_mob.add_child(new_bar)
 
+
 var time_elapsed = 0.0
 func _process(delta: float):
 	time_elapsed += delta
@@ -50,41 +50,40 @@ func _process(delta: float):
 	
 	if snapped_time == 90:
 		if timed_spawns == 0:
-			boss_spawn(enemies.get("Tarnished purple"))
+			boss_spawn(enemies.get("Yellow slime"))
 			timed_spawns = 1
-	elif snapped_time == 180:
+	elif snapped_time == 120:
 		if timed_spawns == 1:
-			boss_spawn(enemies.get("Black slime"))
-			timed_spawns = 2
-	elif snapped_time == 260:
-		if timed_spawns == 2:
 			for i in range(2):
-				boss_spawn(enemies.get("Black slime")) #Change to 1 turquoize tarnished when added
+				boss_spawn(enemies.get("Copper robobot"))
+			timed_spawns = 2
+	elif snapped_time == 280:
+		if timed_spawns == 2:
+			boss_spawn(enemies.get("Tarnished turquoize"))
+			for i in range(3):
+				boss_spawn(enemies.get("Copper robobot"))
+				boss_spawn(enemies.get("Triangle mage"))
 			timed_spawns = 3
 
 func _wave_system_spacing():
-	if time_elapsed < 25: #wave 1
-		spawn([["Green slime", 1, 0.65]])
-	elif time_elapsed < 60: #wave 2
-		spawn([["Green slime", 2, 0.65], ["Blue slime", 3, 0.95]])
-	elif time_elapsed < 70: #wave 3
-		spawn([["Tin robobot", 1, 0.8]])
+	if time_elapsed < 20: #wave 1
+		spawn([["Blue slime", 1, 0.75]])
+	elif time_elapsed < 45: #wave 2
+		spawn([["Blue slime", 2, 0.7], ["Red slime", 3, 0.9]])		
 	elif time_elapsed < 90:
-		spawn([["Green slime", 1, 0.6], ["Blue slime", 2, 0.85]])
+		spawn([["Blue slime", 2, 0.6], ["Red slime", 3, 0.75], ["Tin robobot", 4, 1.0]])		
 	elif time_elapsed < 120:
-		spawn([["Blue slime", 2, 0.85], ["Tin robobot", 3, 0.9]])
-	elif time_elapsed < 125:
-		spawn([["Green slime", 1, 0.3]])
-	elif time_elapsed < 165:
-		spawn([["Green slime", 2, 0.55], ["Blue slime", 4, 0.8], ["Tin robobot", 5, 0.8]])
-	elif time_elapsed < 180:
-		spawn([["Tarnished purple", 1, 2.0]])
-	elif time_elapsed < 215:
-		spawn([["Tin robobot", 2, 0.75], ["Tarnished purple", 3, 2.0]])
-	elif time_elapsed < 260:
-		spawn([["Green slime", 4, 0.5], ["Blue slime", 8, 0.75], ["Tin robobot", 11, 0.75], ["Tarnished purple", 13, 1.75]])
+		spawn([["Tin robobot", 6, 0.9], ["Triangle mage", 7, 1.8]])	
+	elif time_elapsed < 150:
+		spawn([["Red slime", 3, 0.7], ["Yellow slime", 5, 1.5], ["Tin robobot", 8, 0.85]])
+	elif time_elapsed < 205:
+		spawn([["Blue slime", 1, 0.1], ["Tin robobot", 7, 0.85], ["Copper robobot", 9, 1.25]])	
+	elif time_elapsed < 240:
+		spawn([["Yellow slime", 30, 1.35], ["Copper robobot", 50, 1.1], ["Blitzer", 51, 0.1]])
+	elif time_elapsed < 280:
+		spawn([["Yellow slime", 28, 1.25], ["Copper robobot", 52, 1.0], ["Triangle mage", 60, 1.0], ["Blitzer", 62, 0.1]])
 	else:
-		spawn([["Tarnished purple", 1, 1.6]])
+		spawn([["Yellow slime", 20, 1.15], ["Copper robobot", 40, 0.9], ["Blitzer", 42, 0.1]])
 
 func _ready():
 	$SpawnInterval.start()

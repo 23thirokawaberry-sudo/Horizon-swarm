@@ -35,6 +35,11 @@ func boss_spawn(mob):
 	new_mob.max_health *= 5
 	new_mob.damage *= 2.25
 	new_mob.scale *= 1.5
+	if "shield" in new_mob:
+		new_mob.shield *= 5
+		new_mob.shield_base *= 5
+	if "boss" in new_mob:
+		new_mob.boss = true
 	path.progress_ratio = randf()
 	new_mob.global_position = path.global_position
 	$Boss.add_child(new_mob)
