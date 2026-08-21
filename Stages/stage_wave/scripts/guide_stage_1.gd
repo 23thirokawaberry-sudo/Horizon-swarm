@@ -145,7 +145,9 @@ func _on_dialog_timer_timeout():
 
 func _wave_system_spacing():
 	if time_elapsed < 50: #wave 1
-		spawn([["Green slime", 1, 6.5]])
+		spawn([["Red stickman", 1, 0.5]])
+		spawn([["Blue stickman", 1, 0.5]])
+		spawn([["Green stickman", 1, 0.5]])
 	elif time_elapsed < 80: #wave 2
 		spawn([["Green slime", 1, 2.0]])
 	elif time_elapsed < 115: #wave 3

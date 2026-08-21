@@ -13,15 +13,15 @@ var icons = [["Damage", 0, 125], ["Max health", 0, 125], ["Regen", 0, 125], ["De
 var descriptions = [
 	"Increase damage by 10%", "Increase max health by 10%", "Improve regeneration by 1/s", "Reduce incoming damage by 1",
 	"Increase speed by 10%", "will increase collection area but rn does nothing lol :son:", "will increase critical chance :krgzani_alternative_entity:", "will do something :grimace:", 
-	["Unlock pistol \n Fires bullets towards your cursor. Deals damage equal to your damage stat.", "Increase damage. \n Damage: 1x > 1.25x", "Reduce firerate. \n Firerate: 1x > 0.8x", "Increase damage. \n Damage: 1.25x > 1.5x", "Increase size and damage. \n Size: 1x > 1.25x \n Damage: 1.5x > 1.65x", "Bullets can now pierce once."], 
+	["Unlock pistol \n Fires bullets towards your cursor. Deals 100% of your damage.", "Increase damage. \n Damage: 1x > 1.25x", "Reduce firerate. \n Firerate: 1x > 0.8x", "Increase damage. \n Damage: 1.25x > 1.5x", "Increase size and damage. \n Size: 1x > 1.25x \n Damage: 1.5x > 1.65x", "Bullets can now pierce once."], 
 	["Unlock shotgun \n Fires 5 bullets in a cone. Each projectile indivisually deals 75% of your damage.", "Increase damage \n Damage: 1x > 1.25x", "Reduce firerate \n Firerate: 1x > 0.8x", "Increase bullets per burst by 2", "Improve all stats. \n Damage: 1.5x > 1.65x \n Firerate: 0.8x > 0.7x \n Bullets: 7 > 8 \n Accuracy: 0.6 > 0.5", "Reduce bullets by 2 and increase firerate by 40% but fire in bursts of 2"], 
-	["Unlock sword \n Deal 150% of your damage to all enemies in an area directly in front of yourself", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%", "Remove firerate buff, but increase damage by 60%", "Swing additionally behind yourself. Also increases damage by 10%"], 
-	["Unlock beam \n Fires a beam that damages all enemies in it's path. Deals 80% of your damage.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase beam width by 1.5x", "Reduce firerate by another 30%", "Reduce damage by 75% but fire 3 beams."], 
+	["Unlock sword \n Deal 150% of your damage to all enemies in an area directly in front of yourself", "Increase damage \n Damage: 1x > 1.25x", "Reduce firerate \n Firerate: 1x > 0.8x", "Increase damage \n Damage: 1.25 > 1.5x", "Increase firerate and significantly increase damage \n Damage: 1.5 > 2.1 \n Firerate: 0.8 > 1.0", "Swing additionally behind yourself. Also increases damage by 10%"], 
+	["Unlock beam \n Fires a beam that damages all enemies in it's path. Deals 80% of your damage.", "Increase damage \n Damage: 1x > 1.25x", "Reduce firerate \n Firerate: 1x > 0.8x", "Increase beam width \n Width: 1x > 1.5x", "Reduce firerate further \n Firerate: 0.8 > 0.5", "Reduce damage by 75% but fire 3 beams."], 
 	["Unlock sniper \n Pierces through up to 5 enemies, dealing 180% of your damage to each of them. Has a very slow firerate.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase piercing limit by 3", "Increase piercing limit by 1 and Increase damage by 30%", "Increase bullet size by 40%"], 
 	["Unlock gatling \n Fires small inaccurate bullets at a rapid pace. Deals 30% of your damage, but fires very quickly.", "Increase damage by 25%", "Reduce firerate by 25%", "Increase damage by another 25%", "Reduce firerate by another 20% and improve accuracy by 0.05%"], 
 	["Unlock lantern \n Orbits around you, dealing 80% of your damage to enemies it collides with.", "Increase damage by 25%", "Increase orbit speed by 20%", "Increase orbiting lanterns by 1", "Increase damage by 10% and increase size of lanterns by 25%"], 
-	["Unlock sapper \n Targets the weakest enemy on the field, rapidly draining their health. Deals 10% of your damage, but hits extremely fast.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%", "Increase damage by another 40%"],
-	["Unlock volt \n Targets the nearest enemy to yourself, and chains towards nearby enemies. Deals 50% of your damage, and reduces damage by 15% per chain..", "Increase damage by 25%", "Reduce firerate by 20%", "Increase chain length by 3", "Reduce damage loss per chain by 8% and increase damage by 16%"],
+	["Unlock sapper \n Targets the weakest enemy on the field, rapidly draining their health. Deals 10% of your damage, but hits extremely fast. Cannot target stationary enemies.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%", "Increase damage by another 40%"],
+	["Unlock volt \n Targets the nearest enemy to yourself, and chains towards nearby enemies. Deals 50% of your damage, and reduces damage by 15% per chain. Cannot chain to stationary enemies.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase chain length by 3", "Reduce damage loss per chain by 8% and increase damage by 16%"],
 	["Unlock mortar \n Fires an explosive shot to the location of your mouse cursor, dealing 200% of your damage.", "Increase damage by 25%", "Reduce cooldown by 15%", "Increase radius by 20%", "Increase explosion lingering by 30% and reduce cooldown by 10%"], 
 	["Unlock dagger \n Swing in a small area in front very quickly, dealing 80% of your damage. Every 6 swings, throw a dagger at the nearest enemy. Pierces.", "Increase damage by 25%", "Reduce firerate by 20%", "Reduce dagger throw requirement from 6 to 5", "Increase damage by 40%"],
 	["Unlock katana \n Slash in a wide cone, dealing 125% of your damage. Ignores enemy armor.", "Increase damage by 25%", "Reduce firerate by 20%", "Increase damage by another 25%", "Increase damage area by 15% and damage by 15%.", "Deal additional damage equal to 10% of the enemy's defense."],
@@ -37,7 +37,9 @@ var stage_data = [
 	[preload("res://Stages/stage_wave/scenes/handler_2.tscn"), "Stage 2", false, false],
 	[preload("res://Stages/stage_wave/scenes/handler_3.tscn"), "Stage 3", false, false],
 	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 4", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_5.tscn"), "Stage 5", false, false]]
+	[preload("res://Stages/stage_wave/scenes/handler_5.tscn"), "Stage 5", false, false], 
+	[preload("res://Stages/stage_wave/scenes/handler_6.tscn"), "Stage 6", false, false],
+	[preload("res://Stages/stage_wave/scenes/handler_7.tscn"), "Stage 7", false, false]]
 #Stage scene, stage name, check for whether stage is cleared or not.
 
 
@@ -52,8 +54,8 @@ var classes = [
 var database = {"Enemies": {
 	"Green slime": false, "Blue slime": false, "Red slime": false, "Yellow slime": false, "Black slime": false, 
 	"Tarnished purple": false, "Tarnished turquoize": false, "Tin robobot": false, "Copper robobot": false,
-	"Steel robobot": false, "Bluesteel robobot": false, "Pillar": false, "Blitzer": false, "Triangle mage": false,
-	"Tin projector": false, "Tin sentry": false, "Tin mecha": false
+	"Steel robobot": false, "Bluesteel robobot": false, "Sandstone pillar": false, "Marble pillar": false, "Blitzer": false,
+	"Triangle mage": false, "Tin projector": false, "Tin sentry": false, "Tin mecha": false
 }, "Locations": {
 	"Spire": true
 }}

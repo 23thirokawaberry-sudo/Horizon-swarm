@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var buttons = [$Button, $Button2, $Button3]
+@onready var buttons = [$Button, $Button2, $Button3, $Button4]
 var upgrade_option = 0
 
 signal level_up_selected
@@ -20,6 +20,7 @@ func randomize_buttons():
 	randomize_button(buttons[0])
 	randomize_button(buttons[1])
 	randomize_button(buttons[2])
+	randomize_button(buttons[3])
 
 func randomize_button(button):
 	var upgrade_type = randi_range(0, 1) #Weapons are less likely to appear
@@ -57,6 +58,9 @@ func _on_button_2_pressed():
 	
 func _on_button_3_pressed():
 	button_pressed(2)
+
+func _on_button_4_pressed():
+	button_pressed(3)
 
 func button_pressed(button_number):
 	for item in upgrades:

@@ -2,8 +2,8 @@ extends StaticBody2D
 
 var max_health = 1520.0
 var health = 1520.0
-var damage = 28.0
-var cash_drop = 4.0
+var damage = 31.0
+var cash_drop = 9.0
 
 var target_pos = null
 
@@ -11,7 +11,7 @@ var touching = null #global variable for whether the enemy is touching player or
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
 
 @onready var player  = get_node("/root/Game/Player")
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $Pillar
 
 func _ready():
 	$Pillar.visible = false
@@ -70,7 +70,7 @@ func take_damage(incoming_damage):
 				%Cooldown.stop()
 			touching = null
 			queue_free()
-			const DEATH_ANIM = preload("res://scenes/Important/Enemy_Death.tscn")
+			const DEATH_ANIM = preload("res://scenes/Important/death.tscn")
 			var death_anim = DEATH_ANIM.instantiate()
 			if get_parent().name == "Boss":
 				get_parent().get_parent().find_child("Xp").add_child(death_anim)

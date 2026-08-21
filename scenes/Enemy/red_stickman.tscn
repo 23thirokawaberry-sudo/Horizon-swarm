@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://biwcrlk2t0q6q"]
+
+[ext_resource type="Script" uid="uid://blciejlgbh6d7" path="res://scripts/Enemy/red_stickman.gd" id="1_3ridv"]
+[ext_resource type="Texture2D" uid="uid://kjhp5w3sro00" path="res://assets/sprites/enemy/stickman.png" id="2_3ridv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
+radius = 4.1231055
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01ofa"]
+atlas = ExtResource("2_3ridv")
+region = Rect2(0, 0, 15, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dfug"]
+atlas = ExtResource("2_3ridv")
+region = Rect2(16, 0, 15, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xui6"]
+atlas = ExtResource("2_3ridv")
+region = Rect2(32, 0, 15, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p03gf"]
+atlas = ExtResource("2_3ridv")
+region = Rect2(48, 0, 15, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pvn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01ofa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dfug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xui6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p03gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xui6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dfug")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[node name="Stickman" type="CharacterBody2D" unique_id=457920698]
+collision_layer = 2
+collision_mask = 18
+motion_mode = 1
+script = ExtResource("1_3ridv")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1016385240]
+unique_name_in_owner = true
+position = Vector2(0, -5)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
+shape = SubResource("CircleShape2D_4d8dn")
+
+[node name="Cooldown" type="Timer" parent="Hitbox" unique_id=900131011]
+unique_name_in_owner = true
+wait_time = 0.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_4q1e0")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0pvn7")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.39093181
+
+[node name="HitTick" type="Timer" parent="." unique_id=729277458]
+wait_time = 0.15
+
+[node name="FlashTick" type="Timer" parent="." unique_id=946038282]
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Hitbox/Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="FlashTick" to="." method="_on_flash_tick_timeout"]

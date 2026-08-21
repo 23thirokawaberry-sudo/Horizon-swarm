@@ -253,6 +253,10 @@ func _on_stage_button_pressed(button_name):
 			if DataTransfer.stage_data[4][2] == true:
 				DataTransfer.selected_stage = 6
 				%Start.visible = true
+		"Stage 7":
+			if DataTransfer.stage_data[6][2] == true:
+				DataTransfer.selected_stage = 7
+				%Start.visible = true
 
 func _on_database_pressed():
 	$Menu.visible = false
@@ -332,8 +336,11 @@ func _on_database_button_pressed(button_name):
 		"Bluesteel robobot":
 			%EntryText.text = "Made of a special alloy with mithril and iron to prevent damage from outside sources. It doesn't help the fact that the machine is hollow and can break important mechanisms from heavy blows.
 			 \nHealth: 90 | Damage: 15 | Defense: 24 \n Speed: 30 | Credits: 12 | Xp: L \n Ability: At 1/5 health, Increase defense to 50"
-		"Pillar":
-			%EntryText.text = "Hops around your location. Acts as a solid wall, and only hurts if it lands on you. \nHealth: 1520 | Damage: 20 | Credits: 4 | Xp: S \n Ability: Stationary enemy. Behaves like a wall and can't be pushed. Enemies can't collide with it. Deals no contact damage.
+		"Sandstone pillar":
+			%EntryText.text = "Hops around your location. Acts as a solid wall, and only hurts if it lands on you. \nHealth: 720 | Damage: 18 | Credits: 4 | Xp: S \n Ability: Stationary enemy. Behaves like a wall and can't be pushed. Enemies can't collide with it. Deals no contact damage.
+			 \n Ability: Every 18 seconds, Leaps into the air and a red marker will appear on the ground around you. After 2.5 seconds, will land, dealing damage to you if you are in the landing area."
+		"Marble pillar":
+			%EntryText.text = "Found out that marble was more structually stable compared to sandstone. \nHealth: 1520 | Damage: 32 | Credits: 9 | Xp: M \n Ability: Stationary enemy. Behaves like a wall and can't be pushed. Enemies can't collide with it. Deals no contact damage.
 			 \n Ability: Every 18 seconds, Leaps into the air and a red marker will appear on the ground around you. After 2.5 seconds, will land, dealing damage to you if you are in the landing area."
 		"Blitzer":
 			%EntryText.text = "Orbits you like a pest. Really unpredictable. \nHealth: 40 | Damage: 4 | Orbit speed: 1.5 | Credits: 6 | Xp: M \n Ability: Orbits around you at a far distance. 

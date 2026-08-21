@@ -70,6 +70,7 @@ wait_time = 0.15
 
 [node name="Range" parent="." unique_id=875168748 instance=ExtResource("3_ibo33")]
 position = Vector2(0, -6)
+scale = Vector2(0.4, 0.4)
 
 [node name="AttackCooldown" type="Timer" parent="." unique_id=1775274318]
 wait_time = 5.0

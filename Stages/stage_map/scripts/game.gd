@@ -18,11 +18,15 @@ const ENEMIES = {
 	"Copper robobot": preload("res://scenes/Enemy/copper_robobot.tscn"),
 	"Steel robobot": preload("res://scenes/Enemy/steel_robobot.tscn"),
 	"Bluesteel robobot": preload("res://scenes/Enemy/bluesteel_robobot.tscn"),
-	"Pillar": preload("res://scenes/Enemy/pillar.tscn"),
+	"Sandstone pillar": preload("res://scenes/Enemy/sandstone_pillar.tscn"),
+	"Marble pillar": preload("res://scenes/Enemy/pillar.tscn"),
 	"Blitzer": preload("res://scenes/Enemy/blitzer.tscn"),
 	"Triangle mage": preload("res://scenes/Enemy/triangle_mage.tscn"),
-	"Projector": preload("res://scenes/Enemy/projector_mk_1.tscn"),
-	"Omecha": preload("res://scenes/Enemy/tin_mecha.tscn")
+	"Tin projector": preload("res://scenes/Enemy/projector_mk_1.tscn"),
+	"Omecha": preload("res://scenes/Enemy/tin_mecha.tscn"), 
+	"Red stickman": preload("res://scenes/Enemy/red_stickman.tscn"), 
+	"Green stickman": preload("res://scenes/Enemy/green_stickman.tscn"),
+	"Blue stickman": preload("res://scenes/Enemy/blue_stickman.tscn")
 }
 #Stages will call these to spawn the enemies.
 

@@ -1,29 +1,29 @@
-[gd_scene format=3 uid="uid://cmea4pwxm4yiv"]
+[gd_scene format=3 uid="uid://cx36walkfqmhf"]
 
-[ext_resource type="Script" uid="uid://d3gyj4t6qt0jn" path="res://scripts/Enemy/pillar.gd" id="1_hxnse"]
-[ext_resource type="Texture2D" uid="uid://b4ncsj55xj7j7" path="res://assets/sprites/enemy/Pillar (1) (2).png" id="2_a5ixv"]
+[ext_resource type="Script" uid="uid://bb2lpfnul50q6" path="res://scripts/Enemy/sandstone_pillar.gd" id="1_sukt8"]
+[ext_resource type="Texture2D" uid="uid://b4ncsj55xj7j7" path="res://assets/sprites/enemy/Pillar (1) (2).png" id="2_synl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5ixv"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxnse"]
-atlas = ExtResource("2_a5ixv")
-region = Rect2(16, 0, 16, 32)
+atlas = ExtResource("2_synl2")
+region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qs3k7"]
-atlas = ExtResource("2_a5ixv")
+atlas = ExtResource("2_synl2")
 region = Rect2(91, 0, 37, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fe7vs"]
-atlas = ExtResource("2_a5ixv")
+atlas = ExtResource("2_synl2")
 region = Rect2(91, 37, 37, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_en604"]
-atlas = ExtResource("2_a5ixv")
+atlas = ExtResource("2_synl2")
 region = Rect2(91, 74, 37, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8o7w2"]
-atlas = ExtResource("2_a5ixv")
+atlas = ExtResource("2_synl2")
 region = Rect2(91, 111, 37, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3jkr"]
@@ -52,7 +52,7 @@ radius = 18.0
 [node name="StaticBody2D" type="StaticBody2D" unique_id=1861295188]
 collision_layer = 9
 collision_mask = 9
-script = ExtResource("1_hxnse")
+script = ExtResource("1_sukt8")
 
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=1786023736]
 position = Vector2(0, -8)

@@ -15,14 +15,18 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_mk3jo")
 region = Rect2(192, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o85ev"]
+atlas = ExtResource("2_mk3jo")
+region = Rect2(120, 4, 32, 32)
+
 [node name="Level up" type="CanvasLayer" unique_id=1901936953]
 script = ExtResource("1_mk3jo")
 
 [node name="Button" type="ColorRect" parent="." unique_id=1410072858]
-offset_left = 205.4453
-offset_top = 156.54933
-offset_right = 265.4453
-offset_bottom = 276.54932
+offset_left = 120.0
+offset_top = 156.549
+offset_right = 180.00002
+offset_bottom = 276.54898
 scale = Vector2(3.252, 3.252)
 color = Color(0, 0, 0, 1)
 
@@ -82,10 +86,10 @@ pivot_offset = Vector2(30, 41.5)
 size_flags_horizontal = 4
 
 [node name="Button2" type="ColorRect" parent="." unique_id=1689630803]
-offset_left = 478.4453
-offset_top = 156.54933
-offset_right = 538.4453
-offset_bottom = 276.54932
+offset_left = 360.0
+offset_top = 156.549
+offset_right = 420.0
+offset_bottom = 276.54898
 scale = Vector2(3.252, 3.252)
 color = Color(0, 0, 0, 1)
 
@@ -145,10 +149,10 @@ pivot_offset = Vector2(30, 41.5)
 size_flags_horizontal = 4
 
 [node name="Button3" type="ColorRect" parent="." unique_id=118589288]
-offset_left = 751.4453
-offset_top = 156.54933
-offset_right = 811.4453
-offset_bottom = 276.54932
+offset_left = 600.0
+offset_top = 156.549
+offset_right = 660.0
+offset_bottom = 276.54898
 scale = Vector2(3.252, 3.252)
 color = Color(0, 0, 0, 1)
 
@@ -207,6 +211,70 @@ grow_vertical = 2
 pivot_offset = Vector2(30, 41.5)
 size_flags_horizontal = 4
 
+[node name="Button4" type="ColorRect" parent="." unique_id=907051696]
+offset_left = 840.0
+offset_top = 156.549
+offset_right = 900.0
+offset_bottom = 276.54898
+scale = Vector2(3.252, 3.252)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Button4" unique_id=160914386]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 60.0
+offset_right = 58.0
+offset_bottom = 75.0
+color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
+[node name="Name" type="Label" parent="Button4" unique_id=1098145465]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 75.0
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 10
+text = "TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Description" type="Label" parent="Button4" unique_id=1131061973]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 77.0
+offset_right = 58.0
+offset_bottom = 118.000015
+theme_override_constants/line_spacing = -1
+theme_override_font_sizes/font_size = 5
+text = "yo my icon"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Button4" unique_id=1047761274]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+texture = SubResource("AtlasTexture_o85ev")
+
+[node name="Button3" type="Button" parent="Button4" unique_id=624100018]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -59.999992
+offset_right = 30.0
+offset_bottom = 60.000023
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 41.5)
+size_flags_horizontal = 4
+
 [connection signal="pressed" from="Button/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button3/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4/Button3" to="." method="_on_button_4_pressed"]

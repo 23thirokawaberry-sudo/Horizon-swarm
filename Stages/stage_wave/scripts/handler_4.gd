@@ -80,7 +80,7 @@ func _wave_system_spacing():
 	elif time_elapsed < 60: #wave 2
 		spawn([["Green slime", 3, 0.4], ["Red slime", 4, 0.8]])	
 	elif time_elapsed < 90: #wave 3
-		spawn([["Tarnished purple", 1, 0.85]])
+		spawn([["Tarnished purple", 1, 1.0]])
 	elif time_elapsed < 150:
 		spawn([["Green slime", 2, 0.35], ["Red slime", 3, 0.7]])		
 	elif time_elapsed < 175:
@@ -88,13 +88,13 @@ func _wave_system_spacing():
 	elif time_elapsed < 180:
 		spawn([["Triangle mage", 1, 0.5]])	
 	elif time_elapsed < 220:
-		spawn([["Green slime", 3, 0.3], ["Red slime", 6, 0.65], ["Tarnished purple", 8, 0.75], ["Triangle mage", 9, 1.0]])
+		spawn([["Green slime", 3, 0.3], ["Red slime", 6, 0.65], ["Tarnished purple", 8, 0.9], ["Triangle mage", 9, 1.0]])
 	elif time_elapsed < 265:
-		spawn([["Green slime", 3, 0.3], ["Tarnished purple", 5, 0.7]])
+		spawn([["Green slime", 3, 0.3], ["Tarnished purple", 5, 0.85]])
 	elif time_elapsed < 300:
-		spawn([["Red slime", 4, 0.6], ["Tarnished purple", 7, 0.65], ["Triangle mage", 8, 1.0]])
+		spawn([["Red slime", 4, 0.6], ["Tarnished purple", 7, 0.8], ["Triangle mage", 8, 1.0]])
 	elif time_elapsed < 320:
-		spawn([["Green slime", 2, 0.25], ["Red slime", 5, 0.55], ["Tarnished purple", 8, 0.6], ["Triangle mage", 10, 1.0]])
+		spawn([["Green slime", 2, 0.25], ["Red slime", 5, 0.55], ["Tarnished purple", 8, 0.8], ["Triangle mage", 10, 1.0]])
 	else:
 		spawn([["Red slime", 7, 0.5], ["Triangle mage", 9, 0.8]])
 

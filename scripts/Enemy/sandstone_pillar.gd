@@ -1,51 +1,54 @@
-extends CharacterBody2D
+extends StaticBody2D
 
-#basic enemy stats.
-var max_health = 18.0
-var health = 18.0
-var DAMAGE = 2.0
-const SPEED = 20.0
-var cash_drop = 1.0
+var max_health = 720.0
+var health = 720.0
+var damage = 18.0
+var cash_drop = 4.0
+
+var target_pos = null
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
 
 @onready var player  = get_node("/root/Game/Player")
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $Pillar
 
-func _physics_process(delta):
-	#enemy movement
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * SPEED
-	if direction.x < 0:
-		$AnimatedSprite2D.flip_h = true
-	else:
-		$AnimatedSprite2D.flip_h = false
-		
-	move_and_slide()
-	
-func _on_cooldown_timeout():
-	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.
-	if touching != null:
-		deal_damage()
+func _ready():
+	$Pillar.visible = false
+	$marker.visible = true
+	$hitbox.set_deferred("disabled", true)
+	random_pos()
+	$Airborne.start()
 
-func _on_hitbox_body_entered(body: Node2D):
-	#sets touching variable to player if touching, then damages player until touching is set to null from following function.
-	touching = body
+func _on_movement_timeout():
+	$Pillar.visible = false
+	$marker.visible = true
+	$hitbox.set_deferred("disabled", true)
+	random_pos()
+	$Airborne.start()
+
+func _on_airborne_timeout():
+	$Pillar.visible = true
+	$marker.visible = false
 	deal_damage()
-	%Cooldown.start()
-	
-func _on_hitbox_body_exited(body: Node2D):
-	#sets touching variable to null if player is no longer touching.
-	if body == touching:
-		if is_instance_valid(%Cooldown):
-			%Cooldown.stop()
-		touching = null
+	$hitbox.set_deferred("disabled", false)
+	$Movement.start()
+
+func random_pos():
+	var angle = randf_range(0.0, TAU)
+	var distance = randf_range(0, 100)
+	var direction = Vector2.RIGHT.rotated(angle)
+	global_position = player.global_position + (distance * direction)
+
+func _on_landing_zone_body_entered(body: Node2D):
+	touching = body
+func _on_landing_zone_body_exited(body: Node2D):
+	touching = null
 
 func deal_damage():
-	#damages player
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(DAMAGE)
+		touching.recieve_damage(damage)
+		touching = null
 
 func take_damage(incoming_damage):
 	health -= incoming_damage

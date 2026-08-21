@@ -1,22 +1,25 @@
 extends CharacterBody2D
 
 #basic enemy stats.
-var max_health = 18.0
-var health = 18.0
-var DAMAGE = 2.0
-const SPEED = 20.0
-var cash_drop = 1.0
+var buffed = 0
+var max_health = 32.0
+var health = 32.0
+var resistance = 100.0
+var damage = 5.0
+var speed = 28.0
+var cash_drop = 2.0
 
 var touching = null #global variable for whether the enemy is touching player or not.
 var is_dead = false #prevents enemy from spawning xp multiple times if multiple bullets deal a lethal blow at the same frame.
 
+@onready var handler = get_parent()
 @onready var player  = get_node("/root/Game/Player")
 @onready var sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	#enemy movement
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * SPEED
+	velocity = direction * speed
 	if direction.x < 0:
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -45,10 +48,10 @@ func _on_hitbox_body_exited(body: Node2D):
 func deal_damage():
 	#damages player
 	if touching and touching.has_method("recieve_damage"):
-		touching.recieve_damage(DAMAGE)
+		touching.recieve_damage(damage)
 
 func take_damage(incoming_damage):
-	health -= incoming_damage
+	health -= (incoming_damage * (resistance / 100))
 	const DAMAGE_NUMBER = preload("res://scenes/Enemy/damage_indicator.tscn")
 	var new_number = DAMAGE_NUMBER.instantiate()
 	new_number.scale = Vector2(0.25, 0.25)
@@ -75,9 +78,20 @@ func take_damage(incoming_damage):
 				get_parent().find_child("Xp").add_child(death_anim)
 			death_anim.global_position = global_position
 			get_node("/root/Game").credits_gain += cash_drop
+			for child in handler.get_children():
+				if "buffed" in child:
+					if buffed < 10:
+						child.damage *= 1.2
+						child.sprite.modulate = Color(6.0,0.0,0.0)
+						child.find_child("FlashTick").start(0.05)
+						child.buffed += 1
+				
 
 func damage_effect():
 	sprite.modulate = Color(6.0,0.1,0.1)
 	$HitTick.start(0.05)
 	await $HitTick.timeout
+	sprite.modulate = Color(1,1,1,1)
+
+func _on_flash_tick_timeout():
 	sprite.modulate = Color(1,1,1,1)

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b2leaxs8ci3jw" path="res://scripts/Important/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b33odkfo53fqb" path="res://assets/sprites/Player/Player_classes_temp.png" id="2_cc8a3"]
 [ext_resource type="PackedScene" uid="uid://dqvthrmc4snee" path="res://scenes/Important/gun.tscn" id="3_cc8a3"]
-[ext_resource type="Texture2D" uid="uid://c20ukscucacxg" path="res://assets/sprites/Player/ClassPortrait.png" id="4_cc8a3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pse83"]
 atlas = ExtResource("2_cc8a3")
@@ -218,10 +217,6 @@ bg_color = Color(0.36078432, 0.36078432, 0.36078432, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8vts"]
 bg_color = Color(0.37143427, 0.5854644, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_olm6w"]
-atlas = ExtResource("4_cc8a3")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="Curve2D" id="Curve2D_c7irj"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 37, 9, 0, 0, 0, 0, 348, 8, 0, 0, 0, 0, 348, 195, 0, 0, 0, 0, 37, 195, 0, 0, 0, 0, 37, 9)
@@ -269,7 +264,7 @@ shape = SubResource("CircleShape2D_c7irj")
 z_index = 2
 offset_left = -191.0
 offset_top = -107.0
-offset_right = -43.0
+offset_right = -77.0
 offset_bottom = -73.0
 
 [node name="HealthBar" type="ProgressBar" parent="PlayerDetails" unique_id=332399576]
@@ -277,9 +272,9 @@ unique_name_in_owner = true
 z_index = 2
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 0
-offset_left = 35.0
+offset_left = 1.0
 offset_top = 1.0
-offset_right = 146.79999
+offset_right = 112.79999
 offset_bottom = 16.0
 theme_override_font_sizes/font_size = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_c7irj")
@@ -292,9 +287,9 @@ show_percentage = false
 unique_name_in_owner = true
 z_index = 2
 layout_mode = 0
-offset_left = 35.0
+offset_left = 1.0
 offset_top = 18.0
-offset_right = 146.79999
+offset_right = 112.79999
 offset_bottom = 33.0
 theme_override_styles/background = SubResource("StyleBoxFlat_pse83")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d8vts")
@@ -315,7 +310,6 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 33.0
 offset_bottom = 33.0
-texture = SubResource("AtlasTexture_olm6w")
 
 [node name="Pause" type="Button" parent="." unique_id=1348012021]
 z_index = 2

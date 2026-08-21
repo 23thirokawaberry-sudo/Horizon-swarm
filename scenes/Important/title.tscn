@@ -378,8 +378,7 @@ offset_left = 31.0
 offset_top = 151.0
 offset_right = 301.0
 offset_bottom = 208.0
-text = "Enemies
-"
+text = "Locations"
 
 [node name="WeaponInfo" type="Button" parent="Database" unique_id=212217456]
 layout_mode = 0
@@ -396,7 +395,8 @@ offset_left = 31.0
 offset_top = 294.0
 offset_right = 301.0
 offset_bottom = 357.0
-text = "Weapons
+text = "Classes
+
 "
 
 [node name="Achievements" type="Button" parent="Database" unique_id=1032745436]
@@ -433,7 +433,6 @@ z_index = -1
 [connection signal="pressed" from="Shop/Panel/Classes/The test" to="." method="_on_the_test_pressed"]
 [connection signal="pressed" from="Database/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Database/Enemies" to="." method="_on_enemies_pressed"]
-[connection signal="pressed" from="Database/Locations" to="." method="_on_enemies_pressed"]
 [connection signal="pressed" from="Database/WeaponInfo" to="." method="_on_weapon_info_pressed"]
 [connection signal="pressed" from="Database/Classes" to="." method="_on_weapon_info_pressed"]
 [connection signal="pressed" from="Database/Achievements" to="." method="_on_achievements_pressed"]
