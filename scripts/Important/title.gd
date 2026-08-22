@@ -35,16 +35,18 @@ func _on_stages_pressed():
 	
 	if stage_loaded == false:
 		stage_loaded = true
-		for stage in stages:
+		for i in range(stages.size()):
 			var new_button = Button.new()
-			new_button.name = stage[1]
-			new_button.text = stage[1]
+			new_button.name = stages[i][1]
+			new_button.text = stages[i][1]
 			new_button.custom_minimum_size = Vector2(200, 0)
-			if stage[2] == false:
-				if stage[3] == false:
-					new_button.modulate = Color(0.75, 0.75, 0.75, 1)
-				else:
+			if stages[i][2] == false:
+				if i <= 1:
 					new_button.modulate = Color(0, 0, 0, 1)
+				elif stages[i - stages[i][3]][2] == true:
+					new_button.modulate = Color(0, 0, 0, 1)
+				else:
+					new_button.modulate = Color(0.75, 0.75, 0.75, 1)
 			else:
 				new_button.modulate = Color(0.75, 0.6, 0.25, 1)
 			%Stages.add_child(new_button)
@@ -238,24 +240,28 @@ func _on_stage_button_pressed(button_name):
 				DataTransfer.selected_stage = 2
 				%Start.visible = true
 		"Stage 3":
-			if DataTransfer.stage_data[1][2] == true:
+			if DataTransfer.stage_data[2][2] == true:
 				DataTransfer.selected_stage = 3
 				%Start.visible = true
-		"Stage 4":
-			if DataTransfer.stage_data[2][2] == true and DataTransfer.stage_data[3][2] == true:
+		"the":
+			if DataTransfer.stage_data[3][2] == true:
 				DataTransfer.selected_stage = 4
 				%Start.visible = true
-		"Stage 5":
-			if DataTransfer.stage_data[4][2] == true:
+		"Stage 4":
+			if DataTransfer.stage_data[3][2] == true:
 				DataTransfer.selected_stage = 5
 				%Start.visible = true
-		"Stage 6":
-			if DataTransfer.stage_data[4][2] == true:
+		"Stage 5":
+			if DataTransfer.stage_data[5][2] == true:
 				DataTransfer.selected_stage = 6
 				%Start.visible = true
-		"Stage 7":
+		"Stage 6":
 			if DataTransfer.stage_data[6][2] == true:
 				DataTransfer.selected_stage = 7
+				%Start.visible = true
+		"Stage 7":
+			if DataTransfer.stage_data[7][2] == true:
+				DataTransfer.selected_stage = 8
 				%Start.visible = true
 
 func _on_database_pressed():
@@ -266,7 +272,7 @@ func _on_database_pressed():
 
 func _on_difficulty_pressed():
 	for stage in DataTransfer.stage_data:
-		stage[2] = true
+		stage[3] = true
 	#for weapon in DataTransfer.icons:
 	#	if weapon[-1] is bool:
 	#		weapon[-1] = true

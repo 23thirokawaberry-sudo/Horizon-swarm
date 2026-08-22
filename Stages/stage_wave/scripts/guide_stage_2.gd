@@ -1,13 +1,13 @@
 extends Node
 
-var win_time = 116
+var win_time = 161
 const ENEMY_APPEARENCES = ["Blue slime", "Tin robobot", "Triangle mage"]
 
 var time_elapsed = 0.0
 var timed_spawns = 0
 @onready var path = get_parent().find_child("Player").find_child("Path2D").find_child("PathFollow2D")
 
-var dialog_text = ["This tutorial is about some new mechanics. There is no boss here.", 
+var dialog_text = ["This tutorial is about some new mechanics. The stage will end at 160 seconds.", 
 					"You may notice the blue tiles around you. These are player blocking tiles, and they only block the player.", 
 					"Your projectiles will ignore these tiles, but you can't walk across them. There are other tiles like this, such as lava tiles.", 
 					"If you haven't checked the enemy database, you should as it includes some information about the enemies and their mechanics.",
@@ -18,12 +18,11 @@ var dialog_text = ["This tutorial is about some new mechanics. There is no boss 
 					"Because they are really slow, they end up staying in far unreachable locations. Use weapons such as sniper and beam to kill them.", 
 					"Mages as bosses will fire larger projectiles and their projectiles also deal more damage, so be careful around them as well.",
 					"Other enemies that you still haven't encountered yet can also fire projectiles in their attacks through different means, so try prioritizing them before you get overwhelmed.",
-					"Of course, if the enemy is in an unreachable location, just let them come near to deal with them and get their xp.",
-					"I'm lazy and I haven't finished this stage's dialog. stage will end at 160 seconds.", 
+					"Of course, if the enemy is in an unreachable location and you have no weapons that can reach them, just let them come near to deal with them and get their xp.",
 					"Stages with hoards of enemies, whether they are dangerous or not, may feel easier sometimes as they give you lots of xp to level up.",
 					"Try to not continuously kill enemies in unreachable locations, otherwise you may not get enough levels for future waves.", 
 					"Remember to go to the shop if the enemies are too difficult. You can get more starting weapons and better stats, which will make everything easier.", 
-					"This stage also doesn't have a boss so it will end very soon. The next stage will have player blocking tiles and ranged attackers so be careful."]
+					"This stage will end very soon. The next stage will have player blocking tiles and ranged attackers so be careful."]
 
 @onready var enemies = get_parent().ENEMIES
 
@@ -94,61 +93,79 @@ func _process(delta: float):
 			$Dialog.visible = true
 			%DialogTimer.start(8)
 			%Label.text = dialog_text[4]
-	elif snapped_time == 35:
+	elif snapped_time == 42:
 		if timed_spawns == 5:
 			timed_spawns = 6
 			$Dialog.visible = true
 			%DialogTimer.start(7)
 			%Label.text = dialog_text[5]
-	elif snapped_time == 42:
+	elif snapped_time == 48:
 		if timed_spawns == 6:
 			timed_spawns = 7
 			$Dialog.visible = true
 			%DialogTimer.start(8)
 			%Label.text = dialog_text[6]
-	elif snapped_time == 50:
+	elif snapped_time == 72:
 		if timed_spawns == 7:
 			timed_spawns = 8
 			$Dialog.visible = true
 			%DialogTimer.start(6)
 			%Label.text = dialog_text[7]
-	elif snapped_time == 58:
+	elif snapped_time == 78:
 		if timed_spawns == 8:
 			timed_spawns = 9
 			$Dialog.visible = true
 			%DialogTimer.start(8)
 			%Label.text = dialog_text[8]
-	elif snapped_time == 80:
+	elif snapped_time == 86:
 		if timed_spawns == 9:
 			timed_spawns = 10
 			$Dialog.visible = true
 			%DialogTimer.start(8)
 			%Label.text = dialog_text[9]
-	elif snapped_time == 88:
+			boss_spawn(enemies.get("Triangle mage"))
+	elif snapped_time == 92:
 		if timed_spawns == 10:
 			timed_spawns = 11
 			$Dialog.visible = true
 			%DialogTimer.start(6)
 			%Label.text = dialog_text[10]
-	elif snapped_time == 105:
+	elif snapped_time == 108:
 		if timed_spawns == 11:
 			timed_spawns = 12
 			$Dialog.visible = true
-			%DialogTimer.start(10)
+			%DialogTimer.start(8)
 			%Label.text = dialog_text[11]
-	elif snapped_time == 115:
+	elif snapped_time == 116:
 		if timed_spawns == 12:
 			timed_spawns = 13
 			$Dialog.visible = true
-			%DialogTimer.start(6)
+			%DialogTimer.start(8)
 			%Label.text = dialog_text[12]
-			boss_spawn(enemies.get("Blue slime"))
+	elif snapped_time == 124:
+		if timed_spawns == 13:
+			timed_spawns = 14
+			$Dialog.visible = true
+			%DialogTimer.start(8)
+			%Label.text = dialog_text[13]
+	elif snapped_time == 146:
+		if timed_spawns == 14:
+			timed_spawns = 15
+			$Dialog.visible = true
+			%DialogTimer.start(8)
+			%Label.text = dialog_text[14]
+	elif snapped_time == 154:
+		if timed_spawns == 15:
+			timed_spawns = 16
+			$Dialog.visible = true
+			%DialogTimer.start(8)
+			%Label.text = dialog_text[15]
 
 func _on_dialog_timer_timeout():
 	$Dialog.visible = false
 
 func _wave_system_spacing():
-	if time_elapsed < 40: #wave 1
+	if time_elapsed < 42: #wave 1
 		spawn([["Blue slime", 1, 1.5]])
 	elif time_elapsed < 80: #wave 2
 		spawn([["Tin robobot", 1, 2.8]])

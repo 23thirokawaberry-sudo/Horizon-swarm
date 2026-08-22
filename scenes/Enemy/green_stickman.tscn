@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4twhry4ayvw4"]
 
 [ext_resource type="Script" uid="uid://b31a3q8mp2aur" path="res://scripts/Enemy/green_stickman.gd" id="1_10h7b"]
-[ext_resource type="Texture2D" uid="uid://kjhp5w3sro00" path="res://assets/sprites/enemy/stickman.png" id="2_b3ox4"]
+[ext_resource type="Texture2D" uid="uid://bpkb18iji3iwa" path="res://assets/sprites/enemy/stickman (1).png" id="2_10h7b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
 radius = 4.1231055
@@ -9,28 +9,25 @@ radius = 4.1231055
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q1e0"]
 radius = 4.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_10h7b"]
-atlas = ExtResource("2_b3ox4")
-region = Rect2(0, 64, 15, 31)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3ox4"]
-atlas = ExtResource("2_b3ox4")
-region = Rect2(16, 64, 15, 31)
+atlas = ExtResource("2_10h7b")
+region = Rect2(0, 128, 15, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nb0o4"]
-atlas = ExtResource("2_b3ox4")
-region = Rect2(32, 64, 15, 31)
+atlas = ExtResource("2_10h7b")
+region = Rect2(16, 128, 15, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iuaae"]
-atlas = ExtResource("2_b3ox4")
-region = Rect2(48, 64, 15, 31)
+atlas = ExtResource("2_10h7b")
+region = Rect2(32, 128, 15, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crd4q"]
+atlas = ExtResource("2_10h7b")
+region = Rect2(48, 128, 15, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pvn7"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_10h7b")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b3ox4")
 }, {
@@ -41,10 +38,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_iuaae")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nb0o4")
+"texture": SubResource("AtlasTexture_crd4q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b3ox4")
+"texture": SubResource("AtlasTexture_iuaae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb0o4")
 }],
 "loop": true,
 "name": &"Walk",

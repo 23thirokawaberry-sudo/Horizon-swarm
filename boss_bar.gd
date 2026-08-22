@@ -9,3 +9,4 @@ func _ready():
 
 func _process(delta):
 	value = boss.health
+	max_value = boss.max_health

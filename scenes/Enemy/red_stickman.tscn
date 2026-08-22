@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://biwcrlk2t0q6q"]
 
 [ext_resource type="Script" uid="uid://blciejlgbh6d7" path="res://scripts/Enemy/red_stickman.gd" id="1_3ridv"]
-[ext_resource type="Texture2D" uid="uid://kjhp5w3sro00" path="res://assets/sprites/enemy/stickman.png" id="2_3ridv"]
+[ext_resource type="Texture2D" uid="uid://bpkb18iji3iwa" path="res://assets/sprites/enemy/stickman (1).png" id="2_3ridv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d8dn"]
 radius = 4.1231055
@@ -81,7 +81,7 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_0pvn7")
 animation = &"Walk"
 autoplay = "Walk"
-frame_progress = 0.39093181
+frame_progress = 0.99444705
 
 [node name="HitTick" type="Timer" parent="." unique_id=729277458]
 wait_time = 0.15

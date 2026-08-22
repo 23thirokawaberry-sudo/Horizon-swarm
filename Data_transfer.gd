@@ -32,14 +32,15 @@ var descriptions = [
 
 
 var stage_data = [
-	[preload("res://Stages/stage_wave/scenes/guide_stage_1.tscn"), "Beginners tutorial", false, true],
-	[preload("res://Stages/stage_wave/scenes/handler_1.tscn"), "Stage 1", false, true],
-	[preload("res://Stages/stage_wave/scenes/handler_2.tscn"), "Stage 2", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_3.tscn"), "Stage 3", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 4", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_5.tscn"), "Stage 5", false, false], 
-	[preload("res://Stages/stage_wave/scenes/handler_6.tscn"), "Stage 6", false, false],
-	[preload("res://Stages/stage_wave/scenes/handler_7.tscn"), "Stage 7", false, false]]
+	[preload("res://Stages/stage_wave/scenes/guide_stage_1.tscn"), "Beginners tutorial", false, 0],
+	[preload("res://Stages/stage_wave/scenes/handler_1.tscn"), "Stage 1", false, 0],
+	[preload("res://Stages/stage_wave/scenes/handler_2.tscn"), "Stage 2", false, 1],
+	[preload("res://Stages/stage_wave/scenes/handler_3.tscn"), "Stage 3", false, 1],
+	[preload("res://Stages/stage_wave/scenes/guide_stage_2.tscn"), "the", false, 1],
+	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 4", false, 2],
+	[preload("res://Stages/stage_wave/scenes/handler_5.tscn"), "Stage 5", false, 1], 
+	[preload("res://Stages/stage_wave/scenes/handler_6.tscn"), "Stage 6", false, 1],
+	[preload("res://Stages/stage_wave/scenes/handler_7.tscn"), "Stage 7", false, 1]]
 #Stage scene, stage name, check for whether stage is cleared or not.
 
 

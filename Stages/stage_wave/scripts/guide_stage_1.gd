@@ -66,6 +66,9 @@ func _process(delta: float):
 			$Dialog.visible = true
 			%DialogTimer.start(5)
 			%Label.text = dialog_text[0]
+			boss_spawn(enemies.get("Red stickman"))
+			boss_spawn(enemies.get("Green stickman"))
+			boss_spawn(enemies.get("Blue stickman"))
 	elif snapped_time == 5:
 		if timed_spawns == 1:
 			timed_spawns = 2
@@ -145,9 +148,9 @@ func _on_dialog_timer_timeout():
 
 func _wave_system_spacing():
 	if time_elapsed < 50: #wave 1
-		spawn([["Red stickman", 1, 0.5]])
-		spawn([["Blue stickman", 1, 0.5]])
-		spawn([["Green stickman", 1, 0.5]])
+		spawn([["Red stickman", 1, 6.5]])
+		spawn([["Blue stickman", 1, 6.5]])
+		spawn([["Green stickman", 1, 6.5]])
 	elif time_elapsed < 80: #wave 2
 		spawn([["Green slime", 1, 2.0]])
 	elif time_elapsed < 115: #wave 3
