@@ -23,7 +23,7 @@ const ENEMIES = {
 	"Blitzer": preload("res://scenes/Enemy/blitzer.tscn"),
 	"Triangle mage": preload("res://scenes/Enemy/triangle_mage.tscn"),
 	"Tin projector": preload("res://scenes/Enemy/projector_mk_1.tscn"),
-	"Omecha": preload("res://scenes/Enemy/tin_mecha.tscn"), 
+	"Tin oMecha": preload("res://scenes/Enemy/tin_mecha.tscn"), 
 	"Red stickman": preload("res://scenes/Enemy/red_stickman.tscn"), 
 	"Green stickman": preload("res://scenes/Enemy/green_stickman.tscn"),
 	"Blue stickman": preload("res://scenes/Enemy/blue_stickman.tscn")

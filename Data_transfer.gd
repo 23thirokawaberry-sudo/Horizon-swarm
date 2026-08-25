@@ -5,8 +5,8 @@ var base_player_stats = [50.0, 10.0, 42.0, 0.0, 2.0]
 var icons = [["Damage", 0, 125], ["Max health", 0, 125], ["Regen", 0, 125], ["Defense", 0, 125],
 			["Speed", 0, 125], ["Same", 0, 125], ["Pls money", 0, 125], ["Hello.", 0, 125],
 			["Pistol", 0, 200, true], ["Shotgun", -1, 250, true], ["Sword", -1, 250, true], ["Beam", -1, 250, true], 
-			["Sniper", -1, 325, true], ["Gatling", -1, 325, true], ["Lantern", -1, 400, true], ["Sapper", -1, 400, true],
-			["Volt", -1, 500, true], ["Mortar", -1, 500, false], ["Dagger", -1, 500, false], ["Katana", -1, 650, false],
+			["Sniper", -1, 325, false], ["Gatling", -1, 325, false], ["Lantern", -1, 400, false], ["Sapper", -1, 400, false],
+			["Volt", -1, 500, false], ["Mortar", -1, 500, false], ["Dagger", -1, 500, false], ["Katana", -1, 650, false],
 			["Mine", -1, 650, false], ["Aura", -1, 1000, false]]
 #Nessesary data for getting the icons among other things for these upgrades. Order: Name, Current level, Upgrade cost. Upgrade cost is stored here to save across scenes.
 
@@ -40,8 +40,9 @@ var stage_data = [
 	[preload("res://Stages/stage_wave/scenes/handler_4.tscn"), "Stage 4", false, 2],
 	[preload("res://Stages/stage_wave/scenes/handler_5.tscn"), "Stage 5", false, 1], 
 	[preload("res://Stages/stage_wave/scenes/handler_6.tscn"), "Stage 6", false, 1],
-	[preload("res://Stages/stage_wave/scenes/handler_7.tscn"), "Stage 7", false, 1]]
-#Stage scene, stage name, check for whether stage is cleared or not.
+	[preload("res://Stages/stage_wave/scenes/handler_7.tscn"), "Stage 7", false, 1],
+	[preload("res://Stages/stage_wave/scenes/handler_8.tscn"), "Stage 8", false, 1]]
+#Stage scene, stage name, check for whether stage is cleared or not, check how many stages previous has to be completed to be unlocked.
 
 
 var classes = [
@@ -56,7 +57,7 @@ var database = {"Enemies": {
 	"Green slime": false, "Blue slime": false, "Red slime": false, "Yellow slime": false, "Black slime": false, 
 	"Tarnished purple": false, "Tarnished turquoize": false, "Tin robobot": false, "Copper robobot": false,
 	"Steel robobot": false, "Bluesteel robobot": false, "Sandstone pillar": false, "Marble pillar": false, "Blitzer": false,
-	"Triangle mage": false, "Tin projector": false, "Tin sentry": false, "Tin mecha": false
+	"Triangle mage": false, "Tin projector": false, "Tin sentry": false, "Tin oMecha": false
 }, "Locations": {
 	"Spire": true
 }}

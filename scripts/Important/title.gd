@@ -40,15 +40,16 @@ func _on_stages_pressed():
 			new_button.name = stages[i][1]
 			new_button.text = stages[i][1]
 			new_button.custom_minimum_size = Vector2(200, 0)
-			if stages[i][2] == false:
+			if stages[i][2] == true:
+				new_button.modulate = Color(0.75, 0.6, 0.25, 1)
+			else:
 				if i <= 1:
 					new_button.modulate = Color(0, 0, 0, 1)
 				elif stages[i - stages[i][3]][2] == true:
 					new_button.modulate = Color(0, 0, 0, 1)
 				else:
 					new_button.modulate = Color(0.75, 0.75, 0.75, 1)
-			else:
-				new_button.modulate = Color(0.75, 0.6, 0.25, 1)
+				
 			%Stages.add_child(new_button)
 			new_button.pressed.connect(_on_stage_button_pressed.bind(new_button.name))
 
@@ -263,6 +264,10 @@ func _on_stage_button_pressed(button_name):
 			if DataTransfer.stage_data[7][2] == true:
 				DataTransfer.selected_stage = 8
 				%Start.visible = true
+		"Stage 8":
+			if DataTransfer.stage_data[8][2] == true:
+				DataTransfer.selected_stage = 9
+				%Start.visible = true
 
 func _on_database_pressed():
 	$Menu.visible = false
@@ -271,13 +276,7 @@ func _on_database_pressed():
 
 
 func _on_difficulty_pressed():
-	for stage in DataTransfer.stage_data:
-		stage[3] = true
-	#for weapon in DataTransfer.icons:
-	#	if weapon[-1] is bool:
-	#		weapon[-1] = true
-	DataTransfer.credits += 100000
-	get_tree().reload_current_scene()
+	$Secret.visible = true
 
 
 func _on_stats_pressed():
@@ -336,17 +335,17 @@ func _on_database_button_pressed(button_name):
 		"Tin robobot":
 			%EntryText.text = "Moves towards you. Has defense. \nHealth: 30 | Damage: 3 | Defense: 9 \n Speed: 24 | Credits: 3 | Xp: S \n Note: Has defense (Reduces incoming damage based on defense value, down to 1 damage)."
 		"Copper robobot":
-			%EntryText.text = "Having a shell made of copper allows it to conduct electricity around itself better. Doesn't help though. \nHealth: 42 | Damage: 5 | Defense: 15 \n Speed: 25 | Credits: 4 | Xp: M"
+			%EntryText.text = "Having a shell made of copper allows it to conduct electricity around itself better. Doesn't change anything except for defense though. \nHealth: 42 | Damage: 5 | Defense: 15 \n Speed: 25 | Credits: 4 | Xp: M"
 		"Steel robobot":
 			%EntryText.text = "Made of steel. Somehow that tiny rubber tyre can still hold and balance this heavy thing. \nHealth: 64 | Damage: 10 | Defense: 21 \n Speed: 28 | Credits: 6 | Xp: M"
 		"Bluesteel robobot":
-			%EntryText.text = "Made of a special alloy with mithril and iron to prevent damage from outside sources. It doesn't help the fact that the machine is hollow and can break important mechanisms from heavy blows.
+			%EntryText.text = "Made of a special alloy with mithril and iron to prevent damage from outside sources, with a side effect that made it invisible and immobile.
 			 \nHealth: 90 | Damage: 15 | Defense: 24 \n Speed: 30 | Credits: 12 | Xp: L \n Ability: At 1/5 health, Increase defense to 50"
 		"Sandstone pillar":
 			%EntryText.text = "Hops around your location. Acts as a solid wall, and only hurts if it lands on you. \nHealth: 720 | Damage: 18 | Credits: 4 | Xp: S \n Ability: Stationary enemy. Behaves like a wall and can't be pushed. Enemies can't collide with it. Deals no contact damage.
 			 \n Ability: Every 18 seconds, Leaps into the air and a red marker will appear on the ground around you. After 2.5 seconds, will land, dealing damage to you if you are in the landing area."
 		"Marble pillar":
-			%EntryText.text = "Found out that marble was more structually stable compared to sandstone. \nHealth: 1520 | Damage: 32 | Credits: 9 | Xp: M \n Ability: Stationary enemy. Behaves like a wall and can't be pushed. Enemies can't collide with it. Deals no contact damage.
+			%EntryText.text = "Found out that marble was more structually stable compared to sandstone. Made it unable to move so it couldn't get into any of the stages. \nHealth: 1520 | Damage: 32 | Credits: 9 | Xp: M \n Ability: Stationary enemy. Behaves like a wall and can't be pushed. Enemies can't collide with it. Deals no contact damage.
 			 \n Ability: Every 18 seconds, Leaps into the air and a red marker will appear on the ground around you. After 2.5 seconds, will land, dealing damage to you if you are in the landing area."
 		"Blitzer":
 			%EntryText.text = "Orbits you like a pest. Really unpredictable. \nHealth: 40 | Damage: 4 | Orbit speed: 1.5 | Credits: 6 | Xp: M \n Ability: Orbits around you at a far distance. 
@@ -356,11 +355,17 @@ func _on_database_button_pressed(button_name):
 		"Tin projector":
 			%EntryText.text = "Has a shield that craves for projectiles and explosions. \nHealth: 15 | Shield: 625 | Damage: 1 | Speed: 8 | Credits: 3 | Xp: M
 			 \n Ability: Creates a forcefield around itself that absorbs incoming non-piercing projectiles and explosions. Will also tank attacks that hit it's main body while the shield is up. The shield will regenerate 15 seconds after it is destroyed."
+		"Red stickman":
+			%EntryText.text = "A stickman that makes his friends hurt more. \nHealth: 24 | Defense: 1 | Resistance: 20% | Damage: 5 | Credits: 2 | Xp: S \nAbility: On death, buffs all stickman's damage by 1.1x, stacks up to 10 times. \n Note: Enemy has resistance (Reduces damage by a percentage, and is calculated before defense.)"
+		"Green stickman":
+			%EntryText.text = "A stickman that heals his friends. \nHealth: 30 | Defense: 1 | Resistance: 20% | Damage: 4 | Credits: 2 | Xp: S \nAbility: On death, buffs all stickman's max health by 1.1x, stacks up to 10 times. Also heals them by 20% if they haven't reached max buffs."
+		"Blue stickman":
+			%EntryText.text = "A stickman that makes his friends tank more. Got evicted from his home town so now he wanders the database aimlessly, with nowhere else to go.\nHealth: 24 | Defense: 1 | Resistance: 25% | Damage: 4 | Credits: 2 | Xp: S \nAbility: On death, increases stickman resistance by 10% based on their 'missing resistance', stacks up to 10 times."
 		"Tin sentry":
 			%EntryText.text = "Stationary enemy that fires bullets at a rapid rate. \nHealth: 90 | Damage: 3 | Credits: 1 | Xp: S \n Ability: Stationary enemy. Behaves like a wall and can't be pushed. Enemies can't collide with it. Deals no contact damage.
 			 \n Ability: Fires a bullet every 0.5 seconds, dealing damage equal to itself, and taking self damage equal to double it's own damage."
-		"Tin mecha":
-			%EntryText.text = "Fat robot with lots of equipment. \nHealth: 2050 | Damage: 12 | Defense: 6 \n Speed: 16 | Credits: 80 | Xp: L \n Ability: Every 7.5 seconds, will stand in place before firing 2 bursts of 5 projectiles from each arm.
+		"Tin oMecha":
+			%EntryText.text = "Giant robot with lots of equipment. Has an extremely bulky, yet agile design and mechanism, crushing anything in it's way. \nHealth: 2050 | Damage: 12 | Defense: 6 \n Speed: 16 | Credits: 80 | Xp: L \n Ability: Every 7.5 seconds, will stand in place before firing 2 bursts of 5 projectiles from each arm.
 			 \n Ability: Every 15 seconds it will place a turret at it's position."
 
 func _on_weapon_info_pressed():
@@ -369,3 +374,47 @@ func _on_weapon_info_pressed():
 
 func _on_achievements_pressed():
 	pass # Replace with function body.
+
+
+func _on_add_thousand_pressed():
+	DataTransfer.credits += 1000
+
+func _on_add_million_pressed():
+	DataTransfer.credits += 1000000
+
+func _on_unlock_next_enemy_pressed():
+	for i in database["Enemies"]:
+		if database["Enemies"][i] == false:
+			database["Enemies"][i] = true
+			break
+
+func _on_unlock_all_enemies_pressed():
+	for i in database["Enemies"]:
+		database["Enemies"][i] = true
+
+
+func _on_unlock_next_weapon_pressed():
+	for weapon in DataTransfer.icons:
+		if weapon[-1] is bool:
+			if weapon[-1] == false:
+				weapon[-1] = true
+				break
+
+func _on_unlock_all_weapons_pressed():
+	for weapon in DataTransfer.icons:
+		if weapon[-1] is bool:
+			weapon[-1] = true
+
+
+func _on_skip_stage_pressed():
+	for stage in DataTransfer.stage_data:
+		if stage[2] == false:
+			stage[2] = true
+			break
+
+func _on_clear_all_stages_pressed():
+	for stage in DataTransfer.stage_data:
+		stage[2] = true
+
+func _on_refresh_pressed():
+	get_tree().reload_current_scene()

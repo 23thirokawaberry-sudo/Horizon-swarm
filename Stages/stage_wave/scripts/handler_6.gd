@@ -2,6 +2,7 @@ extends Node
 
 var win_time = 361
 const ENEMY_APPEARENCES = ["Green slime", "Blue slime", "Red slime", "Black slime", "Tin robobot", "Copper robobot", "Steel robobot", "Blitzer", "Sandstone pillar"]
+const WEAPON_UNLOCK = ["Dagger", "Katana"]
 
 var timed_spawns = 0
 @onready var path = %PathFollow2D

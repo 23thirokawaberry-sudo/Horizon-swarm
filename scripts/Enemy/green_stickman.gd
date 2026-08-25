@@ -3,7 +3,7 @@ extends CharacterBody2D
 #basic enemy stats.
 var buffed = 0
 var max_health = 30.0
-var health = 30.0
+var health = 40.0
 var resistance = 20
 var damage = 4.0
 var speed = 28.0
@@ -88,8 +88,8 @@ func take_damage(incoming_damage):
 func check_loop(selected):
 	if "buffed" in selected:
 		if selected.buffed < 10:
-			selected.max_health *= 1.2
-			selected.health += selected.max_health * 0.35
+			selected.max_health *= 1.1
+			selected.health += selected.max_health * 0.2
 			if selected.health > selected.max_health:
 				selected.health = selected.max_health
 			selected.sprite.modulate = Color(0.0,6.0,0.0)

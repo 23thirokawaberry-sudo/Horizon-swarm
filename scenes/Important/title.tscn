@@ -410,8 +410,107 @@ text = "Achievements"
 [node name="Secret" type="Control" parent="." unique_id=1445367454]
 visible = false
 anchors_preset = 0
+offset_left = 326.0
+offset_top = 160.0
+offset_right = 366.0
+offset_bottom = 200.0
+
+[node name="ColorRect" type="ColorRect" parent="Secret" unique_id=205005610]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="Secret/ColorRect" unique_id=660425277]
+layout_mode = 0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "CHEAT MENU"
+
+[node name="AddThousand" type="Button" parent="Secret/ColorRect" unique_id=1453222555]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 39.0
+offset_top = 49.0
+offset_right = 182.0
+offset_bottom = 80.0
+text = "Add 1,000 Credits
+"
+
+[node name="AddMillion" type="Button" parent="Secret/ColorRect" unique_id=550112221]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 86.0
+offset_right = 199.0
+offset_bottom = 117.0
+text = "Add 1,000,000 Credits
+"
+
+[node name="UnlockNextEnemy" type="Button" parent="Secret/ColorRect" unique_id=599357209]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 208.0
+offset_top = 41.0
+offset_right = 459.0
+offset_bottom = 72.0
+text = "Unlock next enemy in database"
+
+[node name="UnlockAllEnemies" type="Button" parent="Secret/ColorRect" unique_id=23731214]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 211.0
+offset_top = 81.0
+offset_right = 459.0
+offset_bottom = 112.0
+text = "Unlock all enemies in database
+"
+
+[node name="UnlockNextWeapon" type="Button" parent="Secret/ColorRect" unique_id=51347732]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 132.0
+offset_right = 263.0
+offset_bottom = 163.0
+text = "Unlock next unlockable weapon"
+
+[node name="UnlockAllWeapons" type="Button" parent="Secret/ColorRect" unique_id=246338109]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 168.0
+offset_right = 247.0
+offset_bottom = 199.0
+text = "Unlock all weapons available"
+
+[node name="SkipStage" type="Button" parent="Secret/ColorRect" unique_id=1481741107]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 271.0
+offset_top = 134.0
+offset_right = 502.0
+offset_bottom = 165.0
+text = "Skip next stage"
+
+[node name="ClearAllStages" type="Button" parent="Secret/ColorRect" unique_id=296389449]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 265.0
+offset_top = 171.0
+offset_right = 496.0
+offset_bottom = 202.0
+text = "Clear all stages
+"
+
+[node name="Refresh" type="Button" parent="Secret/ColorRect" unique_id=1370930616]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 290.0
+offset_top = 236.0
+offset_right = 483.0
+offset_bottom = 267.0
+text = "Refresh (Exit)"
 
 [node name="Transition" parent="." unique_id=147129976 instance=ExtResource("3_wadwv")]
 z_index = -1
@@ -436,3 +535,12 @@ z_index = -1
 [connection signal="pressed" from="Database/WeaponInfo" to="." method="_on_weapon_info_pressed"]
 [connection signal="pressed" from="Database/Classes" to="." method="_on_weapon_info_pressed"]
 [connection signal="pressed" from="Database/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/AddThousand" to="." method="_on_add_thousand_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/AddMillion" to="." method="_on_add_million_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/UnlockNextEnemy" to="." method="_on_unlock_next_enemy_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/UnlockAllEnemies" to="." method="_on_unlock_all_enemies_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/UnlockNextWeapon" to="." method="_on_unlock_next_weapon_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/UnlockAllWeapons" to="." method="_on_unlock_all_weapons_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/SkipStage" to="." method="_on_skip_stage_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/ClearAllStages" to="." method="_on_clear_all_stages_pressed"]
+[connection signal="pressed" from="Secret/ColorRect/Refresh" to="." method="_on_refresh_pressed"]

@@ -27,7 +27,7 @@ func _on_fire():
 			new_bullet.global_rotation = %ShootingPoint.global_rotation
 			new_bullet.scale = get_parent().scale
 			new_bullet.projectile_damage = damage
-			self.get_parent().add_child(new_bullet)
+			find_parent("Enemies").get_child(2).get_child(1).add_child(new_bullet)
 			$BurstSpacing.start()
 			await $BurstSpacing.timeout
 		timer.wait_time = randf_range(cooldown[0], cooldown[1])
