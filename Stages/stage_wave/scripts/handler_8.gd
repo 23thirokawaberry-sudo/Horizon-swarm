@@ -56,6 +56,9 @@ func _process(delta: float):
 		if timed_spawns == 0:
 			boss_spawn(enemies.get("Tin oMecha"))
 			timed_spawns = 1
+	elif snapped_time == 200:
+		if timed_spawns == 1:
+			boss_spawn(enemies.get("Sandstone pillar"))
 
 func _wave_system_spacing():
 	if time_elapsed < 20: #wave 1

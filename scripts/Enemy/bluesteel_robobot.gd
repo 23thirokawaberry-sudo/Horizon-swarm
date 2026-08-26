@@ -22,6 +22,11 @@ func _physics_process(delta):
 	velocity = direction * SPEED
 	move_and_slide()
 	
+	if direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
+	
 func _on_cooldown_timeout():
 	#spacing between enemy damage; stops player from immediatly dying when touching an enemy.
 	if touching != null:

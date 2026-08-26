@@ -1,7 +1,7 @@
 extends Node
 
 var win_time = 281
-const ENEMY_APPEARENCES = ["Blue slime", "Red slime", "Yellow slime", "Tarnished turquoize", "Tin robobot", "Copper robobot", "Triangle mage", "Blitzer"]
+const ENEMY_APPEARENCES = ["Blue slime", "Red slime", "Yellow slime", "Tarnished purple", "Tin robobot", "Copper robobot", "Triangle mage", "Blitzer"]
 const WEAPON_UNLOCK = ["Mortar"]
 
 var timed_spawns = 0
@@ -60,8 +60,8 @@ func _process(delta: float):
 			timed_spawns = 2
 	elif snapped_time == 280:
 		if timed_spawns == 2:
-			boss_spawn(enemies.get("Tarnished turquoize"))
 			for i in range(3):
+				boss_spawn(enemies.get("Tarnished purple"))
 				boss_spawn(enemies.get("Copper robobot"))
 				boss_spawn(enemies.get("Triangle mage"))
 			timed_spawns = 3

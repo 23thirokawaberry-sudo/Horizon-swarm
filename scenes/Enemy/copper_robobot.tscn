@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8ax3w0v4jpwo"]
 
 [ext_resource type="Script" uid="uid://cqcl00somxgks" path="res://scripts/Enemy/copper_robobot.gd" id="1_hwqcq"]
-[ext_resource type="Texture2D" uid="uid://dvyyifo8pp77t" path="res://assets/sprites/enemy/Robobot (1).png" id="2_0d6k7"]
+[ext_resource type="Texture2D" uid="uid://hjbl7d8rah6" path="res://assets/sprites/enemy/Robobot (1) (2).png" id="2_hwqcq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x5ic5"]
 radius = 8.181818
@@ -9,22 +9,22 @@ radius = 8.181818
 [sub_resource type="CircleShape2D" id="CircleShape2D_tmkvo"]
 radius = 8.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ma2l"]
-atlas = ExtResource("2_0d6k7")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d6k7"]
+atlas = ExtResource("2_hwqcq")
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w02hs"]
-atlas = ExtResource("2_0d6k7")
-region = Rect2(16, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5ic5"]
+atlas = ExtResource("2_hwqcq")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nu2j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3ma2l")
+"texture": SubResource("AtlasTexture_0d6k7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w02hs")
+"texture": SubResource("AtlasTexture_x5ic5")
 }],
 "loop": true,
 "name": &"Walk",
@@ -44,7 +44,7 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1339242253]
-position = Vector2(0, 3.9999995)
+position = Vector2(0, -4.7683716e-07)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CircleShape2D_x5ic5")
 
@@ -53,12 +53,13 @@ unique_name_in_owner = true
 wait_time = 0.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833906028]
-position = Vector2(0, -9)
+position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_tmkvo")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1549574067]
-position = Vector2(0, -8)
+position = Vector2(0, -12)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_4nu2j")
 animation = &"Walk"
 autoplay = "Walk"

@@ -21,6 +21,7 @@ DataTransfer="*uid://c02cx8xd2uc77"
 
 [display]
 
+window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

@@ -79,7 +79,8 @@ offset_top = 6.0
 offset_right = 440.0
 offset_bottom = 126.0
 grow_vertical = 2
-text = "Inventory"
+text = "The buttom that makes you do nothing
+"
 
 [node name="Database" type="Button" parent="Menu" unique_id=1815347368]
 layout_mode = 1
@@ -203,7 +204,7 @@ offset_left = 31.0
 offset_top = 363.0
 offset_right = 301.0
 offset_bottom = 485.0
-text = "Classes"
+text = "Classes (WIP)"
 
 [node name="Panel" type="Control" parent="Shop" unique_id=1724664374]
 anchors_preset = 0
@@ -378,7 +379,7 @@ offset_left = 31.0
 offset_top = 151.0
 offset_right = 301.0
 offset_bottom = 208.0
-text = "Locations"
+text = "Unfinished"
 
 [node name="WeaponInfo" type="Button" parent="Database" unique_id=212217456]
 layout_mode = 0
@@ -386,7 +387,7 @@ offset_left = 31.0
 offset_top = 222.0
 offset_right = 301.0
 offset_bottom = 285.0
-text = "Weapons
+text = "Unfinished
 "
 
 [node name="Classes" type="Button" parent="Database" unique_id=805934944]
@@ -395,7 +396,7 @@ offset_left = 31.0
 offset_top = 294.0
 offset_right = 301.0
 offset_bottom = 357.0
-text = "Classes
+text = "Unfinished
 
 "
 
@@ -405,7 +406,7 @@ offset_left = 31.0
 offset_top = 363.0
 offset_right = 301.0
 offset_bottom = 485.0
-text = "Achievements"
+text = "Unfinished"
 
 [node name="Secret" type="Control" parent="." unique_id=1445367454]
 visible = false
